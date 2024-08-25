@@ -1,6 +1,5 @@
-/**
- * @type {import('tinacms').Collection}
- */
+import type { Collection } from "tinacms";
+
 export default {
   label: "Blog Posts",
   name: "post",
@@ -26,4 +25,4 @@ export default {
       return `/posts/${document._sys.filename}`;
     },
   },
-};
+} as Collection;

@@ -1,6 +1,5 @@
-/**
- * @type {import('tinacms').Collection}
- */
+import type { Collection } from "tinacms";
+
 export default {
   label: "Page Content",
   name: "page",
@@ -22,4 +21,4 @@ export default {
       return undefined;
     },
   },
-};
+} as Collection;
