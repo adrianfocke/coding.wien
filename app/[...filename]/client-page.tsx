@@ -23,7 +23,10 @@ export default function ClientPage(props: ClientPageProps) {
 
   const content = data.page.body;
   return (
-    <div data-tina-field={tinaField(data.page, "body")}>
+    <div
+      data-testid="client-page"
+      data-tina-field={tinaField(data.page, "body")}
+    >
       <LightningBoltIcon />
       <RadixForm formName={"Radix Form"} />
       <TinaMarkdown content={content} />
