@@ -1,6 +1,8 @@
 "use client";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { LightningBoltIcon } from "@radix-ui/react-icons";
 import { tinaField, useTina } from "tinacms/dist/react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import RadixForm from "../../components/RadixForm";
 import type { PageQuery } from "../../tina/__generated__/types";
 
 interface ClientPageProps {
@@ -22,6 +24,8 @@ export default function ClientPage(props: ClientPageProps) {
   const content = data.page.body;
   return (
     <div data-tina-field={tinaField(data.page, "body")}>
+      <LightningBoltIcon />
+      <RadixForm formName={"Radix Form"} />
       <TinaMarkdown content={content} />
     </div>
   );

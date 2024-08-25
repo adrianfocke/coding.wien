@@ -1,3 +1,5 @@
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 import Link from "next/link";
 import React from "react";
 
@@ -13,12 +15,14 @@ export default function RootLayout({
           margin: "3rem",
         }}
       >
-        <header>
-          <Link href="/">Home</Link>
-          {" | "}
-          <Link href="/posts">Posts</Link>
-        </header>
-        <main>{children}</main>
+        <Theme>
+          <header>
+            <Link href="/">Home</Link>
+            {" | "}
+            <Link href="/posts">Posts</Link>
+          </header>
+          <main>{children}</main>
+        </Theme>
       </body>
     </html>
   );
