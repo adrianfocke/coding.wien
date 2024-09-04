@@ -31,34 +31,31 @@ export default function ClientPage(props: ClientPageProps) {
       >
         <TinaMarkdown content={content} />
       </div>
+      <Form />
 
-      <Grid columns={"2"}>
-        <Form />
-
-        <InstagramPost
-          accountName={"Bandcamp"}
-          accountUrl={"https://bandcamp.com/about"}
-          images={[
-            {
-              image: "/uploads/bandcamp-oakland.jpg",
-              altText: "Bandcamp session in Oakland",
-            },
-            {
-              image: "/uploads/bandcamp-gang.jpg",
-              altText: "The Bandcamp gang",
-            },
-            {
-              image: "/uploads/bandcamp-team.jpg",
-              altText: "The Bandcamp team",
-            },
-          ]}
-          postDescription={`Bandcamp is an online record store and music community where
+      <InstagramPost
+        accountName={"Bandcamp"}
+        accountUrl={"https://bandcamp.com/about"}
+        images={[
+          {
+            image: "/uploads/bandcamp-oakland.jpg",
+            altText: "Bandcamp session in Oakland",
+          },
+          {
+            image: "/uploads/bandcamp-gang.jpg",
+            altText: "The Bandcamp gang",
+          },
+          {
+            image: "/uploads/bandcamp-team.jpg",
+            altText: "The Bandcamp team",
+          },
+        ]}
+        postDescription={`Bandcamp is an online record store and music community where
           passionate fans discover, connect with, and directly support the
           artists they love. I created their new online presence with an
           emphasis on simplicity.`}
-          variant="ghost"
-        />
-      </Grid>
+        variant="ghost"
+      />
     </>
   );
 }
