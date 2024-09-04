@@ -21,7 +21,7 @@ export default function RootLayout({
             {" | "}
             <Link href="/posts">Posts</Link>
           </header>
-          <main>{children}</main>
+          <main>{children as any}</main>
         </Theme>
       </body>
     </html>
