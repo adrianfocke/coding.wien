@@ -15,6 +15,11 @@ const vwToPixels = (vw: number, windowWidth: number) =>
 export const calculateWidthInPixelsForCurrentScreen = (
   widths: Responsive<string>
 ): number => {
+
+  if (typeof window === "undefined") {
+    return 0;
+  } 
+
   const windowWidth = window.screen.width;
 
   // Get the breakpoints as an array of tuples: [[key, value], [key, value], ...]
