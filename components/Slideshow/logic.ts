@@ -1,13 +1,5 @@
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-
-const BREAKPOINTS = {
-  initial: 300 /* Phones (portrait) */,
-  xs: 520 /* Phones (landscape) */,
-  sm: 768 /* Tablets (portrait) */,
-  md: 1024 /* Tablets (landscape) */,
-  lg: 1280 /* Laptops */,
-  xl: 1640 /* Desktops */,
-};
+import { BREAKPOINTS } from "../../styles/constants";
 
 const vwToPixels = (vw: number, windowWidth: number) =>
   (vw * windowWidth) / 100;
@@ -15,12 +7,11 @@ const vwToPixels = (vw: number, windowWidth: number) =>
 export const calculateWidthInPixelsForCurrentScreen = (
   widths: Responsive<string>
 ): number => {
-
   if (typeof window === "undefined") {
     return 0;
-  } 
+  }
 
-  const windowWidth = window.screen.width;
+  const windowWidth = window.innerWidth;
 
   // Get the breakpoints as an array of tuples: [[key, value], [key, value], ...]
   const breakpointEntries = Object.entries(BREAKPOINTS) as [

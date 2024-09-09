@@ -18,6 +18,7 @@ import Form from "../../components/Form/Form";
 import InstagramPost from "../../components/InstagramPost";
 import Slideshow from "../../components/Slideshow/Slideshow";
 import Testimonial from "../../components/Testimonial/Testimonial";
+import { DEFAULT_WIDTH } from "../../styles/constants";
 import "../../styles/main.css";
 import type { PageQuery } from "../../tina/__generated__/types";
 
@@ -84,26 +85,10 @@ export default function ClientPage(props: ClientPageProps) {
             height={400}
           />,
         ]}
-        width={{
-          initial: "90vw",
-          xs: "90vw",
-          sm: "90vw",
-          md: "520px",
-          lg: "700px",
-          xl: "700px",
-        }}
+        width={DEFAULT_WIDTH}
       />
 
-      <Form
-        width={{
-          initial: "90vw",
-          xs: "90vw",
-          sm: "90vw",
-          md: "520px",
-          lg: "700px",
-          xl: "700px",
-        }}
-      />
+      <Form width={DEFAULT_WIDTH} />
 
       {/* <Grid columns={"2"}> */}
       {/* <Flex
