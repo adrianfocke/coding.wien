@@ -1,23 +1,9 @@
 "use client";
-import { ChatBubbleIcon, EnvelopeOpenIcon } from "@radix-ui/react-icons";
-import {
-  AccessibleIcon,
-  Box,
-  Button,
-  Flex,
-  Grid,
-  Heading,
-  IconButton,
-  Reset,
-  Text,
-} from "@radix-ui/themes";
+import { Flex, Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
-import Link from "next/link";
 import { useTina } from "tinacms/dist/react";
 import Form from "../../components/Form/Form";
 import InstagramPost from "../../components/InstagramPost";
-import Slideshow from "../../components/Slideshow/Slideshow";
-import Testimonial from "../../components/Testimonial/Testimonial";
 import { DEFAULT_WIDTH } from "../../styles/constants";
 import "../../styles/main.css";
 import type { PageQuery } from "../../tina/__generated__/types";
