@@ -42,6 +42,7 @@ export default ({
       >
         {slides.map((slide, i) => (
           <Box
+            key={i}
             width={width}
             height={height}
             style={{
