@@ -98,7 +98,16 @@ export default function ClientPage(props: ClientPageProps) {
 
       <hr />
 
-      <Form />
+      <Form
+        width={{
+          initial: "90vw",
+          xs: "90vw",
+          sm: "90vw",
+          md: "520px",
+          lg: "700px",
+          xl: "700px",
+        }}
+      />
 
       {/* <Grid columns={"2"}> */}
       {/* <Flex

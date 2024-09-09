@@ -1,13 +1,14 @@
 import * as Form from "@radix-ui/react-form";
 import { Box, Button, Card, Flex, Spinner, Text } from "@radix-ui/themes";
+import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import { FormField } from "./FormField";
 import { useForm } from "./hook";
 
-export default () => {
+export default ({ width }: { width: Responsive<string> }) => {
   const { state, setFormState } = useForm();
 
   return (
-    <Box width={"90vw"} m={"2"} style={{ maxWidth: "100%" }}>
+    <Box width={width} m={"2"} style={{ maxWidth: "100%" }}>
       <Card variant="ghost">
         <Form.Root
           onSubmit={async (event) => {
