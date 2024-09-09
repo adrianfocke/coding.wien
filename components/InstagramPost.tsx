@@ -28,7 +28,7 @@ export default ({
   const { account, description, url } = postMeta;
 
   return (
-    <Box width={width} m={"2"}>
+    <Box width={width} m={"2"} style={{ maxWidth: "100%" }}>
       <Card variant={"ghost"}>
         <Flex align={"center"} direction={"row"} justify={"between"}>
           <Flex

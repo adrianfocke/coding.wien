@@ -7,7 +7,7 @@ export default () => {
   const { state, setFormState } = useForm();
 
   return (
-    <Box maxWidth={{ md: "90vw", lg: "350px" }} m={"2"}>
+    <Box width={"90vw"} m={"2"} style={{ maxWidth: "100%" }}>
       <Card variant="ghost">
         <Form.Root
           onSubmit={async (event) => {
