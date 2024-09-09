@@ -1,40 +1,57 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export const useSlideshow = (imageWidth: number) => {
-  const [displayedImage, setDisplayedImage] = useState<number>(1);
-  const slideshow = useRef<HTMLElement>();
+export const useSlideshow = (slideWidth: number) => {
+  const [displayedSlide, setDisplayedSlide] = useState<number>(1);
+  const slideshow = useRef<HTMLElement>(null);
 
-  const slideshowContainerWidth = slideshow.current?.scrollWidth;
-  const numberOfImages =
-    slideshowContainerWidth && slideshowContainerWidth / imageWidth;
+  const getNumberOfImages = (containerWidth?: number) =>
+    containerWidth ? Math.floor(containerWidth / slideWidth) : 0;
+
+  const scrollToPosition = (position: number) => {
+    slideshow.current?.scrollTo({
+      left: position,
+      behavior: "smooth",
+    });
+  };
 
   const nextSlide = () => {
-    if (slideshowContainerWidth && displayedImage < numberOfImages!) {
-      const nextScrollPostion =
-        (slideshowContainerWidth / numberOfImages!) * (displayedImage + 1) -
-        imageWidth;
+    const containerWidth = slideshow.current?.scrollWidth;
+    const numberOfImages = getNumberOfImages(containerWidth);
 
-      slideshow.current?.scrollTo({
-        left: nextScrollPostion,
-        behavior: "smooth",
-      });
-      setDisplayedImage(displayedImage + 1);
+    if (containerWidth && numberOfImages && displayedSlide < numberOfImages) {
+      const nextScrollPosition = slideWidth * displayedSlide;
+      scrollToPosition(nextScrollPosition);
+      setDisplayedSlide(displayedSlide + 1);
     }
   };
 
   const previousSlide = () => {
-    if (slideshowContainerWidth && displayedImage > 1) {
-      const nextScrollPostion =
-        (slideshowContainerWidth / numberOfImages!) * (displayedImage - 1) -
-        imageWidth;
-
-      slideshow.current?.scrollTo({
-        left: nextScrollPostion,
-        behavior: "smooth",
-      });
-      setDisplayedImage(displayedImage - 1);
+    if (displayedSlide > 1) {
+      const previousScrollPosition = slideWidth * (displayedSlide - 2);
+      scrollToPosition(previousScrollPosition);
+      setDisplayedSlide(displayedSlide - 1);
     }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (slideshow.current) {
+        const scrollLeft = slideshow.current.scrollLeft;
+        const currentIndex = Math.round(scrollLeft / slideWidth) + 1;
+
+        if (currentIndex !== displayedSlide) {
+          setDisplayedSlide(currentIndex);
+        }
+      }
+    };
+
+    const currentSlideshow = slideshow.current;
+    currentSlideshow?.addEventListener("scroll", handleScroll);
+
+    return () => {
+      currentSlideshow?.removeEventListener("scroll", handleScroll);
+    };
+  }, [displayedSlide, slideWidth]);
 
   return { slideshow, nextSlide, previousSlide };
 };

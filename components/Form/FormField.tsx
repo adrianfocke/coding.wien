@@ -5,17 +5,14 @@ import { Callout, Flex, TextArea, TextField } from "@radix-ui/themes";
 const validationHint = (
   validationType: Form.FormMessageProps["match"],
   name?: string
-) =>
-  `Please provide ${
-    validationType === "typeMismatch" ? "valid" : ""
-  } ${name?.toLowerCase()}`;
+) => `Bitte prüfen Sie das Format Ihrer ${name}`;
 
 export const FormField = ({
   inputType,
   name,
   validations,
 }: {
-  inputType: "email" | "text"; // TODO check for types that exist
+  inputType: "email" | "text";
   name: string;
   validations: Form.FormMessageProps["match"][];
 }) => (
@@ -44,12 +41,12 @@ export const FormField = ({
     <Form.Control asChild>
       {inputType === "email" ? (
         <TextField.Root
-          placeholder="Please enter your email"
+          placeholder="Geben Sie Ihre Email ein"
           type="email"
           required
         ></TextField.Root>
       ) : (
-        <TextArea placeholder="Reply to comment…" required />
+        <TextArea placeholder="Geben Sie Ihre Anfrage ein" required />
       )}
     </Form.Control>
   </Form.Field>

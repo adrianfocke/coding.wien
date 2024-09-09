@@ -1,6 +1,5 @@
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
-import Link from "next/link";
 import React from "react";
 
 export default function RootLayout({
@@ -12,16 +11,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         style={{
-          margin: "3rem",
+          margin: 0,
         }}
       >
         <Theme>
-          <header>
-            <Link href="/">Home</Link>
-            {" | "}
-            <Link href="/posts">Posts</Link>
-          </header>
-          <main>{children as any}</main>
+          <main>{children}</main>
         </Theme>
       </body>
     </html>

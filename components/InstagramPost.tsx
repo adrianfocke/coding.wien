@@ -4,46 +4,50 @@ import {
   Box,
   Card,
   Flex,
+  Heading,
   IconButton,
   Text,
   type CardProps,
 } from "@radix-ui/themes";
+import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactElement } from "react";
+import "../styles/main.css";
 import Slideshow from "./Slideshow/Slideshow";
 
 export default ({
-  accountName,
-  accountUrl,
-  images = [],
-  postDescription,
-  variant,
+  postMeta,
+  slides = [],
+  width,
 }: {
-  accountName: string;
-  accountUrl: string;
-  images: { image: string; altText: string }[];
-  postDescription: string;
-  variant?: CardProps["variant"];
+  postMeta: { account: string; url: string; description: string };
+  slides: ReactElement[];
+  width: Responsive<string>;
 }) => {
+  const { account, description, url } = postMeta;
+
   return (
-    <Box maxWidth={{ md: "90vw", lg: "700px" }}>
-      <Card variant={variant ?? "classic"}>
+    <Box width={width} m={"2"}>
+      <Card variant={"ghost"}>
         <Flex align={"center"} direction={"row"} justify={"between"}>
-          <Flex gap={"1"} mb={"2"} align={"center"} direction={"row"}>
+          <Flex
+            className="user-select-none"
+            gap={"1"}
+            mb={"2"}
+            align={"center"}
+            direction={"row"}
+          >
             <Image
               src={"/uploads/bandcamp.png"}
               alt={"Logo of xxx"}
               width={32}
               height={32}
             ></Image>
-            <Text weight={"medium"}>{accountName.toUpperCase()}</Text>
+            <Text weight={"medium"}>{account.toUpperCase()}</Text>
           </Flex>
 
-          <Link
-            title={`External link to ${accountUrl}`}
-            target={"_blank"}
-            href={accountUrl}
-          >
+          <Link title={`External link to ${url}`} target={"_blank"} href={url}>
             <IconButton variant="ghost">
               <AccessibleIcon label={"External link icon"}>
                 <ExternalLinkIcon width={20} height={20}></ExternalLinkIcon>
@@ -52,13 +56,53 @@ export default ({
           </Link>
         </Flex>
 
-        <Slideshow images={images} imageWidth={690} imageHeight={500} />
+        <Slideshow
+          slides={[
+            <Image
+              className="object-fit-cover"
+              src={"/uploads/bandcamp-oakland.jpg"}
+              alt={"Logo of xxx"}
+              width={660}
+              height={400}
+            />,
+            <Flex
+              p={"9"}
+              direction={"column"}
+              height={"400px"}
+              align={"center"}
+              justify={"center"}
+            >
+              <Heading as="h3">Bandcamp is good</Heading>
+              <Text>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                odit, beatae numquam distinctio voluptatem deserunt alias
+                corporis laboriosam eveniet mollitia quibusdam. Eveniet maxime
+                harum atque nostrum molestias tenetur. Molestias, eos.
+              </Text>
+            </Flex>,
+            <Image
+              className="object-fit-cover"
+              src={"/uploads/bandcamp-gang.jpg"}
+              alt={"Logo of xxx"}
+              width={660}
+              height={400}
+            />,
+            <Image
+              className="object-fit-cover"
+              src={"/uploads/bandcamp-team.jpg"}
+              alt={"Logo of xxx"}
+              width={660}
+              height={400}
+            />,
+          ]}
+          width={width}
+        />
 
-        <Box mt={"1"}>
+        <Box mt={"2"}>
           <Text mr={"1"} weight={"medium"}>
-            {accountName.toUpperCase()}
+            {account.toUpperCase()}
           </Text>
-          <Text>{postDescription}</Text>
+          <Text>{description}</Text>
         </Box>
       </Card>
     </Box>
