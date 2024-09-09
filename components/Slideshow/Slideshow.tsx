@@ -9,12 +9,12 @@ import { calculateWidthInPixelsForCurrentScreen } from "./logic";
 export default ({
   controlsPosition = "block",
   height = {
-    initial: "50vh",
-    xs: "50vh",
-    sm: "50vw",
+    initial: "260px",
+    xs: "260px",
+    sm: "360px",
     md: "360px",
-    lg: "400px",
-    xl: "400px",
+    lg: "460px",
+    xl: "460px",
   },
   numberOfSlidesShown = 1,
   slides = [],
@@ -30,12 +30,13 @@ export default ({
   const { slideshow, nextSlide, previousSlide } = useSlideshow(slideWidth);
 
   return (
-    <Box position={"relative"} width={width} style={{ maxWidth: "100%" }}>
+    <Box position={"relative"} width={width}>
       <Flex
         className="no-scrollbar"
         width={width}
         direction="row"
         overflowX="auto"
+        overflowY="hidden"
         wrap="nowrap"
         ref={slideshow as any}
       >

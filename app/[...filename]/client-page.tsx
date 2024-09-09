@@ -57,7 +57,6 @@ export default function ClientPage(props: ClientPageProps) {
             height={400}
           />,
           <Flex
-            p={"9"}
             direction={"column"}
             height={"400px"}
             align={"center"}
@@ -67,8 +66,7 @@ export default function ClientPage(props: ClientPageProps) {
             <Text>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor
               odit, beatae numquam distinctio voluptatem deserunt alias corporis
-              laboriosam eveniet mollitia quibusdam. Eveniet maxime harum atque
-              nostrum molestias tenetur. Molestias, eos.
+              laboriosam eveniet mollitia
             </Text>
           </Flex>,
           <Image
@@ -95,8 +93,6 @@ export default function ClientPage(props: ClientPageProps) {
           xl: "700px",
         }}
       />
-
-      <hr />
 
       <Form
         width={{
