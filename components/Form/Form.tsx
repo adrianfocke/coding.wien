@@ -4,6 +4,8 @@ import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import { FormField } from "./FormField";
 import { useForm } from "./hook";
 
+import { sendForm } from "./action";
+
 export default ({ width }: { width: Responsive<string> }) => {
   const { state, setFormState } = useForm();
 
@@ -20,24 +22,22 @@ export default ({ width }: { width: Responsive<string> }) => {
                 new FormData(event.currentTarget)
               );
 
-              setTimeout(() => {
-                setFormState("sent");
-              }, 1000);
-
-              console.log("Form data: ", formData);
+              sendForm(formData)
+                .then(() => setFormState("sent"))
+                .catch(() => setFormState("error"));
             }}
           >
             <Text weight={"medium"}>Kontaktformular</Text>
 
             <FormField
               inputType="email"
-              name={"Email"}
+              name={"email"}
               validations={["valueMissing", "typeMismatch"]}
             />
 
             <FormField
               inputType="text"
-              name={"Anfrage"}
+              name={"inquiry"}
               validations={["valueMissing"]}
             />
 
@@ -45,7 +45,10 @@ export default ({ width }: { width: Responsive<string> }) => {
               <Flex align={"center"} direction={"row"} gap={"2"} my={"2"}>
                 <Button mt={"4"} disabled={state === "sending"}>
                   <Spinner loading={state === "sending"}></Spinner>
-                  {state !== "sent" ? "Senden" : "Erfolgreich gesendet!"}
+                  {state === "idle" && "Senden"}
+                  {state === "sending" && "Senden"}
+                  {state === "sent" && "Sent!"}
+                  {state === "error" && "Error!"}
                 </Button>
               </Flex>
             </Form.Submit>

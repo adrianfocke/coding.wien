@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type FormState = "idle" | "sending" | "sent";
+type FormState = "idle" | "sending" | "sent" | "error";
 
 export const useForm = () => {
   const [state, setState] = useState<FormState>("idle");
