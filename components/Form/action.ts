@@ -26,6 +26,6 @@ export const sendForm = async (formData: any) => {
       text: `${email} schreibt: ${inquiry}`,
     });
   } catch (error) {
-    throw new Error("Email could not be sent!");
+    throw new Error("Email could not be sent!", error);
   }
 };

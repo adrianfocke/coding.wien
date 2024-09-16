@@ -43,7 +43,7 @@ export default ({ width }: { width: Responsive<string> }) => {
 
             <Form.Submit asChild>
               <Flex align={"center"} direction={"row"} gap={"2"} my={"2"}>
-                <Button mt={"4"} disabled={state === "sending"}>
+                <Button mt={"4"} disabled={state !== "idle"}>
                   <Spinner loading={state === "sending"}></Spinner>
                   {state === "idle" && "Senden"}
                   {state === "sending" && "Senden"}

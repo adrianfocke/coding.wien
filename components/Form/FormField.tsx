@@ -24,7 +24,7 @@ export const FormField = ({
       gap={"2"}
       my={"2"}
     >
-      <Form.Label>{name}</Form.Label>
+      <Form.Label>{name.charAt(0).toUpperCase() + name.slice(1)}</Form.Label>
 
       {validations.map((validationType: Form.FormMessageProps["match"]) => (
         <Form.Message key={`${validationType}`} match={validationType}>
