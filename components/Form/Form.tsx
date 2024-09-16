@@ -10,7 +10,7 @@ export default ({ width }: { width: Responsive<string> }) => {
   const { state, setFormState } = useForm();
 
   return (
-    <Flex className="test" justify={"center"}>
+    <Flex justify={"center"}>
       <Box width={width} m={"2"}>
         <Card variant="ghost">
           <Form.Root

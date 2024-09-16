@@ -28,7 +28,7 @@ export default ({
   const { account, description, url } = postMeta;
 
   return (
-    <Flex className="test" justify={"center"}>
+    <Flex justify={"center"}>
       <Box width={width} m={"2"}>
         <Card variant={"ghost"}>
           <Flex align={"center"} direction={"row"} justify={"between"}>
