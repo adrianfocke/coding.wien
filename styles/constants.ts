@@ -9,7 +9,7 @@ export const BREAKPOINTS = {
   xl: 1640 /* Desktops */,
 };
 
-/** Container-like components default responsive widths */
+/** Container-like components default widths */
 export const DEFAULT_WIDTH: Responsive<string> = {
   initial: "90vw",
   xs: "90vw",
