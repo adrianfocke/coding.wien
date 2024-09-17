@@ -18,3 +18,12 @@ export const DEFAULT_WIDTH: Responsive<string> = {
   lg: "700px",
   xl: "700px",
 };
+
+export type Width = {
+  initial: string;
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+};

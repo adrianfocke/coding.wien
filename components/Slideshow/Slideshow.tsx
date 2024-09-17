@@ -2,9 +2,26 @@ import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import { AccessibleIcon, Box, Flex, IconButton } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { ReactElement } from "react";
+import type { Template } from "tinacms";
+import { DEFAULT_WIDTH } from "../../styles/constants";
 import "../../styles/main.css";
+import { WidthField } from "../../tina/fields";
 import useSlideshow from "./hook";
 import { calculateWidthInPixelsForCurrentScreen } from "./logic";
+
+export const SlideshowTemplate: Template = {
+  name: "Slideshow",
+  label: "Slideshow",
+  fields: [WidthField],
+};
+
+export type SlideshowProps = {
+  controlsPosition?: "overlay" | "block";
+  height?: Responsive<string>;
+  numberOfSlidesShown?: number;
+  slides: ReactElement[];
+  width: Responsive<string>;
+};
 
 export default ({
   controlsPosition = "block",
@@ -18,14 +35,8 @@ export default ({
   },
   numberOfSlidesShown = 1,
   slides = [],
-  width,
-}: {
-  controlsPosition?: "overlay" | "block";
-  height?: Responsive<string>;
-  numberOfSlidesShown?: number;
-  slides: ReactElement[];
-  width: Responsive<string>;
-}) => {
+  width = DEFAULT_WIDTH,
+}: SlideshowProps) => {
   const slideWidth = calculateWidthInPixelsForCurrentScreen(width);
   const { slideshow, nextSlide, previousSlide } = useSlideshow(slideWidth);
 

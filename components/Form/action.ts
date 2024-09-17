@@ -9,7 +9,7 @@ export const sendForm = async (formData: any) => {
   };
 
   const transporter = nodemailer.createTransport({
-    host: "mail.riseup.net",
+    host: process.env.MAIL_PROVIDER,
     port: 465,
     secure: true,
     auth: {

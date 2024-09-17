@@ -1,4 +1,8 @@
 import type { Collection } from "tinacms";
+import { FormTemplate } from "../../components/Form/Form";
+import { InstagramPostTemplate } from "../../components/InstagramPost";
+import { SlideshowTemplate } from "../../components/Slideshow/Slideshow";
+import { IntlField } from "../fields";
 
 export default {
   label: "Page Content",
@@ -11,6 +15,16 @@ export default {
       label: "Main Content",
       type: "rich-text",
       isBody: true,
+      // TODO naming?
+      templates: [FormTemplate, InstagramPostTemplate, SlideshowTemplate],
+    },
+    {
+      name: "projects",
+      label: "Projects",
+      type: "rich-text",
+      isBody: true,
+      // TODO naming?
+      templates: [FormTemplate, InstagramPostTemplate, SlideshowTemplate],
     },
   ],
   ui: {
