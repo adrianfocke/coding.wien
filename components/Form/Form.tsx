@@ -23,7 +23,7 @@ export default ({ title, width = DEFAULT_WIDTH }: FormProps) => {
   const { state, setFormState } = useForm();
 
   return (
-    <Box width={width} m={"2"}>
+    <Box width={width}>
       <Card variant="ghost">
         <Form.Root
           onSubmit={async (event) => {
