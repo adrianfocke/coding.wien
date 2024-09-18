@@ -3,9 +3,9 @@ import { AccessibleIcon, Box, Flex, IconButton } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { LegacyRef, ReactElement } from "react";
 import type { Template } from "tinacms";
-import { DEFAULT_WIDTH } from "../../styles/constants";
 import "../../styles/main.css";
 import { WidthField } from "../../tina/fields";
+import { DEFAULT_WIDTH } from "../../utils/constants";
 import useSlideshow from "./hook";
 import { calculateWidthInPixelsForCurrentScreen } from "./logic";
 

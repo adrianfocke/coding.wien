@@ -12,7 +12,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactElement } from "react";
 import type { Template } from "tinacms";
-import { DEFAULT_WIDTH } from "../styles/constants";
 import "../styles/main.css";
 import {
   IntlField,
@@ -20,6 +19,7 @@ import {
   WidthField,
   type IntlFieldType,
 } from "../tina/fields";
+import { DEFAULT_WIDTH } from "../utils/constants";
 import Slideshow from "./Slideshow/Slideshow";
 
 export const InstagramPostTemplate: Template = {

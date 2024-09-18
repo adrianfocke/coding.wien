@@ -1,5 +1,5 @@
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-import { BREAKPOINTS } from "../../styles/constants";
+import { BREAKPOINTS } from "../../utils/constants";
 
 const vwToPixels = (vw: number, windowWidth: number) =>
   (vw * windowWidth) / 100;
