@@ -1,5 +1,3 @@
-import type { Field } from "tinacms";
-
 /** Add this tina field to make an object field localized */
 const LANGUAGES = [
   {
