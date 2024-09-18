@@ -23,7 +23,7 @@ export default function ClientPage(props: ClientPageProps) {
   });
 
   return (
-    <Flex>
+    <Flex data-testid="client-page">
       <Box p="2">
         <TinaMarkdown content={data.page.body} components={components} />
       </Box>
