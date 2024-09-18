@@ -22,10 +22,10 @@ export const calculateWidthInPixelsForCurrentScreen = (
   // Find the largest breakpoint that is still smaller than or equal to windowWidth
   const matchingBreakpoint = breakpointEntries
     .reverse() // Reverse the order to start with the largest breakpoint
-    .find(([_, breakpointValue]) => windowWidth >= breakpointValue);
+    .find(([, breakpointValue]) => windowWidth >= breakpointValue);
 
   // If no breakpoint is found, return the initial width as a fallback
-  if (!matchingBreakpoint) return (widths as any).initial;
+  if (!matchingBreakpoint) return widths["initial"] as number;
 
   const [matchingKey] = matchingBreakpoint;
 

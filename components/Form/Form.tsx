@@ -1,4 +1,4 @@
-import * as Form from "@radix-ui/react-form";
+import * as RadixForm from "@radix-ui/react-form";
 import { Box, Button, Card, Flex, Spinner, Text } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { Template } from "tinacms";
@@ -19,13 +19,13 @@ export type FormProps = {
   width: Responsive<string>;
 };
 
-export default ({ title, width = DEFAULT_WIDTH }: FormProps) => {
+export default function Form({ title, width = DEFAULT_WIDTH }: FormProps) {
   const { state, setFormState } = useForm();
 
   return (
     <Box width={width}>
       <Card variant="ghost">
-        <Form.Root
+        <RadixForm.Root
           onSubmit={async (event) => {
             event.preventDefault();
             setFormState("sending");
@@ -52,7 +52,7 @@ export default ({ title, width = DEFAULT_WIDTH }: FormProps) => {
             validations={["valueMissing"]}
           />
 
-          <Form.Submit asChild>
+          <RadixForm.Submit asChild>
             <Flex align={"center"} direction={"row"} gap={"2"} my={"2"}>
               <Button mt={"4"} disabled={state !== "idle"}>
                 <Spinner loading={state === "sending"}></Spinner>
@@ -62,9 +62,9 @@ export default ({ title, width = DEFAULT_WIDTH }: FormProps) => {
                 {state === "error" && "Error!"}
               </Button>
             </Flex>
-          </Form.Submit>
-        </Form.Root>
+          </RadixForm.Submit>
+        </RadixForm.Root>
       </Card>
     </Box>
   );
-};
+}

@@ -1,7 +1,7 @@
 import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import { AccessibleIcon, Box, Flex, IconButton } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-import type { ReactElement } from "react";
+import type { LegacyRef, ReactElement } from "react";
 import type { Template } from "tinacms";
 import { DEFAULT_WIDTH } from "../../styles/constants";
 import "../../styles/main.css";
@@ -16,15 +16,12 @@ export const SlideshowTemplate: Template = {
 };
 
 export type SlideshowProps = {
-  controlsPosition?: "overlay" | "block";
   height?: Responsive<string>;
-  numberOfSlidesShown?: number;
   slides: ReactElement[];
   width: Responsive<string>;
 };
 
-export default ({
-  controlsPosition = "block",
+export default function Slideshow({
   height = {
     initial: "260px",
     xs: "260px",
@@ -33,10 +30,9 @@ export default ({
     lg: "460px",
     xl: "460px",
   },
-  numberOfSlidesShown = 1,
   slides = [],
   width = DEFAULT_WIDTH,
-}: SlideshowProps) => {
+}: SlideshowProps) {
   const slideWidth = calculateWidthInPixelsForCurrentScreen(width);
   const { slideshow, nextSlide, previousSlide } = useSlideshow(slideWidth);
 
@@ -49,7 +45,7 @@ export default ({
         overflowX="auto"
         overflowY="hidden"
         wrap="nowrap"
-        ref={slideshow as any}
+        ref={slideshow as LegacyRef<HTMLDivElement>}
       >
         {slides.map((slide, i) => (
           <Box
@@ -111,4 +107,4 @@ export default ({
       </Flex>
     </Box>
   );
-};
+}

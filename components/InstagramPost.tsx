@@ -68,7 +68,7 @@ export type InstagramPostProps = {
   url: string;
 };
 
-export default ({
+export default function InstagramPost({
   account = "adrianfocke",
   description = {
     de: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, repellat nemo ad ratione magni deleniti omnis. Nisi soluta mollitia architecto unde consequuntur ex sint non iste, beatae autem, iure dicta!",
@@ -77,44 +77,45 @@ export default ({
   url = "https://bandcamp.com/about",
   slides = [],
   width = DEFAULT_WIDTH,
-}: InstagramPostProps) => (
-  <Box width={width} m={"2"}>
-    <Card variant={"ghost"}>
-      <Flex align={"center"} direction={"row"} justify={"between"}>
-        <Flex
-          className="user-select-none"
-          gap={"1"}
-          mb={"2"}
-          align={"center"}
-          direction={"row"}
-        >
-          <Image
-            src={"/uploads/bandcamp.png"}
-            alt={"Logo of xxx"}
-            width={32}
-            height={32}
-          ></Image>
-          <Text weight={"medium"}>{account.toUpperCase()}</Text>
+}: InstagramPostProps) {
+  return (
+    <Box width={width} m={"2"}>
+      <Card variant={"ghost"}>
+        <Flex align={"center"} direction={"row"} justify={"between"}>
+          <Flex
+            className="user-select-none"
+            gap={"1"}
+            mb={"2"}
+            align={"center"}
+            direction={"row"}
+          >
+            <Image
+              src={"/uploads/bandcamp.png"}
+              alt={"Logo of xxx"}
+              width={32}
+              height={32}
+            ></Image>
+            <Text weight={"medium"}>{account.toUpperCase()}</Text>
+          </Flex>
+
+          <Link title={`External link to ${url}`} target={"_blank"} href={url}>
+            <IconButton variant="ghost">
+              <AccessibleIcon label={"External link icon"}>
+                <ExternalLinkIcon width={20} height={20}></ExternalLinkIcon>
+              </AccessibleIcon>
+            </IconButton>
+          </Link>
         </Flex>
 
-        <Link title={`External link to ${url}`} target={"_blank"} href={url}>
-          <IconButton variant="ghost">
-            <AccessibleIcon label={"External link icon"}>
-              <ExternalLinkIcon width={20} height={20}></ExternalLinkIcon>
-            </AccessibleIcon>
-          </IconButton>
-        </Link>
-      </Flex>
+        <Slideshow slides={slides} width={width} />
 
-      <Slideshow slides={slides} width={width} />
-
-      <Box mt={"2"}>
-        <Text mr={"1"} weight={"medium"}>
-          {account.toUpperCase()}
-        </Text>
-        <Text>{description["de"]}</Text>
-      </Box>
-    </Card>
-  </Box>
-);
-
+        <Box mt={"2"}>
+          <Text mr={"1"} weight={"medium"}>
+            {account.toUpperCase()}
+          </Text>
+          <Text>{description["de"]}</Text>
+        </Box>
+      </Card>
+    </Box>
+  );
+} 
