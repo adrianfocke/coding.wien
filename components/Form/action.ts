@@ -1,11 +1,11 @@
 "use server";
-import nodemailer from "nodemailer";
 
 export const sendForm = async (formData: {
   email: string;
   inquiry: string;
 }) => {
   const { email, inquiry } = formData;
+  const nodemailer = await import("nodemailer");
 
   const transporter = nodemailer.createTransport({
     host: process.env.MAIL_PROVIDER,

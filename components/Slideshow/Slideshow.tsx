@@ -6,8 +6,8 @@ import type { Template } from "tinacms";
 import "../../styles/main.css";
 import { WidthField } from "../../tina/fields";
 import { DEFAULT_WIDTH } from "../../utils/constants";
+import { useCalculatePixelWidth } from "../../utils/hooks";
 import useSlideshow from "./hook";
-import { calculateWidthInPixelsForCurrentScreen } from "./logic";
 
 export const SlideshowTemplate: Template = {
   name: "Slideshow",
@@ -33,7 +33,7 @@ export default function Slideshow({
   slides = [],
   width = DEFAULT_WIDTH,
 }: SlideshowProps) {
-  const slideWidth = calculateWidthInPixelsForCurrentScreen(width);
+  const slideWidth = useCalculatePixelWidth(width);
   const { slideshow, nextSlide, previousSlide } = useSlideshow(slideWidth);
 
   return (
