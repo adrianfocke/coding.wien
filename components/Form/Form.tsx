@@ -1,14 +1,13 @@
 import * as RadixForm from "@radix-ui/react-form";
 import { Box, Button, Card, Flex, Spinner, Text } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-import type { Template } from "tinacms";
 import { IntlField, WidthField, type IntlFieldType } from "../../tina/fields";
 import { DEFAULT_WIDTH } from "../../utils/constants";
 import { sendForm } from "./action";
 import { FormField } from "./FormField";
 import { useForm } from "./hook";
 
-export const FormTemplate: Template = {
+export const FormTemplate = {
   name: "Form",
   label: "Form",
   fields: [IntlField("title"), WidthField],

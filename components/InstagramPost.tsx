@@ -11,7 +11,6 @@ import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactElement } from "react";
-import type { Template } from "tinacms";
 import "../styles/main.css";
 import {
   IntlField,
@@ -22,7 +21,7 @@ import {
 import { DEFAULT_WIDTH } from "../utils/constants";
 import Slideshow from "./Slideshow/Slideshow";
 
-export const InstagramPostTemplate: Template = {
+export const InstagramPostTemplate = {
   name: "InstagramPost",
   label: "InstagramPost",
   fields: [
