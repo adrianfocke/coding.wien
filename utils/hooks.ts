@@ -13,9 +13,9 @@ const breakpoints: { min: number; max: number; label: Breakpoint }[] = [
   { min: 1280, max: Infinity, label: "xl" },
 ];
 
-const getBreakpointRange = (windowWidth: number): Breakpoint => {
+const getBreakpointRange = (width: number): Breakpoint => {
   for (const range of breakpoints) {
-    if (windowWidth >= range.min && windowWidth < range.max) {
+    if (width >= range.min && width < range.max) {
       return range.label;
     }
   }
@@ -23,25 +23,23 @@ const getBreakpointRange = (windowWidth: number): Breakpoint => {
 };
 
 /** Returns the current element width in pixels */
-export const useCalculatePixelWidth = (
-  widthInPixelsOrVw: Responsive<string>
-) => {
+export const useCalculatePixelWidth = (width: Responsive<string>) => {
   if (typeof window === "undefined") {
     return 0;
   }
 
   const [currentWidth, setCurrentWidth] = useState(
-    widthInPixelsOrVw[getBreakpointRange(window.innerWidth)]
+    width[getBreakpointRange(window.innerWidth)]
   );
 
   useEffect(() => {
     window.addEventListener("resize", () => {
-      const newWidth = widthInPixelsOrVw[getBreakpointRange(window.innerWidth)];
+      const newWidth = width[getBreakpointRange(window.innerWidth)];
       setCurrentWidth(newWidth);
     });
 
     return () => window.removeEventListener("resize", () => {});
   }, [window]);
 
-  return parseInt(currentWidth);
+  return currentWidth ? parseInt(currentWidth) : 300;
 };

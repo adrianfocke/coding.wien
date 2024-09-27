@@ -1,3 +1,5 @@
+import type { Template } from "tinacms";
+
 /** Add this tina field to make an object field localized */
 const LANGUAGES = [
   {
@@ -35,16 +37,65 @@ export const StringField = (name: string) => {
   };
 };
 
-export const WidthField: any = {
+const WidthFieldValidation = {
+  ui: {
+    validate: (value, data) => {
+      const pxOrVwString = /^\d+(px|vw)$/;
+
+      if (!pxOrVwString.test(value)) {
+        return "Format invalid!";
+      }
+    },
+  },
+};
+
+export const WidthField: Template = {
   name: "width",
   label: "Width",
+  //@ts-ignore
   type: "object",
   fields: [
-    { name: "initial", label: "initial", type: "string" },
-    { name: "xs", label: "xs", type: "string" },
-    { name: "sm", label: "sm", type: "string" },
-    { name: "md", label: "md", type: "string" },
-    { name: "lg", label: "lg", type: "string" },
-    { name: "xl", label: "xl", type: "string" },
+    {
+      name: "initial",
+      label: "initial",
+      type: "string",
+      required: true,
+      ...WidthFieldValidation,
+    },
+    {
+      name: "xs",
+      label: "xs",
+      type: "string",
+      required: true,
+      ...WidthFieldValidation,
+    },
+    {
+      name: "sm",
+      label: "sm",
+      type: "string",
+      required: true,
+      ...WidthFieldValidation,
+    },
+    {
+      name: "md",
+      label: "md",
+      type: "string",
+      required: true,
+      ...WidthFieldValidation,
+    },
+    {
+      name: "lg",
+      label: "lg",
+      type: "string",
+      required: true,
+      ...WidthFieldValidation,
+    },
+    {
+      name: "xl",
+      label: "xl",
+      type: "string",
+      required: true,
+      ...WidthFieldValidation,
+    },
   ],
-};
+} as const;

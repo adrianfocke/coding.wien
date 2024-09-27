@@ -2,14 +2,13 @@ import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import { AccessibleIcon, Box, Flex, IconButton } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { LegacyRef, ReactElement } from "react";
-import type { Template } from "tinacms";
 import "../../styles/main.css";
 import { WidthField } from "../../tina/fields";
 import { DEFAULT_WIDTH } from "../../utils/constants";
 import { useCalculatePixelWidth } from "../../utils/hooks";
 import useSlideshow from "./hook";
 
-export const SlideshowTemplate: Template = {
+export const SlideshowTemplate = {
   name: "Slideshow",
   label: "Slideshow",
   fields: [WidthField],
@@ -34,6 +33,9 @@ export default function Slideshow({
   width = DEFAULT_WIDTH,
 }: SlideshowProps) {
   const slideWidth = useCalculatePixelWidth(width);
+
+  console.log("Slide width: ", slideWidth);
+
   const { slideshow, nextSlide, previousSlide } = useSlideshow(slideWidth);
 
   return (
