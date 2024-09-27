@@ -19,7 +19,7 @@
 }
 
 .bg {
-    background-color: var(--gray-2);
+  background-color: var(--gray-2);
 }
 
 .user-select-none {
@@ -32,9 +32,56 @@
   object-fit: cover;
 }
 
-.responsive-flex {
-  @media (max-width: 768px) {
-    border: 1px solid red;
-    flex-direction: column;
+/* Phones (portrait) */
+@media screen and (max-width: 300px) {
+  .responsive-flex::before {
+    content: "Phones (portrait)";
+    position: absolute;
+    background-color: lightpink;
+  }
+}
+
+/* Phones (landscape) */
+@media screen and (min-width: 301px) and (max-width: 520px) {
+  .responsive-flex::before {
+    content: "Phones (landscape)";
+    position: absolute;
+    background-color: lightpink;
+  }
+}
+
+/* Tablets (portrait) */
+@media screen and (min-width: 521px) and (max-width: 768px) {
+  .responsive-flex::before {
+    content: "Tablets (portrait)";
+    position: absolute;
+    background-color: lightpink;
+  }
+}
+
+/* Tablets (landscape) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .responsive-flex::before {
+    content: "Tablets (landscape)";
+    position: absolute;
+    background-color: lightpink;
+  }
+}
+
+/* Laptops */
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+  .responsive-flex::before {
+    content: "Laptops";
+    position: absolute;
+    background-color: lightpink;
+  }
+}
+
+/* Desktops */
+@media screen and (min-width: 1281px) {
+  .responsive-flex::before {
+    content: "Desktops";
+    position: absolute;
+    background-color: lightpink;
   }
 }
