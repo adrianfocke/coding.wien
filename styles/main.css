@@ -31,3 +31,10 @@
   height: 100%;
   object-fit: cover;
 }
+
+.responsive-flex {
+  @media (max-width: 768px) {
+    border: 1px solid red;
+    flex-direction: column;
+  }
+}
