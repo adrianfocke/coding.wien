@@ -18,10 +18,19 @@ export const useSlideshow = (slideWidth: number) => {
     const containerWidth = slideshow.current?.scrollWidth;
     const numberOfImages = getNumberOfImages(containerWidth);
 
-    if (containerWidth && numberOfImages && displayedSlide < numberOfImages) {
+    if (!containerWidth || !numberOfImages) {
+      return;
+    }
+
+    if (displayedSlide < numberOfImages) {
       const nextScrollPosition = slideWidth * displayedSlide;
       scrollToPosition(nextScrollPosition);
       setDisplayedSlide(displayedSlide + 1);
+    }
+
+    if (displayedSlide === numberOfImages) {
+      scrollToPosition(0);
+      setDisplayedSlide(1);
     }
   };
 

@@ -1,10 +1,10 @@
 "use client";
-import { Box, Flex } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
+import Image from "next/image";
 import { useTina } from "tinacms/dist/react";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
+import Slideshow from "../../components/Slideshow/Slideshow";
 import "../../styles/main.css";
 import type { PageQuery } from "../../tina/__generated__/types";
-import components from "../../tina/components";
 
 type ClientPageProps = {
   query: string;
@@ -28,12 +28,38 @@ export default function ClientPage(props: ClientPageProps) {
       direction={"column"}
       data-testid="client-page"
     >
+      <Slideshow
+        slides={[
+          <Flex>
+            <p>A</p>
+          </Flex>,
+          <Image
+            src={"/uploads/bandcamp-oakland.jpg"}
+            alt={""}
+            layout="fill"
+            objectFit="cover"
+          />,
+          <Image
+            src={"/uploads/bandcamp-team.jpg"}
+            alt={""}
+            layout="fill"
+            objectFit="cover"
+          />,
+        ]}
+      />
+
+      {/* <div style={{ margin: 50, display: "inline" }}>
+        Adrian packt Ideen, Menschen und Produkte in das Format einer Webseite.
+        Dazu zählen <Accordion /> Menschen und Produkte in das Format einer
+        Webseite.
+      </div>
+
       <Box p="2">
         <TinaMarkdown content={data.page.body} components={components} />
       </Box>
       <Box p="2">
         <TinaMarkdown content={data.page.projects} components={components} />
-      </Box>
+      </Box> */}
     </Flex>
   );
 }

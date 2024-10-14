@@ -83,5 +83,7 @@
     content: "Desktops";
     position: absolute;
     background-color: lightpink;
+    z-index: 2;
+      filter: opacity(0.3);
   }
 }

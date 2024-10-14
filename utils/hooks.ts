@@ -5,12 +5,12 @@ import type {
 import { useEffect, useState } from "react";
 
 const breakpoints: { min: number; max: number; label: Breakpoint }[] = [
-  { min: 0, max: 300, label: "initial" },
-  { min: 300, max: 520, label: "xs" },
-  { min: 520, max: 768, label: "sm" },
-  { min: 768, max: 1024, label: "md" },
-  { min: 1024, max: 1280, label: "lg" },
-  { min: 1280, max: Infinity, label: "xl" },
+  { min: 0, max: 519, label: "initial" },
+  { min: 520, max: 767, label: "xs" },
+  { min: 768, max: 1023, label: "sm" },
+  { min: 1024, max: 1279, label: "md" },
+  { min: 1280, max: 1639, label: "lg" },
+  { min: 1640, max: Infinity, label: "xl" },
 ];
 
 const getBreakpointRange = (width: number): Breakpoint => {
@@ -41,5 +41,5 @@ export const useCalculatePixelWidth = (width: Responsive<string>) => {
     return () => window.removeEventListener("resize", () => {});
   }, [window]);
 
-  return currentWidth ? parseInt(currentWidth) : 300;
+  return parseInt(currentWidth);
 };

@@ -4,7 +4,7 @@ import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { LegacyRef, ReactElement } from "react";
 import "../../styles/main.css";
 import { WidthField } from "../../tina/fields";
-import { DEFAULT_WIDTH } from "../../utils/constants";
+import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../utils/constants";
 import { useCalculatePixelWidth } from "../../utils/hooks";
 import useSlideshow from "./hook";
 
@@ -17,25 +17,15 @@ export const SlideshowTemplate = {
 export type SlideshowProps = {
   height?: Responsive<string>;
   slides: ReactElement[];
-  width: Responsive<string>;
+  width?: Responsive<string>;
 };
 
 export default function Slideshow({
-  height = {
-    initial: "260px",
-    xs: "260px",
-    sm: "360px",
-    md: "360px",
-    lg: "460px",
-    xl: "460px",
-  },
+  height = DEFAULT_HEIGHT,
   slides = [],
   width = DEFAULT_WIDTH,
 }: SlideshowProps) {
   const slideWidth = useCalculatePixelWidth(width);
-
-  console.log("Slide width: ", slideWidth);
-
   const { slideshow, nextSlide, previousSlide } = useSlideshow(slideWidth);
 
   return (
@@ -50,16 +40,17 @@ export default function Slideshow({
         ref={slideshow as LegacyRef<HTMLDivElement>}
       >
         {slides.map((slide, i) => (
-          <Box
+          <Flex
+            position={"relative"}
+            flexBasis={"auto"}
+            flexGrow={"0"}
+            flexShrink={"0"}
             key={i}
             width={width}
             height={height}
-            style={{
-              flex: "0 0 auto",
-            }}
           >
             {slide}
-          </Box>
+          </Flex>
         ))}
       </Flex>
 
