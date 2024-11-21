@@ -2,44 +2,28 @@
 title:
   de: Hallo!
   en: Hello!
-projects: |
-  <InstagramPost
-    width={{
-      md: "600px",
-      lg: "600px",
-      initial: "300px",
-      xs: "300px",
-      sm: "300px",
-      xl: "600px"
-    }}
-    account="yogamitcoco"
-    slides={[
-      {
-        imgSrc: "/uploads/bandcamp-oakland.jpg",
-        altText: "Bandcamp show in Oakland"
-      },
-      { imgSrc: "/uploads/bandcamp-gang.jpg", altText: "The bandcamp gang" },
-      { imgSrc: "/uploads/bandcamp-team.jpg", altText: "Meet the team!" }
-    ]}
-    url="https://www.yogamitcoco.at/"
-    description={{
-      de: "ist tief verbunden mit Yoga, offen für neue Wunder und auf dem Weg, die Welt zu verändern. Yogamitcoco ist Coco und Coco ist Yogalehrerin. Sie liebt es, Räume der Entspannung zu schaffen und ich unterstütze sie dabei mit ihrer Webpräsenz. Gemeinsam schaffen wir magische Momente und verbinden ihre Körperarbeit mit einer starken Homepage. Namasté!"
-    }}
-  />
+projects: null
 ---
 
-Adrian packt Ideen, Menschen und Produkte in das Format einer Webseite.
-
-Adrian Focke ist Web-Developer. Webseiten und Storytelling ist, was er macht. Er entwickelt spezifische Lösungen, die nicht nur funktionieren, sondern auch das zeigen, worum es wirklich geht: die Menschen, Ideen und Produkte dahinter. Diese Webseite bietet einen ersten Einblick. Wenn Ihnen gefällt, was Sie sehen, schreiben Sie gerne ein Mail oder rufen Sie ganz einfach an.
-
-<Form
+<Slideshow
+  elements={[
+    { element: "![](/uploads/hero.png)\n\nValerie Voigt\n" },
+    { element: "![](/uploads/bandcamp-gang.jpg)Bandcamp\n" }
+  ]}
   width={{
-    initial: "300px",
-    xs: "300px",
-    sm: "300px",
-    md: "600px",
-    lg: "600px",
-    xl: "300px"
+    xl: "1286px",
+    lg: "1286px",
+    md: "950px",
+    sm: "950px",
+    xs: "400px",
+    initial: "400px"
   }}
-  title={{ de: "" }}
+  height={{
+    md: "1024px",
+    lg: "1024px",
+    xl: "1024px",
+    sm: "400px",
+    xs: "400px",
+    initial: "400px"
+  }}
 />

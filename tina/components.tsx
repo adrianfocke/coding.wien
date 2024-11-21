@@ -1,9 +1,13 @@
 import Image from "next/image";
+import type { ReactElement } from "react";
 import type { FormProps } from "../components/Form/Form";
 import Form from "../components/Form/Form";
 import InstagramPost, {
   type InstagramPostProps,
 } from "../components/InstagramPost";
+import Slideshow, {
+  type SlideshowProps,
+} from "../components/Slideshow/Slideshow";
 
 export default {
   Form: ({ title, width }: FormProps) => <Form width={width} title={title} />,
@@ -30,4 +34,10 @@ export default {
       width={width}
     />
   ),
+  Slideshow: (props: any) => {
+    console.log("Slideshow: ", props.elements);
+    const { height, width } = props;
+    const slides = props.elements?.map((e) => e.element) ?? [];
+    return <Slideshow slides={slides} width={width} height={height} />;
+  },
 };

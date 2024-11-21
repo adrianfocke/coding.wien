@@ -1,9 +1,11 @@
 import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import { AccessibleIcon, Box, Flex, IconButton } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-import type { LegacyRef, ReactElement } from "react";
+import Image from "next/image";
+import type { LegacyRef } from "react";
+import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
-import { WidthField } from "../../tina/fields";
+import { ElementsField, HeightField, WidthField } from "../../tina/fields";
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../utils/constants";
 import { useCalculatePixelWidth } from "../../utils/hooks";
 import useSlideshow from "./hook";
@@ -11,12 +13,12 @@ import useSlideshow from "./hook";
 export const SlideshowTemplate = {
   name: "Slideshow",
   label: "Slideshow",
-  fields: [WidthField],
+  fields: [WidthField, HeightField, ElementsField],
 };
 
 export type SlideshowProps = {
   height?: Responsive<string>;
-  slides: ReactElement[];
+  slides: TinaMarkdownContent[];
   width?: Responsive<string>;
 };
 
@@ -33,23 +35,41 @@ export default function Slideshow({
       <Flex
         className="no-scrollbar"
         width={width}
+        height={height}
         direction="row"
         overflowX="auto"
         overflowY="hidden"
         wrap="nowrap"
         ref={slideshow as LegacyRef<HTMLDivElement>}
+        style={{ scrollSnapType: "x mandatory" }} // Optional for snapping behavior
       >
         {slides.map((slide, i) => (
           <Flex
+            className="kode-mono primary"
+            align={"center"}
+            justify={"center"}
             position={"relative"}
-            flexBasis={"auto"}
-            flexGrow={"0"}
-            flexShrink={"0"}
             key={i}
             width={width}
             height={height}
+            minWidth={width}
+            style={{ scrollSnapAlign: "start" }} // Optional for snapping behavior
           >
-            {slide}
+            <TinaMarkdown
+              content={slide}
+              components={{
+                img: (props: any) => (
+                  <Image
+                    style={{ zIndex: "-1" }}
+                    priority={i === 0}
+                    src={props.url ?? ""}
+                    layout="fill"
+                    objectFit="cover"
+                    alt={""}
+                  />
+                ),
+              }}
+            />
           </Flex>
         ))}
       </Flex>

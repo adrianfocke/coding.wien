@@ -87,3 +87,15 @@
       filter: opacity(0.3);
   }
 }
+.kode-mono {
+  font-family: "Kode Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.primary {
+  font-size: 64px;
+  color: #EA3FB8;
+  letter-spacing: 3px;
+}

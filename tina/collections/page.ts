@@ -18,14 +18,6 @@ export default {
       // TODO naming?
       templates: [FormTemplate, InstagramPostTemplate, SlideshowTemplate],
     },
-    {
-      name: "projects",
-      label: "Projects",
-      type: "rich-text",
-      isBody: true,
-      // TODO naming?
-      templates: [FormTemplate, InstagramPostTemplate, SlideshowTemplate],
-    },
   ],
   ui: {
     router: ({ document }) => {

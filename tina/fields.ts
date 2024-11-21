@@ -1,4 +1,4 @@
-import type { Template } from "tinacms";
+import type { Field, Template } from "tinacms";
 
 /** Add this tina field to make an object field localized */
 const LANGUAGES = [
@@ -49,53 +49,74 @@ const WidthFieldValidation = {
   },
 };
 
+const Sizes: Array<any> = [
+  {
+    name: "initial",
+    label: "initial",
+    type: "string",
+    required: true,
+    ...WidthFieldValidation,
+  },
+  {
+    name: "xs",
+    label: "xs",
+    type: "string",
+    required: true,
+    ...WidthFieldValidation,
+  },
+  {
+    name: "sm",
+    label: "sm",
+    type: "string",
+    required: true,
+    ...WidthFieldValidation,
+  },
+  {
+    name: "md",
+    label: "md",
+    type: "string",
+    required: true,
+    ...WidthFieldValidation,
+  },
+  {
+    name: "lg",
+    label: "lg",
+    type: "string",
+    required: true,
+    ...WidthFieldValidation,
+  },
+  {
+    name: "xl",
+    label: "xl",
+    type: "string",
+    required: true,
+    ...WidthFieldValidation,
+  },
+];
+
 export const WidthField: Template = {
   name: "width",
   label: "Width",
   //@ts-ignore
   type: "object",
+  fields: Sizes,
+} as const;
+
+export const HeightField: Template = {
+  name: "height",
+  label: "Height",
+  //@ts-ignore
+  type: "object",
+  fields: Sizes,
+} as const;
+
+export const ElementsField: Template = {
+  name: "elements",
+  label: "Elements",
+  //@ts-ignore
+  type: "object",
+  list: true,
   fields: [
-    {
-      name: "initial",
-      label: "initial",
-      type: "string",
-      required: true,
-      ...WidthFieldValidation,
-    },
-    {
-      name: "xs",
-      label: "xs",
-      type: "string",
-      required: true,
-      ...WidthFieldValidation,
-    },
-    {
-      name: "sm",
-      label: "sm",
-      type: "string",
-      required: true,
-      ...WidthFieldValidation,
-    },
-    {
-      name: "md",
-      label: "md",
-      type: "string",
-      required: true,
-      ...WidthFieldValidation,
-    },
-    {
-      name: "lg",
-      label: "lg",
-      type: "string",
-      required: true,
-      ...WidthFieldValidation,
-    },
-    {
-      name: "xl",
-      label: "xl",
-      type: "string",
-      required: true,
-      ...WidthFieldValidation,
-    },
+    { name: "element", label: "Element", type: "rich-text", required: true },
   ],
 } as const;
