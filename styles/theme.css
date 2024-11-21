@@ -1,0 +1,12 @@
+.radix-themes {
+    --default-font-family: var(--font-kode_mono);
+    --font-weight-light: 200;
+    --font-weight-regular: 300;
+    --font-weight-medium: 600;
+    --font-weight-bold: 800;
+}
+
+#theme {
+    background: red;
+    margin: 0;
+}

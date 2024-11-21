@@ -9,6 +9,7 @@ import { ElementsField, HeightField, WidthField } from "../../tina/fields";
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../utils/constants";
 import { useCalculatePixelWidth } from "../../utils/hooks";
 import useSlideshow from "./hook";
+import "./styles.css";
 
 export const SlideshowTemplate = {
   name: "Slideshow",
@@ -45,7 +46,7 @@ export default function Slideshow({
       >
         {slides.map((slide, i) => (
           <Flex
-            className="kode-mono primary"
+            className="slide"
             align={"center"}
             justify={"center"}
             position={"relative"}
@@ -58,7 +59,11 @@ export default function Slideshow({
             <TinaMarkdown
               content={slide}
               components={{
-                img: (props: any) => (
+                img: (props: {
+                  url: string;
+                  caption?: string;
+                  alt?: string;
+                }) => (
                   <Image
                     style={{ zIndex: "-1" }}
                     priority={i === 0}

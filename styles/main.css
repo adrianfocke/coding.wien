@@ -1,3 +1,6 @@
+@import "theme.css";
+
+/**/
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -37,6 +40,7 @@
   .responsive-flex::before {
     content: "Phones (portrait)";
     position: absolute;
+    left: 0;
     background-color: lightpink;
   }
 }
@@ -46,6 +50,7 @@
   .responsive-flex::before {
     content: "Phones (landscape)";
     position: absolute;
+    left: 0;
     background-color: lightpink;
   }
 }
@@ -55,6 +60,7 @@
   .responsive-flex::before {
     content: "Tablets (portrait)";
     position: absolute;
+    left: 0;
     background-color: lightpink;
   }
 }
@@ -64,6 +70,7 @@
   .responsive-flex::before {
     content: "Tablets (landscape)";
     position: absolute;
+    left: 0;
     background-color: lightpink;
   }
 }
@@ -72,6 +79,7 @@
 @media screen and (min-width: 1025px) and (max-width: 1280px) {
   .responsive-flex::before {
     content: "Laptops";
+    left: 0;
     position: absolute;
     background-color: lightpink;
   }
@@ -82,20 +90,9 @@
   .responsive-flex::before {
     content: "Desktops";
     position: absolute;
+    left: 0;
     background-color: lightpink;
     z-index: 2;
       filter: opacity(0.3);
   }
-}
-.kode-mono {
-  font-family: "Kode Mono", monospace;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.primary {
-  font-size: 64px;
-  color: #EA3FB8;
-  letter-spacing: 3px;
 }

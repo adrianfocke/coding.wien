@@ -1,8 +1,6 @@
 import * as RadixAccordion from "@radix-ui/react-accordion";
 import { ChevronDownIcon, Flex, Text } from "@radix-ui/themes";
 import React from "react";
-import { DEFAULT_WIDTH } from "../../utils/constants";
-import Slideshow from "../Slideshow/Slideshow";
 import "./styles.css";
 
 export default function Accordion() {
@@ -16,7 +14,7 @@ export default function Accordion() {
           </Flex>
         </Trigger>
         <AccordionContent>
-          <Slideshow slides={[]} width={DEFAULT_WIDTH} />
+          <p>TEXT</p>
         </AccordionContent>
       </RadixAccordion.Item>
     </RadixAccordion.Root>
@@ -41,6 +39,8 @@ const Trigger = React.forwardRef(
   }
 );
 
+Trigger.displayName = "Trigger";
+
 const AccordionContent = React.forwardRef(
   (
     { children }: { children: React.ReactNode },
@@ -48,9 +48,11 @@ const AccordionContent = React.forwardRef(
   ) => (
     <RadixAccordion.Content
       className={"AccordionContent"}
-      ref={forwardedRef as any}
+      ref={forwardedRef as React.LegacyRef<HTMLDivElement> | undefined}
     >
       <div>{children}</div>
     </RadixAccordion.Content>
   )
 );
+
+AccordionContent.displayName = "AccordionContent";
