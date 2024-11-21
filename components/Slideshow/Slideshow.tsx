@@ -32,7 +32,7 @@ export default function Slideshow({
   const { slideshow, nextSlide, previousSlide } = useSlideshow(slideWidth);
 
   return (
-    <Box position={"relative"} width={width}>
+    <Box position={"relative"} width={width} style={{ maxWidth: "100vw" }}>
       <Flex
         className="no-scrollbar"
         width={width}
@@ -42,7 +42,7 @@ export default function Slideshow({
         overflowY="hidden"
         wrap="nowrap"
         ref={slideshow as LegacyRef<HTMLDivElement>}
-        style={{ scrollSnapType: "x mandatory" }} // Optional for snapping behavior
+        style={{ scrollSnapType: "x mandatory", maxWidth: "100vw" }} // Optional for snapping behavior
       >
         {slides.map((slide, i) => (
           <Flex

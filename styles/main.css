@@ -1,5 +1,10 @@
-@import "theme.css";
-
+.radix-themes {
+  --default-font-family: var(--font-kode_mono);
+  --font-weight-light: 200;
+  --font-weight-regular: 300;
+  --font-weight-medium: 600;
+  --font-weight-bold: 800;
+}
 /**/
 .no-scrollbar {
   -ms-overflow-style: none;

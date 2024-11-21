@@ -3,7 +3,6 @@ import "@radix-ui/themes/styles.css";
 import { Kode_Mono } from "next/font/google";
 import React from "react";
 import NavigationMenu from "../components/NavigationMenu/NavigationMenu";
-import "../styles/theme.css";
 
 const kode_mono = Kode_Mono({
   subsets: ["latin"],
@@ -18,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={kode_mono.variable}>
-      <body id="theme">
+      <body style={{ margin: 0 }}>
         <Theme accentColor="pink" grayColor="mauve">
           <NavigationMenu links={[]} />
           <main>{children}</main>
