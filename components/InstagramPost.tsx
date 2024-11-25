@@ -8,7 +8,7 @@ import {
   Text,
 } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import type { ReactElement } from "react";
 import "../styles/main.css";

@@ -1,6 +1,6 @@
 import { Box, Grid as RadixGrid } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
 import { ElementsField, HeightField, WidthField } from "../../tina/fields";
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../utils/constants";
