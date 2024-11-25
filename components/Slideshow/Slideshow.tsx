@@ -31,18 +31,20 @@ export default function Slideshow({
   const slideWidth = useCalculatePixelWidth(width);
   const { slideshow, nextSlide, previousSlide } = useSlideshow(slideWidth);
 
+  console.log("Slideshow width: ", width);
+
   return (
-    <Box position={"relative"} width={width} style={{ maxWidth: "100vw" }}>
+    <Box position={"relative"} width={width} height={height}>
       <Flex
         className="no-scrollbar"
-        width={width}
-        height={height}
+        width={"100%"}
+        height={"100%"}
         direction="row"
         overflowX="auto"
         overflowY="hidden"
         wrap="nowrap"
         ref={slideshow as LegacyRef<HTMLDivElement>}
-        style={{ scrollSnapType: "x mandatory", maxWidth: "100vw" }} // Optional for snapping behavior
+        style={{ scrollSnapType: "x mandatory" }}
       >
         {slides.map((slide, i) => (
           <Flex
@@ -51,10 +53,8 @@ export default function Slideshow({
             justify={"center"}
             position={"relative"}
             key={i}
-            width={width}
-            height={height}
             minWidth={width}
-            style={{ scrollSnapAlign: "start" }} // Optional for snapping behavior
+            style={{ scrollSnapAlign: "start" }}
           >
             <TinaMarkdown
               content={slide}

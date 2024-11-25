@@ -18,9 +18,6 @@
   border: 1px solid red;
 }
 
-.responsive-flex {
-  border: 1px solid red;
-}
 /* Phones (portrait) */
 @media screen and (max-width: 300px) {
   .responsive-flex::before {
