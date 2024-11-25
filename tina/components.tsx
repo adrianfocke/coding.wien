@@ -1,13 +1,23 @@
 import Image from "next/image";
-import type { ReactElement } from "react";
 import type { FormProps } from "../components/Form/Form";
-import Form from "../components/Form/Form";
+import Form, { FormTemplate } from "../components/Form/Form";
+import type { GridProps } from "../components/Grid/Grid";
+import Grid, { GridTemplate } from "../components/Grid/Grid";
 import InstagramPost, {
+  InstagramPostTemplate,
   type InstagramPostProps,
 } from "../components/InstagramPost";
 import Slideshow, {
+  SlideshowTemplate,
   type SlideshowProps,
 } from "../components/Slideshow/Slideshow";
+
+export const allTemplates = [
+  FormTemplate,
+  InstagramPostTemplate,
+  SlideshowTemplate,
+  GridTemplate,
+];
 
 export default {
   Form: ({ title, width }: FormProps) => <Form width={width} title={title} />,
@@ -24,7 +34,7 @@ export default {
       description={description}
       slides={slides.map((slide: any) => (
         <Image
-          className="object-fit-cover"
+          style={{ objectFit: "cover" }}
           src={slide.imgSrc}
           alt={slide.altText}
           width={660}
@@ -34,10 +44,23 @@ export default {
       width={width}
     />
   ),
-  Slideshow: (props: any) => {
+  Slideshow: (props: SlideshowProps & { elements: any[] }) => {
     console.log("Slideshow: ", props.elements);
     const { height, width } = props;
     const slides = props.elements?.map((e) => e.element) ?? [];
     return <Slideshow slides={slides} width={width} height={height} />;
+  },
+  Grid: (props: GridProps & { elements: any[] }) => {
+    console.log("Grid: ", props.elements);
+    const { height, width, gridSettings } = props;
+    const gridItems = props.elements?.map((e) => e.element) ?? [];
+    return (
+      <Grid
+        height={height}
+        width={width}
+        gridItems={gridItems}
+        gridSettings={gridSettings}
+      />
+    );
   },
 };

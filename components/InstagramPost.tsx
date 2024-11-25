@@ -82,7 +82,7 @@ export default function InstagramPost({
       <Card variant={"ghost"}>
         <Flex align={"center"} direction={"row"} justify={"between"}>
           <Flex
-            className="user-select-none"
+            style={{ userSelect: "none" }}
             gap={"1"}
             mb={"2"}
             align={"center"}

@@ -1,11 +1,8 @@
 import type { Collection } from "tinacms";
-import { FormTemplate } from "../../components/Form/Form";
-import { InstagramPostTemplate } from "../../components/InstagramPost";
-import { SlideshowTemplate } from "../../components/Slideshow/Slideshow";
-import { IntlField } from "../fields";
+import { allTemplates } from "../components";
 
 export default {
-  label: "Page Content",
+  label: "Pages",
   name: "page",
   path: "content/page",
   format: "mdx",
@@ -16,7 +13,7 @@ export default {
       type: "rich-text",
       isBody: true,
       // TODO naming?
-      templates: [FormTemplate, InstagramPostTemplate, SlideshowTemplate],
+      templates: allTemplates,
     },
   ],
   ui: {

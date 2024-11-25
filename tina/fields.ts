@@ -1,4 +1,4 @@
-import type { Field, Template } from "tinacms";
+import type { Template } from "tinacms";
 
 /** Add this tina field to make an object field localized */
 const LANGUAGES = [
@@ -117,6 +117,12 @@ export const ElementsField: Template = {
   type: "object",
   list: true,
   fields: [
-    { name: "element", label: "Element", type: "rich-text", required: true },
+    {
+      name: "element",
+      label: "Element",
+      type: "rich-text",
+      required: true,
+      isBody: true,
+    },
   ],
 } as const;

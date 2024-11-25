@@ -1,5 +1,5 @@
 "use client";
-import { Flex } from "@radix-ui/themes";
+import { Container } from "@radix-ui/themes";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
@@ -27,13 +27,10 @@ export default function ClientPage(props: ClientPageProps) {
   console.log("Data: ", data.page._sys.basename);
 
   return (
-    <Flex
-      align={"center"}
-      className="responsive-flex"
-      direction={"column"}
-      data-testid="client-page"
-    >
-      <TinaMarkdown content={body} components={components} />
-    </Flex>
+    <div className="responsive-flex" data-testid="client-page">
+      <Container size={"4"}>
+        <TinaMarkdown content={body} components={components} />
+      </Container>
+    </div>
   );
 }

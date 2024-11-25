@@ -80,9 +80,9 @@ export default function Slideshow({
       </Flex>
 
       <Flex
-        className="pointer-events-none"
         align={"center"}
         style={{
+          pointerEvents: "none",
           position: "absolute",
           top: 0,
           bottom: 0,
@@ -90,7 +90,7 @@ export default function Slideshow({
       >
         <IconButton
           ml={"2"}
-          className="pointer-events-auto"
+          style={{ pointerEvents: "auto" }}
           onClick={previousSlide}
           radius="full"
           variant="surface"
@@ -102,9 +102,9 @@ export default function Slideshow({
       </Flex>
 
       <Flex
-        className="pointer-events-none"
         align={"center"}
         style={{
+          pointerEvents: "none",
           position: "absolute",
           top: 0,
           bottom: 0,
@@ -113,7 +113,7 @@ export default function Slideshow({
       >
         <IconButton
           mr={"2"}
-          className="pointer-events-auto"
+          style={{ pointerEvents: "auto" }}
           onClick={nextSlide}
           radius="full"
           variant="surface"

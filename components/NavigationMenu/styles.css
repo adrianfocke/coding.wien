@@ -1,10 +1,12 @@
 .RadixNavigationMenuRoot {
     top: 16px;
-    position: absolute;
+    position: fixed;
     display: flex;
+    align-self: center;
     justify-content: center;
     width: 100vw;
     z-index: 1;
+    pointer-events: none;
 }
 
 .RadixNavigationMenuList {
