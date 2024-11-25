@@ -1,7 +1,7 @@
 import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import { AccessibleIcon, Box, Flex, IconButton } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import type { LegacyRef } from "react";
 import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
@@ -34,7 +34,7 @@ export default function Slideshow({
   console.log("Slideshow width: ", width);
 
   return (
-    <Box position={"relative"} width={width} height={height}>
+    (<Box position={"relative"} width={width} height={height}>
       <Flex
         className="no-scrollbar"
         width={"100%"}
@@ -65,20 +65,21 @@ export default function Slideshow({
                   alt?: string;
                 }) => (
                   <Image
-                    style={{ zIndex: "-1" }}
                     priority={i === 0}
                     src={props.url ?? ""}
-                    layout="fill"
-                    objectFit="cover"
                     alt={""}
-                  />
+                    fill
+                    sizes="100vw"
+                    style={{
+                      zIndex: "-1",
+                      objectFit: "cover"
+                    }} />
                 ),
               }}
             />
           </Flex>
         ))}
       </Flex>
-
       <Flex
         align={"center"}
         style={{
@@ -100,7 +101,6 @@ export default function Slideshow({
           </AccessibleIcon>
         </IconButton>
       </Flex>
-
       <Flex
         align={"center"}
         style={{
@@ -123,6 +123,6 @@ export default function Slideshow({
           </AccessibleIcon>
         </IconButton>
       </Flex>
-    </Box>
+    </Box>)
   );
 }

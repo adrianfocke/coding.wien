@@ -1,6 +1,6 @@
 import { Box, Grid as RadixGrid } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
 import { ElementsField, HeightField, WidthField } from "../../tina/fields";
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../utils/constants";
@@ -45,7 +45,7 @@ export default function Grid({
   console.log("Grid settings: ", gridSettings);
 
   return (
-    <RadixGrid
+    (<RadixGrid
       columns={"2"}
       gap={"2"}
       className="no-scrollbar"
@@ -60,18 +60,20 @@ export default function Grid({
             components={{
               img: (props: { url: string; caption?: string; alt?: string }) => (
                 <Image
-                  style={{ zIndex: "-1" }}
                   priority={i === 0}
                   src={props.url ?? ""}
-                  layout="fill"
-                  objectFit="cover"
                   alt={""}
-                />
+                  fill
+                  sizes="100vw"
+                  style={{
+                    zIndex: "-1",
+                    objectFit: "cover"
+                  }} />
               ),
             }}
           />
         </Box>
       ))}
-    </RadixGrid>
+    </RadixGrid>)
   );
 }

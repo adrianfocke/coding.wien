@@ -8,7 +8,7 @@ import {
   Text,
 } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactElement } from "react";
 import "../styles/main.css";
@@ -78,7 +78,7 @@ export default function InstagramPost({
   width = DEFAULT_WIDTH,
 }: InstagramPostProps) {
   return (
-    <Box width={width} m={"2"}>
+    (<Box width={width} m={"2"}>
       <Card variant={"ghost"}>
         <Flex align={"center"} direction={"row"} justify={"between"}>
           <Flex
@@ -93,7 +93,10 @@ export default function InstagramPost({
               alt={"Logo of xxx"}
               width={32}
               height={32}
-            ></Image>
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }}></Image>
             <Text weight={"medium"}>{account.toUpperCase()}</Text>
           </Flex>
 
@@ -115,6 +118,6 @@ export default function InstagramPost({
           <Text>{description["de"]}</Text>
         </Box>
       </Card>
-    </Box>
+    </Box>)
   );
 } 

@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
 import type { GridProps } from "../components/Grid/Grid";
@@ -34,12 +34,15 @@ export default {
       description={description}
       slides={slides.map((slide: any) => (
         <Image
-          style={{ objectFit: "cover" }}
           src={slide.imgSrc}
           alt={slide.altText}
           width={660}
           height={400}
-        />
+          style={{
+            objectFit: "cover",
+            maxWidth: "100%",
+            height: "auto"
+          }} />
       ))}
       width={width}
     />
