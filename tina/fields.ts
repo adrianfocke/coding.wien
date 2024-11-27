@@ -110,7 +110,12 @@ export const HeightField: Template = {
   fields: Sizes,
 } as const;
 
-export const ElementsField: Template = {
+
+/** Special fields */
+
+export type SpecialFieldKey = "referenceField" | "elements";
+
+export const RichTextField: Template = {
   name: "elements",
   label: "Elements",
   //@ts-ignore
@@ -126,3 +131,10 @@ export const ElementsField: Template = {
     },
   ],
 } as const;
+
+export const ReferenceField = (collections: string[]) => ({
+  type: "reference",
+  name: "referenceField",
+  label: "Reference Field",
+  collections,
+});

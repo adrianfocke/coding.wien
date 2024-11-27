@@ -1,4 +1,4 @@
-import { Theme } from "@radix-ui/themes";
+import { Container, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { Kode_Mono } from "next/font/google";
 import React from "react";
@@ -18,9 +18,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={kode_mono.variable}>
       <body style={{ margin: 0 }}>
-        <Theme accentColor="pink" grayColor="mauve">
+        <Theme
+          accentColor="pink"
+          grayColor="mauve"
+          style={{ backgroundColor: "#FDD3D0" }}
+        >
           <NavigationMenu links={[]} />
-          <main>{children}</main>
+          <Container>
+            <div
+              style={{ backgroundColor: "red", width: "100%", height: "10px" }}
+            ></div>
+            <main>{children}</main>
+          </Container>
         </Theme>
       </body>
     </html>

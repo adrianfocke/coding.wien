@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
 import type { GridProps } from "../components/Grid/Grid";
-import Grid, { GridTemplate } from "../components/Grid/Grid";
+import Grid, { GridTemplate, GridVariant } from "../components/Grid/Grid";
 import InstagramPost, {
   InstagramPostTemplate,
   type InstagramPostProps,
@@ -41,8 +41,9 @@ export default {
           style={{
             objectFit: "cover",
             maxWidth: "100%",
-            height: "auto"
-          }} />
+            height: "auto",
+          }}
+        />
       ))}
       width={width}
     />
@@ -53,15 +54,25 @@ export default {
     const slides = props.elements?.map((e) => e.element) ?? [];
     return <Slideshow slides={slides} width={width} height={height} />;
   },
-  Grid: (props: GridProps & { elements: any[] }) => {
-    console.log("Grid: ", props.elements);
-    const { height, width, gridSettings } = props;
+  Grid: (props: GridProps & { elements?: any[]; referenceField?: string }) => {
+    const { height, width, gridSettings, variant } = props;
     const gridItems = props.elements?.map((e) => e.element) ?? [];
+
+    console.log("Grid props: ", variant, props);
+
+    const content =
+      variant === GridVariant["Rich-Text"]
+        ? props.elements?.map((e) => e.element) ?? []
+        : variant === GridVariant["Reference"]
+        ? props.referenceField
+        : "Post-List";
+
     return (
       <Grid
+        variant={variant}
+        content={content}
         height={height}
         width={width}
-        gridItems={gridItems}
         gridSettings={gridSettings}
       />
     );

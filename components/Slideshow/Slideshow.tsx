@@ -5,7 +5,7 @@ import Image from "next/image";
 import type { LegacyRef } from "react";
 import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
-import { ElementsField, HeightField, WidthField } from "../../tina/fields";
+import { HeightField, RichTextField, WidthField } from "../../tina/fields";
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../utils/constants";
 import { useCalculatePixelWidth } from "../../utils/hooks";
 import useSlideshow from "./hook";
@@ -14,7 +14,7 @@ import "./styles.css";
 export const SlideshowTemplate = {
   name: "Slideshow",
   label: "Slideshow",
-  fields: [WidthField, HeightField, ElementsField],
+  fields: [WidthField, HeightField, RichTextField],
 };
 
 export type SlideshowProps = {
