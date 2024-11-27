@@ -1,4 +1,4 @@
-import { Container, Theme } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { Kode_Mono } from "next/font/google";
 import React from "react";

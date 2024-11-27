@@ -129,9 +129,6 @@ export type GridProps = {
   variant: GridVariant;
   content: TinaMarkdownContent[] | string | any;
   height?: Responsive<string>;
-  gridSettings: {
-    columns: number;
-  };
   width?: Responsive<string>;
 };
 
@@ -139,7 +136,6 @@ export default async function Grid({
   variant = GridVariant["Rich-Text"],
   content = "",
   height = DEFAULT_HEIGHT,
-  gridSettings = { columns: 2 },
   width = DEFAULT_WIDTH,
 }: GridProps) {
   console.log("Grid content:  ", content);
@@ -189,7 +185,7 @@ export default async function Grid({
 
         {variant === GridVariant["Reference"] && reference.data.post.images
           ? reference.data.post.images.map((item, i) => (
-              <Box position={"relative"} className="test">
+              <Box position={"relative"} className="test" key={i}>
                 <Image
                   priority={i === 0}
                   src={item ?? ""}
@@ -207,7 +203,7 @@ export default async function Grid({
 
         {variant === GridVariant["Post-List"] &&
           postList.postConnection.edges?.map((item, i) => (
-            <Box position={"relative"} className="test">
+            <Box position={"relative"} className="test" key={i}>
               <Flex justify={"center"} align={"center"}>
                 <Text color={"pink"}>{item?.node?.name}</Text>
                 <Image
