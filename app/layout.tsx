@@ -24,12 +24,10 @@ export default function RootLayout({
           style={{ backgroundColor: "#FDD3D0" }}
         >
           <NavigationMenu links={[]} />
-          <Container>
-            <div
-              style={{ backgroundColor: "red", width: "100%", height: "10px" }}
-            ></div>
-            <main>{children}</main>
-          </Container>
+          <div
+            style={{ backgroundColor: "red", width: "100%", height: "10px" }}
+          ></div>
+          <main>{children}</main>
         </Theme>
       </body>
     </html>

@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useSlideshow = (slideWidth: number) => {
+export const useSlideshow = () => {
   const [displayedSlide, setDisplayedSlide] = useState<number>(1);
   const slideshow = useRef<HTMLElement>(null);
+  const [slideWidth, setSlideWidth] = useState<number>(0);
+
+  const slideshowContainer = useRef<HTMLElement>(null);
 
   const getNumberOfImages = (containerWidth?: number) =>
     containerWidth ? Math.floor(containerWidth / slideWidth) : 0;
 
   const scrollToPosition = (position: number) => {
     slideshow.current?.scrollTo({
-      left: position,
+      left: Math.round(position),
       behavior: "smooth",
     });
   };
@@ -62,7 +65,30 @@ export const useSlideshow = (slideWidth: number) => {
     };
   }, [displayedSlide, slideWidth]);
 
-  return { slideshow, nextSlide, previousSlide };
+  useEffect(() => {
+    const updateSlideWidth = () => {
+      if (slideshowContainer.current) {
+        console.log("Slider width: ", slideshowContainer.current.offsetWidth);
+        setSlideWidth(slideshowContainer.current.offsetWidth);
+      }
+    };
+
+    // Initialize slideWidth on mount and on resize
+    updateSlideWidth();
+    window.addEventListener("resize", updateSlideWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateSlideWidth);
+    };
+  }, []);
+
+  return {
+    slideshow,
+    nextSlide,
+    previousSlide,
+    slideshowContainer,
+    slideWidth,
+  };
 };
 
 export default useSlideshow;

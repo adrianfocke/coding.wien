@@ -24,11 +24,11 @@ export default function ClientPage(props: ClientPageProps) {
 
   const { body } = data.page;
 
-  console.log("Data: ", data.page._sys.basename);
-
   return (
     <div className="responsive-flex" data-testid="client-page">
-      <TinaMarkdown content={body} components={components} />
+      <Container>
+        <TinaMarkdown content={body} components={components} />
+      </Container>
     </div>
   );
 }

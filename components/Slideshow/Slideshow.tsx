@@ -28,13 +28,21 @@ export default function Slideshow({
   slides = [],
   width = DEFAULT_WIDTH,
 }: SlideshowProps) {
-  const slideWidth = useCalculatePixelWidth(width);
-  const { slideshow, nextSlide, previousSlide } = useSlideshow(slideWidth);
-
-  console.log("Slideshow width: ", width);
+  const {
+    slideshow,
+    nextSlide,
+    previousSlide,
+    slideshowContainer,
+    slideWidth,
+  } = useSlideshow();
 
   return (
-    (<Box position={"relative"} width={width} height={height}>
+    <Box
+      ref={slideshowContainer as LegacyRef<HTMLDivElement>}
+      position={"relative"}
+      width={"100%"}
+      height={height}
+    >
       <Flex
         className="no-scrollbar"
         width={"100%"}
@@ -53,7 +61,7 @@ export default function Slideshow({
             justify={"center"}
             position={"relative"}
             key={i}
-            minWidth={width}
+            minWidth={slideWidth + "px"}
             style={{ scrollSnapAlign: "start" }}
           >
             <TinaMarkdown
@@ -72,8 +80,9 @@ export default function Slideshow({
                     sizes="100vw"
                     style={{
                       zIndex: "-1",
-                      objectFit: "cover"
-                    }} />
+                      objectFit: "cover",
+                    }}
+                  />
                 ),
               }}
             />
@@ -123,6 +132,6 @@ export default function Slideshow({
           </AccessibleIcon>
         </IconButton>
       </Flex>
-    </Box>)
+    </Box>
   );
 }
