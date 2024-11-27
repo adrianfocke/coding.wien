@@ -55,7 +55,7 @@ export default {
     return <Slideshow slides={slides} width={width} height={height} />;
   },
   Grid: (props: GridProps & { elements?: any[]; referenceField?: string }) => {
-    const { height, width, gridSettings, variant } = props;
+    const { height, width, variant } = props;
     const gridItems = props.elements?.map((e) => e.element) ?? [];
 
     console.log("Grid props: ", variant, props);
@@ -68,13 +68,7 @@ export default {
         : "Post-List";
 
     return (
-      <Grid
-        variant={variant}
-        content={content}
-        height={height}
-        width={width}
-        gridSettings={gridSettings}
-      />
+      <Grid variant={variant} content={content} height={height} width={width} />
     );
   },
 };
