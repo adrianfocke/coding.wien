@@ -110,6 +110,15 @@ export const HeightField: Template = {
   fields: Sizes,
 } as const;
 
+export const SEOField = {
+  name: "seo",
+  label: "SEO",
+  type: "string",
+  ui: {
+    component: "textarea",
+    description: "Descriptive information for better web search listing",
+  },
+};
 
 /** Special fields */
 
@@ -126,7 +135,6 @@ export const RichTextField: Template = {
       name: "element",
       label: "Element",
       type: "rich-text",
-      required: true,
       isBody: true,
     },
   ],

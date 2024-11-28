@@ -1,3 +1,27 @@
 {
-  "name": "Capri"
+  "seo": "Das Theaterstück \"Capri\", mit Valerie Voigt als Regisseurin, lief im Frühjahr 2024 im Schauspielhaus Wien. Es beschreibt den Weg der Selbstliebe zweier Frauen und wurde mehrfach als eine gelungene Inszenierung angepriesen.",
+  "name": "Capri",
+  "info": [
+    {
+      "key": "Von",
+      "value": "Anna Gschnitzer"
+    },
+    {
+      "key": "Regie",
+      "value": "Valerie Voigt"
+    },
+    {
+      "key": "Bühne",
+      "value": "Thomas Garvie"
+    },
+    {
+      "key": "Kostüm",
+      "value": "Katia Botegal"
+    }
+  ],
+  "images": [
+    "/uploads/Capri/Schauspielhaus_Capri_c_Ruiz_Cruz_HighRes_05A5023.jpg",
+    "/uploads/Capri/Schauspielhaus_Capri_c_Ruiz_Cruz_HighRes_05A5093.jpg",
+    "/uploads/Capri/Schauspielhaus_Capri_c_Ruiz_Cruz_HighRes_05A5673.jpg"
+  ]
 }

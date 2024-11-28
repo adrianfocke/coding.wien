@@ -1,14 +1,16 @@
-import { Box, Flex, Grid as RadixGrid, Text } from "@radix-ui/themes";
+import { Box, Grid as RadixGrid } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import Image from "next/image";
-import React from "react";
+import { useEffect, useState } from "react";
 import {
   GroupListField,
   ReferenceField as TinaReferenceField,
   type Template,
 } from "tinacms";
-import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../../tina/__generated__/client";
+import type { PostConnectionEdges } from "../../tina/__generated__/types";
+import type { ReferenceRelativePath } from "../../tina/components";
 import {
   HeightField,
   ReferenceField,
@@ -77,6 +79,11 @@ const renderFieldBasedOnTemplateKey = (params: {
 export const GridTemplate = {
   name: "Grid",
   label: "Grid",
+  ui: {
+    defaultItem: {
+      variant: GridVariant["Rich-Text"],
+    },
+  },
   fields: [
     {
       name: "variant",
@@ -127,7 +134,7 @@ export const GridTemplate = {
 
 export type GridProps = {
   variant: GridVariant;
-  content: TinaMarkdownContent[] | string | any;
+  content?: any | ReferenceRelativePath;
   height?: Responsive<string>;
   gridSettings: {
     columns: number;
@@ -135,22 +142,60 @@ export type GridProps = {
   width?: Responsive<string>;
 };
 
-export default async function Grid({
+export default function Grid({
   variant = GridVariant["Rich-Text"],
-  content = "",
+  content = undefined,
   height = DEFAULT_HEIGHT,
-  gridSettings = { columns: 2 },
+  // gridSettings = { columns: 2 },
   width = DEFAULT_WIDTH,
 }: GridProps) {
-  console.log("Grid content:  ", content);
+  const [gridItems, setGridItems] = useState<any[] | undefined>(undefined);
 
-  const reference = await client.queries.post({ relativePath: "capri.json" });
+  useEffect(() => {
+    const getPosts = async () =>
+      (await client.queries.postConnection()).data.postConnection.edges;
 
-  const postList = (await client.queries.postConnection()).data;
+    const getReference = async () =>
+      (
+        await client.queries.post({
+          relativePath: content as ReferenceRelativePath,
+        })
+      ).data;
+
+    if (variant === GridVariant["Rich-Text"]) {
+      setGridItems(content);
+    }
+
+    if (variant === GridVariant["Reference"]) {
+      getReference()
+        .then((reference) =>
+          setGridItems(
+            reference.post.images
+              ? reference.post.images?.map((item) => item)
+              : undefined
+          )
+        )
+        .catch((e) => {
+          console.error(e);
+          setGridItems(undefined);
+        });
+    }
+
+    if (variant === GridVariant["Post-List"]) {
+      getPosts()
+        .then((posts) => setGridItems(posts as any))
+        .catch((e) => {
+          console.error(e);
+          setGridItems(undefined);
+        });
+    }
+  }, [variant, content]);
 
   return (
     <>
-      <p>{variant}</p>
+      <p>
+        {variant} {gridItems?.length}
+      </p>
       <RadixGrid
         columns={"2"}
         gap={"2"}
@@ -160,7 +205,8 @@ export default async function Grid({
         style={{ maxWidth: "100vw" }}
       >
         {variant === GridVariant["Rich-Text"] &&
-          (content as TinaMarkdownContent[]).map((item, i) => (
+          gridItems &&
+          gridItems?.map((item: any, i) => (
             <Box position={"relative"} className="test" key={i}>
               <TinaMarkdown
                 content={item}
@@ -187,41 +233,28 @@ export default async function Grid({
             </Box>
           ))}
 
-        {variant === GridVariant["Reference"] && reference.data.post.images
-          ? reference.data.post.images.map((item, i) => (
-              <Box position={"relative"} className="test">
-                <Image
-                  priority={i === 0}
-                  src={item ?? ""}
-                  alt={""}
-                  fill
-                  sizes="100vw"
-                  style={{
-                    zIndex: "-1",
-                    objectFit: "cover",
-                  }}
-                />
-              </Box>
-            ))
-          : null}
-
         {variant === GridVariant["Post-List"] &&
-          postList.postConnection.edges?.map((item, i) => (
-            <Box position={"relative"} className="test">
-              <Flex justify={"center"} align={"center"}>
-                <Text color={"pink"}>{item?.node?.name}</Text>
-                <Image
-                  priority={i === 0}
-                  src={item?.node?.images![0] ?? ""}
-                  alt={""}
-                  fill
-                  sizes="100vw"
-                  style={{
-                    zIndex: "-1",
-                    objectFit: "cover",
-                  }}
-                />
-              </Flex>
+          gridItems &&
+          (gridItems as any).map((item: PostConnectionEdges, i) => (
+            <p key={i}>{item.node?.name}</p>
+          ))}
+
+        {variant === GridVariant["Reference"] &&
+          gridItems &&
+          typeof content === "string" &&
+          (gridItems as string[]).map((item, i) => (
+            <Box position={"relative"} className="test" key={i}>
+              <Image
+                priority={i === 0}
+                src={item ?? ""}
+                alt={""}
+                fill
+                sizes="100vw"
+                style={{
+                  zIndex: "-1",
+                  objectFit: "cover",
+                }}
+              />
             </Box>
           ))}
       </RadixGrid>

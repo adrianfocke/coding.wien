@@ -1,5 +1,4 @@
 "use client";
-import { Container } from "@radix-ui/themes";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import "../../styles/main.css";

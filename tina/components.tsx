@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { TinaMarkdownContent } from "tinacms/dist/rich-text";
 import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
 import type { GridProps } from "../components/Grid/Grid";
@@ -11,6 +12,7 @@ import Slideshow, {
   SlideshowTemplate,
   type SlideshowProps,
 } from "../components/Slideshow/Slideshow";
+import { getReferenceRelativePathFromReferencePath } from "./utils";
 
 export const allTemplates = [
   FormTemplate,
@@ -18,6 +20,9 @@ export const allTemplates = [
   SlideshowTemplate,
   GridTemplate,
 ];
+
+export type ReferencePath = `content/${string}/${string}.json`;
+export type ReferenceRelativePath = `${string}.json`;
 
 export default {
   Form: ({ title, width }: FormProps) => <Form width={width} title={title} />,
@@ -49,31 +54,35 @@ export default {
     />
   ),
   Slideshow: (props: SlideshowProps & { elements: any[] }) => {
-    console.log("Slideshow: ", props.elements);
     const { height, width } = props;
     const slides = props.elements?.map((e) => e.element) ?? [];
     return <Slideshow slides={slides} width={width} height={height} />;
   },
-  Grid: (props: GridProps & { elements?: any[]; referenceField?: string }) => {
-    const { height, width, gridSettings, variant } = props;
-    const gridItems = props.elements?.map((e) => e.element) ?? [];
+  Grid: (
+    props: GridProps & {
+      elements?: any;
+      referenceField?: ReferencePath;
+    }
+  ) => {
+    const { gridSettings, height, referenceField, variant, width } = props;
 
-    console.log("Grid props: ", variant, props);
+    let content: any = undefined;
 
-    const content =
-      variant === GridVariant["Rich-Text"]
-        ? props.elements?.map((e) => e.element) ?? []
-        : variant === GridVariant["Reference"]
-        ? props.referenceField
-        : "Post-List";
+    if (variant === GridVariant["Rich-Text"]) {
+      content = props.elements?.map((e) => e.element) ?? [];
+    }
+
+    if (variant === GridVariant["Reference"]) {
+      content = getReferenceRelativePathFromReferencePath(referenceField);
+    }
 
     return (
       <Grid
-        variant={variant}
         content={content}
-        height={height}
-        width={width}
         gridSettings={gridSettings}
+        height={height}
+        variant={variant}
+        width={width}
       />
     );
   },
