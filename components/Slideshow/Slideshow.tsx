@@ -6,7 +6,6 @@ import type { LegacyRef } from "react";
 import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
 import { HeightField, RichTextField, WidthField } from "../../tina/fields";
-import { DEFAULT_HEIGHT } from "../../utils/constants";
 import useSlideshow from "./hook";
 import "./styles.css";
 
@@ -22,10 +21,7 @@ export type SlideshowProps = {
   width?: Responsive<string>;
 };
 
-export default function Slideshow({
-  height = DEFAULT_HEIGHT,
-  slides = [],
-}: SlideshowProps) {
+export default function Slideshow({ height = "100vh", slides = [] }: SlideshowProps) {
   const { slideshow, nextSlide, previousSlide } = useSlideshow(1000);
 
   return (
