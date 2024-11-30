@@ -1,5 +1,4 @@
 import Image from "next/image";
-import type { TinaMarkdownContent } from "tinacms/dist/rich-text";
 import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
 import type { GridProps } from "../components/Grid/Grid";
@@ -54,9 +53,9 @@ export default {
     />
   ),
   Slideshow: (props: SlideshowProps & { elements: any[] }) => {
-    const { height, width } = props;
+    const { height } = props;
     const slides = props.elements?.map((e) => e.element) ?? [];
-    return <Slideshow slides={slides} width={width} height={height} />;
+    return <Slideshow slides={slides} height={height} />;
   },
   Grid: (
     props: GridProps & {
@@ -64,7 +63,7 @@ export default {
       referenceField?: ReferencePath;
     }
   ) => {
-    const { gridSettings, height, referenceField, variant, width } = props;
+    const { referenceField, variant } = props;
 
     let content: any = undefined;
 
@@ -76,14 +75,6 @@ export default {
       content = getReferenceRelativePathFromReferencePath(referenceField);
     }
 
-    return (
-      <Grid
-        content={content}
-        gridSettings={gridSettings}
-        height={height}
-        variant={variant}
-        width={width}
-      />
-    );
+    return <Grid content={content} variant={variant} />;
   },
 };

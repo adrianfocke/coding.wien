@@ -2,30 +2,38 @@ import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import { AccessibleIcon, Box, Flex, IconButton } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import Image from "next/image";
-import type { LegacyRef } from "react";
+import { type LegacyRef } from "react";
 import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
-import { HeightField, RichTextField, WidthField } from "../../tina/fields";
+import { RichTextField } from "../../tina/fields";
 import useSlideshow from "./hook";
 import "./styles.css";
 
 export const SlideshowTemplate = {
   name: "Slideshow",
   label: "Slideshow",
-  fields: [WidthField, HeightField, RichTextField],
+  fields: [RichTextField],
 };
 
 export type SlideshowProps = {
   height?: Responsive<string>;
   slides: TinaMarkdownContent[];
-  width?: Responsive<string>;
 };
 
-export default function Slideshow({ height = "100vh", slides = [] }: SlideshowProps) {
-  const { slideshow, nextSlide, previousSlide } = useSlideshow(1000);
+export default function Slideshow({
+  height = "100vh",
+  slides = [],
+}: SlideshowProps) {
+  const { nextSlide, previousSlide, slideshow, slideshowContainer } =
+    useSlideshow();
 
   return (
-    <Box position={"relative"} width={"1000px"} height={height}>
+    <Box
+      position={"relative"}
+      width={"100%"}
+      height={height}
+      ref={slideshowContainer as LegacyRef<HTMLDivElement>}
+    >
       <Flex
         className="no-scrollbar"
         width={"100%"}

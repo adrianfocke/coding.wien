@@ -1,8 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useSlideshow = (slideWidth: number) => {
-  const [displayedSlide, setDisplayedSlide] = useState<number>(1);
+export const useSlideshow = () => {
+  const slideshowContainer = useRef<HTMLElement>(null);
   const slideshow = useRef<HTMLElement>(null);
+
+  const [slideWidth, setSlideWidth] = useState<number>(0);
+  const [displayedSlide, setDisplayedSlide] = useState<number>(1);
+
+  useEffect(() => {
+    setSlideWidth(slideshowContainer.current?.offsetWidth ?? 0);
+  }, []);
 
   const getNumberOfImages = (containerWidth?: number) =>
     containerWidth ? Math.floor(containerWidth / slideWidth) : 0;
@@ -62,7 +69,7 @@ export const useSlideshow = (slideWidth: number) => {
     };
   }, [displayedSlide, slideWidth]);
 
-  return { slideshow, nextSlide, previousSlide };
+  return { slideshowContainer, slideshow, nextSlide, previousSlide };
 };
 
 export default useSlideshow;
