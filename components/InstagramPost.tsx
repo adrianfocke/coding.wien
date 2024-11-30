@@ -109,7 +109,7 @@ export default function InstagramPost({
           </Link>
         </Flex>
 
-        <Slideshow slides={slides as []} width={width} />
+        <Slideshow slides={slides as []} />
 
         <Box mt={"2"}>
           <Text mr={"1"} weight={"medium"}>
