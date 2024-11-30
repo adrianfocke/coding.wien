@@ -1,4 +1,5 @@
 import type { Collection } from "tinacms";
+import { SEOField } from "../fields";
 import {
   CHARACTERS_REGEX,
   CHARACTERS_REGEX_HINT,
@@ -11,6 +12,7 @@ export default {
   path: "content/post",
   format: "json",
   fields: [
+    { ...SEOField },
     {
       name: "name",
       label: "Name",
@@ -27,6 +29,24 @@ export default {
           }
         },
       },
+    },
+    {
+      name: "info",
+      label: "Basic infos",
+      type: "object",
+      list: true,
+      ui: {
+        itemProps(item) {
+          return {
+            label:
+              item.key || item.value ? `${item.key} : ${item.value}` : "Leer",
+          };
+        },
+      },
+      fields: [
+        { name: "key", label: "Key", type: "string" },
+        { name: "value", label: "Value", type: "string" },
+      ],
     },
     {
       name: "images",

@@ -1,14 +1,16 @@
-import { Box, Flex, Grid as RadixGrid, Text } from "@radix-ui/themes";
-import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
+import { Flex, Grid as RadixGrid } from "@radix-ui/themes";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import {
   GroupListField,
   ReferenceField as TinaReferenceField,
   type Template,
 } from "tinacms";
-import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../../tina/__generated__/client";
+import type { PostConnectionEdges } from "../../tina/__generated__/types";
+import type { ReferenceRelativePath } from "../../tina/components";
 import {
   HeightField,
   ReferenceField,
@@ -16,7 +18,9 @@ import {
   WidthField,
   type SpecialFieldKey,
 } from "../../tina/fields";
-import { DEFAULT_HEIGHT, DEFAULT_WIDTH } from "../../utils/constants";
+import "./styles.css";
+
+void React; // Making sure it's imported
 
 export enum GridVariant {
   "Reference" = "Reference",
@@ -77,6 +81,11 @@ const renderFieldBasedOnTemplateKey = (params: {
 export const GridTemplate = {
   name: "Grid",
   label: "Grid",
+  ui: {
+    defaultItem: {
+      variant: GridVariant["Rich-Text"],
+    },
+  },
   fields: [
     {
       name: "variant",
@@ -127,100 +136,151 @@ export const GridTemplate = {
 
 export type GridProps = {
   variant: GridVariant;
-  content: TinaMarkdownContent[] | string | any;
-  height?: Responsive<string>;
-  width?: Responsive<string>;
+  content?: any | ReferenceRelativePath;
 };
 
-export default async function Grid({
+export default function Grid({
   variant = GridVariant["Rich-Text"],
-  content = "",
-  height = DEFAULT_HEIGHT,
-  width = DEFAULT_WIDTH,
+  content = undefined,
 }: GridProps) {
-  console.log("Grid content:  ", content);
+  const [gridItems, setGridItems] = useState<any[] | undefined>(undefined);
 
-  const reference = await client.queries.post({ relativePath: "capri.json" });
+  useEffect(() => {
+    const getPosts = async () =>
+      (await client.queries.postConnection()).data.postConnection.edges;
 
-  const postList = (await client.queries.postConnection()).data;
+    const getReference = async () =>
+      (
+        await client.queries.post({
+          relativePath: content as ReferenceRelativePath,
+        })
+      ).data;
+
+    if (variant === GridVariant["Rich-Text"]) {
+      setGridItems(content);
+    }
+
+    if (variant === GridVariant["Reference"]) {
+      getReference()
+        .then((reference) =>
+          setGridItems(
+            reference.post.images
+              ? reference.post.images?.map((item) => item)
+              : undefined
+          )
+        )
+        .catch((e) => {
+          console.error(e);
+          setGridItems(undefined);
+        });
+    }
+
+    if (variant === GridVariant["Post-List"]) {
+      getPosts()
+        .then((posts) => setGridItems(posts as any))
+        .catch((e) => {
+          console.error(e);
+          setGridItems(undefined);
+        });
+    }
+  }, [variant, content]);
 
   return (
-    <>
-      <p>{variant}</p>
-      <RadixGrid
-        columns={"2"}
-        gap={"2"}
-        className="no-scrollbar"
-        width={width}
-        height={height}
-        style={{ maxWidth: "100vw" }}
-      >
-        {variant === GridVariant["Rich-Text"] &&
-          (content as TinaMarkdownContent[]).map((item, i) => (
-            <Box position={"relative"} className="test" key={i}>
-              <TinaMarkdown
-                content={item}
-                components={{
-                  img: (props: {
-                    url: string;
-                    caption?: string;
-                    alt?: string;
-                  }) => (
-                    <Image
-                      priority={i === 0}
-                      src={props.url ?? ""}
-                      alt={""}
-                      fill
-                      sizes="100vw"
-                      style={{
-                        zIndex: "-1",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ),
-                }}
-              />
-            </Box>
-          ))}
+    <RadixGrid
+      mb={"6"}
+      columns={{ xs: "1", md: "2" }}
+      gap={"2"}
+      className="no-scrollbar"
+      style={{ maxWidth: "100vw" }}
+    >
+      {gridItems &&
+        gridItems?.map((item: any, i) => (
+          <Flex
+            justify={"center"}
+            align={"center"}
+            height={"200px"}
+            position={"relative"}
+            className="test"
+            overflowX={"hidden"}
+            key={i}
+          >
+            {variant === GridVariant["Rich-Text"] &&
+              renderRichTextItem(item, i)}
 
-        {variant === GridVariant["Reference"] && reference.data.post.images
-          ? reference.data.post.images.map((item, i) => (
-              <Box position={"relative"} className="test" key={i}>
-                <Image
-                  priority={i === 0}
-                  src={item ?? ""}
-                  alt={""}
-                  fill
-                  sizes="100vw"
-                  style={{
-                    zIndex: "-1",
-                    objectFit: "cover",
-                  }}
-                />
-              </Box>
-            ))
-          : null}
+            {variant === GridVariant["Post-List"] &&
+              renderPostListItem(item, i)}
 
-        {variant === GridVariant["Post-List"] &&
-          postList.postConnection.edges?.map((item, i) => (
-            <Box position={"relative"} className="test" key={i}>
-              <Flex justify={"center"} align={"center"}>
-                <Text color={"pink"}>{item?.node?.name}</Text>
-                <Image
-                  priority={i === 0}
-                  src={item?.node?.images![0] ?? ""}
-                  alt={""}
-                  fill
-                  sizes="100vw"
-                  style={{
-                    zIndex: "-1",
-                    objectFit: "cover",
-                  }}
-                />
-              </Flex>
-            </Box>
-          ))}
-      </RadixGrid>
-    </>
+            {variant === GridVariant["Reference"] &&
+              typeof content === "string" &&
+              renderReferenceItem(item, i)}
+          </Flex>
+        ))}
+    </RadixGrid>
   );
 }
+
+const renderRichTextItem = (item: any, i: number) => (
+  <TinaMarkdown
+    content={item}
+    components={{
+      img: (props: { url: string; caption?: string; alt?: string }) => (
+        <Image
+          priority={i === 0}
+          src={props.url ?? ""}
+          alt={""}
+          fill
+          sizes="100vw"
+          style={{
+            zIndex: "-1",
+            objectFit: "cover",
+          }}
+        />
+      ),
+    }}
+  />
+);
+
+const renderPostListItem = (item: PostConnectionEdges, i: number) => {
+  console.log("Post item: ", item);
+  return (
+    <Flex
+      align={"center"}
+      justify={"center"}
+      key={i}
+      width={"100%"}
+      height={"100%"}
+    >
+      <Link className="colored" href={`/posts/${item.node?._sys.filename}`}>
+        {item.node?.name}
+      </Link>
+
+      {item.node?.images && (
+        <Image
+          priority={i === 0}
+          src={item.node.images[0] as string}
+          alt={""}
+          fill
+          sizes="100vw"
+          style={{
+            zIndex: "-1",
+            objectFit: "cover",
+          }}
+        />
+      )}
+    </Flex>
+  );
+};
+
+const renderReferenceItem = (item: any, i: number) => (
+  <Image
+    priority={i === 0}
+    src={item}
+    alt={""}
+    fill
+    sizes="100vw"
+    style={{
+      zIndex: "-1",
+      objectFit: "cover",
+    }}
+  />
+);

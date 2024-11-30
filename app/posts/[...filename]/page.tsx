@@ -19,7 +19,5 @@ export default async function PostPage({
     relativePath: `${params.filename}.json`,
   });
 
-  console.log("Data: ", data);
-
   return <Post {...data}></Post>;
 }

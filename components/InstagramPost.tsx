@@ -18,7 +18,6 @@ import {
   WidthField,
   type IntlFieldType,
 } from "../tina/fields";
-import { DEFAULT_WIDTH } from "../utils/constants";
 import Slideshow from "./Slideshow/Slideshow";
 
 export const InstagramPostTemplate = {
@@ -75,10 +74,10 @@ export default function InstagramPost({
   },
   url = "https://bandcamp.com/about",
   slides = [],
-  width = DEFAULT_WIDTH,
+  width = "200px",
 }: InstagramPostProps) {
   return (
-    (<Box width={width} m={"2"}>
+    <Box width={width} m={"2"}>
       <Card variant={"ghost"}>
         <Flex align={"center"} direction={"row"} justify={"between"}>
           <Flex
@@ -95,8 +94,9 @@ export default function InstagramPost({
               height={32}
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }}></Image>
+                height: "auto",
+              }}
+            ></Image>
             <Text weight={"medium"}>{account.toUpperCase()}</Text>
           </Flex>
 
@@ -118,6 +118,6 @@ export default function InstagramPost({
           <Text>{description["de"]}</Text>
         </Box>
       </Card>
-    </Box>)
+    </Box>
   );
 } 

@@ -11,6 +11,7 @@ import Slideshow, {
   SlideshowTemplate,
   type SlideshowProps,
 } from "../components/Slideshow/Slideshow";
+import { getReferenceRelativePathFromReferencePath } from "./utils";
 
 export const allTemplates = [
   FormTemplate,
@@ -18,6 +19,9 @@ export const allTemplates = [
   SlideshowTemplate,
   GridTemplate,
 ];
+
+export type ReferencePath = `content/${string}/${string}.json`;
+export type ReferenceRelativePath = `${string}.json`;
 
 export default {
   Form: ({ title, width }: FormProps) => <Form width={width} title={title} />,
@@ -49,26 +53,28 @@ export default {
     />
   ),
   Slideshow: (props: SlideshowProps & { elements: any[] }) => {
-    console.log("Slideshow: ", props.elements);
-    const { height, width } = props;
+    const { height } = props;
     const slides = props.elements?.map((e) => e.element) ?? [];
-    return <Slideshow slides={slides} width={width} height={height} />;
+    return <Slideshow slides={slides} height={height} />;
   },
-  Grid: (props: GridProps & { elements?: any[]; referenceField?: string }) => {
-    const { height, width, variant } = props;
-    const gridItems = props.elements?.map((e) => e.element) ?? [];
+  Grid: (
+    props: GridProps & {
+      elements?: any;
+      referenceField?: ReferencePath;
+    }
+  ) => {
+    const { referenceField, variant } = props;
 
-    console.log("Grid props: ", variant, props);
+    let content: any = undefined;
 
-    const content =
-      variant === GridVariant["Rich-Text"]
-        ? props.elements?.map((e) => e.element) ?? []
-        : variant === GridVariant["Reference"]
-        ? props.referenceField
-        : "Post-List";
+    if (variant === GridVariant["Rich-Text"]) {
+      content = props.elements?.map((e) => e.element) ?? [];
+    }
 
-    return (
-      <Grid variant={variant} content={content} height={height} width={width} />
-    );
+    if (variant === GridVariant["Reference"]) {
+      content = getReferenceRelativePathFromReferencePath(referenceField);
+    }
+
+    return <Grid content={content} variant={variant} />;
   },
 };
