@@ -1,7 +1,7 @@
 import { Flex, Grid as RadixGrid } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState, type LegacyRef } from "react";
 import {
   GroupListField,
   ReferenceField as TinaReferenceField,
@@ -144,6 +144,13 @@ export default function Grid({
   content = undefined,
 }: GridProps) {
   const [gridItems, setGridItems] = useState<any[] | undefined>(undefined);
+  const gridItemContainer = useRef<HTMLElement>(null);
+  const [gridItemHeight, setGridItemHeight] = useState<number>(200);
+
+  useEffect(() => {
+    console.log(gridItemContainer.current);
+    setGridItemHeight(gridItemContainer.current?.offsetWidth ?? 200);
+  }, [gridItems]);
 
   useEffect(() => {
     const getPosts = async () =>
@@ -187,7 +194,7 @@ export default function Grid({
 
   return (
     <RadixGrid
-      mb={"6"}
+      my={"6"}
       columns={{ xs: "1", md: "2" }}
       gap={"2"}
       className="no-scrollbar"
@@ -198,11 +205,11 @@ export default function Grid({
           <Flex
             justify={"center"}
             align={"center"}
-            height={"200px"}
+            height={`${gridItemHeight}px`}
             position={"relative"}
-            className="test"
             overflowX={"hidden"}
             key={i}
+            ref={gridItemContainer as LegacyRef<HTMLDivElement>}
           >
             {variant === GridVariant["Rich-Text"] &&
               renderRichTextItem(item, i)}
