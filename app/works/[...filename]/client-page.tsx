@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Box, Container, Flex, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { useTina } from "tinacms/dist/react";
@@ -14,7 +14,7 @@ interface ClientPageProps {
   data: WorkQuery;
 }
 
-export default function Post(props: ClientPageProps) {
+export default function ClientPage(props: ClientPageProps) {
   // data passes though in production mode and data is updated to the sidebar data in edit-mode
   const { data } = useTina({
     query: props.query,
