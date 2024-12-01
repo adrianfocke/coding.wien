@@ -2,7 +2,12 @@
 
 module.exports = {
   images: {
-    domains: ["assets.tina.io"],
+    domains: [
+      "assets.tina.io",
+      "**.vercel.com",
+      "content.tinajs.io",
+      "valerievoigt.com",
+    ],
     remotePatterns: [
       {
         protocol: "https",
@@ -19,6 +24,12 @@ module.exports = {
       {
         protocol: "https",
         hostname: "content.tinajs.io",
+        port: "",
+        search: "",
+      },
+      {
+        protocol: "https",
+        hostname: "valerievoigt.com",
         port: "",
         search: "",
       },
