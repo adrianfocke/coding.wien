@@ -1,4 +1,8 @@
 import Image from "next/image";
+import Accordion, {
+  AccordionTemplate,
+  type AccordionProps,
+} from "../components/Accordion/Accordion";
 import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
 import type { GridProps } from "../components/Grid/Grid";
@@ -14,6 +18,7 @@ import Slideshow, {
 import { getReferenceRelativePathFromReferencePath } from "./utils";
 
 export const allTemplates = [
+  AccordionTemplate,
   FormTemplate,
   InstagramPostTemplate,
   SlideshowTemplate,
@@ -76,5 +81,10 @@ export default {
     }
 
     return <Grid content={content} variant={variant} />;
+  },
+  Accordion: (props: AccordionProps & { elements: any[] }) => {
+    const { title, content } = props;
+
+    return <Accordion title={title} content={content} />;
   },
 };

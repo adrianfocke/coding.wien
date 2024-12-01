@@ -31,6 +31,15 @@ export default function NavigationMenu({ links }: RadixNavigationMenuProps) {
         <RadixNavigationMenu.Item>
           <RadixNavigationMenu.Link
             className="RadixNavigationMenuLink"
+            href="/about"
+          >
+            About
+          </RadixNavigationMenu.Link>
+        </RadixNavigationMenu.Item>
+
+        <RadixNavigationMenu.Item>
+          <RadixNavigationMenu.Link
+            className="RadixNavigationMenuLink"
             href="/contact"
           >
             Contact

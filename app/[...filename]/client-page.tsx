@@ -29,7 +29,6 @@ export default function ClientPage(props: ClientPageProps) {
       style={{
         marginTop: !data.page._sys.filename.includes("home") ? "100px" : "0px",
       }}
-      className="responsive-flex"
       data-testid="client-page"
     >
       <Container mx="2">

@@ -42,12 +42,12 @@ export default function ClientPage(props: ClientPageProps) {
             objectFit: "cover",
           }}
         />
-        <Heading color={"pink"} as={"h1"}>
+        <Heading color={"pink"} as={"h2"}>
           {work.name}
         </Heading>
       </Flex>
 
-      <Flex py={"2"} align={"center"} justify={"center"}>
+      <Flex wrap={"wrap"} py={"2"} mx={"2"} justify={"center"}>
         {work.info?.map((item, i) => (
           <Box key={i} mx="2">
             <Text size="4" weight={"medium"}>

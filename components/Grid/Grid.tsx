@@ -1,4 +1,4 @@
-import { Flex, Heading, Grid as RadixGrid } from "@radix-ui/themes";
+import { Box, Flex, Heading, Grid as RadixGrid } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState, type LegacyRef } from "react";
@@ -203,10 +203,8 @@ export default function Grid({
     >
       {gridItems &&
         gridItems?.map((item: any, i) => (
-          <Flex
-            justify={"center"}
-            align={"center"}
-            height={`${gridItemHeight}px`}
+          <Box
+            minHeight={`${gridItemHeight}px`}
             position={"relative"}
             overflowX={"hidden"}
             key={i}
@@ -221,7 +219,7 @@ export default function Grid({
             {variant === GridVariant["Reference"] &&
               typeof content === "string" &&
               renderReferenceItem(item, i)}
-          </Flex>
+          </Box>
         ))}
     </RadixGrid>
   );
@@ -249,32 +247,31 @@ const renderRichTextItem = (item: any, i: number) => (
 );
 
 const renderPostListItem = (item: WorkConnectionEdges, i: number) => {
-  console.log("Post item: ", item);
   return (
-    <Flex
-      align={"center"}
-      justify={"center"}
-      key={i}
-      width={"100%"}
-      height={"100%"}
-    >
-      <Link className="colored" href={`/works/${item.node?._sys.filename}`}>
-        <Heading as={"h3"}>{item.node?.name}</Heading>
-      </Link>
+    <Flex key={i} width={"100%"} height={"100%"}>
+      <Link
+        style={{ width: "100%" }}
+        className="colored"
+        href={`/works/${item.node?._sys.filename}`}
+      >
+        <Box p={"4"}>
+          <Heading as={"h2"}>{item.node?.name}</Heading>
+        </Box>
 
-      {item.node?.images && (
-        <Image
-          priority={i === 0}
-          src={item.node.images[0] as string}
-          alt={""}
-          fill
-          sizes="100vw"
-          style={{
-            zIndex: "-1",
-            objectFit: "cover",
-          }}
-        />
-      )}
+        {item.node?.images && (
+          <Image
+            priority={i === 0}
+            src={item.node.images[0] as string}
+            alt={""}
+            fill
+            sizes="100vw"
+            style={{
+              zIndex: "-1",
+              objectFit: "cover",
+            }}
+          />
+        )}
+      </Link>
     </Flex>
   );
 };

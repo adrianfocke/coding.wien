@@ -1,20 +1,44 @@
 import * as RadixAccordion from "@radix-ui/react-accordion";
 import { ChevronDownIcon, Flex, Text } from "@radix-ui/themes";
 import React from "react";
+import type { Template } from "tinacms";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 import "./styles.css";
 
-export default function Accordion() {
+export const AccordionTemplate = {
+  name: "Accordion",
+  label: "Accordion",
+  fields: [
+    {
+      name: "title",
+      label: "Accordion title",
+      type: "string",
+    },
+    {
+      name: "content",
+      label: "Accordion content",
+      type: "rich-text",
+    },
+  ],
+} as Template;
+
+export type AccordionProps = {
+  title: string;
+  content: any;
+};
+
+export default function Accordion({ title, content }: AccordionProps) {
   return (
     <RadixAccordion.Root className="AccordionRoot" type="single" collapsible>
       <RadixAccordion.Item className="AccordionItem" value="item-1">
         <Trigger>
           <Flex direction={"row"} align={"center"} gap={"1"}>
-            <Text size="4">Yoga mit Coco</Text>
+            <Text size="4">{title}</Text>
             <ChevronDownIcon className="AccordionChevron" aria-hidden />
           </Flex>
         </Trigger>
         <AccordionContent>
-          <p>TEXT</p>
+          <TinaMarkdown content={content} />
         </AccordionContent>
       </RadixAccordion.Item>
     </RadixAccordion.Root>

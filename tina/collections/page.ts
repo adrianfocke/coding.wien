@@ -1,5 +1,10 @@
 import type { Collection } from "tinacms";
 import { allTemplates } from "../components";
+import {
+  CHARACTERS_REGEX,
+  CHARACTERS_REGEX_HINT,
+  sanitizeFilenameForURL,
+} from "../utils";
 
 export default {
   label: "Pages",
@@ -7,6 +12,23 @@ export default {
   path: "content/page",
   format: "mdx",
   fields: [
+    {
+      name: "name",
+      label: "Name",
+      type: "string",
+      required: true,
+      ui: {
+        validate: (value) => {
+          if (!value) {
+            return "Value must be defined";
+          }
+
+          if (!CHARACTERS_REGEX.test(value)) {
+            return CHARACTERS_REGEX_HINT;
+          }
+        },
+      },
+    },
     {
       name: "body",
       label: "Main Content",
@@ -23,6 +45,13 @@ export default {
       }
 
       return `/${document._sys.filename}`;
+    },
+    filename: {
+      readonly: true,
+      slugify: (values) => {
+        const filename = values?.name || "untitled";
+        return sanitizeFilenameForURL(filename);
+      },
     },
   },
 } as Collection;

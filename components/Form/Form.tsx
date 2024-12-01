@@ -19,57 +19,55 @@ export default function Form({ title }: FormProps) {
   const { state, setFormState } = useForm();
 
   return (
-    <Flex justify={"center"} width={"100%"}>
-      <Box width={{ sm: "80vw", md: "440px" }}>
-        <Card style={{ width: "100%" }} variant="ghost">
-          <RadixForm.Root
-            onSubmit={async (event) => {
-              event.preventDefault();
-              setFormState("sending");
+    <Box width={{ sm: "80vw", md: "440px" }}>
+      <Card style={{ width: "100%" }} variant="ghost">
+        <RadixForm.Root
+          onSubmit={async (event) => {
+            event.preventDefault();
+            setFormState("sending");
 
-              const formData = Object.fromEntries(
-                new FormData(event.currentTarget)
-              ) as {
-                email: string;
-                inquiry: string;
-              };
+            const formData = Object.fromEntries(
+              new FormData(event.currentTarget)
+            ) as {
+              email: string;
+              inquiry: string;
+            };
 
-              sendForm(formData)
-                .then(() => setFormState("sent"))
-                .catch(() => setFormState("error"));
-            }}
-          >
-            {title && (
-              <Text size="4" weight={"medium"}>
-                {title["de"]}
-              </Text>
-            )}
-            <FormField
-              inputType="email"
-              name={"email"}
-              validations={["valueMissing", "typeMismatch"]}
-            />
+            sendForm(formData)
+              .then(() => setFormState("sent"))
+              .catch(() => setFormState("error"));
+          }}
+        >
+          {title && (
+            <Text size="4" weight={"medium"}>
+              {title["de"]}
+            </Text>
+          )}
+          <FormField
+            inputType="email"
+            name={"email"}
+            validations={["valueMissing", "typeMismatch"]}
+          />
 
-            <FormField
-              inputType="text"
-              name={"anfrage"}
-              validations={["valueMissing"]}
-            />
+          <FormField
+            inputType="text"
+            name={"anfrage"}
+            validations={["valueMissing"]}
+          />
 
-            <RadixForm.Submit asChild>
-              <Flex align={"center"} direction={"row"} gap={"2"} my={"2"}>
-                <Button mt={"4"} disabled={state !== "idle"}>
-                  <Spinner loading={state === "sending"}></Spinner>
-                  {state === "idle" && "Senden"}
-                  {state === "sending" && "Senden"}
-                  {state === "sent" && "Gesendet!"}
-                  {state === "error" && "Leider gab es einen Fehler!"}
-                </Button>
-              </Flex>
-            </RadixForm.Submit>
-          </RadixForm.Root>
-        </Card>
-      </Box>
-    </Flex>
+          <RadixForm.Submit asChild>
+            <Flex align={"center"} direction={"row"} gap={"2"} my={"2"}>
+              <Button mt={"4"} disabled={state !== "idle"}>
+                <Spinner loading={state === "sending"}></Spinner>
+                {state === "idle" && "Senden"}
+                {state === "sending" && "Senden"}
+                {state === "sent" && "Gesendet!"}
+                {state === "error" && "Leider gab es einen Fehler!"}
+              </Button>
+            </Flex>
+          </RadixForm.Submit>
+        </RadixForm.Root>
+      </Card>
+    </Box>
   );
 }
