@@ -9,7 +9,7 @@ import {
 } from "tinacms";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../../tina/__generated__/client";
-import type { PostConnectionEdges } from "../../tina/__generated__/types";
+import type { WorkConnectionEdges } from "../../tina/__generated__/types";
 import type { ReferenceRelativePath } from "../../tina/components";
 import {
   HeightField,
@@ -94,7 +94,7 @@ export const GridTemplate = {
       options: Object.keys(GridVariant),
     },
     {
-      ...ReferenceField(["post"]),
+      ...ReferenceField(["work"]), // TODO think of a solution for this
       ui: {
         component(props: any) {
           return renderFieldBasedOnTemplateKey({
@@ -154,11 +154,11 @@ export default function Grid({
 
   useEffect(() => {
     const getPosts = async () =>
-      (await client.queries.postConnection()).data.postConnection.edges;
+      (await client.queries.workConnection()).data.workConnection.edges;
 
     const getReference = async () =>
       (
-        await client.queries.post({
+        await client.queries.work({
           relativePath: content as ReferenceRelativePath,
         })
       ).data;
@@ -171,8 +171,8 @@ export default function Grid({
       getReference()
         .then((reference) =>
           setGridItems(
-            reference.post.images
-              ? reference.post.images?.map((item) => item)
+            reference.work.images
+              ? reference.work.images?.map((item) => item)
               : undefined
           )
         )
@@ -247,7 +247,7 @@ const renderRichTextItem = (item: any, i: number) => (
   />
 );
 
-const renderPostListItem = (item: PostConnectionEdges, i: number) => {
+const renderPostListItem = (item: WorkConnectionEdges, i: number) => {
   console.log("Post item: ", item);
   return (
     <Flex

@@ -5,7 +5,7 @@ export default function PostList(props) {
     <>
       <h1>Posts</h1>
       <div>
-        {props.data.postConnection.edges.map((post) => (
+        {props.data.workConnection.edges.map((post) => (
           <div key={post.node.id}>
             <Link href={`/posts/${post.node._sys.filename}`}>
               {post.node._sys.filename}

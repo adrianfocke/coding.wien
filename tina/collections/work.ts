@@ -9,8 +9,8 @@ import {
 
 export default {
   label: "Works",
-  name: "post",
-  path: "content/post",
+  name: "work",
+  path: "content/work",
   format: "json",
   fields: [
     { ...SEOField },
@@ -53,7 +53,6 @@ export default {
       name: "detailedInfo",
       label: "More info",
       type: "rich-text",
-      templates: allTemplates,
     },
     {
       name: "images",
@@ -64,7 +63,7 @@ export default {
   ],
   ui: {
     router: ({ document }) => {
-      return `/posts/${document._sys.filename}`;
+      return `/works/${document._sys.filename}`;
     },
     filename: {
       readonly: true,

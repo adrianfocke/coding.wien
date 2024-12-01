@@ -4,15 +4,14 @@ import Image from "next/image";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import Grid, { GridVariant } from "../../../components/Grid/Grid";
-import { PostQuery } from "../../../tina/__generated__/types";
-import components from "../../../tina/components";
+import type { WorkQuery } from "../../../tina/__generated__/types";
 
 interface ClientPageProps {
   query: string;
   variables: {
     relativePath: string;
   };
-  data: PostQuery;
+  data: WorkQuery;
 }
 
 export default function Post(props: ClientPageProps) {
@@ -23,7 +22,7 @@ export default function Post(props: ClientPageProps) {
     data: props.data,
   });
 
-  const { post } = data;
+  const { work } = data;
 
   return (
     <Flex direction={"column"}>
@@ -36,7 +35,7 @@ export default function Post(props: ClientPageProps) {
       >
         <Image
           priority={true}
-          src={post.images ? post.images![0] : ("" as any)}
+          src={work.images ? work.images![0] : ("" as any)}
           alt={""}
           fill
           style={{
@@ -44,11 +43,11 @@ export default function Post(props: ClientPageProps) {
             objectFit: "cover",
           }}
         />
-        <Text>{post.name}</Text>
+        <Text>{work.name}</Text>
       </Flex>
 
       <Flex align={"center"} justify={"center"}>
-        {post.info?.map((item, i) => (
+        {work.info?.map((item, i) => (
           <Box key={i} mx="2">
             <Text weight={"medium"}>{item?.key}: </Text>
             <Text>{item?.value}</Text>
@@ -57,13 +56,13 @@ export default function Post(props: ClientPageProps) {
       </Flex>
 
       <Container mx="2">
-        <TinaMarkdown content={post.detailedInfo} components={components} />
+        <TinaMarkdown content={work.detailedInfo} />
       </Container>
 
       <Container mx="2">
         <Grid
           variant={GridVariant.Reference}
-          content={post._sys.relativePath}
+          content={work._sys.relativePath}
         />
       </Container>
     </Flex>

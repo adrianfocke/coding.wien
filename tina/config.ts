@@ -1,6 +1,8 @@
 import { defineConfig } from "tinacms";
 import page from "./collections/page";
-import post from "./collections/post";
+import work from "./collections/work";
+
+export const collections = [page, work];
 
 export default defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
@@ -19,7 +21,7 @@ export default defineConfig({
     outputFolder: "admin",
   },
   schema: {
-    collections: [page, post],
+    collections,
   },
   cmsCallback: (cms) => {
     cms.flags.set("branch-switcher", true);
