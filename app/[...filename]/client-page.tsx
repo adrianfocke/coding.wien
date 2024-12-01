@@ -25,7 +25,13 @@ export default function ClientPage(props: ClientPageProps) {
   const { body } = data.page;
 
   return (
-    <div className="responsive-flex" data-testid="client-page">
+    <div
+      style={{
+        marginTop: !data.page._sys.filename.includes("home") ? "100px" : "0px",
+      }}
+      className="responsive-flex"
+      data-testid="client-page"
+    >
       <Container mx="2">
         <TinaMarkdown content={body} components={components} />
       </Container>

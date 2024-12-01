@@ -1,4 +1,4 @@
-import { Flex, Grid as RadixGrid } from "@radix-ui/themes";
+import { Flex, Heading, Grid as RadixGrid } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState, type LegacyRef } from "react";
@@ -259,7 +259,7 @@ const renderPostListItem = (item: WorkConnectionEdges, i: number) => {
       height={"100%"}
     >
       <Link className="colored" href={`/works/${item.node?._sys.filename}`}>
-        {item.node?.name}
+        <Heading as={"h3"}>{item.node?.name}</Heading>
       </Link>
 
       {item.node?.images && (
