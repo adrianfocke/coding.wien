@@ -1,5 +1,4 @@
 import type { Collection } from "tinacms";
-import { allTemplates } from "../components";
 import { SEOField } from "../fields";
 import {
   CHARACTERS_REGEX,
