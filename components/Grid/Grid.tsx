@@ -182,7 +182,10 @@ export default function Grid({
 
     if (variant === GridVariant["Work-List"]) {
       getPosts()
-        .then((posts) => setGridItems(posts as any))
+        .then((posts) => {
+          console.log("Posts: ", posts);
+          setGridItems(posts as any);
+        })
         .catch((e) => {
           console.error(e);
           setGridItems(undefined);
