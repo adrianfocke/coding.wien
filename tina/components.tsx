@@ -24,7 +24,7 @@ export type ReferencePath = `content/${string}/${string}.json`;
 export type ReferenceRelativePath = `${string}.json`;
 
 export default {
-  Form: ({ title, width }: FormProps) => <Form width={width} title={title} />,
+  Form: ({ title }: FormProps) => <Form title={title} />,
   InstagramPost: ({
     width,
     account,

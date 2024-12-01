@@ -3,6 +3,7 @@ import "@radix-ui/themes/styles.css";
 import { Kode_Mono } from "next/font/google";
 import React from "react";
 import NavigationMenu from "../components/NavigationMenu/NavigationMenu";
+import "../styles/main.css";
 
 const kode_mono = Kode_Mono({
   subsets: ["latin"],
