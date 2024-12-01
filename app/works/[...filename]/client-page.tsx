@@ -31,7 +31,6 @@ export default function ClientPage(props: ClientPageProps) {
         align={"center"}
         justify={"center"}
         style={{ height: "60vh" }}
-        className="test"
       >
         <Image
           priority={true}

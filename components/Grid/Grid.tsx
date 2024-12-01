@@ -255,7 +255,7 @@ const renderPostListItem = (item: WorkConnectionEdges, i: number) => {
       width={"100%"}
       height={"100%"}
     >
-      <Link className="colored" href={`/posts/${item.node?._sys.filename}`}>
+      <Link className="colored" href={`/works/${item.node?._sys.filename}`}>
         {item.node?.name}
       </Link>
 
