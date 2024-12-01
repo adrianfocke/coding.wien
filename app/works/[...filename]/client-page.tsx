@@ -1,5 +1,5 @@
 "use client";
-import { Box, Container, Flex, Text } from "@radix-ui/themes";
+import { Box, Container, Flex, Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
@@ -43,23 +43,38 @@ export default function ClientPage(props: ClientPageProps) {
             objectFit: "cover",
           }}
         />
-        <Text>{work.name}</Text>
+        <Heading color={"pink"} as={"h1"}>
+          {work.name}
+        </Heading>
       </Flex>
 
-      <Flex align={"center"} justify={"center"}>
+      <Flex py={"2"} align={"center"} justify={"center"}>
         {work.info?.map((item, i) => (
           <Box key={i} mx="2">
-            <Text weight={"medium"}>{item?.key}: </Text>
-            <Text>{item?.value}</Text>
+            <Text size="4" weight={"medium"}>
+              {item?.key}:{" "}
+            </Text>
+            <Text size="4">{item?.value}</Text>
           </Box>
         ))}
       </Flex>
 
-      <Container mx="2">
-        <TinaMarkdown content={work.detailedInfo} />
+      <Container py={"2"} mx="2">
+        <TinaMarkdown
+          content={work.detailedInfo}
+          components={{
+            p(props) {
+              return (
+                <Text as={"p"} size="4">
+                  {props?.children}
+                </Text>
+              );
+            },
+          }}
+        />
       </Container>
 
-      <Container mx="2">
+      <Container py={"2"} mx="2">
         <Grid
           variant={GridVariant.Reference}
           content={work._sys.relativePath}

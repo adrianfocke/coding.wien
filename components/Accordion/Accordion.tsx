@@ -9,7 +9,7 @@ export default function Accordion() {
       <RadixAccordion.Item className="AccordionItem" value="item-1">
         <Trigger>
           <Flex direction={"row"} align={"center"} gap={"1"}>
-            <Text>Yoga mit Coco</Text>
+            <Text size="4">Yoga mit Coco</Text>
             <ChevronDownIcon className="AccordionChevron" aria-hidden />
           </Flex>
         </Trigger>

@@ -13,18 +13,18 @@ export default function NavigationMenu({ links }: RadixNavigationMenuProps) {
         <RadixNavigationMenu.Item>
           <RadixNavigationMenu.Link
             className="RadixNavigationMenuLink"
-            href="/posts"
+            href="/"
           >
-            Work
+            Home
           </RadixNavigationMenu.Link>
         </RadixNavigationMenu.Item>
 
         <RadixNavigationMenu.Item>
           <RadixNavigationMenu.Link
             className="RadixNavigationMenuLink"
-            href="https://github.com/radix-ui"
+            href="/works"
           >
-            About
+            Work
           </RadixNavigationMenu.Link>
         </RadixNavigationMenu.Item>
 

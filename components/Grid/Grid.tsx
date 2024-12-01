@@ -12,10 +12,8 @@ import client from "../../tina/__generated__/client";
 import type { WorkConnectionEdges } from "../../tina/__generated__/types";
 import type { ReferenceRelativePath } from "../../tina/components";
 import {
-  HeightField,
   ReferenceField,
   RichTextField,
-  WidthField,
   type SpecialFieldKey,
 } from "../../tina/fields";
 import "./styles.css";
@@ -129,8 +127,8 @@ export const GridTemplate = {
         },
       ],
     },
-    WidthField,
-    HeightField,
+    // WidthField,
+    // HeightField,
   ],
 } as Template;
 
@@ -194,7 +192,7 @@ export default function Grid({
 
   return (
     <RadixGrid
-      my={"6"}
+      py={"2"}
       columns={{ xs: "1", md: "2" }}
       gap={"2"}
       className="no-scrollbar"

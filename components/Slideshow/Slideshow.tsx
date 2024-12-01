@@ -1,5 +1,5 @@
 import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
-import { AccessibleIcon, Box, Flex, IconButton } from "@radix-ui/themes";
+import { AccessibleIcon, Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import Image from "next/image";
 import { type LegacyRef } from "react";
@@ -76,6 +76,13 @@ export default function Slideshow({
                     }}
                   />
                 ),
+                p(props) {
+                  return (
+                    <Text as={"p"} size="4">
+                      {props?.children}
+                    </Text>
+                  );
+                },
               }}
             />
           </Flex>

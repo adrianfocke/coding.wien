@@ -1,7 +1,6 @@
 import * as RadixForm from "@radix-ui/react-form";
-import { Box, Button, Card, Flex, Spinner, Text } from "@radix-ui/themes";
-import type { Responsive } from "@radix-ui/themes/dist/cjs/props/prop-def";
-import { IntlField, WidthField, type IntlFieldType } from "../../tina/fields";
+import { Button, Card, Flex, Spinner, Text } from "@radix-ui/themes";
+import { IntlField, type IntlFieldType } from "../../tina/fields";
 import { sendForm } from "./action";
 import { FormField } from "./FormField";
 import { useForm } from "./hook";
@@ -9,20 +8,19 @@ import { useForm } from "./hook";
 export const FormTemplate = {
   name: "Form",
   label: "Form",
-  fields: [IntlField("title"), WidthField],
+  fields: [IntlField("title")],
 };
 
 export type FormProps = {
   title?: IntlFieldType;
-  width: Responsive<string>;
 };
 
-export default function Form({ title, width = "200px" }: FormProps) {
+export default function Form({ title }: FormProps) {
   const { state, setFormState } = useForm();
 
   return (
-    <Box width={width}>
-      <Card variant="ghost">
+    <Flex justify={"center"} width={"100%"}>
+      <Card style={{ width: "50vw", maxWidth: "100vw" }} variant="ghost">
         <RadixForm.Root
           onSubmit={async (event) => {
             event.preventDefault();
@@ -40,7 +38,11 @@ export default function Form({ title, width = "200px" }: FormProps) {
               .catch(() => setFormState("error"));
           }}
         >
-          {title && <Text weight={"medium"}>{title["de"]}</Text>}
+          {title && (
+            <Text size="4" weight={"medium"}>
+              {title["de"]}
+            </Text>
+          )}
           <FormField
             inputType="email"
             name={"email"}
@@ -49,7 +51,7 @@ export default function Form({ title, width = "200px" }: FormProps) {
 
           <FormField
             inputType="text"
-            name={"inquiry"}
+            name={"anfrage"}
             validations={["valueMissing"]}
           />
 
@@ -59,13 +61,13 @@ export default function Form({ title, width = "200px" }: FormProps) {
                 <Spinner loading={state === "sending"}></Spinner>
                 {state === "idle" && "Senden"}
                 {state === "sending" && "Senden"}
-                {state === "sent" && "Sent!"}
-                {state === "error" && "Error!"}
+                {state === "sent" && "Gesendet!"}
+                {state === "error" && "Leider gab es einen Fehler!"}
               </Button>
             </Flex>
           </RadixForm.Submit>
         </RadixForm.Root>
       </Card>
-    </Box>
+    </Flex>
   );
 }

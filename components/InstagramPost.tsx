@@ -97,7 +97,9 @@ export default function InstagramPost({
                 height: "auto",
               }}
             ></Image>
-            <Text weight={"medium"}>{account.toUpperCase()}</Text>
+            <Text size="4" weight={"medium"}>
+              {account.toUpperCase()}
+            </Text>
           </Flex>
 
           <Link title={`External link to ${url}`} target={"_blank"} href={url}>
@@ -112,10 +114,10 @@ export default function InstagramPost({
         <Slideshow slides={slides as []} />
 
         <Box mt={"2"}>
-          <Text mr={"1"} weight={"medium"}>
+          <Text size="4" mr={"1"} weight={"medium"}>
             {account.toUpperCase()}
           </Text>
-          <Text>{description["de"]}</Text>
+          <Text size="4">{description["de"]}</Text>
         </Box>
       </Card>
     </Box>

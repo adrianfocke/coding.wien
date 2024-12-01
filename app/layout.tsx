@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={kode_mono.variable}>
-      <body style={{ margin: 0 }}>
+      <body style={{ margin: 0, backgroundColor: "#FDD3D0" }}>
         <Theme
           accentColor="pink"
           grayColor="mauve"
