@@ -26,7 +26,7 @@ export default function ClientPage(props: ClientPageProps) {
 
   return (
     <div className="responsive-flex" data-testid="client-page">
-      <Container>
+      <Container mx="2">
         <TinaMarkdown content={body} components={components} />
       </Container>
     </div>

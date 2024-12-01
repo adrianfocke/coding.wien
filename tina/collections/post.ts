@@ -1,4 +1,5 @@
 import type { Collection } from "tinacms";
+import { allTemplates } from "../components";
 import { SEOField } from "../fields";
 import {
   CHARACTERS_REGEX,
@@ -32,7 +33,7 @@ export default {
     },
     {
       name: "info",
-      label: "Basic infos",
+      label: "Basic info",
       type: "object",
       list: true,
       ui: {
@@ -47,6 +48,12 @@ export default {
         { name: "key", label: "Key", type: "string" },
         { name: "value", label: "Value", type: "string" },
       ],
+    },
+    {
+      name: "detailedInfo",
+      label: "More info",
+      type: "rich-text",
+      templates: allTemplates,
     },
     {
       name: "images",
