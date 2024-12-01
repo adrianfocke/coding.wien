@@ -23,7 +23,7 @@ void React; // Making sure it's imported
 export enum GridVariant {
   "Reference" = "Reference",
   "Rich-Text" = "Rich-Text",
-  "Post-List" = "Post-List",
+  "Work-List" = "Work-List",
 }
 
 const specialFieldKeyToGridVariant: Record<SpecialFieldKey, GridVariant> = {
@@ -34,7 +34,7 @@ const specialFieldKeyToGridVariant: Record<SpecialFieldKey, GridVariant> = {
 const fieldComponents: Record<GridVariant, (props: any) => JSX.Element> = {
   Reference: (props) => <TinaReferenceField {...props} />,
   "Rich-Text": (props) => <GroupListField {...props} />,
-  "Post-List": () => <></>,
+  "Work-List": () => <></>,
 };
 
 const doesTemplateKeyValueMatchCurrentFieldKey = (params: {
@@ -180,7 +180,7 @@ export default function Grid({
         });
     }
 
-    if (variant === GridVariant["Post-List"]) {
+    if (variant === GridVariant["Work-List"]) {
       getPosts()
         .then((posts) => setGridItems(posts as any))
         .catch((e) => {
@@ -212,7 +212,7 @@ export default function Grid({
             {variant === GridVariant["Rich-Text"] &&
               renderRichTextItem(item, i)}
 
-            {variant === GridVariant["Post-List"] &&
+            {variant === GridVariant["Work-List"] &&
               renderPostListItem(item, i)}
 
             {variant === GridVariant["Reference"] &&
