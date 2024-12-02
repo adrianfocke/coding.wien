@@ -83,7 +83,7 @@ export default function Slideshow({ slides = [] }: SlideshowProps) {
                 text(props) {
                   return (
                     <Text
-                      color={"pink"}
+                      color={"purple"}
                       size={{ initial: "6", md: "9" }}
                       weight={"bold"}
                       wrap={"pretty"}

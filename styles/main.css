@@ -1,3 +1,110 @@
+:root,
+.light,
+.light-theme {
+  --purple-1: #fffbff;
+  --purple-2: #fef7ff;
+  --purple-3: #ffe8ff;
+  --purple-4: #fdd9ff;
+  --purple-5: #f9cbfd;
+  --purple-6: #f3b9f7;
+  --purple-7: #eaa3f0;
+  --purple-8: #e083e8;
+  --purple-9: #d920ea;
+  --purple-10: #c907da;
+  --purple-11: #b100c1;
+  --purple-12: #61006b;
+
+  --purple-a1: #ff00ff04;
+  --purple-a2: #e000ff08;
+  --purple-a3: #ff00ff17;
+  --purple-a4: #f200ff26;
+  --purple-a5: #e200f634;
+  --purple-a6: #d400e246;
+  --purple-a7: #c500d65c;
+  --purple-a8: #c000d07c;
+  --purple-a9: #d400e7df;
+  --purple-a10: #c700d9f8;
+  --purple-a11: #b100c1;
+  --purple-a12: #61006b;
+
+  --purple-contrast: #fff;
+  --purple-surface: #fef5ffcc;
+  --purple-indicator: #d920ea;
+  --purple-track: #d920ea;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+
+    :root,
+    .light,
+    .light-theme {
+      --purple-1: oklch(99.4% 0.0066 324.1);
+      --purple-2: oklch(98.3% 0.0137 324.1);
+      --purple-3: oklch(95.6% 0.0406 324.1);
+      --purple-4: oklch(92.8% 0.0635 324.1);
+      --purple-5: oklch(89.7% 0.0834 324.1);
+      --purple-6: oklch(85.9% 0.1043 324.1);
+      --purple-7: oklch(80.9% 0.1312 324.1);
+      --purple-8: oklch(74.5% 0.1708 324.1);
+      --purple-9: oklch(64% 0.2861 324.1);
+      --purple-10: oklch(59.9% 0.2789 324.1);
+      --purple-11: oklch(53.2% 0.27 324.1);
+      --purple-12: oklch(34.1% 0.1864 324.1);
+
+      --purple-a1: color(display-p3 0.7569 0.0235 1 / 0.016);
+      --purple-a2: color(display-p3 0.7569 0.0196 0.8784 / 0.032);
+      --purple-a3: color(display-p3 0.8235 0.0118 0.9137 / 0.087);
+      --purple-a4: color(display-p3 0.7882 0.0078 0.9216 / 0.146);
+      --purple-a5: color(display-p3 0.7451 0.0078 0.902 / 0.197);
+      --purple-a6: color(display-p3 0.6941 0.0039 0.8275 / 0.267);
+      --purple-a7: color(display-p3 0.6549 0.0039 0.7765 / 0.35);
+      --purple-a8: color(display-p3 0.6353 0.0039 0.7608 / 0.471);
+      --purple-a9: color(display-p3 0.7216 0 0.8549 / 0.789);
+      --purple-a10: color(display-p3 0.6706 0 0.7961 / 0.844);
+      --purple-a11: color(display-p3 0.5843 0 0.6902 / 0.875);
+      --purple-a12: color(display-p3 0.3098 0 0.3725 / 0.95);
+
+      --purple-contrast: #fff;
+      --purple-surface: color(display-p3 0.9922 0.9608 0.9961 / 0.8);
+      --purple-indicator: oklch(64% 0.2861 324.1);
+      --purple-track: oklch(64% 0.2861 324.1);
+
+
+      --accent-1: var(--purple-1);
+      --accent-2: var(--purple-2);
+      --accent-3: var(--purple-3);
+      --accent-4: var(--purple-4);
+      --accent-5: var(--purple-5);
+      --accent-6: var(--purple-6);
+      --accent-7: var(--purple-7);
+      --accent-8: var(--purple-8);
+      --accent-9: var(--purple-9);
+      --accent-10: var(--purple-10);
+      --accent-11: var(--purple-11);
+      --accent-12: var(--purple-12);
+
+      --success-1: var(--green-1);
+      --success-2: var(--green-2);
+      /* repeat for all steps */
+
+      --warning-1: var(--yellow-1);
+      --warning-2: var(--yellow-2);
+      /* repeat for all steps */
+
+      --danger-1: var(--red-1);
+      --danger-2: var(--red-2);
+      /* repeat for all steps */
+    }
+  }
+}
+
+:root,
+.light,
+.light-theme,
+.radix-themes {
+  --color-background: #FDD3D0;
+}
 .radix-themes {
   --default-font-family: var(--font-kode_mono);
   --font-weight-light: 200;
