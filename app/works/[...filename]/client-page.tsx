@@ -1,5 +1,5 @@
 "use client";
-import { Box, Container, Flex, Heading, Text } from "@radix-ui/themes";
+import { Box, Container, Flex, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
@@ -42,9 +42,14 @@ export default function ClientPage(props: ClientPageProps) {
             objectFit: "cover",
           }}
         />
-        <Heading color={"pink"} as={"h2"}>
+        <Text
+          color={"pink"}
+          size={{ initial: "6", md: "9" }}
+          weight={"bold"}
+          wrap={"pretty"}
+        >
           {work.name}
-        </Heading>
+        </Text>
       </Flex>
 
       <Flex wrap={"wrap"} py={"2"} mx={"2"} justify={"center"}>

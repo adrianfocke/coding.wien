@@ -1,5 +1,5 @@
 import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
-import { AccessibleIcon, Box, Flex, IconButton } from "@radix-ui/themes";
+import { AccessibleIcon, Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { type LegacyRef } from "react";
 import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
@@ -71,6 +71,18 @@ export default function Slideshow({ slides = [] }: SlideshowProps) {
                     }}
                   />
                 ),
+                text(props) {
+                  return (
+                    <Text
+                      color={"pink"}
+                      size={{ initial: "6", md: "9" }}
+                      weight={"bold"}
+                      wrap={"pretty"}
+                    >
+                      {props?.children}
+                    </Text>
+                  );
+                },
               }}
             />
           </Flex>
