@@ -181,15 +181,19 @@ export default function Grid({
     }
 
     if (variant === GridVariant["Work-List"]) {
-      getPosts()
-        .then((posts) => {
-          console.log("Posts: ", posts);
-          setGridItems(posts as any);
-        })
-        .catch((e) => {
-          console.error(e);
-          setGridItems(undefined);
-        });
+      if (content && content[0].node) {
+        setGridItems(content);
+      } else {
+        getPosts()
+          .then((posts) => {
+            console.log("Posts: ", posts);
+            setGridItems(posts as any);
+          })
+          .catch((e) => {
+            console.error(e);
+            setGridItems(undefined);
+          });
+      }
     }
   }, [variant, content]);
 
