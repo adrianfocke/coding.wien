@@ -14,6 +14,11 @@ export default {
   fields: [
     { ...SEOField },
     {
+      name: "startDate",
+      label: "Spielbeginn",
+      type: "datetime",
+    },
+    {
       name: "name",
       label: "Name",
       type: "string",

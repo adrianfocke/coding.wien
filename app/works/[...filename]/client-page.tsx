@@ -53,7 +53,7 @@ export default function ClientPage(props: ClientPageProps) {
           }}
         />
         <Text
-          color={"purple"}
+          style={{ color: "#D920EA" }}
           size={{ initial: "6", md: "9" }}
           weight={"bold"}
           wrap={"pretty"}
@@ -73,13 +73,13 @@ export default function ClientPage(props: ClientPageProps) {
         ))}
       </Flex>
 
-      <Container py={"2"} mx="2">
+      <Container mt="6" mx="2">
         <TinaMarkdown
           content={work.detailedInfo}
           components={{
             p(props) {
               return (
-                <Text as={"p"} size="4">
+                <Text mb={"2"} as={"p"} size="4">
                   {props?.children}
                 </Text>
               );

@@ -83,7 +83,7 @@ export default function Slideshow({ slides = [] }: SlideshowProps) {
                 text(props) {
                   return (
                     <Text
-                      color={"purple"}
+                      style={{ color: "#D920EA" }}
                       size={{ initial: "6", md: "9" }}
                       weight={"bold"}
                       wrap={"pretty"}
@@ -97,7 +97,7 @@ export default function Slideshow({ slides = [] }: SlideshowProps) {
           </Flex>
         ))}
       </Flex>
-      <Flex
+      {/* <Flex
         align={"center"}
         style={{
           pointerEvents: "none",
@@ -139,7 +139,7 @@ export default function Slideshow({ slides = [] }: SlideshowProps) {
             <CaretRightIcon width={20} height={20}></CaretRightIcon>
           </AccessibleIcon>
         </IconButton>
-      </Flex>
+      </Flex> */}
     </Box>
   );
 }
