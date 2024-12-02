@@ -58,9 +58,8 @@ export default {
     />
   ),
   Slideshow: (props: SlideshowProps & { elements: any[] }) => {
-    const { height } = props;
     const slides = props.elements?.map((e) => e.element) ?? [];
-    return <Slideshow slides={slides} height={height} />;
+    return <Slideshow slides={slides} />;
   },
   Grid: (
     props: GridProps & {
