@@ -1,6 +1,7 @@
 "use client";
 import { Box, Container, Flex, Text } from "@radix-ui/themes";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import Grid, { GridVariant } from "../../../components/Grid/Grid";
@@ -24,13 +25,22 @@ export default function ClientPage(props: ClientPageProps) {
 
   const { work } = data;
 
+  const [flexHeight, setFlexHeight] = useState<string>("65vh");
+
+  useEffect(() => {
+    if (!!window) {
+      console.log("Changing");
+      setFlexHeight(Math.round(window.innerHeight / 1.5) + "px");
+    }
+  }, []);
+
   return (
     <Flex direction={"column"}>
       <Flex
         position={"relative"}
         align={"center"}
         justify={"center"}
-        style={{ height: "60vh" }}
+        height={flexHeight}
       >
         <Image
           priority={true}

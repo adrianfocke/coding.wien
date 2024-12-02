@@ -1,7 +1,7 @@
 import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import { AccessibleIcon, Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import Image from "next/image";
-import { type LegacyRef } from "react";
+import { useEffect, useState, type LegacyRef } from "react";
 import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
 import { RichTextField } from "../../tina/fields";
@@ -22,11 +22,20 @@ export default function Slideshow({ slides = [] }: SlideshowProps) {
   const { nextSlide, previousSlide, slideshow, slideshowContainer } =
     useSlideshow();
 
+  const [boxHeight, setBoxHeight] = useState<string>("100vh");
+
+  useEffect(() => {
+    if (!!window) {
+      console.log("Changing");
+      setBoxHeight(window.innerHeight + "px");
+    }
+  }, []);
+
   return (
     <Box
       position={"relative"}
       width={"100%"}
-      height={`calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom))`}
+      height={boxHeight}
       ref={slideshowContainer as LegacyRef<HTMLDivElement>}
     >
       <Flex
