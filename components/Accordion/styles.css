@@ -9,7 +9,7 @@ h3 {
 }
 
 .AccordionRoot {
-    width: max-content;
+    width: "100%";
 }
 
 .AccordionItem {
@@ -36,21 +36,16 @@ h3 {
 } */
 
 
-.AccordionTrigger {}
 
-.AccordionTrigger:hover {
-    background-color: var(--mauve-2);
-}
 
 .AccordionTrigger[data-state="open"] {
     text-decoration: underline;
 }
 
 .AccordionContent {
-    margin-top: 30px;
-    height: 460px;
+    height: min-content;
     overflow: hidden;
-    background-color: var(--mauve-2);
+
 }
 
 .AccordionContent[data-state="open"] {
