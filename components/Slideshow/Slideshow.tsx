@@ -1,5 +1,4 @@
-import { CaretLeftIcon, CaretRightIcon } from "@radix-ui/react-icons";
-import { AccessibleIcon, Box, Flex, IconButton, Text } from "@radix-ui/themes";
+import { Box, Flex, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { useEffect, useState, type LegacyRef } from "react";
 import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
@@ -19,8 +18,7 @@ export type SlideshowProps = {
 };
 
 export default function Slideshow({ slides = [] }: SlideshowProps) {
-  const { nextSlide, previousSlide, slideshow, slideshowContainer } =
-    useSlideshow();
+  const { slideshow, slideshowContainer } = useSlideshow();
 
   const [boxHeight, setBoxHeight] = useState<string>("100vh");
 

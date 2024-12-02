@@ -20,7 +20,6 @@ import { getReferenceRelativePathFromReferencePath } from "./utils";
 export const allTemplates = [
   AccordionTemplate,
   FormTemplate,
-  InstagramPostTemplate,
   SlideshowTemplate,
   GridTemplate,
 ];
@@ -30,33 +29,6 @@ export type ReferenceRelativePath = `${string}.json`;
 
 export default {
   Form: ({ title }: FormProps) => <Form title={title} />,
-  InstagramPost: ({
-    width,
-    account,
-    description,
-    url,
-    slides,
-  }: InstagramPostProps) => (
-    <InstagramPost
-      account={account}
-      url={url}
-      description={description}
-      slides={slides.map((slide: any) => (
-        <Image
-          src={slide.imgSrc}
-          alt={slide.altText}
-          width={660}
-          height={400}
-          style={{
-            objectFit: "cover",
-            maxWidth: "100%",
-            height: "auto",
-          }}
-        />
-      ))}
-      width={width}
-    />
-  ),
   Slideshow: (props: SlideshowProps & { elements: any[] }) => {
     const slides = props.elements?.map((e) => e.element) ?? [];
     return <Slideshow slides={slides} />;
