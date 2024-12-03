@@ -17,6 +17,7 @@ export default {
       name: "startDate",
       label: "Spielbeginn",
       type: "datetime",
+      required: true,
     },
     {
       name: "name",

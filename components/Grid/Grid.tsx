@@ -187,7 +187,13 @@ export default function Grid({
         getPosts()
           .then((posts) => {
             console.log("Posts: ", posts);
-            setGridItems(posts as any);
+            setGridItems(
+              (posts as any).sort(
+                (a, b) =>
+                  new Date(b!.node?.startDate!).getTime() -
+                  new Date(a!.node?.startDate!).getTime()
+              )
+            );
           })
           .catch((e) => {
             console.error(e);
