@@ -18,7 +18,7 @@ export type SlideshowProps = {
 };
 
 export default function Slideshow({ slides = [] }: SlideshowProps) {
-  const { slideshow, slideshowContainer } = useSlideshow();
+  const { slideshow, slideshowContainer, nextSlide } = useSlideshow();
 
   const [boxHeight, setBoxHeight] = useState<string>("100vh");
 
@@ -28,6 +28,14 @@ export default function Slideshow({ slides = [] }: SlideshowProps) {
       setBoxHeight(window.innerHeight + "px");
     }
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [nextSlide]);
 
   return (
     <Box
