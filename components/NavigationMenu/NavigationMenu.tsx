@@ -2,12 +2,7 @@ import * as RadixNavigationMenu from "@radix-ui/react-navigation-menu";
 
 import "./styles.css";
 
-export type RadixNavigationMenuProps = {
-  links: string[];
-};
-
-export default function NavigationMenu({ links }: RadixNavigationMenuProps) {
-  console.log(links);
+export default function NavigationMenu() {
   return (
     <RadixNavigationMenu.Root className="RadixNavigationMenuRoot">
       <RadixNavigationMenu.List className="RadixNavigationMenuList">

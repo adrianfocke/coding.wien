@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en" className={kode_mono.variable}>
       <body style={{ margin: 0, backgroundColor: "#FDD3D0" }}>
         <Theme accentColor={"purple"} appearance={"light"}>
-          <NavigationMenu links={[]} />
+          <NavigationMenu />
           <main>{children}</main>
         </Theme>
       </body>
