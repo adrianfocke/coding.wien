@@ -18,7 +18,7 @@ export type SlideshowProps = {
 };
 
 export default function Slideshow({ slides = [] }: SlideshowProps) {
-  const { slideshow, slideshowContainer, nextSlide } = useSlideshow({
+  const { slideshow, slideshowContainer } = useSlideshow({
     timeout: 4000,
   });
 
