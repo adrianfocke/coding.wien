@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useSlideshow = () => {
+export const useSlideshow = (slideshowSettings?: { timeout?: number }) => {
   const slideshowContainer = useRef<HTMLElement>(null);
   const slideshow = useRef<HTMLElement>(null);
-  
+
   const [slideWidth, setSlideWidth] = useState<number>(0);
   const [displayedSlide, setDisplayedSlide] = useState<number>(1);
 
@@ -68,6 +68,16 @@ export const useSlideshow = () => {
       currentSlideshow?.removeEventListener("scroll", handleScroll);
     };
   }, [displayedSlide, slideWidth]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (slideshowSettings?.timeout) {
+        nextSlide();
+      }
+    }, slideshowSettings!.timeout);
+
+    return () => clearInterval(interval);
+  }, [nextSlide]);
 
   return { slideshowContainer, slideshow, nextSlide, previousSlide };
 };
