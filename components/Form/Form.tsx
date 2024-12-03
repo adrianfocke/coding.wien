@@ -30,7 +30,7 @@ export default function Form({ title }: FormProps) {
               new FormData(event.currentTarget)
             ) as {
               email: string;
-              inquiry: string;
+              anfrage: string;
             };
 
             sendForm(formData)
