@@ -43,7 +43,6 @@ export default function Slideshow({
 
   useEffect(() => {
     if (!!window) {
-      console.log("Changing");
       setBoxHeight(window.innerHeight + "px");
     }
   }, []);
@@ -82,8 +81,9 @@ export default function Slideshow({
           }}
           size={{ initial: "6", md: "9" }}
           as={"h1"}
+          align={"center"}
         >
-          Valerie Voigt
+          VALERIE VOIGT
         </Heading>
         {slides.map((slide, i) => (
           <Flex

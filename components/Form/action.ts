@@ -4,8 +4,6 @@ export const sendForm = async (formData: { email: string; anfrage: string }) => 
   const { email, anfrage } = formData;
   const nodemailer = await import("nodemailer");
 
-  console.log("Inquiry: ", formData.anfrage);
-
   const transporter = nodemailer.createTransport({
     host: process.env.MAIL_PROVIDER,
     port: 465,

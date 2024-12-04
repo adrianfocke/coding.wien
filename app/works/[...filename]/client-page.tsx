@@ -30,7 +30,6 @@ export default function ClientPage(props: ClientPageProps) {
 
   useEffect(() => {
     if (!!window) {
-      console.log("Changing");
       setFlexHeight(Math.round(window.innerHeight / 1.5) + "px");
     }
   }, []);

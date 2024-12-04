@@ -146,7 +146,6 @@ export default function Grid({
   const [gridItemHeight, setGridItemHeight] = useState<number>(200);
 
   useEffect(() => {
-    console.log(gridItemContainer.current);
     setGridItemHeight(gridItemContainer.current?.offsetWidth ?? 200);
   }, [gridItems]);
 
@@ -186,7 +185,6 @@ export default function Grid({
       } else {
         getPosts()
           .then((posts) => {
-            console.log("Posts: ", posts);
             setGridItems(
               (posts as any).sort(
                 (a, b) =>
