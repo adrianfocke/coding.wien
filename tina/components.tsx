@@ -47,7 +47,7 @@ export const customComponents = {
   Form: ({ title }: FormProps) => <Form title={title} />,
   Slideshow: (props: SlideshowProps & { elements: any[] }) => {
     const slides = props.elements?.map((e) => e.element) ?? [];
-    return <Slideshow slides={slides} />;
+    return <Slideshow slides={slides} heading={props.heading} />;
   },
   Grid: (
     props: GridProps & {

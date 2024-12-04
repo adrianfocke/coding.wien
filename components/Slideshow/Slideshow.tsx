@@ -1,8 +1,8 @@
-import { Box, Flex, Text } from "@radix-ui/themes";
-import Image from "next/image";
+import { Box, Flex, Heading } from "@radix-ui/themes";
 import { useEffect, useState, type LegacyRef } from "react";
 import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
+import { defaultComponents } from "../../tina/components";
 import { RichTextField } from "../../tina/fields";
 import useSlideshow from "./hook";
 import "./styles.css";
@@ -10,14 +10,31 @@ import "./styles.css";
 export const SlideshowTemplate = {
   name: "Slideshow",
   label: "Slideshow",
-  fields: [RichTextField],
+  fields: [
+    {
+      name: "heading",
+      label: "Heading",
+      type: "string",
+      options: ["Upper third", "Middle", "Lower third", "Invisible"],
+      ui: {
+        defaultItem: {
+          heading: "Upper third",
+        },
+      },
+    },
+    RichTextField,
+  ],
 };
 
 export type SlideshowProps = {
   slides: TinaMarkdownContent[];
+  heading?: "Upper third" | "Middle" | "Lower third" | "Invisible";
 };
 
-export default function Slideshow({ slides = [] }: SlideshowProps) {
+export default function Slideshow({
+  slides = [],
+  heading = "Upper third",
+}: SlideshowProps) {
   const { slideshow, slideshowContainer } = useSlideshow({
     timeout: 4000,
   });
@@ -49,6 +66,25 @@ export default function Slideshow({ slides = [] }: SlideshowProps) {
         ref={slideshow as LegacyRef<HTMLDivElement>}
         style={{ scrollSnapType: "x mandatory" }}
       >
+        <Heading
+          style={{
+            color: "#EA3FB8",
+            position: "absolute",
+            top:
+              heading === "Upper third"
+                ? "30%"
+                : heading === "Middle"
+                ? "50%"
+                : "75%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: heading !== "Invisible" ? 0 : 1,
+          }}
+          size={"9"}
+          as={"h1"}
+        >
+          Valerie Voigt
+        </Heading>
         {slides.map((slide, i) => (
           <Flex
             className="slide"
@@ -62,37 +98,7 @@ export default function Slideshow({ slides = [] }: SlideshowProps) {
           >
             <TinaMarkdown
               content={slide}
-              components={{
-                img: (props: {
-                  url: string;
-                  caption?: string;
-                  alt?: string;
-                }) => (
-                  <Image
-                    priority={i === 0}
-                    src={props.url ?? ""}
-                    alt={""}
-                    fill
-                    sizes="100vw"
-                    style={{
-                      zIndex: "-1",
-                      objectFit: "cover",
-                    }}
-                  />
-                ),
-                text(props) {
-                  return (
-                    <Text
-                      style={{ color: "#D920EA" }}
-                      size={{ initial: "6", md: "9" }}
-                      weight={"bold"}
-                      wrap={"pretty"}
-                    >
-                      {props?.children}
-                    </Text>
-                  );
-                },
-              }}
+              components={{ ...defaultComponents }}
             />
           </Flex>
         ))}
