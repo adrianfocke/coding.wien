@@ -39,7 +39,7 @@
 
 .RadixNavigationMenuTrigger:hover,
 .RadixNavigationMenuLink:hover {
-    background-color: var(--purple-4);
+    background-color: #FDD3D0;
 }
 
 .RadixNavigationMenuTrigger {
