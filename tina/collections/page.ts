@@ -1,5 +1,6 @@
 import type { Collection } from "tinacms";
 import { allTemplates } from "../components";
+import { customToolbar } from "../fields";
 import {
   CHARACTERS_REGEX,
   CHARACTERS_REGEX_HINT,
@@ -36,6 +37,7 @@ export default {
       isBody: true,
       // TODO naming?
       templates: allTemplates,
+      toolbarOverride: customToolbar,
     },
   ],
   ui: {

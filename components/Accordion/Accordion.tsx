@@ -3,6 +3,7 @@ import { Box, ChevronDownIcon, Flex, Text } from "@radix-ui/themes";
 import React from "react";
 import type { Template } from "tinacms";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { customToolbar } from "../../tina/fields";
 import "./styles.css";
 
 export const AccordionTemplate = {
@@ -18,6 +19,7 @@ export const AccordionTemplate = {
       name: "content",
       label: "Accordion content",
       type: "rich-text",
+      toolbarOverride: customToolbar,
     },
   ],
 } as Template;

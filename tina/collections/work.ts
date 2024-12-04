@@ -1,5 +1,5 @@
 import type { Collection } from "tinacms";
-import { SEOField } from "../fields";
+import { customToolbar, SEOField } from "../fields";
 import {
   CHARACTERS_REGEX,
   CHARACTERS_REGEX_HINT,
@@ -58,6 +58,7 @@ export default {
       name: "detailedInfo",
       label: "More info",
       type: "rich-text",
+      toolbarOverride: customToolbar,
     },
     {
       name: "images",

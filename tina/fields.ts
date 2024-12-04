@@ -1,4 +1,5 @@
 import type { Template } from "tinacms";
+import type { ToolbarOverrideType } from "tinacms/dist/toolkit/fields/plugins/mdx-field-plugin/plate/toolbar/toolbar-overrides";
 
 /** Add this tina field to make an object field localized */
 const LANGUAGES = [
@@ -120,6 +121,16 @@ export const SEOField = {
   },
 };
 
+// TODO find one place to rest
+export const customToolbar: ToolbarOverrideType[] = [
+  "embed",
+  "heading",
+  "image",
+  "link",
+  "bold",
+  "italic",
+];
+
 /** Special fields */
 
 export type SpecialFieldKey = "referenceField" | "elements";
@@ -136,6 +147,7 @@ export const RichTextField: Template = {
       label: "Element",
       type: "rich-text",
       isBody: true,
+      toolbarOverride: customToolbar,
     },
   ],
 } as const;
