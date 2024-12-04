@@ -77,7 +77,7 @@ export const useSlideshow = (slideshowSettings?: { timeout?: number }) => {
     }, slideshowSettings!.timeout);
 
     return () => clearInterval(interval);
-  }, [nextSlide]);
+  }, [nextSlide, slideshowSettings]);
 
   return { slideshowContainer, slideshow, nextSlide, previousSlide };
 };

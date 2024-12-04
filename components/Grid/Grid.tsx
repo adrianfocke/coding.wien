@@ -10,7 +10,10 @@ import {
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../../tina/__generated__/client";
 import type { WorkConnectionEdges } from "../../tina/__generated__/types";
-import type { ReferenceRelativePath } from "../../tina/components";
+import {
+  defaultComponents,
+  type ReferenceRelativePath,
+} from "../../tina/components";
 import {
   ReferenceField,
   RichTextField,
@@ -220,8 +223,7 @@ export default function Grid({
             key={i}
             ref={gridItemContainer as LegacyRef<HTMLDivElement>}
           >
-            {variant === GridVariant["Rich-Text"] &&
-              renderRichTextItem(item, i)}
+            {variant === GridVariant["Rich-Text"] && renderRichTextItem(item)}
 
             {variant === GridVariant["Work-List"] &&
               renderPostListItem(item, i)}
@@ -235,23 +237,11 @@ export default function Grid({
   );
 }
 
-const renderRichTextItem = (item: any, i: number) => (
+const renderRichTextItem = (item: any) => (
   <TinaMarkdown
     content={item}
     components={{
-      img: (props: { url: string; caption?: string; alt?: string }) => (
-        <Image
-          priority={i === 0}
-          src={props.url ?? ""}
-          alt={""}
-          fill
-          sizes="100vw"
-          style={{
-            zIndex: "-1",
-            objectFit: "cover",
-          }}
-        />
-      ),
+      ...defaultComponents,
     }}
   />
 );

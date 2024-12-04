@@ -6,6 +6,7 @@ import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import Grid, { GridVariant } from "../../../components/Grid/Grid";
 import type { WorkQuery } from "../../../tina/__generated__/types";
+import { defaultComponents } from "../../../tina/components";
 
 interface ClientPageProps {
   query: string;
@@ -77,13 +78,7 @@ export default function ClientPage(props: ClientPageProps) {
         <TinaMarkdown
           content={work.detailedInfo}
           components={{
-            p(props) {
-              return (
-                <Text mb={"2"} as={"p"} size="4">
-                  {props?.children}
-                </Text>
-              );
-            },
+            ...defaultComponents,
           }}
         />
       </Container>

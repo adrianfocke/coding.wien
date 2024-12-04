@@ -4,7 +4,7 @@ import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
 import type { PageQuery } from "../../tina/__generated__/types";
-import components from "../../tina/components";
+import { customComponents, defaultComponents } from "../../tina/components";
 
 type ClientPageProps = {
   query: string;
@@ -32,7 +32,13 @@ export default function ClientPage(props: ClientPageProps) {
       data-testid="client-page"
     >
       <Container mx="2">
-        <TinaMarkdown content={body} components={components} />
+        <TinaMarkdown
+          content={body}
+          components={{
+            ...defaultComponents,
+            ...customComponents,
+          }}
+        />
       </Container>
     </div>
   );

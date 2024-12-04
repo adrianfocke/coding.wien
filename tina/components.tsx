@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { type Components } from "tinacms/dist/rich-text";
 import Accordion, {
   AccordionTemplate,
   type AccordionProps,
@@ -7,10 +8,6 @@ import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
 import type { GridProps } from "../components/Grid/Grid";
 import Grid, { GridTemplate, GridVariant } from "../components/Grid/Grid";
-import InstagramPost, {
-  InstagramPostTemplate,
-  type InstagramPostProps,
-} from "../components/InstagramPost";
 import Slideshow, {
   SlideshowTemplate,
   type SlideshowProps,
@@ -27,7 +24,26 @@ export const allTemplates = [
 export type ReferencePath = `content/${string}/${string}.json`;
 export type ReferenceRelativePath = `${string}.json`;
 
-export default {
+export const defaultComponents: Components<{}> = {
+  p(props) {
+    return <p {...props} />;
+  },
+  img: (props: { url: string; caption?: string; alt?: string }) => (
+    <Image
+      priority={false}
+      src={props.url ?? ""}
+      alt={""}
+      fill
+      sizes="100vw"
+      style={{
+        zIndex: "-1",
+        objectFit: "cover",
+      }}
+    />
+  ),
+};
+
+export const customComponents = {
   Form: ({ title }: FormProps) => <Form title={title} />,
   Slideshow: (props: SlideshowProps & { elements: any[] }) => {
     const slides = props.elements?.map((e) => e.element) ?? [];
