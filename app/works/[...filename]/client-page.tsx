@@ -77,6 +77,7 @@ export default function ClientPage(props: ClientPageProps) {
       <Container mt="6" mx="2">
         <TinaMarkdown
           content={work.detailedInfo}
+          // TODO How about a TinaFieldSettings object that does TinaFieldSettings[components] or so?
           components={{
             ...defaultComponents,
           }}

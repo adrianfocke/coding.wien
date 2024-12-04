@@ -35,7 +35,7 @@ export default {
       label: "Main Content",
       type: "rich-text",
       isBody: true,
-      // TODO naming?
+      // TODO naming? --> how about a TinaFieldSettings object that does TinaFieldSettings[templates] or so?
       templates: allTemplates,
       toolbarOverride: customToolbar,
     },
