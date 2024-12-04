@@ -34,7 +34,7 @@ export const defaultComponents: Components<{}> = {
       src={props.url ?? ""}
       alt={""}
       fill
-      sizes="100vw"
+      sizes="(max-width: 768px) 100vw, 33vw"
       style={{
         zIndex: "-1",
         objectFit: "cover",
