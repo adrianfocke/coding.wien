@@ -12,7 +12,8 @@
     display: flex;
     justify-content: center;
     background-color: var(--accent-9);
-    padding: 4px;
+    padding: 4px 6px;
+        padding-top: 6px;
     border-radius: 6px;
     list-style: none;
     margin: 0;
@@ -38,7 +39,7 @@
 
 .RadixNavigationMenuTrigger:hover,
 .RadixNavigationMenuLink:hover {
-    background-color: var(--violet-3);
+    background-color: var(--purple-4);
 }
 
 .RadixNavigationMenuTrigger {
@@ -86,4 +87,11 @@
     .RadixNavigationMenuContent {
         width: auto;
     }
+}
+.active-link {
+    color: #900B09;
+}
+
+.active-link:hover {
+    background-color: transparent;
 }

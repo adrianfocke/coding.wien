@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import Grid, { GridVariant } from "../../../components/Grid/Grid";
+import NavigationMenu from "../../../components/NavigationMenu/NavigationMenu";
 import type { WorkQuery } from "../../../tina/__generated__/types";
 import { defaultComponents } from "../../../tina/components";
 
@@ -35,60 +36,63 @@ export default function ClientPage(props: ClientPageProps) {
   }, []);
 
   return (
-    <Flex direction={"column"}>
-      <Flex
-        position={"relative"}
-        align={"center"}
-        justify={"center"}
-        height={flexHeight}
-      >
-        <Image
-          priority={true}
-          src={work.images ? work.images![0] : ("" as any)}
-          alt={""}
-          fill
-          style={{
-            zIndex: "-1",
-            objectFit: "cover",
-          }}
-        />
-        <Text
-          style={{ color: "#EA3FB8" }}
-          size={{ initial: "6", md: "9" }}
-          weight={"bold"}
-          wrap={"pretty"}
+    <>
+      <NavigationMenu />
+      <Flex direction={"column"}>
+        <Flex
+          position={"relative"}
+          align={"center"}
+          justify={"center"}
+          height={flexHeight}
         >
-          {work.name}
-        </Text>
+          <Image
+            priority={true}
+            src={work.images ? work.images![0] : ("" as any)}
+            alt={""}
+            fill
+            style={{
+              zIndex: "-1",
+              objectFit: "cover",
+            }}
+          />
+          <Text
+            style={{ color: "#EA3FB8" }}
+            size={{ initial: "6", md: "9" }}
+            weight={"bold"}
+            wrap={"pretty"}
+          >
+            {work.name}
+          </Text>
+        </Flex>
+
+        <Flex wrap={"wrap"} py={"2"} mx={"2"} justify={"center"}>
+          {work.info?.map((item, i) => (
+            <Box key={i} mx="2">
+              <Text size="4" weight={"medium"}>
+                {item?.key}:{" "}
+              </Text>
+              <Text size="4">{item?.value}</Text>
+            </Box>
+          ))}
+        </Flex>
+
+        <Container mt="6" mx="2">
+          <TinaMarkdown
+            content={work.detailedInfo}
+            // TODO How about a TinaFieldSettings object that does TinaFieldSettings[components] or so?
+            components={{
+              ...defaultComponents,
+            }}
+          />
+        </Container>
+
+        <Container py={"2"} mx="2">
+          <Grid
+            variant={GridVariant.Reference}
+            content={work._sys.relativePath}
+          />
+        </Container>
       </Flex>
-
-      <Flex wrap={"wrap"} py={"2"} mx={"2"} justify={"center"}>
-        {work.info?.map((item, i) => (
-          <Box key={i} mx="2">
-            <Text size="4" weight={"medium"}>
-              {item?.key}:{" "}
-            </Text>
-            <Text size="4">{item?.value}</Text>
-          </Box>
-        ))}
-      </Flex>
-
-      <Container mt="6" mx="2">
-        <TinaMarkdown
-          content={work.detailedInfo}
-          // TODO How about a TinaFieldSettings object that does TinaFieldSettings[components] or so?
-          components={{
-            ...defaultComponents,
-          }}
-        />
-      </Container>
-
-      <Container py={"2"} mx="2">
-        <Grid
-          variant={GridVariant.Reference}
-          content={work._sys.relativePath}
-        />
-      </Container>
-    </Flex>
+    </>
   );
 }

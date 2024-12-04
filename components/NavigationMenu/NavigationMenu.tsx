@@ -1,14 +1,19 @@
+"use client";
 import * as RadixNavigationMenu from "@radix-ui/react-navigation-menu";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import "./styles.css";
 
 export default function NavigationMenu() {
+  const pathname = usePathname();
+  console.log("Path: ", pathname);
+
   return (
     <RadixNavigationMenu.Root className="RadixNavigationMenuRoot">
       <RadixNavigationMenu.List className="RadixNavigationMenuList">
         <RadixNavigationMenu.Item>
           <RadixNavigationMenu.Link
-            className="RadixNavigationMenuLink"
+            className={`RadixNavigationMenuLink`}
             href="/"
             title="Zur Startseite"
             style={{
@@ -33,7 +38,9 @@ export default function NavigationMenu() {
 
         <RadixNavigationMenu.Item>
           <RadixNavigationMenu.Link
-            className="RadixNavigationMenuLink"
+            className={`RadixNavigationMenuLink ${
+              pathname === "/works" && "active-link"
+            }`}
             href="/works"
           >
             Work
@@ -42,7 +49,9 @@ export default function NavigationMenu() {
 
         <RadixNavigationMenu.Item>
           <RadixNavigationMenu.Link
-            className="RadixNavigationMenuLink"
+            className={`RadixNavigationMenuLink ${
+              pathname === "/about" && "active-link"
+            }`}
             href="/about"
           >
             About
@@ -51,7 +60,9 @@ export default function NavigationMenu() {
 
         <RadixNavigationMenu.Item>
           <RadixNavigationMenu.Link
-            className="RadixNavigationMenuLink"
+            className={`RadixNavigationMenuLink ${
+              pathname === "/contact" && "active-link"
+            }`}
             href="/contact"
           >
             Contact
