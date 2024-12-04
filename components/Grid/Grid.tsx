@@ -10,10 +10,7 @@ import {
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../../tina/__generated__/client";
 import type { WorkConnectionEdges } from "../../tina/__generated__/types";
-import {
-  defaultComponents,
-  type ReferenceRelativePath,
-} from "../../tina/components";
+import { type ReferenceRelativePath } from "../../tina/components";
 import {
   ReferenceField,
   RichTextField,
@@ -240,9 +237,11 @@ export default function Grid({
 const renderRichTextItem = (item: any) => (
   <TinaMarkdown
     content={item}
-    components={{
-      ...defaultComponents,
-    }}
+    components={
+      {
+        // TODO fix use default comps
+      }
+    }
   />
 );
 
