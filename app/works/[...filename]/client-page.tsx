@@ -54,7 +54,7 @@ export default function ClientPage(props: ClientPageProps) {
           }}
         />
         <Text
-          style={{ color: "#D920EA" }}
+          style={{ color: "#EA3FB8" }}
           size={{ initial: "6", md: "9" }}
           weight={"bold"}
           wrap={"pretty"}

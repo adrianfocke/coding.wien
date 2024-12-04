@@ -80,7 +80,7 @@ export default function Slideshow({
             transform: "translate(-50%, -50%)",
             zIndex: heading !== "Invisible" ? 0 : 1,
           }}
-          size={"9"}
+          size={{ initial: "6", md: "9" }}
           as={"h1"}
         >
           Valerie Voigt
