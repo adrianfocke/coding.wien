@@ -10,10 +10,7 @@ import {
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../../tina/__generated__/client";
 import type { WorkConnectionEdges } from "../../tina/__generated__/types";
-import {
-  defaultComponents,
-  type ReferenceRelativePath,
-} from "../../tina/components";
+import { type ReferenceRelativePath } from "../../tina/components";
 import {
   ReferenceField,
   RichTextField,
@@ -236,7 +233,24 @@ export default function Grid({
 }
 
 const renderRichTextItem = (item: any) => (
-  <TinaMarkdown content={item} components={defaultComponents} />
+  <TinaMarkdown
+    content={item}
+    components={{
+      img: (props: { url: string; caption?: string; alt?: string }) => (
+        <Image
+          priority={false}
+          src={props.url ?? ""}
+          alt={""}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          style={{
+            zIndex: "-1",
+            objectFit: "cover",
+          }}
+        />
+      ),
+    }}
+  />
 );
 
 const renderPostListItem = (item: WorkConnectionEdges, i: number) => {
