@@ -65,7 +65,12 @@ export default function ClientPage(props: ClientPageProps) {
           </Text>
         </Flex>
 
-        <Flex wrap={"wrap"} py={"2"} mx={"2"} justify={"center"}>
+        <Flex
+          direction={{ initial: "column", md: "row" }}
+          wrap={"wrap"}
+          py={"2"}
+          justify={"center"}
+        >
           {work.info?.map((item, i) => (
             <Box key={i} mx="2">
               <Text size="4" weight={"medium"}>
