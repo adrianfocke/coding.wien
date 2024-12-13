@@ -1,6 +1,6 @@
 "use client";
 import * as RadixNavigationMenu from "@radix-ui/react-navigation-menu";
-import { Text } from "@radix-ui/themes";
+import { Flex, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import "./styles.css";
@@ -11,27 +11,23 @@ export default function NavigationMenu() {
 
   return (
     <RadixNavigationMenu.Root className="RadixNavigationMenuRoot">
-      <RadixNavigationMenu.List className="RadixNavigationMenuList test">
+      <RadixNavigationMenu.List className="RadixNavigationMenuList">
         <RadixNavigationMenu.Item>
           <RadixNavigationMenu.Link
-            className={`RadixNavigationMenuLink`}
             href="/"
             title="Zur Startseite"
             style={{
-              borderRadius: "50%",
-              backgroundColor: "#900B09",
               position: "relative",
-              width: "8px",
-              height: "14px",
-              marginRight: "4px",
             }}
           >
             <Image
               src={"/uploads/logo.png"}
               alt={""}
-              fill
+              height={"20"}
+              width={"24"}
               style={{
                 objectFit: "contain",
+                marginTop: "11px",
               }}
             ></Image>
           </RadixNavigationMenu.Link>
