@@ -1,5 +1,6 @@
 "use client";
 import * as RadixNavigationMenu from "@radix-ui/react-navigation-menu";
+import { Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import "./styles.css";
@@ -10,7 +11,7 @@ export default function NavigationMenu() {
 
   return (
     <RadixNavigationMenu.Root className="RadixNavigationMenuRoot">
-      <RadixNavigationMenu.List className="RadixNavigationMenuList">
+      <RadixNavigationMenu.List className="RadixNavigationMenuList test">
         <RadixNavigationMenu.Item>
           <RadixNavigationMenu.Link
             className={`RadixNavigationMenuLink`}
@@ -43,7 +44,7 @@ export default function NavigationMenu() {
             }`}
             href="/works"
           >
-            Work
+            <Text size={"4"}>Work</Text>
           </RadixNavigationMenu.Link>
         </RadixNavigationMenu.Item>
 
@@ -54,7 +55,7 @@ export default function NavigationMenu() {
             }`}
             href="/about"
           >
-            About
+            <Text size={"4"}>About</Text>
           </RadixNavigationMenu.Link>
         </RadixNavigationMenu.Item>
 
@@ -65,7 +66,7 @@ export default function NavigationMenu() {
             }`}
             href="/contact"
           >
-            Contact
+            <Text size={"4"}>Contact</Text>
           </RadixNavigationMenu.Link>
         </RadixNavigationMenu.Item>
       </RadixNavigationMenu.List>
