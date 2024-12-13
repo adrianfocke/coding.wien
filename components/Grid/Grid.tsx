@@ -296,6 +296,7 @@ const renderReferenceItem = (item: any, i: number) => (
     src={item}
     alt={""}
     fill
+    quality={100}
     sizes="100vw"
     style={{
       zIndex: "-1",
