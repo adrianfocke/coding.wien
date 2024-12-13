@@ -9,15 +9,12 @@ import "./styles.css";
 
 export default function NavigationMenu() {
   const pathname = usePathname();
-
   const { edit } = useEditState();
-
-  console.log("Edit mode: ", edit);
 
   return (
     <RadixNavigationMenu.Root className="RadixNavigationMenuRoot">
       <RadixNavigationMenu.List className="RadixNavigationMenuList">
-        <RadixNavigationMenu.Item>
+        <RadixNavigationMenu.Item className="with-bg">
           <RadixNavigationMenu.Link
             href="/"
             title="Zur Startseite"
@@ -34,6 +31,7 @@ export default function NavigationMenu() {
                 objectFit: "contain",
                 marginTop: "11px",
               }}
+              layout={"fixed"}
             ></Image>
           </RadixNavigationMenu.Link>
         </RadixNavigationMenu.Item>
