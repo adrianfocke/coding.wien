@@ -1,6 +1,6 @@
 "use client";
 import * as RadixNavigationMenu from "@radix-ui/react-navigation-menu";
-import { Flex, Text } from "@radix-ui/themes";
+import { Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import "./styles.css";
