@@ -67,7 +67,7 @@ export default function Slideshow({
       >
         <Heading
           style={{
-            color: "#EA3FB8",
+            color: "#cd00e4",
             position: "absolute",
             top:
               heading === "Upper third"
