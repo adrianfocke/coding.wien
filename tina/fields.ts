@@ -103,14 +103,6 @@ export const WidthField: Template = {
   fields: Sizes,
 } as const;
 
-export const HeightField: Template = {
-  name: "height",
-  label: "Height",
-  //@ts-ignore
-  type: "object",
-  fields: Sizes,
-} as const;
-
 export const SEOField = {
   name: "seo",
   label: "SEO",

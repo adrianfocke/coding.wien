@@ -23,7 +23,7 @@ const getBreakpointRange = (width: number): Breakpoint => {
 };
 
 /** Returns the current element width in pixels */
-export const useCalculatePixelWidth = (width: Responsive<string>) => {
+const useCalculatePixelWidth = (width: Responsive<string>) => {
   if (typeof window === "undefined") {
     return 0;
   }
