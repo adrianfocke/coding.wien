@@ -28,11 +28,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { filename: string[] };
-}) {
+export default async function Page(
+  props: {
+    params: Promise<{ filename: string[] }>;
+  }
+) {
+  const params = await props.params;
   const data = await client.queries.page({
     relativePath: `${params.filename}.mdx`,
   });

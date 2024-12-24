@@ -1,7 +1,7 @@
 import { Box, Flex, Grid as RadixGrid, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState, type LegacyRef } from "react";
+import React, { useEffect, useRef, useState, type Ref, type JSX } from "react";
 import {
   GroupListField,
   ReferenceField as TinaReferenceField,
@@ -202,7 +202,7 @@ export default function Grid({
   }, [variant, content]);
 
   return (
-    <RadixGrid
+    (<RadixGrid
       py={"9"}
       columns={{ xs: "1", md: "2" }}
       gap={"7"}
@@ -216,7 +216,7 @@ export default function Grid({
             position={"relative"}
             overflowX={"hidden"}
             key={i}
-            ref={gridItemContainer as LegacyRef<HTMLDivElement>}
+            ref={gridItemContainer as Ref<HTMLDivElement>}
           >
             {variant === GridVariant["Rich-Text"] && renderRichTextItem(item)}
 
@@ -228,7 +228,7 @@ export default function Grid({
               renderReferenceItem(item, i)}
           </Box>
         ))}
-    </RadixGrid>
+    </RadixGrid>)
   );
 }
 

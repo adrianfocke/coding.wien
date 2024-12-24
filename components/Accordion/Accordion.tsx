@@ -76,7 +76,7 @@ const AccordionContent = React.forwardRef(
   ) => (
     <RadixAccordion.Content
       className={"AccordionContent"}
-      ref={forwardedRef as React.LegacyRef<HTMLDivElement> | undefined}
+      ref={forwardedRef as React.Ref<HTMLDivElement> | undefined}
     >
       <div>{children}</div>
     </RadixAccordion.Content>
