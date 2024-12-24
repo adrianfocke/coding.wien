@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body>
+      <body style={{ margin: 0 }}>
         <Theme>
           <main>{children}</main>
         </Theme>

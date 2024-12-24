@@ -1,2 +1,9 @@
 @import "./colors.css";
 @import "./test.css";
+/**/
+:root {
+    --margin-small: 24px;
+    --border-radius: 25px;
+    --icon-button-height: 20px;
+    --icon-button-width: 24px;
+}
