@@ -6,10 +6,10 @@
     "dev": "tinacms dev -c \"next dev\"",
     "build": "tinacms build && next build",
     "start": "tinacms build && next start",
-    "lint": "next lint",
+    "lint": "next lint && tsc",
     "test:e2e": "playwright test",
     "prepare": "husky",
-    "chores": "next lint && playwright test"
+    "chores": "pnpm lint && playwright test"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",

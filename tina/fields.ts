@@ -35,3 +35,28 @@ export const ReferenceField = (collections: string[]) => ({
   label: "Reference Field",
   collections,
 });
+
+const LANGUAGES = [
+  {
+    type: "string",
+    name: "de",
+    label: "German",
+    component: "textarea",
+  },
+  {
+    type: "string",
+    name: "en",
+    label: "English",
+    component: "textarea",
+  },
+];
+
+export type IntlFieldType = Record<"de" | "en", string>;
+export const IntlField = (name: string) => {
+  return {
+    name,
+    label: name,
+    type: "object",
+    fields: [...LANGUAGES],
+  };
+};

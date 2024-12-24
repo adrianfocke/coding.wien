@@ -1,5 +1,6 @@
 import type { Collection } from "tinacms";
-import { customToolbar, SEOField } from "../fields";
+import { SEOField } from "../fields";
+import { customToolbar } from "../types";
 import {
   CHARACTERS_REGEX,
   CHARACTERS_REGEX_HINT,
