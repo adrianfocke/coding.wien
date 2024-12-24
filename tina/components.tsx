@@ -12,6 +12,7 @@ import Slideshow, {
   SlideshowTemplate,
   type SlideshowProps,
 } from "../components/Slideshow/Slideshow";
+import buildRadixHeightObject from "../utils/buildRadixHeightObject";
 import { getReferenceRelativePathFromReferencePath } from "./utils";
 
 export const allTemplates = [
@@ -47,8 +48,9 @@ export const defaultComponents: Components<{}> = {
 export const customComponents = {
   Form: ({ title }: FormProps) => <Form title={title} />,
   Slideshow: (props: SlideshowProps & { elements: any[] }) => {
-    const slides = props.elements?.map((e) => e.element) ?? [];
-    return <Slideshow slides={slides} heading={props.heading} />;
+    const elements = props.elements?.map((e) => (e as any).element) ?? [];
+    const height = buildRadixHeightObject(props.height);
+    return <Slideshow elements={elements} height={height} />;
   },
   Grid: (
     props: GridProps & {

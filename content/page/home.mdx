@@ -4,12 +4,16 @@ name: Home
 ---
 
 <Slideshow
-  heading="Upper third"
   elements={[
-    { element: "![](</uploads/df22_skulpturenpark_walk-A_c-rappel (84).jpg>)\n" },
-    { element: "## ![](</uploads/so forsch so furchtlos 1.jpeg>)\n" },
-    { element: "![](/uploads/191_IMG_1909.jpg)\n" }
+    { element: "![](/uploads/15_DSC_9014.jpg)\n" },
+    { element: "![](/uploads/16_DSC_9069.jpg)\n" }
   ]}
+  height={{
+    lg: { unit: "vh", height: 30 },
+    sm: { height: 500, unit: "px" },
+    initial: { height: 200, unit: "px" },
+    xs: { height: 500, unit: "px" },
+    md: { height: 50, unit: "vh" },
+    xl: { height: 300, unit: "px" }
+  }}
 />
-
-<Grid variant="Work-List" />

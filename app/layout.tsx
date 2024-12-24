@@ -1,20 +1,22 @@
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
-import { Kode_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import React from "react";
 import "../styles/main.css";
+import { CONSTANTS } from "../utils/config";
 
-const kode_mono = Kode_Mono({
+const inter = Inter({
+  weight: "variable",
+  style: ["normal"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-kode_mono",
 });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Valerie Voigt",
-    default: "Valerie Voigt",
+    template: `%s | ${CONSTANTS.projectName}`,
+    default: CONSTANTS.projectName,
   },
 };
 
@@ -24,9 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={kode_mono.variable}>
-      <body style={{ margin: 0, backgroundColor: "#FDD3D0" }}>
-        <Theme accentColor={"purple"} appearance={"light"}>
+    <html lang="en" className={inter.className}>
+      <body>
+        <Theme>
           <main>{children}</main>
         </Theme>
       </body>

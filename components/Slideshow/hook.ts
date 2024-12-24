@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useSlideshow = (slideshowSettings?: { timeout?: number }) => {
+export const useSlideshow = (slideshowSettings?: {
+  nextSlideTimeout?: number;
+}) => {
   const slideshowContainer = useRef<HTMLElement>(null);
   const slideshow = useRef<HTMLElement>(null);
 
@@ -71,10 +73,10 @@ export const useSlideshow = (slideshowSettings?: { timeout?: number }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (slideshowSettings?.timeout) {
+      if (slideshowSettings?.nextSlideTimeout) {
         nextSlide();
       }
-    }, slideshowSettings!.timeout);
+    }, slideshowSettings?.nextSlideTimeout);
 
     return () => clearInterval(interval);
   }, [nextSlide, slideshowSettings]);

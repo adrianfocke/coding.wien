@@ -1,4 +1,4 @@
 export const CONSTANTS = {
-  projectName: "Valerie Voigt",
-  projectUrl: "https://www.valerievoigt.com",
+  projectName: "Coding.wien",
+  projectUrl: "https://www.coding.wien",
 };

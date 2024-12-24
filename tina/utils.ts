@@ -1,4 +1,3 @@
-import type { Reference } from "react";
 import type { ReferencePath, ReferenceRelativePath } from "./components";
 
 /** Regex for letters, numbers, umlaute, blank and hyphen */
