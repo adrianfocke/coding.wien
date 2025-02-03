@@ -1,7 +1,7 @@
 import { Box, Flex, Grid as RadixGrid, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState, type Ref, type JSX } from "react";
+import React, { useEffect, useRef, useState, type Ref } from "react";
 import {
   GroupListField,
   ReferenceField as TinaReferenceField,
