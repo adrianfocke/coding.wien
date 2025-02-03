@@ -22,8 +22,8 @@
     "next": "15.1.2",
     "nodemailer": "^6.9.15",
     "npm": "^10.8.3",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "tinacms": "latest",
     "typescript": "5.5.2"
   },
@@ -33,13 +33,8 @@
     "@tinacms/cli": "latest",
     "@types/node": "^22.5.5",
     "@types/nodemailer": "^6.4.16",
-    "eslint": "^8.50.0",
+    "eslint": "^8.57.1",
     "eslint-config-next": "15.1.2",
     "husky": "^9.1.6"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.0.2"
-    }
   }
 }

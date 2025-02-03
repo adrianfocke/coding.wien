@@ -6,6 +6,7 @@ settings:
 
 overrides:
   '@types/react': 19.0.2
+  use-sync-external-store: 1.4.0
 
 importers:
 
@@ -42,10 +43,10 @@ importers:
         specifier: ^10.8.3
         version: 10.8.3
       react:
-        specifier: 19.0.0
+        specifier: latest
         version: 19.0.0
       react-dom:
-        specifier: 19.0.0
+        specifier: latest
         version: 19.0.0(react@19.0.0)
       tinacms:
         specifier: latest
@@ -70,7 +71,7 @@ importers:
         specifier: ^6.4.16
         version: 6.4.16
       eslint:
-        specifier: ^8.50.0
+        specifier: ^8.57.1
         version: 8.57.1
       eslint-config-next:
         specifier: 15.1.2
@@ -391,11 +392,11 @@ packages:
   '@codemirror/language@6.0.0':
     resolution: {integrity: sha512-rtjk5ifyMzOna1c7PBu7J1VCt0PvA5wy3o8eMVnxMKb7z8KA7JFecvD04dSn14vj/bBaAbqRsGed5OjtofEnLA==}
 
-  '@codemirror/state@6.4.1':
-    resolution: {integrity: sha512-QkEyUiLhsJoZkbumGZlswmAhA7CBU02Wrz7zvH4SrcifbsqwlXShVXg65f3v/ts57W3dqyamEriMhij1Z3Zz4A==}
+  '@codemirror/state@6.5.2':
+    resolution: {integrity: sha512-FVqsPqtPWKVVL3dPSxy8wEF/ymIEuVzF1PK3VbUgrxXpJUSHQWWZz4JMToquRxnkw+36LTamCZG2iua2Ptq0fA==}
 
-  '@codemirror/view@6.35.0':
-    resolution: {integrity: sha512-I0tYy63q5XkaWsJ8QRv5h6ves7kvtrBWjBcnf/bzohFJQc5c14a1AQRdE8QpPF9eMp5Mq2FMm59TCj1gDfE7kw==}
+  '@codemirror/view@6.36.2':
+    resolution: {integrity: sha512-DZ6ONbs8qdJK0fdN7AB82CgI6tYXf4HWk1wSVa0+9bhVznCuuvhQtX8bFBoy3dv8rZSQqUd8GvhVAcielcidrA==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -860,6 +861,12 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
 
+  '@graphql-tools/utils@10.7.2':
+    resolution: {integrity: sha512-Wn85S+hfkzfVFpXVrQ0hjnePa3p28aB6IdAGCiD1SqBCSMDRzL+OFEtyAyb30nV9Mqflqs9lCqjqlR2puG857Q==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+
   '@graphql-tools/utils@9.2.1':
     resolution: {integrity: sha512-WUw506Ql6xzmOORlriNrD6Ugx+HjVgYxt9KCXD9mHAak+eaXSwuGGPyE60hy9xaDEoXKBsG7SkG69ybitaVl6A==}
     peerDependencies:
@@ -1063,6 +1070,9 @@ packages:
 
   '@lezer/lr@1.4.2':
     resolution: {integrity: sha512-pu0K1jCIdnQ12aWNaAVU5bzi7Bd1w54J3ECgANPmYLtQKP0HBj2cE/5coBD66MT10xbtIuUr7tg0Shbsvk0mDA==}
+
+  '@marijn/find-cluster-break@1.0.2':
+    resolution: {integrity: sha512-l0h88YhZFyKdXIFNfSWpyjStDjGHwZ/U7iobcK1cQQD8sejsONdQtTVU+1wVN1PBw40PiiHB1vA5S7VTfQiP9g==}
 
   '@monaco-editor/loader@1.4.0':
     resolution: {integrity: sha512-00ioBig0x642hytVspPl7DbQyaSWRaolYie/UFNjoTdvoKPzo6xrXLhTk9ixgIKcLH5b5vDOjVNiGyY+uDCUlg==}
@@ -6765,10 +6775,10 @@ packages:
       '@types/react':
         optional: true
 
-  use-sync-external-store@1.2.2:
-    resolution: {integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==}
+  use-sync-external-store@1.4.0:
+    resolution: {integrity: sha512-9WXSPC5fMv61vaupRkCKCxsPxBocVnwakBEkMIHHpkTTg6icbJtg6jzgtLDm4bl3cSHAca52rYWih0k4K3PfHw==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -6970,8 +6980,8 @@ packages:
     peerDependencies:
       zustand: '>=4.3.9'
 
-  zustand@4.5.5:
-    resolution: {integrity: sha512-+0PALYNJNgK6hldkgDq2vLrw5f6g/jCInz52n9RTpropGgeAf/ioFUCdtsjCqu4gNhW9D01rUQBROoRjdzyn2Q==}
+  zustand@4.5.6:
+    resolution: {integrity: sha512-ibr/n1hBzLLj5Y+yUcU7dYw8p6WnIVzdJbnX+1YpaScvZVF2ziugqHs+LAmHw4lWO9c/zRj+K1ncgWDQuthEdQ==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       '@types/react': 19.0.2
@@ -7029,7 +7039,7 @@ snapshots:
       '@floating-ui/dom': 1.6.12
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      use-sync-external-store: 1.2.2(react@18.3.1)
+      use-sync-external-store: 1.4.0(react@18.3.1)
 
   '@ariakit/react-core@0.4.15(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
@@ -7037,7 +7047,7 @@ snapshots:
       '@floating-ui/dom': 1.6.12
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
-      use-sync-external-store: 1.2.2(react@19.0.0)
+      use-sync-external-store: 1.4.0(react@19.0.0)
 
   '@ariakit/react@0.4.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -7396,18 +7406,20 @@ snapshots:
 
   '@codemirror/language@6.0.0':
     dependencies:
-      '@codemirror/state': 6.4.1
-      '@codemirror/view': 6.35.0
+      '@codemirror/state': 6.5.2
+      '@codemirror/view': 6.36.2
       '@lezer/common': 1.2.3
       '@lezer/highlight': 1.2.1
       '@lezer/lr': 1.4.2
       style-mod: 4.1.2
 
-  '@codemirror/state@6.4.1': {}
-
-  '@codemirror/view@6.35.0':
+  '@codemirror/state@6.5.2':
     dependencies:
-      '@codemirror/state': 6.4.1
+      '@marijn/find-cluster-break': 1.0.2
+
+  '@codemirror/view@6.36.2':
+    dependencies:
+      '@codemirror/state': 6.5.2
       style-mod: 4.1.2
       w3c-keyname: 2.2.8
 
@@ -7720,7 +7732,7 @@ snapshots:
 
   '@graphql-codegen/plugin-helpers@5.1.0(graphql@15.8.0)':
     dependencies:
-      '@graphql-tools/utils': 10.6.1(graphql@15.8.0)
+      '@graphql-tools/utils': 10.7.2(graphql@15.8.0)
       change-case-all: 1.0.15
       common-tags: 1.8.2
       graphql: 15.8.0
@@ -7861,6 +7873,14 @@ snapshots:
       value-or-promise: 1.0.12
 
   '@graphql-tools/utils@10.6.1(graphql@15.8.0)':
+    dependencies:
+      '@graphql-typed-document-node/core': 3.2.0(graphql@15.8.0)
+      cross-inspect: 1.0.1
+      dset: 3.1.4
+      graphql: 15.8.0
+      tslib: 2.8.1
+
+  '@graphql-tools/utils@10.7.2(graphql@15.8.0)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@15.8.0)
       cross-inspect: 1.0.1
@@ -8059,6 +8079,8 @@ snapshots:
   '@lezer/lr@1.4.2':
     dependencies:
       '@lezer/common': 1.2.3
+
+  '@marijn/find-cluster-break@1.0.2': {}
 
   '@monaco-editor/loader@1.4.0(monaco-editor@0.31.0)':
     dependencies:
@@ -10600,8 +10622,8 @@ snapshots:
       slate-hyperscript: 0.100.0(slate@0.103.0)
       slate-react: 0.107.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(slate@0.103.0)
       use-deep-compare: 1.3.0(react@18.3.1)
-      zustand: 4.5.5(@types/react@19.0.2)(immer@10.1.1)(react@18.3.1)
-      zustand-x: 3.0.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(scheduler@0.25.0)(zustand@4.5.5(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0))
+      zustand: 4.5.6(@types/react@19.0.2)(immer@10.1.1)(react@18.3.1)
+      zustand-x: 3.0.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(scheduler@0.25.0)(zustand@4.5.6(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0))
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -10630,8 +10652,8 @@ snapshots:
       slate-hyperscript: 0.100.0(slate@0.103.0)
       slate-react: 0.107.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(slate@0.103.0)
       use-deep-compare: 1.3.0(react@19.0.0)
-      zustand: 4.5.5(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0)
-      zustand-x: 3.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(zustand@4.5.5(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0))
+      zustand: 4.5.6(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0)
+      zustand-x: 3.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(zustand@4.5.6(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0))
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -12108,7 +12130,7 @@ snapshots:
       '@radix-ui/react-primitive': 2.0.0(@types/react@19.0.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      use-sync-external-store: 1.2.2(react@18.3.1)
+      use-sync-external-store: 1.4.0(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
@@ -12120,7 +12142,7 @@ snapshots:
       '@radix-ui/react-primitive': 2.0.0(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
-      use-sync-external-store: 1.2.2(react@19.0.0)
+      use-sync-external-store: 1.4.0(react@19.0.0)
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
@@ -16901,11 +16923,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.0.2
 
-  use-sync-external-store@1.2.2(react@18.3.1):
+  use-sync-external-store@1.4.0(react@18.3.1):
     dependencies:
       react: 18.3.1
 
-  use-sync-external-store@1.2.2(react@19.0.0):
+  use-sync-external-store@1.4.0(react@19.0.0):
     dependencies:
       react: 19.0.0
 
@@ -17146,41 +17168,41 @@ snapshots:
 
   zod@3.23.8: {}
 
-  zustand-x@3.0.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(scheduler@0.25.0)(zustand@4.5.5(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0)):
+  zustand-x@3.0.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(scheduler@0.25.0)(zustand@4.5.6(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0)):
     dependencies:
       immer: 10.1.1
       lodash.mapvalues: 4.6.0
       react-tracked: 1.7.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(scheduler@0.25.0)
-      zustand: 4.5.5(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0)
+      zustand: 4.5.6(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0)
     transitivePeerDependencies:
       - react
       - react-dom
       - react-native
       - scheduler
 
-  zustand-x@3.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(zustand@4.5.5(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0)):
+  zustand-x@3.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)(zustand@4.5.6(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0)):
     dependencies:
       immer: 10.1.1
       lodash.mapvalues: 4.6.0
       react-tracked: 1.7.14(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(scheduler@0.25.0)
-      zustand: 4.5.5(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0)
+      zustand: 4.5.6(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0)
     transitivePeerDependencies:
       - react
       - react-dom
       - react-native
       - scheduler
 
-  zustand@4.5.5(@types/react@19.0.2)(immer@10.1.1)(react@18.3.1):
+  zustand@4.5.6(@types/react@19.0.2)(immer@10.1.1)(react@18.3.1):
     dependencies:
-      use-sync-external-store: 1.2.2(react@18.3.1)
+      use-sync-external-store: 1.4.0(react@18.3.1)
     optionalDependencies:
       '@types/react': 19.0.2
       immer: 10.1.1
       react: 18.3.1
 
-  zustand@4.5.5(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0):
+  zustand@4.5.6(@types/react@19.0.2)(immer@10.1.1)(react@19.0.0):
     dependencies:
-      use-sync-external-store: 1.2.2(react@19.0.0)
+      use-sync-external-store: 1.4.0(react@19.0.0)
     optionalDependencies:
       '@types/react': 19.0.2
       immer: 10.1.1
