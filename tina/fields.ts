@@ -60,3 +60,19 @@ export const IntlField = (name: string) => {
     fields: [...LANGUAGES],
   };
 };
+
+export type Animation = "grow-in" | "ping" | "zoom-in-picture" | "flip";
+
+export const Intl = (template: Template) => {
+  let fields = null;
+
+  template.fields.forEach((field) => {
+    console.log("Field: ", field);
+  });
+
+  for (const language in LANGUAGES) {
+    console.log(`${language}: ${LANGUAGES[language]}`);
+  }
+
+  return null;
+};

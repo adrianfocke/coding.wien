@@ -42,3 +42,5 @@ yarn-error.log*
 
 TODO
 .vscode
+
+tsconfig.tsbuildinfo
