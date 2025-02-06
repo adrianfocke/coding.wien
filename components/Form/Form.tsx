@@ -1,22 +1,24 @@
 import * as RadixForm from "@radix-ui/react-form";
-import { Box, Button, Card, Flex, Spinner, Text } from "@radix-ui/themes";
-import { IntlField, type IntlFieldType } from "../../tina/fields";
+import { Box, Button, Card, Flex, Spinner } from "@radix-ui/themes";
+import type { Template } from "tinacms";
 import { sendForm } from "./action";
 import { FormField } from "./FormField";
 import { useForm } from "./hook";
 
-export const FormTemplate = {
+export const FormTemplate: Template = {
   name: "Form",
   label: "Form",
-  fields: [IntlField("title")],
+  fields: [{ name: "test", type: "boolean" }],
 };
 
 export type FormProps = {
-  title?: IntlFieldType;
+  test: boolean;
 };
 
-export default function Form({ title }: FormProps) {
+export default function Form({ test }: FormProps) {
   const { state, setFormState } = useForm();
+
+  console.log(test);
 
   return (
     <Box width={{ sm: "80vw", md: "440px" }}>
@@ -39,12 +41,6 @@ export default function Form({ title }: FormProps) {
               .catch(() => setFormState("error"));
           }}
         >
-          {title && (
-            <Text size="4" weight={"medium"}>
-              {title["de"]}
-            </Text>
-          )}
-
           <FormField name={"name"} validations={["valueMissing"]} />
 
           <FormField

@@ -127,8 +127,6 @@ export const GridTemplate = {
         },
       ],
     },
-    // WidthField,
-    // HeightField,
   ],
 } as Template;
 

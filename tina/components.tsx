@@ -1,9 +1,6 @@
 import Image from "next/image";
+import type { Template } from "tinacms";
 import { type Components } from "tinacms/dist/rich-text";
-import Accordion, {
-  AccordionTemplate,
-  type AccordionProps,
-} from "../components/Accordion/Accordion";
 import Card, { CardTemplate, type CardProps } from "../components/Card/Card";
 import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
@@ -13,18 +10,16 @@ import Slideshow, {
   SlideshowTemplate,
   type SlideshowProps,
 } from "../components/Slideshow/Slideshow";
-import buildRadixHeightObject from "../utils/buildRadixHeightObject";
-import animation from "./template-fields/animation";
 import { getReferenceRelativePathFromReferencePath } from "./utils";
 
-export const allTemplates = [
-  AccordionTemplate,
-  FormTemplate,
-  SlideshowTemplate,
-  GridTemplate,
+export const allTemplates: Template[] = [
   CardTemplate,
+  FormTemplate,
+  GridTemplate,
+  SlideshowTemplate,
 ];
 
+// TODO move
 export type ReferencePath = `content/${string}/${string}.json`;
 export type ReferenceRelativePath = `${string}.json`;
 
@@ -49,11 +44,10 @@ export const defaultComponents: Components<{}> = {
 };
 
 export const customComponents = {
-  Form: ({ title }: FormProps) => <Form title={title} />,
+  Form: ({ test }: FormProps) => <Form test={test} />,
   Slideshow: (props: SlideshowProps & { elements: any[] }) => {
     const elements = props.elements?.map((e) => (e as any).element) ?? [];
-    const height = buildRadixHeightObject(props.height);
-    return <Slideshow elements={elements} height={height} />;
+    return <Slideshow elements={elements} size={props.size} />;
   },
   Card: (props: CardProps) => {
     const { animation, content, size } = props;
@@ -79,10 +73,5 @@ export const customComponents = {
     }
 
     return <Grid content={content} variant={variant} />;
-  },
-  Accordion: (props: AccordionProps & { elements: any[] }) => {
-    const { title, content } = props;
-
-    return <Accordion title={title} content={content} />;
   },
 };
