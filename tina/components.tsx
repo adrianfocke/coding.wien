@@ -4,6 +4,7 @@ import Accordion, {
   AccordionTemplate,
   type AccordionProps,
 } from "../components/Accordion/Accordion";
+import Card, { CardTemplate, type CardProps } from "../components/Card/Card";
 import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
 import type { GridProps } from "../components/Grid/Grid";
@@ -13,6 +14,7 @@ import Slideshow, {
   type SlideshowProps,
 } from "../components/Slideshow/Slideshow";
 import buildRadixHeightObject from "../utils/buildRadixHeightObject";
+import animation from "./template-fields/animation";
 import { getReferenceRelativePathFromReferencePath } from "./utils";
 
 export const allTemplates = [
@@ -20,6 +22,7 @@ export const allTemplates = [
   FormTemplate,
   SlideshowTemplate,
   GridTemplate,
+  CardTemplate,
 ];
 
 export type ReferencePath = `content/${string}/${string}.json`;
@@ -51,6 +54,11 @@ export const customComponents = {
     const elements = props.elements?.map((e) => (e as any).element) ?? [];
     const height = buildRadixHeightObject(props.height);
     return <Slideshow elements={elements} height={height} />;
+  },
+  Card: (props: CardProps) => {
+    const { animation, content, size } = props;
+    console.log("Size in Component: ", size);
+    return <Card animation={animation} content={content} size={size} />;
   },
   Grid: (
     props: GridProps & {
