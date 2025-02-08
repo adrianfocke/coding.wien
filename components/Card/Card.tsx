@@ -7,6 +7,7 @@ import Animation, {
 import Intl, { type IntlProp } from "../../tina/template-fields/intl";
 import Size, { type SizeProp } from "../../tina/template-fields/size";
 import useAnimation from "../../utils/animation/useAnimation";
+import styles from "./Card.module.css";
 
 export const CardTemplate: Template = {
   name: "Card",
@@ -47,6 +48,7 @@ export default function Card({ animation, content, size }: CardProps) {
 
   return (
     <Box
+      className={styles.box}
       height={{
         initial: size?.["initial"]?.height,
         xs: size?.["xs"]?.height,
