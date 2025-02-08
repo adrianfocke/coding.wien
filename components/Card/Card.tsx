@@ -1,10 +1,12 @@
-import { Box } from "@radix-ui/themes";
+import { Box, Button } from "@radix-ui/themes";
+import type { Ref } from "react";
 import { type Template } from "tinacms";
 import Animation, {
   type AnimationProp,
 } from "../../tina/template-fields/animation";
 import Intl, { type IntlProp } from "../../tina/template-fields/intl";
 import Size, { type SizeProp } from "../../tina/template-fields/size";
+import useAnimation from "../../utils/animation/useAnimation";
 
 export const CardTemplate: Template = {
   name: "Card",
@@ -41,7 +43,8 @@ export type CardProps = {
 };
 
 export default function Card({ animation, content, size }: CardProps) {
-  console.log(animation);
+  const { animationContainer, animationController } = useAnimation(animation);
+
   return (
     <Box
       height={{
@@ -62,11 +65,17 @@ export default function Card({ animation, content, size }: CardProps) {
       }}
       style={{ border: "2px solid red" }}
       overflow={"scroll"}
+      ref={animationContainer as Ref<HTMLDivElement>}
     >
       <p>{content?.["de"]?.person?.name || "name"}</p>
       <p>{content?.["de"]?.person?.pronouns || "pronouns"}</p>
       <p>{content?.["de"]?.person?.profession || "profession"}</p>
       <p>{content?.["de"]?.person?.email || "email"}</p>
+
+      <div ref={animationController as Ref<HTMLDivElement>}>
+        <Button>Flip me!</Button>
+      </div>
+
       <p>{content?.["de"]?.person?.statement || "statement"}</p>
       <p>{content?.["de"]?.person?.portrait || "portrait"}</p>
     </Box>
