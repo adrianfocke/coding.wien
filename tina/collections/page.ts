@@ -1,5 +1,5 @@
 import type { Collection } from "tinacms";
-import { allTemplates } from "../components";
+import { templates } from "../components";
 import { SEOField } from "../fields";
 import { customToolbar } from "../types";
 import {
@@ -37,8 +37,7 @@ export default {
       label: "Main Content",
       type: "rich-text",
       isBody: true,
-      // TODO naming? --> how about a TinaFieldSettings object that does TinaFieldSettings[templates] or so?
-      templates: allTemplates,
+      templates,
       toolbarOverride: customToolbar,
     },
   ],

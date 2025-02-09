@@ -1,19 +1,33 @@
 import Image from "next/image";
 import type { Template } from "tinacms";
 import { type Components } from "tinacms/dist/rich-text";
-import Card, { CardTemplate, type CardProps } from "../components/Card/Card";
+import Card, { CardFields } from "../components/Card/Card";
 import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
 import type { GridProps } from "../components/Grid/Grid";
 import Grid, { GridTemplate, GridVariant } from "../components/Grid/Grid";
+import Navigation, {
+  NavigationFields,
+} from "../components/Navigation/Navigation";
 import Slideshow, {
   SlideshowTemplate,
   type SlideshowProps,
 } from "../components/Slideshow/Slideshow";
+import Animation from "./template-fields/animation";
+import Intl from "./template-fields/intl";
+import Size from "./template-fields/size";
+import type { CustomComponentProps } from "./types";
 import { getReferenceRelativePathFromReferencePath } from "./utils";
 
-export const allTemplates: Template[] = [
-  CardTemplate,
+export const templates: Template[] = [
+  {
+    name: "Card",
+    fields: [Animation, Size, Intl(CardFields)],
+  },
+  {
+    name: "Navigation",
+    fields: [Animation, Size, Intl(NavigationFields)],
+  },
   FormTemplate,
   GridTemplate,
   SlideshowTemplate,
@@ -49,10 +63,13 @@ export const customComponents = {
     const elements = props.elements?.map((e) => (e as any).element) ?? [];
     return <Slideshow elements={elements} size={props.size} />;
   },
-  Card: (props: CardProps) => {
+  Card: (props: CustomComponentProps) => {
     const { animation, content, size } = props;
-    console.log("Size in Component: ", size);
     return <Card animation={animation} content={content} size={size} />;
+  },
+  Navigation: (props: CustomComponentProps) => {
+    const { animation, content, size } = props;
+    return <Navigation animation={animation} content={content} size={size} />;
   },
   Grid: (
     props: GridProps & {
