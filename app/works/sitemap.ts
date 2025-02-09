@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ).data.workConnection.edges?.map((page) => page);
 
   return pages!.map((page) => ({
-    url: `${CONSTANTS.projectUrl}/works/${sanitizeFilenameForURL(
+    url: `https://${CONSTANTS.projectUrl}/works/${sanitizeFilenameForURL(
       page!.node!.name
     )}`,
     lastModified: new Date(),
