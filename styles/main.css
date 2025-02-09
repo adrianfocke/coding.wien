@@ -4,17 +4,17 @@
 
 /**/
 :root {
-    /* Fonts */
+    --default-font-family: var(--font-inter);
         --display-font: '';
-        --text-font: '';
-        /* Colors */
-        --black: #0D0C0C;
+        --text-font: var(--default-font-family);
+            --black: #0D0C0C;
         --grey: #353535;
-        --grey-hue: color-mix(in srgb, var(--grey) 18%, transparent);
+    --grey-hue: color-mix(in srgb, var(--grey) 10%, transparent);
         --primary: #1786B4;
-        --white: #FDEDF0;
-        --white-hue: color-mix(in srgb, var(--white) 18%, transparent);
-        /* For margins, use scale, https: //www.radix-ui.com/themes/docs/theme/spacing */
+    --primary-hue: color-mix(in srgb, var(--primary) 10%, transparent);
+        --white: #FAFAFA;
+        --white-hue: color-mix(in srgb, var(--white) 20%, transparent);
+        --all-white: #fff;
     --border-radius: 25px;
     --icon-button-height: 20px;
     --icon-button-width: 24px;

@@ -11,6 +11,7 @@ const inter = Inter({
   style: ["normal"],
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={inter.variable}>
       <body style={{ margin: 0 }}>
         <Theme>
           <main>{children}</main>
