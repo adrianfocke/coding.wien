@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import Grid, { GridVariant } from "../../../components/Grid/Grid";
-import NavigationMenu from "../../../components/NavigationMenu/NavigationMenu";
 import type { WorkQuery } from "../../../tina/__generated__/types";
 import { defaultComponents } from "../../../tina/components";
 
@@ -37,7 +36,6 @@ export default function ClientPage(props: ClientPageProps) {
 
   return (
     <>
-      <NavigationMenu />
       <Flex direction={"column"}>
         <Flex
           position={"relative"}

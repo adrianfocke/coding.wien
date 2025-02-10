@@ -1,3 +1,6 @@
 .navigation {
     justify-content: space-around;
 }
+.active-link {
+    text-decoration: underline;
+}
