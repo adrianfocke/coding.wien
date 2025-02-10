@@ -1,5 +1,14 @@
 import type { Template } from "tinacms";
-import { customToolbar } from "../types";
+import type { ToolbarOverrideType } from "tinacms/dist/toolkit/fields/plugins/mdx-field-plugin/plate/toolbar/toolbar-overrides";
+
+export const customToolbar: ToolbarOverrideType[] = [
+  "embed",
+  "heading",
+  "image",
+  "link",
+  "bold",
+  "italic",
+];
 
 export default {
   name: "elements",

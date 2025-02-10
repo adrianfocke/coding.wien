@@ -2,28 +2,34 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { AccessibleIcon, Box, Flex } from "@radix-ui/themes";
 import type { Ref } from "react";
 import { IconButton, type Template } from "tinacms";
-import type { PageBodySlideshowFilter } from "../../tina/__generated__/types";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import type { PageBodySlideshowContentFilter } from "../../tina/__generated__/types";
+import { defaultComponents } from "../../tina/components";
+import { default as rtElements } from "../../tina/template-fields/rt-elements";
 import type { CustomComponentProps } from "../../tina/types";
 import { buildHeight } from "../../utils/radix-sizes";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 
-export const SlideshowFields: Template["fields"] = [
+export const slideshowFields: Template["fields"] = [
   {
     name: "slideshow",
     label: "Slides",
     type: "object",
-    fields: [{ name: "name", label: "Name", type: "string" }],
+    fields: [rtElements],
   },
 ];
 
 export default function Slideshow({
+  content,
   size,
-}: CustomComponentProps<PageBodySlideshowFilter>) {
+}: CustomComponentProps<PageBodySlideshowContentFilter>) {
   const { slideshow, slideshowContainer, nextSlide, previousSlide } =
     useSlideshow({
       nextSlideTimeout: 4000,
     });
+
+  const lang = "de";
 
   return (
     <>
@@ -41,25 +47,22 @@ export default function Slideshow({
           wrap="nowrap"
           ref={slideshow as Ref<HTMLDivElement>}
         >
-          {/* {content?.content?.de?.slideshow?.elements &&
-            (content?.content?.de?.slideshow?.elements as any).map(
-              (element, i) => (
-                <Flex
-                  align={"center"}
-                  justify={"center"}
-                  position={"relative"}
-                  key={i}
-                  minWidth={"100%"}
-                  maxWidth={"100%"}
-                  style={{ scrollSnapAlign: "start" }}
-                >
-                  <TinaMarkdown
-                    content={element}
-                    components={{ ...defaultComponents }}
-                  />
-                </Flex>
-              )
-            )} */}
+          {(content?.[lang]?.slideshow?.elements as any).map((element, i) => (
+            <Flex
+              align={"center"}
+              justify={"center"}
+              position={"relative"}
+              key={i}
+              minWidth={"100%"}
+              maxWidth={"100%"}
+              style={{ scrollSnapAlign: "start" }}
+            >
+              <TinaMarkdown
+                content={element.element}
+                components={{ ...defaultComponents }}
+              />
+            </Flex>
+          ))}
         </Flex>
 
         <Flex className={styles.slideControls}>

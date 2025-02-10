@@ -9,7 +9,7 @@ import useAnimation from "../../utils/animation/useAnimation";
 import { buildHeight, buildWidth } from "../../utils/radix-sizes";
 import styles from "./Navigation.module.css";
 
-export const NavigationFields: Template["fields"] = [
+export const navigationFields: Template["fields"] = [
   {
     name: "navigation",
     label: "Navigation Links",
@@ -44,8 +44,6 @@ export default function Navigation({
 }: CustomComponentProps<PageContent>) {
   const { animationContainer } = useAnimation(animation);
   const pathname = usePathname();
-
-  console.log("Navigation component content: ", content);
 
   return (
     <Flex

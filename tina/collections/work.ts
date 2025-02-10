@@ -1,11 +1,8 @@
 import type { Collection } from "tinacms";
-import { SEOField } from "../fields";
-import { customToolbar } from "../types";
-import {
-  CHARACTERS_REGEX,
-  CHARACTERS_REGEX_HINT,
-  sanitizeFilenameForURL,
-} from "../utils";
+import fileName from "../template-fields/file-name";
+import { customToolbar } from "../template-fields/rt-elements";
+import seo from "../template-fields/seo";
+import { sanitizeFilenameForURL } from "../utils";
 
 export default {
   label: "Works",
@@ -13,30 +10,14 @@ export default {
   path: "content/work",
   format: "json",
   fields: [
-    { ...SEOField },
+    seo,
     {
       name: "startDate",
       label: "Spielbeginn",
       type: "datetime",
       required: true,
     },
-    {
-      name: "name",
-      label: "Name",
-      type: "string",
-      required: true,
-      ui: {
-        validate: (value) => {
-          if (!value) {
-            return "Value must be defined";
-          }
-
-          if (!CHARACTERS_REGEX.test(value)) {
-            return CHARACTERS_REGEX_HINT;
-          }
-        },
-      },
-    },
+    fileName,
     {
       name: "info",
       label: "Basic info",

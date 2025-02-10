@@ -7,7 +7,7 @@ import useAnimation from "../../utils/animation/useAnimation";
 import { buildHeight, buildWidth } from "../../utils/radix-sizes";
 import styles from "./Card.module.css";
 
-export const CardFields: Template["fields"] = [
+export const cardFields: Template["fields"] = [
   {
     name: "card",
     label: "Person",
@@ -34,8 +34,6 @@ export default function Card({
   size,
 }: CustomComponentProps<PageBodyCardContentFilter>) {
   const { animationContainer, animationController } = useAnimation(animation);
-
-  console.log("Card component content: ", content);
 
   return (
     <Box

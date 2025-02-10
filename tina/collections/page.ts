@@ -1,14 +1,11 @@
 import type { Collection } from "tinacms";
-import { NavigationFields } from "../../components/Navigation/Navigation";
+import { navigationFields } from "../../components/Navigation/Navigation";
 import { templates } from "../components";
-import { SEOField } from "../fields";
-import Intl from "../template-fields/intl";
-import { customToolbar } from "../types";
-import {
-  CHARACTERS_REGEX,
-  CHARACTERS_REGEX_HINT,
-  sanitizeFilenameForURL,
-} from "../utils";
+import { default as fileName } from "../template-fields/file-name";
+import intl from "../template-fields/intl";
+import { customToolbar } from "../template-fields/rt-elements";
+import { default as seo } from "../template-fields/seo";
+import { sanitizeFilenameForURL } from "../utils";
 
 export default {
   label: "Pages",
@@ -16,25 +13,9 @@ export default {
   path: "content/page",
   format: "mdx",
   fields: [
-    { ...SEOField },
-    {
-      name: "name",
-      label: "Name",
-      type: "string",
-      required: true,
-      ui: {
-        validate: (value) => {
-          if (!value) {
-            return "Value must be defined";
-          }
-
-          if (!CHARACTERS_REGEX.test(value)) {
-            return CHARACTERS_REGEX_HINT;
-          }
-        },
-      },
-    },
-    Intl(NavigationFields),
+    seo,
+    fileName,
+    intl(navigationFields),
     {
       name: "body",
       label: "Main Content",

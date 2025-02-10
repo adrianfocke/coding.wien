@@ -1,29 +1,22 @@
 import Image from "next/image";
 import type { Template } from "tinacms";
 import { type Components } from "tinacms/dist/rich-text";
-import Card, { CardFields } from "../components/Card/Card";
-import type { FormProps } from "../components/Form/Form";
-import Form, { FormTemplate } from "../components/Form/Form";
-import type { GridProps } from "../components/Grid/Grid";
-import Grid, { GridTemplate, GridVariant } from "../components/Grid/Grid";
-import Slideshow, { SlideshowFields } from "../components/Slideshow/Slideshow";
-import Animation from "./template-fields/animation";
-import Intl from "./template-fields/intl";
-import Size from "./template-fields/size";
+import Card, { cardFields } from "../components/Card/Card";
+import Slideshow, { slideshowFields } from "../components/Slideshow/Slideshow";
+import animation from "./template-fields/animation";
+import intl from "./template-fields/intl";
+import size from "./template-fields/size";
 import type { CustomComponentProps } from "./types";
-import { getReferenceRelativePathFromReferencePath } from "./utils";
 
 export const templates: Template[] = [
   {
     name: "Card",
-    fields: [Animation, Size, Intl(CardFields)],
+    fields: [animation, size, intl(cardFields)],
   },
   {
     name: "Slideshow",
-    fields: [Animation, Size, Intl(SlideshowFields)],
+    fields: [animation, size, intl(slideshowFields)],
   },
-  FormTemplate,
-  GridTemplate,
 ];
 
 // TODO move
@@ -51,7 +44,6 @@ export const defaultComponents: Components<{}> = {
 };
 
 export const customComponents = {
-  Form: ({ test }: FormProps) => <Form test={test} />,
   Slideshow: (props: CustomComponentProps) => {
     const { animation, content, size } = props;
     return <Slideshow animation={animation} content={content} size={size} />;
@@ -60,24 +52,24 @@ export const customComponents = {
     const { animation, content, size } = props;
     return <Card animation={animation} content={content} size={size} />;
   },
-  Grid: (
-    props: GridProps & {
-      elements?: any;
-      referenceField?: ReferencePath;
-    }
-  ) => {
-    const { referenceField, variant } = props;
+  // Grid: (
+  //   props: GridProps & {
+  //     elements?: any;
+  //     referenceField?: ReferencePath;
+  //   }
+  // ) => {
+  //   const { referenceField, variant } = props;
 
-    let content: any = undefined;
+  //   let content: any = undefined;
 
-    if (variant === GridVariant["Rich-Text"]) {
-      content = props.elements?.map((e) => e.element) ?? [];
-    }
+  //   if (variant === GridVariant["Rich-Text"]) {
+  //     content = props.elements?.map((e) => e.element) ?? [];
+  //   }
 
-    if (variant === GridVariant["Reference"]) {
-      content = getReferenceRelativePathFromReferencePath(referenceField);
-    }
+  //   if (variant === GridVariant["Reference"]) {
+  //     content = getReferenceRelativePathFromReferencePath(referenceField);
+  //   }
 
-    return <Grid content={content} variant={variant} />;
-  },
+  //   return <Grid content={content} variant={variant} />;
+  // },
 };

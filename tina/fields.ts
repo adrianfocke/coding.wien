@@ -1,18 +1,9 @@
 import type { Template } from "tinacms";
-import { customToolbar } from "./types";
-
-export const SEOField = {
-  name: "seo",
-  label: "SEO",
-  type: "string",
-  ui: {
-    component: "textarea",
-    description: "Descriptive information for better web search listing",
-  },
-};
+import { customToolbar } from "./template-fields/rt-elements";
 
 export type SpecialFieldKey = "referenceField" | "elements";
 
+// TODO remove
 export const RichTextField: Template["fields"][number] = {
   name: "elements",
   label: "Elements",
