@@ -1,6 +1,8 @@
 import type { Collection } from "tinacms";
+import { NavigationFields } from "../../components/Navigation/Navigation";
 import { templates } from "../components";
 import { SEOField } from "../fields";
+import Intl from "../template-fields/intl";
 import { customToolbar } from "../types";
 import {
   CHARACTERS_REGEX,
@@ -32,6 +34,7 @@ export default {
         },
       },
     },
+    Intl(NavigationFields, "Navigation"),
     {
       name: "body",
       label: "Main Content",

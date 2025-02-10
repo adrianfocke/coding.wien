@@ -1,6 +1,7 @@
 "use client";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import Navigation from "../../components/Navigation/Navigation";
 import "../../styles/main.css";
 import type { PageQuery } from "../../tina/__generated__/types";
 import { customComponents, defaultComponents } from "../../tina/components";
@@ -25,6 +26,8 @@ export default function ClientPage(props: ClientPageProps) {
 
   return (
     <div data-testid="client-page">
+      <Navigation content={data.page.content!} />
+
       <TinaMarkdown
         content={body}
         components={{
