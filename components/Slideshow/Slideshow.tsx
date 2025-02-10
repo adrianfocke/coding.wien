@@ -1,12 +1,13 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { AccessibleIcon, Box, Flex } from "@radix-ui/themes";
-import type { Ref } from "react";
+import { useContext, type Ref } from "react";
 import { IconButton, type Template } from "tinacms";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { PageBodySlideshowContentFilter } from "../../tina/__generated__/types";
 import { defaultComponents } from "../../tina/components";
 import { default as rtElements } from "../../tina/template-fields/rt-elements";
 import type { CustomComponentProps } from "../../tina/types";
+import { LanguageContext } from "../../utils/context/language";
 import { buildHeight } from "../../utils/radix-sizes";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
@@ -24,12 +25,11 @@ export default function Slideshow({
   content,
   size,
 }: CustomComponentProps<PageBodySlideshowContentFilter>) {
+  const language = useContext(LanguageContext);
   const { slideshow, slideshowContainer, nextSlide, previousSlide } =
     useSlideshow({
       nextSlideTimeout: 4000,
     });
-
-  const lang = "de";
 
   return (
     <>
@@ -47,22 +47,25 @@ export default function Slideshow({
           wrap="nowrap"
           ref={slideshow as Ref<HTMLDivElement>}
         >
-          {(content?.[lang]?.slideshow?.elements as any).map((element, i) => (
-            <Flex
-              align={"center"}
-              justify={"center"}
-              position={"relative"}
-              key={i}
-              minWidth={"100%"}
-              maxWidth={"100%"}
-              style={{ scrollSnapAlign: "start" }}
-            >
-              <TinaMarkdown
-                content={element.element}
-                components={{ ...defaultComponents }}
-              />
-            </Flex>
-          ))}
+          {content?.[language]?.slideshow?.elements &&
+            (content?.[language]?.slideshow?.elements as any).map(
+              (element, i) => (
+                <Flex
+                  align={"center"}
+                  justify={"center"}
+                  position={"relative"}
+                  key={i}
+                  minWidth={"100%"}
+                  maxWidth={"100%"}
+                  style={{ scrollSnapAlign: "start" }}
+                >
+                  <TinaMarkdown
+                    content={element.element}
+                    components={{ ...defaultComponents }}
+                  />
+                </Flex>
+              )
+            )}
         </Flex>
 
         <Flex className={styles.slideControls}>

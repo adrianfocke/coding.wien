@@ -1,11 +1,12 @@
 import { Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { Ref } from "react";
+import { useContext, type Ref } from "react";
 import { type Template } from "tinacms";
 import type { PageContent } from "../../tina/__generated__/types";
 import type { CustomComponentProps } from "../../tina/types";
 import useAnimation from "../../utils/animation/useAnimation";
+import { LanguageContext } from "../../utils/context/language";
 import { buildHeight, buildWidth } from "../../utils/radix-sizes";
 import styles from "./Navigation.module.css";
 
@@ -42,6 +43,7 @@ export default function Navigation({
   content,
   size,
 }: CustomComponentProps<PageContent>) {
+  const language = useContext(LanguageContext);
   const { animationContainer } = useAnimation(animation);
   const pathname = usePathname();
 
@@ -55,7 +57,7 @@ export default function Navigation({
     >
       <Text size={"6"}>{content?.["de"]?.navigation?.logo as any}</Text>
       <Flex gap={"4"}>
-        {content?.["de"]?.navigation?.links?.map((link, index) => (
+        {content?.[language]?.navigation?.links?.map((link, index) => (
           <Link
             className={`${pathname === `/${link?.link}` && "active-link"}`}
             key={index}

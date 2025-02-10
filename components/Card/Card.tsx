@@ -1,9 +1,10 @@
 import { Box, Button } from "@radix-ui/themes";
-import type { Ref } from "react";
+import { useContext, type Ref } from "react";
 import { type Template } from "tinacms";
 import type { PageBodyCardContentFilter } from "../../tina/__generated__/types";
 import type { CustomComponentProps } from "../../tina/types";
 import useAnimation from "../../utils/animation/useAnimation";
+import { LanguageContext } from "../../utils/context/language";
 import { buildHeight, buildWidth } from "../../utils/radix-sizes";
 import styles from "./Card.module.css";
 
@@ -33,6 +34,7 @@ export default function Card({
   content,
   size,
 }: CustomComponentProps<PageBodyCardContentFilter>) {
+  const language = useContext(LanguageContext);
   const { animationContainer, animationController } = useAnimation(animation);
 
   return (
@@ -44,17 +46,17 @@ export default function Card({
       overflow={"scroll"}
       ref={animationContainer as Ref<HTMLDivElement>}
     >
-      <p>{(content?.["de"]?.card?.name as any) || "name"}</p>
-      <p>{(content?.["de"]?.card?.pronouns as any) || "pronouns"}</p>
-      <p>{(content?.["de"]?.card?.profession as any) || "profession"}</p>
-      <p>{(content?.["de"]?.card?.email as any) || "email"}</p>
+      <p>{(content?.[language]?.card?.name as any) || "name"}</p>
+      <p>{(content?.[language]?.card?.pronouns as any) || "pronouns"}</p>
+      <p>{(content?.[language]?.card?.profession as any) || "profession"}</p>
+      <p>{(content?.[language]?.card?.email as any) || "email"}</p>
 
       <div ref={animationController as Ref<HTMLDivElement>}>
         <Button>Flip me!</Button>
       </div>
 
-      <p>{(content?.["de"]?.card?.statement as any) || "statement"}</p>
-      <p>{(content?.["de"]?.card?.portrait as any) || "portrait"}</p>
+      <p>{(content?.[language]?.card?.statement as any) || "statement"}</p>
+      <p>{(content?.[language]?.card?.portrait as any) || "portrait"}</p>
     </Box>
   );
 }

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import client from "../../tina/__generated__/client";
 import type { Page } from "../../tina/__generated__/types";
+import type { Language } from "../../tina/template-fields/intl";
 import type { GenerateMetadataProps } from "../../tina/types";
 import ClientPage from "./client-page";
 
@@ -28,15 +30,16 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page(
-  props: {
-    params: Promise<{ filename: string[] }>;
-  }
-) {
+export default async function Page(props: {
+  params: Promise<{ filename: string[] }>;
+}) {
   const params = await props.params;
   const data = await client.queries.page({
     relativePath: `${params.filename}.mdx`,
   });
 
-  return <ClientPage {...data} />;
+  const language =
+    ((await cookies()).get("language")?.value as Language) ?? "en";
+
+  return <ClientPage {...data} language={language} />;
 }
