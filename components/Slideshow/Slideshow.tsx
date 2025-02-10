@@ -2,24 +2,24 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { AccessibleIcon, Box, Flex } from "@radix-ui/themes";
 import type { Ref } from "react";
 import { IconButton, type Template } from "tinacms";
-import { TinaMarkdown, type TinaMarkdownContent } from "tinacms/dist/rich-text";
-import { defaultComponents } from "../../tina/components";
-import RichTextElements from "../../tina/template-fields/rt-elements";
-import Size, { type SizeProp } from "../../tina/template-fields/size";
+import type { PageBodySlideshowFilter } from "../../tina/__generated__/types";
+import type { CustomComponentProps } from "../../tina/types";
+import { buildHeight } from "../../utils/radix-sizes";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 
-export const SlideshowTemplate: Template = {
-  name: "Slideshow",
-  fields: [Size, RichTextElements],
-};
+export const SlideshowFields: Template["fields"] = [
+  {
+    name: "slideshow",
+    label: "Slides",
+    type: "object",
+    fields: [{ name: "name", label: "Name", type: "string" }],
+  },
+];
 
-export type SlideshowProps = {
-  elements: TinaMarkdownContent[];
-  size?: SizeProp;
-};
-
-export default function Slideshow({ elements = [], size }: SlideshowProps) {
+export default function Slideshow({
+  size,
+}: CustomComponentProps<PageBodySlideshowFilter>) {
   const { slideshow, slideshowContainer, nextSlide, previousSlide } =
     useSlideshow({
       nextSlideTimeout: 4000,
@@ -30,14 +30,7 @@ export default function Slideshow({ elements = [], size }: SlideshowProps) {
       <Box
         position={"relative"}
         width={"100%"}
-        height={{
-          initial: size?.["initial"]?.height,
-          xs: size?.["xs"]?.height,
-          sm: size?.["sm"]?.height,
-          md: size?.["md"]?.height,
-          lg: size?.["lg"]?.height,
-          xl: size?.["xl"]?.height,
-        }}
+        height={buildHeight(size)}
         ref={slideshowContainer as Ref<HTMLDivElement>}
       >
         <Flex
@@ -48,22 +41,25 @@ export default function Slideshow({ elements = [], size }: SlideshowProps) {
           wrap="nowrap"
           ref={slideshow as Ref<HTMLDivElement>}
         >
-          {elements.map((element, i) => (
-            <Flex
-              align={"center"}
-              justify={"center"}
-              position={"relative"}
-              key={i}
-              minWidth={"100%"}
-              maxWidth={"100%"}
-              style={{ scrollSnapAlign: "start" }}
-            >
-              <TinaMarkdown
-                content={element}
-                components={{ ...defaultComponents }}
-              />
-            </Flex>
-          ))}
+          {/* {content?.content?.de?.slideshow?.elements &&
+            (content?.content?.de?.slideshow?.elements as any).map(
+              (element, i) => (
+                <Flex
+                  align={"center"}
+                  justify={"center"}
+                  position={"relative"}
+                  key={i}
+                  minWidth={"100%"}
+                  maxWidth={"100%"}
+                  style={{ scrollSnapAlign: "start" }}
+                >
+                  <TinaMarkdown
+                    content={element}
+                    components={{ ...defaultComponents }}
+                  />
+                </Flex>
+              )
+            )} */}
         </Flex>
 
         <Flex className={styles.slideControls}>

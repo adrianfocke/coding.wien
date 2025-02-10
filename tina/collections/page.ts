@@ -34,7 +34,7 @@ export default {
         },
       },
     },
-    Intl(NavigationFields, "Navigation"),
+    Intl(NavigationFields),
     {
       name: "body",
       label: "Main Content",

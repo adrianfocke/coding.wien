@@ -6,10 +6,7 @@ import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
 import type { GridProps } from "../components/Grid/Grid";
 import Grid, { GridTemplate, GridVariant } from "../components/Grid/Grid";
-import Slideshow, {
-  SlideshowTemplate,
-  type SlideshowProps,
-} from "../components/Slideshow/Slideshow";
+import Slideshow, { SlideshowFields } from "../components/Slideshow/Slideshow";
 import Animation from "./template-fields/animation";
 import Intl from "./template-fields/intl";
 import Size from "./template-fields/size";
@@ -21,9 +18,12 @@ export const templates: Template[] = [
     name: "Card",
     fields: [Animation, Size, Intl(CardFields)],
   },
+  {
+    name: "Slideshow",
+    fields: [Animation, Size, Intl(SlideshowFields)],
+  },
   FormTemplate,
   GridTemplate,
-  SlideshowTemplate,
 ];
 
 // TODO move
@@ -52,9 +52,9 @@ export const defaultComponents: Components<{}> = {
 
 export const customComponents = {
   Form: ({ test }: FormProps) => <Form test={test} />,
-  Slideshow: (props: SlideshowProps & { elements: any[] }) => {
-    const elements = props.elements?.map((e) => (e as any).element) ?? [];
-    return <Slideshow elements={elements} size={props.size} />;
+  Slideshow: (props: CustomComponentProps) => {
+    const { animation, content, size } = props;
+    return <Slideshow animation={animation} content={content} size={size} />;
   },
   Card: (props: CustomComponentProps) => {
     const { animation, content, size } = props;

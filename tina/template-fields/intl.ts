@@ -12,12 +12,11 @@ export type IntlProp = {
 };
 
 export default (
-  customFields: Template["fields"],
-  label?: string
+  customFields: Template["fields"]
 ): Template["fields"][number] => {
   return {
     name: "content",
-    label: label ?? "Content",
+    label: customFields[0].label ?? "Content",
     type: "object",
     fields: languages.map((language) => {
       return {

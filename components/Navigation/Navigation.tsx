@@ -11,8 +11,8 @@ import styles from "./Navigation.module.css";
 
 export const NavigationFields: Template["fields"] = [
   {
-    name: "navItems",
-    label: "Navigation",
+    name: "navigation",
+    label: "Navigation Links",
     type: "object",
     fields: [
       { name: "logo", label: "Logo", type: "string" },
@@ -55,9 +55,9 @@ export default function Navigation({
       overflow={"scroll"}
       ref={animationContainer as Ref<HTMLDivElement>}
     >
-      <Text size={"6"}>{content?.["de"]?.navItems?.logo as any}</Text>
+      <Text size={"6"}>{content?.["de"]?.navigation?.logo as any}</Text>
       <Flex gap={"4"}>
-        {content?.["de"]?.navItems?.links?.map((link, index) => (
+        {content?.["de"]?.navigation?.links?.map((link, index) => (
           <Link
             className={`${pathname === `/${link?.link}` && "active-link"}`}
             key={index}

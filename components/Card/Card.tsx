@@ -9,7 +9,7 @@ import styles from "./Card.module.css";
 
 export const CardFields: Template["fields"] = [
   {
-    name: "person",
+    name: "card",
     label: "Person",
     type: "object",
     fields: [
@@ -46,17 +46,17 @@ export default function Card({
       overflow={"scroll"}
       ref={animationContainer as Ref<HTMLDivElement>}
     >
-      <p>{(content?.["de"]?.person?.name as any) || "name"}</p>
-      <p>{(content?.["de"]?.person?.pronouns as any) || "pronouns"}</p>
-      <p>{(content?.["de"]?.person?.profession as any) || "profession"}</p>
-      <p>{(content?.["de"]?.person?.email as any) || "email"}</p>
+      <p>{(content?.["de"]?.card?.name as any) || "name"}</p>
+      <p>{(content?.["de"]?.card?.pronouns as any) || "pronouns"}</p>
+      <p>{(content?.["de"]?.card?.profession as any) || "profession"}</p>
+      <p>{(content?.["de"]?.card?.email as any) || "email"}</p>
 
       <div ref={animationController as Ref<HTMLDivElement>}>
         <Button>Flip me!</Button>
       </div>
 
-      <p>{(content?.["de"]?.person?.statement as any) || "statement"}</p>
-      <p>{(content?.["de"]?.person?.portrait as any) || "portrait"}</p>
+      <p>{(content?.["de"]?.card?.statement as any) || "statement"}</p>
+      <p>{(content?.["de"]?.card?.portrait as any) || "portrait"}</p>
     </Box>
   );
 }
