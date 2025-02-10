@@ -6,9 +6,6 @@ import type { FormProps } from "../components/Form/Form";
 import Form, { FormTemplate } from "../components/Form/Form";
 import type { GridProps } from "../components/Grid/Grid";
 import Grid, { GridTemplate, GridVariant } from "../components/Grid/Grid";
-import Navigation, {
-  NavigationFields,
-} from "../components/Navigation/Navigation";
 import Slideshow, {
   SlideshowTemplate,
   type SlideshowProps,
@@ -23,10 +20,6 @@ export const templates: Template[] = [
   {
     name: "Card",
     fields: [Animation, Size, Intl(CardFields)],
-  },
-  {
-    name: "Navigation",
-    fields: [Animation, Size, Intl(NavigationFields)],
   },
   FormTemplate,
   GridTemplate,
@@ -66,10 +59,6 @@ export const customComponents = {
   Card: (props: CustomComponentProps) => {
     const { animation, content, size } = props;
     return <Card animation={animation} content={content} size={size} />;
-  },
-  Navigation: (props: CustomComponentProps) => {
-    const { animation, content, size } = props;
-    return <Navigation animation={animation} content={content} size={size} />;
   },
   Grid: (
     props: GridProps & {
