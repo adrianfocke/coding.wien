@@ -9,21 +9,19 @@
   }
 }
 .slideControls {
-  background: var(--gray-3);
+  background: var(--white-hue);
   border-radius: var(--border-radius);
-  bottom: var(--margin-small);
-  height: max-content;
-  left: 0;
-  margin-left: auto;
-  margin-right: auto;
-  position: absolute;
-  right: 0;
-  width: max-content;
 }
 
-.slideControlsButton {
-  border: 1px solid red;
-  height: var(--icon-button-height);
-  width: var(--icon-button-width);
+.control {
+  height: 16px;
+  width: 16px;
   cursor: pointer;
+}
+.activeSlideControl {
+  background-color: var(--white);
+}
+
+.slideControl {
+  background-color: var(--grey);
 }

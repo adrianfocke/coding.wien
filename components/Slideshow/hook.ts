@@ -13,75 +13,95 @@ export const useSlideshow = (slideshowSettings?: {
     setSlideWidth(slideshowContainer.current?.offsetWidth ?? 0);
   }, []);
 
-  const getNumberOfImages = (containerWidth?: number) =>
-    containerWidth ? Math.floor(containerWidth / slideWidth) : 0;
+const getNumberOfImages = () =>
+  slideshow.current
+    ? Math.round(slideshow.current.scrollWidth / slideWidth)
+    : 0;
 
-  const scrollToPosition = (position: number) => {
-    slideshow.current?.scrollTo({
-      left: Math.round(position),
-      behavior: "smooth",
-    });
-  };
+const scrollToPosition = (position: number) => {
+  slideshow.current?.scrollTo({
+    left: Math.round(position),
+    behavior: "smooth",
+  });
+};
 
-  const nextSlide = () => {
-    const containerWidth = slideshow.current?.scrollWidth;
-    const numberOfImages = getNumberOfImages(containerWidth);
+const goToSlide = (slideNumber: number) => {
+  const numberOfImages = getNumberOfImages();
 
-    if (!containerWidth || !numberOfImages) {
-      return;
-    }
+  if (slideNumber < 1 || slideNumber > numberOfImages) {
+    return;
+  }
 
-    if (displayedSlide < numberOfImages) {
-      const nextScrollPosition = slideWidth * displayedSlide;
-      scrollToPosition(nextScrollPosition);
-      setDisplayedSlide(displayedSlide + 1);
-    }
+  const targetScrollPosition = slideWidth * (slideNumber - 1);
+  scrollToPosition(targetScrollPosition);
+  setDisplayedSlide(slideNumber);
+};
 
-    if (displayedSlide === numberOfImages) {
-      scrollToPosition(0);
-      setDisplayedSlide(1);
-    }
-  };
+const nextSlide = () => {
+  const numberOfImages = getNumberOfImages();
 
-  const previousSlide = () => {
-    if (displayedSlide > 1) {
-      const previousScrollPosition = slideWidth * (displayedSlide - 2);
-      scrollToPosition(previousScrollPosition);
-      setDisplayedSlide(displayedSlide - 1);
-    }
-  };
+  if (!numberOfImages) {
+    return;
+  }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (slideshow.current) {
-        const scrollLeft = slideshow.current.scrollLeft;
-        const currentIndex = Math.round(scrollLeft / slideWidth) + 1;
+  if (displayedSlide < numberOfImages) {
+    const nextScrollPosition = slideWidth * displayedSlide;
+    scrollToPosition(nextScrollPosition);
+    setDisplayedSlide(displayedSlide + 1);
+  }
 
-        if (currentIndex !== displayedSlide) {
-          setDisplayedSlide(currentIndex);
-        }
+  if (displayedSlide === numberOfImages) {
+    scrollToPosition(0);
+    setDisplayedSlide(1);
+  }
+};
+
+const previousSlide = () => {
+  if (displayedSlide > 1) {
+    const previousScrollPosition = slideWidth * (displayedSlide - 2);
+    scrollToPosition(previousScrollPosition);
+    setDisplayedSlide(displayedSlide - 1);
+  }
+};
+
+useEffect(() => {
+  const handleScroll = () => {
+    if (slideshow.current) {
+      const scrollLeft = slideshow.current.scrollLeft;
+      const currentIndex = Math.round(scrollLeft / slideWidth) + 1;
+
+      if (currentIndex !== displayedSlide) {
+        setDisplayedSlide(currentIndex);
       }
-    };
+    }
+  };
 
-    const currentSlideshow = slideshow.current;
-    currentSlideshow?.addEventListener("scroll", handleScroll);
+  const currentSlideshow = slideshow.current;
+  currentSlideshow?.addEventListener("scroll", handleScroll);
 
-    return () => {
-      currentSlideshow?.removeEventListener("scroll", handleScroll);
-    };
-  }, [displayedSlide, slideWidth]);
+  return () => {
+    currentSlideshow?.removeEventListener("scroll", handleScroll);
+  };
+}, [displayedSlide, slideWidth]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (slideshowSettings?.nextSlideTimeout) {
-        nextSlide();
-      }
-    }, slideshowSettings?.nextSlideTimeout);
+useEffect(() => {
+  const interval = setInterval(() => {
+    if (slideshowSettings?.nextSlideTimeout) {
+      nextSlide();
+    }
+  }, slideshowSettings?.nextSlideTimeout);
 
-    return () => clearInterval(interval);
-  }, [nextSlide, slideshowSettings]);
+  return () => clearInterval(interval);
+}, [nextSlide, slideshowSettings]);
 
-  return { slideshowContainer, slideshow, nextSlide, previousSlide };
+return {
+  slideshowContainer,
+  slideshow,
+  goToSlide,
+  nextSlide,
+  previousSlide,
+  isActiveSlide: displayedSlide - 1,
+};
 };
 
 export default useSlideshow;

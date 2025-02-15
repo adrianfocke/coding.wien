@@ -1,7 +1,6 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
-import { AccessibleIcon, Box, Flex } from "@radix-ui/themes";
+import { Box, Button, Flex } from "@radix-ui/themes";
 import { useContext, type Ref } from "react";
-import { IconButton, type Template } from "tinacms";
+import { type Template } from "tinacms";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { PageBodySlideshowContentFilter } from "../../tina/__generated__/types";
 import { defaultComponents } from "../../tina/components";
@@ -26,7 +25,7 @@ export default function Slideshow({
   size,
 }: CustomComponentProps<PageBodySlideshowContentFilter>) {
   const language = useContext(LanguageContext);
-  const { slideshow, slideshowContainer, nextSlide, previousSlide } =
+  const { slideshow, slideshowContainer, goToSlide, isActiveSlide } =
     useSlideshow({
       nextSlideTimeout: 4000,
     });
@@ -68,17 +67,33 @@ export default function Slideshow({
             )}
         </Flex>
 
-        <Flex className={styles.slideControls}>
-          <IconButton onClick={previousSlide}>
-            <AccessibleIcon label={"Slideshow previous item control icon"}>
-              <ArrowLeftIcon className={styles.slideControlsButton} />
-            </AccessibleIcon>
-          </IconButton>
-          <IconButton onClick={nextSlide}>
-            <AccessibleIcon label={"Slideshow next item control icon"}>
-              <ArrowRightIcon className={styles.slideControlsButton} />
-            </AccessibleIcon>
-          </IconButton>
+        <Flex justify={"center"}>
+          <Flex
+            justify={"center"}
+            position={"absolute"}
+            bottom={"16px"}
+            p={"2"}
+            gap={"1"}
+            className={styles.slideControls}
+          >
+            {(content?.[language]?.slideshow?.elements as []).map(
+              (element, index) => (
+                <Button
+                  size={"1"}
+                  radius="full"
+                  onClick={() => goToSlide(index + 1)}
+                  key={index}
+                  className={`${
+                    index === isActiveSlide
+                      ? styles.activeSlideControl
+                      : styles.slideControl
+                  } ${styles.control}`}
+                >
+                  <Box></Box>
+                </Button>
+              )
+            )}
+          </Flex>
         </Flex>
       </Box>
     </>
