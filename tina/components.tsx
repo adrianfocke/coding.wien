@@ -1,26 +1,14 @@
+import { Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import type { Template } from "tinacms";
 import { type Components } from "tinacms/dist/rich-text";
-import Card, { cardFields } from "../components/Card/Card";
+import Card, { CardTemplate } from "../components/Card/Card";
 import Slideshow, {
-  slideshowFields,
-  slideshowSettings,
+  SlideshowTemplate,
 } from "../components/Slideshow/Slideshow";
-import animation from "./template-fields/animation";
-import intl from "./template-fields/intl";
-import size from "./template-fields/size";
 import type { CustomComponentProps } from "./types";
 
-export const templates: Template[] = [
-  {
-    name: "Card",
-    fields: [animation, size, intl(cardFields)],
-  },
-  {
-    name: "Slideshow",
-    fields: [animation, size, slideshowSettings, intl(slideshowFields)],
-  },
-];
+export const templates: Template[] = [CardTemplate, SlideshowTemplate];
 
 // TODO move
 export type ReferencePath = `content/${string}/${string}.json`;
@@ -28,7 +16,13 @@ export type ReferenceRelativePath = `${string}.json`;
 
 export const defaultComponents: Components<{}> = {
   p(props) {
-    return <p {...props} />;
+    return <Text size={"4"} {...props} />;
+  },
+  h1(props) {
+    return <Heading className="serif" size={"9"} {...props} />;
+  },
+  h2(props) {
+    return <Heading className="serif" size={"8"} {...props} />;
   },
   img: (props: { url: string; caption?: string; alt?: string }) => (
     <Image

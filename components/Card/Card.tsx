@@ -2,6 +2,9 @@ import { Box, Button } from "@radix-ui/themes";
 import { useContext, type Ref } from "react";
 import { type Template } from "tinacms";
 import type { PageBodyCardContentFilter } from "../../tina/__generated__/types";
+import animation from "../../tina/template-fields/animation";
+import intl from "../../tina/template-fields/intl";
+import size from "../../tina/template-fields/size";
 import type { CustomComponentProps } from "../../tina/types";
 import useAnimation from "../../utils/animation/useAnimation";
 import { LanguageContext } from "../../utils/context/language";
@@ -28,6 +31,11 @@ export const cardFields: Template["fields"] = [
     ],
   },
 ];
+
+export const CardTemplate: Template = {
+  name: "Card",
+  fields: [animation, size, intl(cardFields)],
+};
 
 export default function Card({
   animation,

@@ -3,7 +3,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext, type Ref } from "react";
 import { type Template } from "tinacms";
-import type { PageContent } from "../../tina/__generated__/types";
+import animation from "../../tina/template-fields/animation";
+import intl from "../../tina/template-fields/intl";
+import size from "../../tina/template-fields/size";
 import type { CustomComponentProps } from "../../tina/types";
 import useAnimation from "../../utils/animation/useAnimation";
 import { LanguageContext } from "../../utils/context/language";
@@ -38,11 +40,16 @@ export const navigationFields: Template["fields"] = [
   },
 ];
 
+export const NavigationTemplate: Template = {
+  name: "Navigation",
+  fields: [animation, size, intl(navigationFields)],
+};
+
 export default function Navigation({
   animation,
   content,
   size,
-}: CustomComponentProps<PageContent>) {
+}: CustomComponentProps<any>) {
   const language = useContext(LanguageContext);
   const { animationContainer } = useAnimation(animation);
   const pathname = usePathname();

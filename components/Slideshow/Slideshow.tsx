@@ -7,7 +7,10 @@ import type {
   PageBodySlideshowContentFilter,
 } from "../../tina/__generated__/types";
 import { defaultComponents } from "../../tina/components";
+import animation from "../../tina/template-fields/animation";
+import intl from "../../tina/template-fields/intl";
 import { default as rtElements } from "../../tina/template-fields/rt-elements";
+import size from "../../tina/template-fields/size";
 import type { CustomComponentProps } from "../../tina/types";
 import { LanguageContext } from "../../utils/context/language";
 import { buildHeight } from "../../utils/radix-sizes";
@@ -35,6 +38,11 @@ export const slideshowFields: Template["fields"] = [
     fields: [rtElements],
   },
 ];
+
+export const SlideshowTemplate: Template = {
+  name: "Slideshow",
+  fields: [animation, size, slideshowSettings, intl(slideshowFields)],
+};
 
 export default function Slideshow({
   content,
@@ -78,10 +86,18 @@ export default function Slideshow({
                   maxWidth={"100%"}
                   style={{ scrollSnapAlign: "start" }}
                 >
-                  <TinaMarkdown
-                    content={element.element}
-                    components={{ ...defaultComponents }}
-                  />
+                  <Flex
+                    direction={"column"}
+                    align={"center"}
+                    p={"4"}
+                    gap={"2"}
+                    className={styles.slideshowOverlay}
+                  >
+                    <TinaMarkdown
+                      content={element.element}
+                      components={{ ...defaultComponents }}
+                    />
+                  </Flex>
                 </Flex>
               )
             )}

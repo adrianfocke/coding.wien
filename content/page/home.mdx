@@ -3,19 +3,30 @@ seo: Valerie Voigt
 name: Home
 content:
   de: {}
+  en:
+    navigation:
+      logo: Coding.wien
+      links:
+        - link: Projects
+          href: projects
+        - link: About Us
+          href: about
 ---
 
 <Slideshow
-  componentSettings={{ nextSlideTimeout: 4000 }}
+  componentSettings={{ nextSlideTimeout: 0 }}
   content={{
     en: {
       slideshow: {
         elements: [
-          { element: "![](/uploads/Bidgood_One-Young-Man-Bent-.jpg)\n" },
+          {
+            element:
+              "![](/uploads/Bidgood_One-Young-Man-Bent-.jpg)\n\n## Vorhang auf!\n\nDie Webseite von Valerie Voigt zeigt sich in ganz neuem Glanz.\n\nBUTTON\n"
+          },
           { element: "![](/uploads/Bidgood_One-Young-Man-Bent-.jpg)\n" }
         ]
       }
     }
   }}
-  size={{ md: { height: "30vh" } }}
+  size={{ md: { height: "600px" } }}
 />

@@ -1,5 +1,8 @@
 import type { Collection } from "tinacms";
-import { navigationFields } from "../../components/Navigation/Navigation";
+import {
+  navigationFields,
+  NavigationTemplate,
+} from "../../components/Navigation/Navigation";
 import { templates } from "../components";
 import { default as fileName } from "../template-fields/file-name";
 import intl from "../template-fields/intl";
@@ -15,7 +18,6 @@ export default {
   fields: [
     seo,
     fileName,
-    intl(navigationFields),
     {
       name: "body",
       label: "Main Content",

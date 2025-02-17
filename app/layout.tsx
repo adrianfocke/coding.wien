@@ -1,18 +1,10 @@
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import React from "react";
 import "../styles/main.css";
 import { CONSTANTS } from "../utils/config";
-
-const inter = Inter({
-  weight: "variable",
-  style: ["normal"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
+import { sans, serif } from "./fonts";
 
 export const metadata: Metadata = {
   title: {
@@ -27,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body style={{ margin: 0 }}>
         <Theme>
           <main>{children}</main>
