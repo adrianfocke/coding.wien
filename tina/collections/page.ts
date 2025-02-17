@@ -1,11 +1,7 @@
 import type { Collection } from "tinacms";
-import {
-  navigationFields,
-  NavigationTemplate,
-} from "../../components/Navigation/Navigation";
+import { NavigationTemplate } from "../../components/Navigation/Navigation";
 import { templates } from "../components";
 import { default as fileName } from "../template-fields/file-name";
-import intl from "../template-fields/intl";
 import { customToolbar } from "../template-fields/rt-elements";
 import { default as seo } from "../template-fields/seo";
 import { sanitizeFilenameForURL } from "../utils";

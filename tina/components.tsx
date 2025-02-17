@@ -2,10 +2,10 @@ import { Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import type { Template } from "tinacms";
 import { type Components } from "tinacms/dist/rich-text";
-import Card, { CardTemplate } from "../components/Card/Card";
-import Slideshow, {
-  SlideshowTemplate,
-} from "../components/Slideshow/Slideshow";
+import Card from "../components/Card/Card";
+import CardTemplate from "../components/Card/CardTemplate";
+import Slideshow from "../components/Slideshow/Slideshow";
+import SlideshowTemplate from "../components/Slideshow/SlideshowTemplate";
 import type { CustomComponentProps } from "./types";
 
 export const templates: Template[] = [CardTemplate, SlideshowTemplate];
