@@ -2,7 +2,10 @@ import { Box, Button, Flex } from "@radix-ui/themes";
 import { useContext, type Ref } from "react";
 import { type Template } from "tinacms";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import type { PageBodySlideshowContentFilter } from "../../tina/__generated__/types";
+import type {
+  PageBodySlideshowComponentSettingsFilter,
+  PageBodySlideshowContentFilter,
+} from "../../tina/__generated__/types";
 import { defaultComponents } from "../../tina/components";
 import { default as rtElements } from "../../tina/template-fields/rt-elements";
 import type { CustomComponentProps } from "../../tina/types";
@@ -10,6 +13,19 @@ import { LanguageContext } from "../../utils/context/language";
 import { buildHeight } from "../../utils/radix-sizes";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
+
+export const slideshowSettings: Template["fields"][number] = {
+  name: "componentSettings",
+  label: "Slideshow settings",
+  type: "object",
+  fields: [
+    {
+      name: "nextSlideTimeout",
+      label: "Next slide timeout",
+      type: "number",
+    },
+  ],
+};
 
 export const slideshowFields: Template["fields"] = [
   {
@@ -23,12 +39,16 @@ export const slideshowFields: Template["fields"] = [
 export default function Slideshow({
   content,
   size,
-}: CustomComponentProps<PageBodySlideshowContentFilter>) {
+  componentSettings,
+}: CustomComponentProps<
+  PageBodySlideshowContentFilter,
+  PageBodySlideshowComponentSettingsFilter
+>) {
   const language = useContext(LanguageContext);
   const { slideshow, slideshowContainer, goToSlide, isActiveSlide } =
-    useSlideshow({
-      nextSlideTimeout: 4000,
-    });
+    useSlideshow(componentSettings);
+
+  console.log(componentSettings);
 
   return (
     <>
@@ -76,23 +96,24 @@ export default function Slideshow({
             gap={"1"}
             className={styles.slideControls}
           >
-            {(content?.[language]?.slideshow?.elements as []).map(
-              (element, index) => (
-                <Button
-                  size={"1"}
-                  radius="full"
-                  onClick={() => goToSlide(index + 1)}
-                  key={index}
-                  className={`${
-                    index === isActiveSlide
-                      ? styles.activeSlideControl
-                      : styles.slideControl
-                  } ${styles.control}`}
-                >
-                  <Box></Box>
-                </Button>
-              )
-            )}
+            {content?.[language]?.slideshow?.elements &&
+              (content?.[language]?.slideshow?.elements as []).map(
+                (element, index) => (
+                  <Button
+                    size={"1"}
+                    radius="full"
+                    onClick={() => goToSlide(index + 1)}
+                    key={index}
+                    className={`${
+                      index === isActiveSlide
+                        ? styles.activeSlideControl
+                        : styles.slideControl
+                    } ${styles.control}`}
+                  >
+                    <Box></Box>
+                  </Button>
+                )
+              )}
           </Flex>
         </Flex>
       </Box>

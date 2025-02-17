@@ -6,8 +6,12 @@ export type GenerateMetadataProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export type CustomComponentProps<ComponentContent = undefined> = {
+export type CustomComponentProps<
+  ComponentContent = undefined,
+  ComponentSettings = undefined
+> = {
   animation?: AnimationProp;
+  componentSettings?: ComponentSettings;
   content?: ComponentContent;
   size?: SizeProp;
 };

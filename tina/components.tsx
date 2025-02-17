@@ -2,7 +2,10 @@ import Image from "next/image";
 import type { Template } from "tinacms";
 import { type Components } from "tinacms/dist/rich-text";
 import Card, { cardFields } from "../components/Card/Card";
-import Slideshow, { slideshowFields } from "../components/Slideshow/Slideshow";
+import Slideshow, {
+  slideshowFields,
+  slideshowSettings,
+} from "../components/Slideshow/Slideshow";
 import animation from "./template-fields/animation";
 import intl from "./template-fields/intl";
 import size from "./template-fields/size";
@@ -15,7 +18,7 @@ export const templates: Template[] = [
   },
   {
     name: "Slideshow",
-    fields: [animation, size, intl(slideshowFields)],
+    fields: [animation, size, slideshowSettings, intl(slideshowFields)],
   },
 ];
 
@@ -45,8 +48,16 @@ export const defaultComponents: Components<{}> = {
 
 export const customComponents = {
   Slideshow: (props: CustomComponentProps) => {
-    const { animation, content, size } = props;
-    return <Slideshow animation={animation} content={content} size={size} />;
+    const { animation, componentSettings, content, size } = props;
+
+    return (
+      <Slideshow
+        animation={animation}
+        componentSettings={componentSettings}
+        content={content}
+        size={size}
+      />
+    );
   },
   Card: (props: CustomComponentProps) => {
     const { animation, content, size } = props;
