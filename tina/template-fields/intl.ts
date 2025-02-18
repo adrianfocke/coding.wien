@@ -8,10 +8,7 @@ const languageToLabel: Record<(typeof languages)[number], string> = {
   en: "English",
 };
 
-export type IntlProp = {
-  content: any;
-};
-
+/** This wrapper adds internationalization to template fields */
 export default (
   customFields: Template["fields"]
 ): Template["fields"][number] => {
