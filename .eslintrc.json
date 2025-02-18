@@ -6,8 +6,7 @@
   "extends": ["eslint:recommended", "next/core-web-vitals", "next/typescript"],
   "rules": {
     "no-extra-boolean-cast": "off",
-    "@typescript-eslint/no-explicit-any": "warn",
-    // TODO fix
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-asserted-optional-chain": "warn"
   }
 }

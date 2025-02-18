@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { PageBodySlideshowSettingsFilter } from "../../tina/__generated__/types";
 
 export const useSlideshow = (
@@ -14,12 +14,13 @@ export const useSlideshow = (
     setSlideWidth(slideshowContainer.current?.offsetWidth ?? 0);
   }, []);
 
-  console.log("Slideshow settings: ", slideshowSettings);
-
-  const getNumberOfImages = () =>
-    slideshow.current
-      ? Math.round(slideshow.current.scrollWidth / slideWidth)
-      : 0;
+  const numberOfImages = useMemo(
+    () =>
+      slideshow.current
+        ? Math.round(slideshow.current.scrollWidth / slideWidth)
+        : 0,
+    [slideWidth]
+  );
 
   const scrollToPosition = (position: number) => {
     slideshow.current?.scrollTo({
@@ -29,8 +30,6 @@ export const useSlideshow = (
   };
 
   const goToSlide = (slideNumber: number) => {
-    const numberOfImages = getNumberOfImages();
-
     if (slideNumber < 1 || slideNumber > numberOfImages) {
       return;
     }
@@ -40,9 +39,7 @@ export const useSlideshow = (
     setDisplayedSlide(slideNumber);
   };
 
-  const nextSlide = () => {
-    const numberOfImages = getNumberOfImages();
-
+  const nextSlide = useCallback(() => {
     if (!numberOfImages) {
       return;
     }
@@ -57,7 +54,7 @@ export const useSlideshow = (
       scrollToPosition(0);
       setDisplayedSlide(1);
     }
-  };
+  }, [displayedSlide, numberOfImages, slideWidth]);
 
   const previousSlide = () => {
     if (displayedSlide > 1) {
@@ -67,25 +64,25 @@ export const useSlideshow = (
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (slideshow.current) {
-        const scrollLeft = slideshow.current.scrollLeft;
-        const currentIndex = Math.round(scrollLeft / slideWidth) + 1;
+  const handleScroll = useCallback(() => {
+    if (slideshow.current) {
+      const scrollLeft = slideshow.current.scrollLeft;
+      const currentIndex = Math.round(scrollLeft / slideWidth) + 1;
 
-        if (currentIndex !== displayedSlide) {
-          setDisplayedSlide(currentIndex);
-        }
+      if (currentIndex !== displayedSlide) {
+        setDisplayedSlide(currentIndex);
       }
-    };
+    }
+  }, [displayedSlide, slideWidth]);
 
+  useEffect(() => {
     const currentSlideshow = slideshow.current;
     currentSlideshow?.addEventListener("scroll", handleScroll);
 
     return () => {
       currentSlideshow?.removeEventListener("scroll", handleScroll);
     };
-  }, [displayedSlide, slideWidth]);
+  }, [handleScroll]);
 
   useEffect(() => {
     const interval = setInterval(() => {
