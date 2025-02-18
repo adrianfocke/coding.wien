@@ -25,6 +25,6 @@ const fields: Template["fields"] = [
 ];
 
 export default {
-  name: "card",
+  name: "Card",
   fields: [animation, size, intl(fields)],
 } as Template;

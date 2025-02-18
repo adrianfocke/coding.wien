@@ -28,6 +28,6 @@ const fields: Template["fields"] = [
 ];
 
 export default {
-  name: "slideshow",
+  name: "Slideshow",
   fields: [animation, size, settings, intl(fields)],
 } as Template;
