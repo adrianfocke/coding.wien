@@ -1,6 +1,14 @@
 .navigation {
+    background-color: var(--white);
     justify-content: space-around;
+    border-bottom: 1px solid var(--black);
 }
-.active-link {
-    text-decoration: underline;
+.link {
+    color: var(--black);
+    text-decoration: none;
+    font-weight: var(--font-weight);
+}
+
+.activeLink {
+    border-bottom: 1px solid var(--black);
 }

@@ -3,6 +3,21 @@ import animation from "../../tina/template-fields/animation";
 import intl from "../../tina/template-fields/intl";
 import size from "../../tina/template-fields/size";
 
+// Settings should not be intled
+const settings: Template["fields"][number] = {
+  name: "settings",
+  label: "Slideshow settings",
+  type: "object",
+  fields: [
+    {
+      name: "variant",
+      label: "Navigation variant",
+      type: "string",
+      options: ["main", "footer"]
+    },
+  ],
+};
+
 const fields: Template["fields"] = [
   {
     name: "links",
@@ -23,7 +38,7 @@ const fields: Template["fields"] = [
           },
         },
         fields: [
-          { name: "link", label: "Link Text", type: "string" },
+          { name: "text", label: "Link Text", type: "string" },
           { name: "href", label: "Link Href", type: "string" },
         ],
       },
@@ -33,5 +48,5 @@ const fields: Template["fields"] = [
 
 export default {
   name: "Navigation",
-  fields: [animation, size, intl(fields)],
+  fields: [animation, size, settings, intl(fields)],
 } as Template;

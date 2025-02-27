@@ -1,5 +1,4 @@
 import type { Collection } from "tinacms";
-import { NavigationTemplate } from "../../components/Navigation/Navigation";
 import { templates } from "../components";
 import { default as fileName } from "../template-fields/file-name";
 import { customToolbar } from "../template-fields/rt-elements";
@@ -12,13 +11,12 @@ export default {
   path: "content/page",
   format: "mdx",
   fields: [
-    seo,
     fileName,
+    seo,
     {
       name: "body",
       label: "Main Content",
       type: "rich-text",
-      isBody: true,
       templates,
       toolbarOverride: customToolbar,
     },

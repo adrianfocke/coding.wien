@@ -4,11 +4,20 @@ import type { Template } from "tinacms";
 import { type Components } from "tinacms/dist/rich-text";
 import Card from "../components/Card/Card";
 import CardTemplate from "../components/Card/CardTemplate";
+import Hero from "../components/Hero/Hero";
+import HeroTemplate from "../components/Hero/HeroTemplate";
+import Navigation from "../components/Navigation/Navigation";
+import NavigationTemplate from "../components/Navigation/NavigationTemplate";
 import Slideshow from "../components/Slideshow/Slideshow";
 import SlideshowTemplate from "../components/Slideshow/SlideshowTemplate";
 import type { CustomComponentProps } from "./types";
 
-export const templates: Template[] = [CardTemplate, SlideshowTemplate];
+export const templates: Template[] = [
+  CardTemplate,
+  HeroTemplate,
+  NavigationTemplate,
+  SlideshowTemplate,
+];
 
 // TODO move
 export type ReferencePath = `content/${string}/${string}.json`;
@@ -54,8 +63,37 @@ export const customComponents = {
     );
   },
   Card: (props: CustomComponentProps) => {
-    const { animation, content, size } = props;
-    return <Card animation={animation} content={content} size={size} />;
+    const { animation, content, componentSettings, size } = props;
+    return (
+      <Card
+        animation={animation}
+        content={content}
+        componentSettings={componentSettings}
+        size={size}
+      />
+    );
+  },
+  Hero: (props: CustomComponentProps) => {
+    const { animation, content, componentSettings, size } = props;
+    return (
+      <Hero
+        animation={animation}
+        content={content}
+        componentSettings={componentSettings}
+        size={size}
+      />
+    );
+  },
+  Navigation: (props: CustomComponentProps) => {
+    const { animation, content, componentSettings, size } = props;
+    return (
+      <Navigation
+        animation={animation}
+        componentSettings={componentSettings}
+        content={content}
+        size={size}
+      />
+    );
   },
   // Grid: (
   //   props: GridProps & {

@@ -1,77 +1,54 @@
 import { Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useContext, type Ref } from "react";
-import { type Template } from "tinacms";
-import animation from "../../tina/template-fields/animation";
-import intl from "../../tina/template-fields/intl";
-import size from "../../tina/template-fields/size";
+import type {
+  PageBodyNavigationContentFilter,
+  PageBodyNavigationSettingsFilter,
+} from "../../tina/__generated__/types";
 import type { CustomComponentProps } from "../../tina/types";
 import useAnimation from "../../utils/animation/useAnimation";
 import { LanguageContext } from "../../utils/context/language";
 import { buildHeight, buildWidth } from "../../utils/radix-sizes";
 import styles from "./Navigation.module.css";
 
-export const navigationFields: Template["fields"] = [
-  {
-    name: "navigation",
-    label: "Navigation Links",
-    type: "object",
-    fields: [
-      { name: "logo", label: "Logo", type: "string" },
-      {
-        name: "links",
-        label: "Links",
-        type: "object",
-        list: true,
-        ui: {
-          itemProps(item) {
-            return {
-              label: item.link ? `${item.link}` : "Leer",
-            };
-          },
-        },
-        fields: [
-          { name: "link", label: "Link Text", type: "string" },
-          { name: "href", label: "Link Href", type: "string" },
-        ],
-      },
-    ],
-  },
-];
-
-export const NavigationTemplate: Template = {
-  name: "Navigation",
-  fields: [animation, size, intl(navigationFields)],
-};
-
 export default function Navigation({
   animation,
   content,
   size,
-}: CustomComponentProps<any>) {
+}: CustomComponentProps<
+  PageBodyNavigationContentFilter,
+  PageBodyNavigationSettingsFilter
+>) {
   const language = useContext(LanguageContext);
   const { animationContainer } = useAnimation(animation);
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   return (
     <Flex
+      p={"4"}
       className={styles.navigation}
       height={buildHeight(size)}
       width={buildWidth(size)}
       overflow={"scroll"}
       ref={animationContainer as Ref<HTMLDivElement>}
     >
-      <Text size={"6"}>{content?.["de"]?.navigation?.logo as any}</Text>
+      <Text size={"4"}>
+        <Link className={styles.link} href={`/`}>
+          {content?.[language]?.links?.logo as any}
+        </Link>
+      </Text>
       <Flex gap={"4"}>
-        {content?.[language]?.navigation?.links?.map((link, index) => (
-          <Link
-            className={`${pathname === `/${link?.link}` && "active-link"}`}
-            key={index}
-            href={`/${link?.href}`}
-          >
-            <Text size={"6"}>{link?.link}</Text>
-          </Link>
+        {(content?.[language]?.links?.links! as any).map((link, index) => (
+          <Text size={"4"} key={index}>
+            <Link
+              className={`${styles.link} ${
+                link.href === "about" && styles.activeLink
+              }`}
+              href={`/${link?.href}`}
+            >
+              {link?.text}
+            </Link>
+          </Text>
         ))}
       </Flex>
     </Flex>

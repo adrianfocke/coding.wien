@@ -4,20 +4,26 @@
 
 /**/
 :root {
-    font-family: var(--font-sans);
-        --black: #0D0C0C;
-        --grey: #353535;
-    --grey-hue: color-mix(in srgb, var(--grey) 10%, transparent);
-    --primary: #1786B4;
-    --primary-hue: color-mix(in srgb, var(--primary) 10%, transparent);
-        --white: #FAFAFA;
-        --white-hue: color-mix(in srgb, var(--white) 20%, transparent);
-        --all-white: #fff;
-    --border-radius: 25px;
-    --border-radius-normal: 8px;
-    --icon-button-height: 20px;
-    --icon-button-width: 24px;
+  font-family: var(--font-sans);
+  --black: #0d0c0c;
+  --grey: #353535;
+  --grey-hue: color-mix(in srgb, var(--grey) 10%, transparent);
+  --primary: #1786b4;
+  --primary-hue: color-mix(in srgb, var(--primary) 10%, transparent);
+  --white: #fafafa;
+  --white-hue: color-mix(in srgb, var(--white) 20%, transparent);
+  --all-white: #211e1e;
+  --icon-button-height: 20px;
+  --icon-button-width: 24px;
+  --font-weight: 300;
 }
+
 .serif {
-    font-family: var(--font-serif);
+  font-family: var(--font-serif);
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.sans {
+  font-weight: 300;
 }

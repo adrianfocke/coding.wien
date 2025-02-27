@@ -1,29 +1,39 @@
 ---
-content:
-  de: {}
-  en:
-    navigation:
-      logo: Coding.wien
+Navigation:
+  content:
+    en:
       links:
-        - link: Projects
-          href: projects
-        - link: About Us
-          href: about
-seo: Valerie Voigt
+        logo: Adrian
+        links:
+          - link: Adrian
+            href: adrian
 name: Home
+body: |
+  <Hero
+    content={{
+      en: {
+        content: {
+          punchline: "Deine Stadt, deine Idee – deine Webseite?",
+          additionalPunchline:
+            "Wir packen Ideen, Menschen und Produkte in das Format einer Webseite.",
+          cta: [{ text: "Primary" }, { text: "Secondary" }]
+        }
+      }
+    }}
+  />
+
+  <Slideshow
+    content={{
+      en: {
+        slides: {
+          elements: [
+            { element: "![](/uploads/Bidgood_One-Young-Man-Bent-.jpg)\n" },
+            { element: "![](/uploads/Bidgood_One-Young-Man-Bent-.jpg)\n" }
+          ]
+        }
+      }
+    }}
+    size={{ md: { height: "70vh" } }}
+  />
 ---
 
-<Slideshow
-  content={{
-    en: {
-      slides: {
-        elements: [
-          { element: "![](/uploads/Bidgood_One-Young-Man-Bent-.jpg)\n" },
-          { element: "![](/uploads/Bidgood_One-Young-Man-Bent-.jpg)\n" }
-        ]
-      }
-    }
-  }}
-  size={{ md: { height: "300px" } }}
-  settings={{ nextSlideTimeout: 4000 }}
-/>

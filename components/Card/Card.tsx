@@ -20,7 +20,6 @@ export default function Card({
       className={styles.box}
       height={buildHeight(size)}
       width={buildWidth(size)}
-      style={{ border: "2px solid red" }}
       overflow={"scroll"}
       ref={animationContainer as Ref<HTMLDivElement>}
     >

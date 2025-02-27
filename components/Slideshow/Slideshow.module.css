@@ -1,4 +1,5 @@
 .slideContainer {
+  border-radius: var(--radius-2);
   -ms-overflow-style: none;
   scrollbar-width: none;
   height: 100%;
@@ -10,12 +11,12 @@
 }
 .slideControls {
   background: var(--white-hue);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-6);
 }
 
 .slideshowOverlay {
   background-color: var(--white-hue);
-  border-radius: var(--border-radius-normal);
+  border-radius: var(--radius-2);
   color: var(--white);
 }
 .control {
