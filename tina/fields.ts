@@ -1,5 +1,4 @@
 import type { Template } from "tinacms";
-import { customToolbar } from "./template-fields/rt-elements";
 
 export type SpecialFieldKey = "referenceField" | "elements";
 
@@ -15,7 +14,6 @@ export const RichTextField: Template["fields"][number] = {
       label: "Element",
       type: "rich-text",
       isBody: true,
-      toolbarOverride: customToolbar,
     },
   ],
 } as const;

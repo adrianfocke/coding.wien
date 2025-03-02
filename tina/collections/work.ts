@@ -1,6 +1,5 @@
 import type { Collection } from "tinacms";
 import fileName from "../template-fields/file-name";
-import { customToolbar } from "../template-fields/rt-elements";
 import seo from "../template-fields/seo";
 import { sanitizeFilenameForURL } from "../utils";
 
@@ -40,7 +39,6 @@ export default {
       name: "detailedInfo",
       label: "More info",
       type: "rich-text",
-      toolbarOverride: customToolbar,
     },
     {
       name: "images",

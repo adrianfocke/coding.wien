@@ -1,7 +1,6 @@
 import type { Collection } from "tinacms";
 import { templates } from "../components";
 import { default as fileName } from "../template-fields/file-name";
-import { customToolbar } from "../template-fields/rt-elements";
 import { default as seo } from "../template-fields/seo";
 import { sanitizeFilenameForURL } from "../utils";
 
@@ -18,7 +17,6 @@ export default {
       label: "Main Content",
       type: "rich-text",
       templates,
-      toolbarOverride: customToolbar,
     },
   ],
   ui: {
