@@ -1,11 +1,15 @@
-import { Heading, Text } from "@radix-ui/themes";
+import { Heading, Text, type ButtonProps } from "@radix-ui/themes";
 import Image from "next/image";
 import type { Template } from "tinacms";
 import { type Components } from "tinacms/dist/rich-text";
+import Button from "../components/Button/Button";
+import ButtonTemplate from "../components/Button/ButtonTemplate";
 import Card from "../components/Card/Card";
 import CardTemplate from "../components/Card/CardTemplate";
 import Hero from "../components/Hero/Hero";
 import HeroTemplate from "../components/Hero/HeroTemplate";
+import HighlightedSection from "../components/HighlightedSection/HighlightedSection";
+import HighlightedSectionTemplate from "../components/HighlightedSection/HighlightedSectionTemplate";
 import Navigation from "../components/Navigation/Navigation";
 import NavigationTemplate from "../components/Navigation/NavigationTemplate";
 import Slideshow from "../components/Slideshow/Slideshow";
@@ -13,14 +17,14 @@ import SlideshowTemplate from "../components/Slideshow/SlideshowTemplate";
 import type { CustomComponentProps } from "./types";
 
 export const templates: Template[] = [
+  ButtonTemplate,
   CardTemplate,
   HeroTemplate,
+  HighlightedSectionTemplate,
   NavigationTemplate,
   SlideshowTemplate,
 ];
 
-// TODO move
-export type ReferencePath = `content/${string}/${string}.json`;
 export type ReferenceRelativePath = `${string}.json`;
 
 export const defaultComponents: Components<{}> = {
@@ -51,50 +55,78 @@ export const defaultComponents: Components<{}> = {
 
 export const customComponents = {
   Slideshow: (props: CustomComponentProps) => {
-    const { animation, componentSettings, content, size } = props;
+    const { animation, settings, content, size } = props;
+
+    console.log("Props: ", (props as any).settings);
 
     return (
       <Slideshow
         animation={animation}
-        componentSettings={componentSettings}
+        settings={settings}
         content={content}
+        size={size}
+      />
+    );
+  },
+  Button: (
+    props: CustomComponentProps & { variant: ButtonProps["variant"] }
+  ) => {
+    const { animation, content, settings, size, variant } = props;
+    return (
+      <Button
+        animation={animation}
+        content={content}
+        variant={variant}
+        settings={settings}
         size={size}
       />
     );
   },
   Card: (props: CustomComponentProps) => {
-    const { animation, content, componentSettings, size } = props;
+    const { animation, content, settings, size } = props;
     return (
       <Card
         animation={animation}
         content={content}
-        componentSettings={componentSettings}
+        settings={settings}
         size={size}
       />
     );
   },
   Hero: (props: CustomComponentProps) => {
-    const { animation, content, componentSettings, size } = props;
+    const { animation, content, settings, size } = props;
     return (
       <Hero
         animation={animation}
         content={content}
-        componentSettings={componentSettings}
+        settings={settings}
+        size={size}
+      />
+    );
+  },
+  HighlightedSection: (props: CustomComponentProps) => {
+    const { animation, content, settings, size } = props;
+    return (
+      <HighlightedSection
+        animation={animation}
+        content={content}
+        settings={settings}
         size={size}
       />
     );
   },
   Navigation: (props: CustomComponentProps) => {
-    const { animation, content, componentSettings, size } = props;
+    const { animation, content, settings, size } = props;
     return (
       <Navigation
         animation={animation}
-        componentSettings={componentSettings}
+        settings={settings}
         content={content}
         size={size}
       />
     );
   },
+
   // Grid: (
   //   props: GridProps & {
   //     elements?: any;

@@ -139,7 +139,7 @@
 }
 
 :root, .light, .light-theme, .radix-themes {
-  --color-background: #fafafa;
+  --color-background: #fff;
 }
 
 .dark, .dark-theme {

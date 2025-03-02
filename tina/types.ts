@@ -11,7 +11,7 @@ export type CustomComponentProps<
   ComponentSettings = undefined
 > = {
   animation?: AnimationProp;
-  componentSettings?: ComponentSettings;
+  settings?: ComponentSettings;
   content?: ComponentContent;
   size?: SizeProp;
 };

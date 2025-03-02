@@ -26,18 +26,3 @@ export const ReferenceField = (collections: string[]) => ({
   label: "Reference Field",
   collections,
 });
-
-/** Parses a template as field for use in collections
- * @param identifier must be alphabet chars only
- */
-export const templateAsField = (
-  template: Template,
-  identifier?: string
-): Template["fields"][number] => {
-  return {
-    name: identifier ? `${template.name}_${identifier}` : template.name,
-    label: identifier ? `${template.name} (${identifier})` : template.name,
-    type: "object",
-    fields: template.fields,
-  };
-};

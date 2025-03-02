@@ -1,4 +1,4 @@
-import { Flex, Text } from "@radix-ui/themes";
+import { Button, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { useContext, type Ref } from "react";
 import type {
@@ -39,7 +39,8 @@ export default function Navigation({
       </Text>
       <Flex gap={"4"}>
         {(content?.[language]?.links?.links! as any).map((link, index) => (
-          <Text size={"4"} key={index}>
+          <Button variant={"ghost"} key={index}>
+          <Text size={"4"} >
             <Link
               className={`${styles.link} ${
                 link.href === "about" && styles.activeLink
@@ -48,7 +49,8 @@ export default function Navigation({
             >
               {link?.text}
             </Link>
-          </Text>
+            </Text>
+            </Button>
         ))}
       </Flex>
     </Flex>

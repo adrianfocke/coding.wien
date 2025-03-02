@@ -15,16 +15,14 @@ import useSlideshow from "./hook";
 export default function Slideshow({
   content,
   size,
-  componentSettings,
+  settings,
 }: CustomComponentProps<
   PageBodySlideshowContentFilter,
   PageBodySlideshowSettingsFilter
 >) {
   const language = useContext(LanguageContext);
   const { slideshow, slideshowContainer, goToSlide, isActiveSlide } =
-    useSlideshow(componentSettings);
-
-  console.log(componentSettings);
+    useSlideshow(settings);
 
   return (
     <>

@@ -17,8 +17,9 @@ export default function Hero({
 
   return (
     <Box
-      pt={"9"}
-      pb={"9"}
+      p={"4"}
+      pt={"6"}
+      pb={"6"}
       className={styles.box}
       height={buildHeight(size)}
       width={buildWidth(size)}
@@ -34,8 +35,8 @@ export default function Hero({
         </Text>
         <Flex>
           {content?.[language]?.content?.cta && (
-            <Flex mt={"5"} gap={"2"}>
-              <Button radius="full"  key={1}>
+            <Flex mt={"6"} gap={"2"}>
+              <Button className="bg bg-5" radius="full" key={1}>
                 <Text size={"6"} className="serif">
                   {content?.[language]?.content?.cta[0].text}
                 </Text>
