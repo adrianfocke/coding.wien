@@ -10,7 +10,6 @@ import {
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../../tina/__generated__/client";
 import type { WorkConnectionEdges } from "../../tina/__generated__/types";
-import { type ReferenceRelativePath } from "../../tina/components";
 import {
   ReferenceField,
   RichTextField,
@@ -19,6 +18,8 @@ import {
 import "./styles.css";
 
 void React; // Making sure it's imported
+
+type ReferenceRelativePath = `${string}.json`;
 
 export enum GridVariant {
   "Reference" = "Reference",

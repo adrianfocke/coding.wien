@@ -1,7 +1,8 @@
 import { Box, Flex } from "@radix-ui/themes";
 import { useContext, type Ref } from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { customComponents, defaultComponents } from "../../tina/components";
+import customComponents from "../../tina/components/custom-components";
+import defaultComponents from "../../tina/components/default-components";
 import type { CustomComponentProps } from "../../tina/types";
 import useAnimation from "../../utils/animation/useAnimation";
 import { LanguageContext } from "../../utils/context/language";

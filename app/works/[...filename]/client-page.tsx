@@ -6,7 +6,7 @@ import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import Grid, { GridVariant } from "../../../components/Grid/Grid";
 import type { WorkQuery } from "../../../tina/__generated__/types";
-import { defaultComponents } from "../../../tina/components";
+import defaultComponents from "../../../tina/components/default-components";
 
 interface ClientPageProps {
   query: string;

@@ -5,7 +5,8 @@ import type {
   PageBodySlideshowContentFilter,
   PageBodySlideshowSettingsFilter,
 } from "../../tina/__generated__/types";
-import { defaultComponents } from "../../tina/components";
+import defaultComponents from "../../tina/components/default-components";
+import { imageComponent } from "../../tina/components/variable-components";
 import type { CustomComponentProps } from "../../tina/types";
 import { LanguageContext } from "../../utils/context/language";
 import { buildHeight } from "../../utils/radix-sizes";
@@ -63,7 +64,10 @@ export default function Slideshow({
                 >
                   <TinaMarkdown
                     content={element.element}
-                    components={{ ...defaultComponents }}
+                    components={{
+                      ...defaultComponents,
+                      ...imageComponent["responsive"],
+                    }}
                   />
                 </Flex>
               </Flex>
