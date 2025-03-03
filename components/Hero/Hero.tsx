@@ -20,6 +20,7 @@ export default function Hero({
     <Box
       mt={margin?.marginTop}
       mb={margin?.marginBottom}
+      p={"4"}
       className={styles.box}
       height={buildHeight(size)}
       width={buildWidth(size)}

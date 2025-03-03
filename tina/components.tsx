@@ -1,5 +1,6 @@
 import { Heading, Text, type ButtonProps } from "@radix-ui/themes";
 import Image from "next/image";
+import Link from "next/link";
 import type { Template } from "tinacms";
 import { type Components } from "tinacms/dist/rich-text";
 import Button from "../components/Button/Button";
@@ -31,11 +32,18 @@ export const defaultComponents: Components<{}> = {
   p(props) {
     return <Text className="sans" size={"4"} {...props} />;
   },
+  a(props) {
+    return (
+      <Link className="serif" href={props?.url ?? "/404"}>
+        <Text>{props?.children.props.content[0].text}</Text>
+      </Link>
+    );
+  },
   h1(props) {
     return <Heading className="serif" size={"9"} {...props} />;
   },
   h2(props) {
-    return <Heading className="serif" size={"8"} {...props} />;
+    return <Heading mt={"6"} className="serif" size={"8"} {...props} />;
   },
   img: (props: { url: string; caption?: string; alt?: string }) => (
     <Image
@@ -55,12 +63,13 @@ export const defaultComponents: Components<{}> = {
 
 export const customComponents = {
   Slideshow: (props: CustomComponentProps) => {
-    const { animation, settings, content, size } = props;
+    const { animation, settings, content, margin, size } = props;
     return (
       <Slideshow
         animation={animation}
         settings={settings}
         content={content}
+        margin={margin}
         size={size}
       />
     );
@@ -105,13 +114,14 @@ export const customComponents = {
     );
   },
   HighlightedSection: (props: CustomComponentProps) => {
-    const { animation, content, settings, size } = props;
+    const { animation, content, settings, size, margin } = props;
     return (
       <HighlightedSection
         animation={animation}
         content={content}
         settings={settings}
         size={size}
+        margin={margin}
       />
     );
   },

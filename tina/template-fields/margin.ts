@@ -1,5 +1,26 @@
 import type { Template } from "tinacms";
-import { isSizeUnit } from "../utils";
+
+const options = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "-1",
+  "-2",
+  "-3",
+  "-4",
+  "-5",
+  "-6",
+  "-7",
+  "-8",
+  "-9",
+];
 
 export type MarginProp = {
   marginTop: string;
@@ -15,17 +36,13 @@ export default {
       name: "marginTop",
       label: "Margin Top",
       type: "string",
-      ui: {
-        validate: (value) => isSizeUnit(value),
-      },
+      options,
     },
     {
       name: "marginBottom",
       label: "Margin Bottom",
       type: "string",
-      ui: {
-        validate: (value) => isSizeUnit(value),
-      },
+      options,
     },
   ],
 } as Template["fields"][number];

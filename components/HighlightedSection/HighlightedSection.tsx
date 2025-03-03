@@ -1,4 +1,4 @@
-import { Box } from "@radix-ui/themes";
+import { Box, Flex } from "@radix-ui/themes";
 import { useContext, type Ref } from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { customComponents, defaultComponents } from "../../tina/components";
@@ -11,6 +11,7 @@ import styles from "./HighlightedSection.module.css";
 export default function HighlightedSection({
   animation,
   content,
+  margin,
   size,
 }: CustomComponentProps<any>) {
   const language = useContext(LanguageContext);
@@ -19,21 +20,23 @@ export default function HighlightedSection({
   return (
     <Box
       p={"4"}
-      pt={"6"}
-      pb={"6"}
+      mt={margin?.marginTop}
+      mb={margin?.marginBottom}
       className={styles.box}
       height={buildHeight(size)}
       width={buildWidth(size)}
       overflow={"scroll"}
       ref={animationContainer as Ref<HTMLDivElement>}
     >
-      <TinaMarkdown
-        content={content?.[language]?.content}
-        components={{
-          ...defaultComponents,
-          ...customComponents,
-        }}
-      />
+      <Flex gap={"4"} direction={"column"}>
+        <TinaMarkdown
+          content={content?.[language]?.content}
+          components={{
+            ...defaultComponents,
+            ...customComponents,
+          }}
+        />
+      </Flex>
     </Box>
   );
 }

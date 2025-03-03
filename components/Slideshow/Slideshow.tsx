@@ -15,6 +15,7 @@ import useSlideshow from "./hook";
 export default function Slideshow({
   content,
   size,
+  margin,
   settings,
 }: CustomComponentProps<
   PageBodySlideshowContentFilter,
@@ -27,6 +28,8 @@ export default function Slideshow({
   return (
     <>
       <Box
+        mt={margin?.marginTop}
+        mb={margin?.marginBottom}
         position={"relative"}
         width={"100%"}
         height={buildHeight(size)}
