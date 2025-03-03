@@ -4,12 +4,6 @@ const project = require("./project.js");
 
 module.exports = {
   images: {
-    domains: [
-      "assets.tina.io",
-      "**.vercel.com",
-      "content.tinajs.io",
-      project.url,
-    ],
     remotePatterns: [
       {
         protocol: "https",
