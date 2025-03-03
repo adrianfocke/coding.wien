@@ -10,14 +10,35 @@ import {
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import client from "../../tina/__generated__/client";
 import type { WorkConnectionEdges } from "../../tina/__generated__/types";
-import {
-  ReferenceField,
-  RichTextField,
-  type SpecialFieldKey,
-} from "../../tina/fields";
+
 import "./styles.css";
 
 void React; // Making sure it's imported
+
+type SpecialFieldKey = "referenceField" | "elements";
+
+export const ReferenceField = (collections: string[]) => ({
+  type: "reference",
+  name: "referenceField",
+  label: "Reference Field",
+  collections,
+});
+
+// TODO remove
+const RichTextField: Template["fields"][number] = {
+  name: "elements",
+  label: "Elements",
+  type: "object",
+  list: true,
+  fields: [
+    {
+      name: "element",
+      label: "Element",
+      type: "rich-text",
+      isBody: true,
+    },
+  ],
+} as const;
 
 type ReferenceRelativePath = `${string}.json`;
 

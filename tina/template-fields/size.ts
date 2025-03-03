@@ -1,6 +1,6 @@
 import type { Breakpoint } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { Template } from "tinacms";
-import { isSizeUnit } from "../utils";
+import { isSizeUnit } from "../validation";
 
 const breakpoints: Breakpoint[] = [
   "initial",
