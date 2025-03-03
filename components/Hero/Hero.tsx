@@ -25,6 +25,7 @@ export default function Hero({
       width={buildWidth(size)}
       overflow={"scroll"}
       ref={animationContainer as Ref<HTMLDivElement>}
+      style={{ border: "1px solid lightblue" }}
     >
       <Flex direction={"column"} align={"center"}>
         <Heading className="serif" size={"9"}>
@@ -36,12 +37,17 @@ export default function Hero({
         <Flex>
           {content?.[language]?.content?.cta && (
             <Flex mt={"6"} gap={"2"}>
-              <Button className="bg bg-5" radius="full" key={1}>
+              <Button
+                size={"3"}
+                className={styles.heroButton}
+                radius="full"
+                key={1}
+              >
                 <Text size={"6"} className="serif">
                   {content?.[language]?.content?.cta[0].text}
                 </Text>
               </Button>
-              <Button radius={"full"} variant={"outline"} key={2}>
+              <Button size={"3"} radius={"full"} variant={"outline"} key={2}>
                 <Text size={"6"} className="serif">
                   {content?.[language]?.content?.cta[1].text}
                 </Text>

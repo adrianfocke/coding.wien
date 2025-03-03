@@ -1,3 +1,5 @@
+const project = require("./project.js");
+
 /** @type {import('next').NextConfig} */
 
 module.exports = {
@@ -6,7 +8,7 @@ module.exports = {
       "assets.tina.io",
       "**.vercel.com",
       "content.tinajs.io",
-      "valerievoigt.com",
+      project.url,
     ],
     remotePatterns: [
       {
@@ -29,7 +31,7 @@ module.exports = {
       },
       {
         protocol: "https",
-        hostname: "valerievoigt.com",
+        hostname: project.url,
         port: "",
         search: "",
       },

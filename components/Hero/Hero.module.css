@@ -1,1 +1,10 @@
-.box {}
+.box {
+}
+
+.heroButton {
+  border: 1px solid var(--primary);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../public/bg/bg-3.png");
+}

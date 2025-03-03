@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { CONSTANTS } from "../utils/config";
+import project from "../project";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/admin/",
     },
-    sitemap: `${CONSTANTS.projectUrl}/sitemap.xml`,
+    sitemap: `www.${project.url}/sitemap.xml`,
   };
 }

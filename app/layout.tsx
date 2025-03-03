@@ -2,14 +2,14 @@ import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import React from "react";
+import project from "../project";
 import "../styles/main.css";
-import { CONSTANTS } from "../utils/config";
 import { sans, serif } from "./fonts";
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | ${CONSTANTS.projectName}`,
-    default: CONSTANTS.projectName,
+    template: `%s | ${project.name}`,
+    default: project.name,
   },
 };
 

@@ -29,7 +29,7 @@ export type ReferenceRelativePath = `${string}.json`;
 
 export const defaultComponents: Components<{}> = {
   p(props) {
-    return <Text size={"4"} {...props} />;
+    return <Text className="sans" size={"4"} {...props} />;
   },
   h1(props) {
     return <Heading className="serif" size={"9"} {...props} />;
