@@ -1,5 +1,6 @@
 import type { Breakpoint } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { Template } from "tinacms";
+import { isSizeUnit } from "../utils";
 
 const breakpoints: Breakpoint[] = [
   "initial",
@@ -17,11 +18,6 @@ const breakpointToLabel: Record<(typeof breakpoints)[number], string> = {
   md: "Tablets (landscape)",
   lg: "Laptops",
   xl: "Desktops",
-};
-
-const isSizeUnit = (value: string) => {
-  const regex = /^(|[0-9]+(\.[0-9]+)?(px|vw|%|vh))$/;
-  return regex.test(value) ? undefined : "Size must be a valid size unit";
 };
 
 export type SizeProp = Record<

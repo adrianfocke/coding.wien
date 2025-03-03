@@ -10,6 +10,7 @@ import styles from "./Hero.module.css";
 export default function Hero({
   animation,
   content,
+  margin,
   size,
 }: CustomComponentProps<PageBodyHeroContentFilter>) {
   const language = useContext(LanguageContext);
@@ -17,9 +18,8 @@ export default function Hero({
 
   return (
     <Box
-      p={"4"}
-      pt={"6"}
-      pb={"6"}
+      mt={margin?.marginTop}
+      mb={margin?.marginBottom}
       className={styles.box}
       height={buildHeight(size)}
       width={buildWidth(size)}

@@ -56,9 +56,6 @@ export const defaultComponents: Components<{}> = {
 export const customComponents = {
   Slideshow: (props: CustomComponentProps) => {
     const { animation, settings, content, size } = props;
-
-    console.log("Props: ", (props as any).settings);
-
     return (
       <Slideshow
         animation={animation}
@@ -94,13 +91,16 @@ export const customComponents = {
     );
   },
   Hero: (props: CustomComponentProps) => {
-    const { animation, content, settings, size } = props;
+    const { animation, content, settings, margin, size } = props;
+
+    console.log("Props: ", props as any);
     return (
       <Hero
         animation={animation}
         content={content}
         settings={settings}
         size={size}
+        margin={margin}
       />
     );
   },

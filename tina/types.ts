@@ -1,4 +1,5 @@
 import type { AnimationProp } from "./template-fields/animation";
+import type { MarginProp } from "./template-fields/margin";
 import type { SizeProp } from "./template-fields/size";
 
 export type GenerateMetadataProps = {
@@ -11,6 +12,7 @@ export type CustomComponentProps<
   ComponentSettings = undefined
 > = {
   animation?: AnimationProp;
+  margin?: MarginProp;
   settings?: ComponentSettings;
   content?: ComponentContent;
   size?: SizeProp;
