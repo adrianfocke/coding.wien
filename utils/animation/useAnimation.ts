@@ -12,10 +12,18 @@ export default (animation?: AnimationProp) => {
     }
 
     const animationStrategy = animateOnToStrategy[animation.animateOn];
-    animationStrategy.startAnimation(animationContainer, animationController);
+    animationStrategy.startAnimation({
+      animation: animation.animation,
+      animationContainer: animationContainer,
+      animationController: animationController,
+    });
 
     return () => {
-      animationStrategy.endAnimation(animationContainer, animationController);
+      animationStrategy.endAnimation({
+        animation: animation.animation,
+        animationContainer: animationContainer,
+        animationController: animationController,
+      });
     };
   }, [animationContainer, animationController, animation]);
 

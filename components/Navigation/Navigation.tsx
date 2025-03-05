@@ -40,17 +40,17 @@ export default function Navigation({
       <Flex gap={"4"}>
         {(content?.[language]?.links?.links! as any).map((link, index) => (
           <Button variant={"ghost"} key={index}>
-          <Text size={"4"} >
-            <Link
-              className={`${styles.link} ${
-                link.href === "about" && styles.activeLink
-              }`}
-              href={`/${link?.href}`}
-            >
-              {link?.text}
-            </Link>
+            <Text size={"4"}>
+              <Link
+                className={`${styles.link} ${
+                  link.href === "about" && styles.activeLink
+                }`}
+                href={`/${link?.href}`}
+              >
+                {link?.text}
+              </Link>
             </Text>
-            </Button>
+          </Button>
         ))}
       </Flex>
     </Flex>

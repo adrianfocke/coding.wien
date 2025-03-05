@@ -25,16 +25,24 @@ export default function Hero({
       height={buildHeight(size)}
       width={buildWidth(size)}
       overflow={"scroll"}
-      ref={animationContainer as Ref<HTMLDivElement>}
-      style={{ border: "1px solid lightblue" }}
     >
       <Flex direction={"column"} align={"center"}>
-        <Heading className="serif" size={"9"}>
-          {content?.[language]?.content?.punchline as any}
-        </Heading>
-        <Text className="sans" mt={"2"} size={"4"}>
-          {content?.[language]?.content?.additionalPunchline as any}
-        </Text>
+        <Flex
+          direction={"column"}
+          align={"center"}
+          ref={animationContainer as Ref<HTMLDivElement>}
+        >
+          <Heading
+            className="serif"
+            size={"9"}
+            ref={animationContainer as Ref<HTMLDivElement>}
+          >
+            {content?.[language]?.content?.punchline as any}
+          </Heading>
+          <Text className="sans" mt={"2"} size={"4"}>
+            {content?.[language]?.content?.additionalPunchline as any}
+          </Text>
+        </Flex>
         <Flex>
           {content?.[language]?.content?.cta && (
             <Flex mt={"6"} gap={"2"}>

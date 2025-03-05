@@ -1,29 +1,24 @@
-import type { RefObject } from "react";
 import {
   addAnimationClassToAnimationContainer,
+  type AnimationStrategyProps,
   type Strategy,
 } from "../strategy";
 
 export class ClickStrategy implements Strategy {
-  startAnimation(
-    animationContainer: RefObject<HTMLElement>,
-    animationController: RefObject<HTMLElement>
-  ): void {
-    console.log("Starting the animation for click!", animationContainer);
+  startAnimation(strategyProps: AnimationStrategyProps): void {
+    const { animationContainer, animationController, animation } =
+      strategyProps;
 
-    animationController.current?.addEventListener("click", () => {
-      addAnimationClassToAnimationContainer(animationContainer);
+    animationController?.current?.addEventListener("click", () => {
+      addAnimationClassToAnimationContainer(animation, animationContainer);
     });
 
     return;
   }
-  endAnimation(
-    animationContainer: RefObject<HTMLElement>,
-    animationController: RefObject<HTMLElement>
-  ): void {
-    console.log("Ending the animation for click!");
+  endAnimation(strategyProps: AnimationStrategyProps): void {
+    const { animationController } = strategyProps;
 
-    animationController.current?.removeEventListener("click", () => {});
+    animationController?.current?.removeEventListener("click", () => {});
     return;
   }
 }

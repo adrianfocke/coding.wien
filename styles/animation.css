@@ -1,19 +1,16 @@
-/* animation.css */
-
-/* Define keyframes */
-@keyframes slideIn {
+@keyframes growIn {
   from {
-    transform: translateX(-100%);
-    opacity: 0;
+    transform: perspective(3000px) rotateX(12deg);
+    opacity: 0.9;
+    transform-origin: bottom;
   }
 
   to {
-    transform: translateX(0);
+    transform: rotateX(0);
     opacity: 1;
   }
 }
-
-/* Define the animation rule */
-.animate {
-  animation: slideIn 1s ease-out forwards;
+.animateGrowIn {
+  animation-name: growIn;
+  animation-duration: 3.2s;
 }

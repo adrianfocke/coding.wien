@@ -1,16 +1,16 @@
-import type { RefObject } from "react";
 import {
   addAnimationClassToAnimationContainer,
+  type AnimationStrategyProps,
   type Strategy,
 } from "../strategy";
 
 export class VisibleInViewportStrategy implements Strategy {
-  startAnimation(animationContainer: RefObject<HTMLElement>): void {
-    console.log("Starting the animation for viewport!", animationContainer);
+  startAnimation(strategyProps: AnimationStrategyProps): void {
+    const { animationContainer, animation } = strategyProps;
 
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        addAnimationClassToAnimationContainer(animationContainer);
+        addAnimationClassToAnimationContainer(animation, animationContainer);
       }
 
       setInterval(() => {
@@ -23,8 +23,7 @@ export class VisibleInViewportStrategy implements Strategy {
 
     return;
   }
-  endAnimation(animationContainer: RefObject<HTMLElement>): void {
-    console.log("Ending the animation for viewport!");
+  endAnimation(strategyProps: AnimationStrategyProps): void {
     return;
   }
 }
