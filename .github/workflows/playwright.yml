@@ -13,13 +13,14 @@ jobs:
       contents: read
     steps:
     - name: Wait before checking Vercel Preview
-      run: sleep 120
+      run: sleep 60
     - name: Waiting for 200 from the Vercel Preview
       uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
       id: waitForDeploy
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        max_timeout: 600
+        max_timeout: 300
+        headers: '{ "Authorization": "Bearer ${{ secrets.VERCEL_AUTH_TOKEN }}" }'
     - run: echo ${{steps.waitForDeploy.outputs.url}}
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
