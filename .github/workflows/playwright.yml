@@ -19,7 +19,7 @@ jobs:
       id: waitForDeploy
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        max_timeout: 300
+        max_timeout: 60
         vercel_password: ${{ secrets.VERCEL_AUTH_TOKEN }}
     - run: echo ${{steps.waitForDeploy.outputs.url}}
     - uses: actions/checkout@v4

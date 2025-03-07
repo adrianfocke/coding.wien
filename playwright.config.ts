@@ -28,7 +28,12 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: BASE_URL,
-
+    extraHTTPHeaders: {
+      //@ts-ignore
+      "x-vercel-protection-bypass": process.env.VERCEL_AUTOMATION_BYPASS_SECRET,
+      //@ts-ignore
+      "x-vercel-set-bypass-cookie": true | "samesitenone"(optional),
+    },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
   },
