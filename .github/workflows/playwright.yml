@@ -8,6 +8,9 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    permissions:
+      deployments: write
+      contents: read
     steps:
     - name: Wait before checking Vercel Preview
       run: sleep 120
