@@ -8,14 +8,19 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    permissions:
+      deployments: write
+      contents: read
     steps:
+    - name: Wait before checking Vercel Preview
+      run: sleep 120
     - name: Waiting for 200 from the Vercel Preview
       uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
-      id: waitFor200
+      id: waitForDeploy
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        max_timeout: 300
-    - run: echo ${{steps.waitFor200.outputs.url}}
+        max_timeout: 600
+    - run: echo ${{steps.waitForDeploy.outputs.url}}
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
