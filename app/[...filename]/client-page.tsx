@@ -46,7 +46,7 @@ export default function ClientPage(props: ClientPageProps) {
           }}
         />
 
-        <Container pr={"6"} pl={"6"}>
+        <Container>
           <TinaMarkdown
             content={body}
             components={{
