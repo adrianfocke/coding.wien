@@ -1,34 +1,37 @@
 import { Button, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useContext, type Ref } from "react";
 import type {
   PageBodyNavigationContentFilter,
   PageBodyNavigationSettingsFilter,
 } from "../../tina/__generated__/types";
+import { getLayoutProps } from "../../tina/template-fields/layout";
 import type { CustomComponentProps } from "../../tina/types";
 import useAnimation from "../../utils/animation/useAnimation";
 import { LanguageContext } from "../../utils/context/language";
-import { buildHeight, buildWidth } from "../../utils/radix-sizes";
 import styles from "./Navigation.module.css";
 
 export default function Navigation({
   animation,
   content,
-  size,
+  layout,
 }: CustomComponentProps<
   PageBodyNavigationContentFilter,
   PageBodyNavigationSettingsFilter
 >) {
   const language = useContext(LanguageContext);
   const { animationContainer } = useAnimation(animation);
-  // const pathname = usePathname();
+  const pathname = usePathname();
+
+  const componentContent = content?.[language ?? "en"];
 
   return (
     <Flex
       p={"4"}
       className={styles.navigation}
-      height={buildHeight(size)}
-      width={buildWidth(size)}
+      height={getLayoutProps(layout)("height")}
+      width={getLayoutProps(layout)("width")}
       overflow={"scroll"}
       ref={animationContainer as Ref<HTMLDivElement>}
     >
@@ -41,12 +44,7 @@ export default function Navigation({
         {(content?.[language]?.links?.links! as any).map((link, index) => (
           <Button variant={"ghost"} key={index}>
             <Text size={"4"}>
-              <Link
-                className={`${styles.link} ${
-                  link.href === "about" && styles.activeLink
-                }`}
-                href={`/${link?.href}`}
-              >
+              <Link className={`${styles.link}`} href={`/${link?.href}`}>
                 {link?.text}
               </Link>
             </Text>

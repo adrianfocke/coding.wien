@@ -1,6 +1,5 @@
-import type { AnimationProp } from "./template-fields/animation";
-import type { MarginProp } from "./template-fields/margin";
-import type { SizeProp } from "./template-fields/size";
+import type { ComponentAnimation } from "./template-fields/animation";
+import type { ComponentLayout } from "./template-fields/layout";
 
 export type GenerateMetadataProps = {
   params: Promise<{ filename: string[] }>;
@@ -11,9 +10,8 @@ export type CustomComponentProps<
   ComponentContent = undefined,
   ComponentSettings = undefined
 > = {
-  animation?: AnimationProp;
-  margin?: MarginProp;
-  settings?: ComponentSettings;
+  animation?: ComponentAnimation;
   content?: ComponentContent;
-  size?: SizeProp;
+  layout?: ComponentLayout;
+  settings?: ComponentSettings;
 };

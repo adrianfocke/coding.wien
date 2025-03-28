@@ -1,30 +1,28 @@
 import { Box, Button, Flex, Heading, Text } from "@radix-ui/themes";
 import { useContext, type Ref } from "react";
 import type { PageBodyHeroContentFilter } from "../../tina/__generated__/types";
+import { getLayoutProps } from "../../tina/template-fields/layout";
 import type { CustomComponentProps } from "../../tina/types";
 import useAnimation from "../../utils/animation/useAnimation";
 import { LanguageContext } from "../../utils/context/language";
-import { buildHeight, buildWidth } from "../../utils/radix-sizes";
 import styles from "./Hero.module.css";
 
 export default function Hero({
   animation,
   content,
-  margin,
-  size,
+  layout,
 }: CustomComponentProps<PageBodyHeroContentFilter>) {
   const language = useContext(LanguageContext);
   const { animationContainer } = useAnimation(animation);
 
   return (
     <Box
-      mt={margin?.marginTop}
-      mb={margin?.marginBottom}
-      p={"4"}
       className={styles.box}
-      height={buildHeight(size)}
-      width={buildWidth(size)}
       overflow={"scroll"}
+      pt={getLayoutProps(layout)("paddingTop")}
+      pb={getLayoutProps(layout)("paddingBottom")}
+      height={getLayoutProps(layout)("height")}
+      width={getLayoutProps(layout)("width")}
     >
       <Flex direction={"column"} align={"center"}>
         <Flex

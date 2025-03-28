@@ -1,16 +1,16 @@
 import { Box, Button } from "@radix-ui/themes";
 import { useContext, type Ref } from "react";
 import type { PageBodyCardContentFilter } from "../../tina/__generated__/types";
+import { getLayoutProps } from "../../tina/template-fields/layout";
 import type { CustomComponentProps } from "../../tina/types";
 import useAnimation from "../../utils/animation/useAnimation";
 import { LanguageContext } from "../../utils/context/language";
-import { buildHeight, buildWidth } from "../../utils/radix-sizes";
 import styles from "./Card.module.css";
 
 export default function Card({
   animation,
   content,
-  size,
+  layout,
 }: CustomComponentProps<PageBodyCardContentFilter>) {
   const language = useContext(LanguageContext);
   const { animationContainer, animationController } = useAnimation(animation);
@@ -18,8 +18,8 @@ export default function Card({
   return (
     <Box
       className={styles.box}
-      height={buildHeight(size)}
-      width={buildWidth(size)}
+      height={getLayoutProps(layout)("height")}
+      width={getLayoutProps(layout)("width")}
       overflow={"scroll"}
       ref={animationContainer as Ref<HTMLDivElement>}
     >

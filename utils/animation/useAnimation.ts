@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import type { AnimationProp } from "../../tina/template-fields/animation";
+import type { ComponentAnimation } from "../../tina/template-fields/animation";
 import { animateOnToStrategy } from "./strategy";
 
-export default (animation?: AnimationProp) => {
+export default (animation?: ComponentAnimation) => {
   const animationContainer = useRef<HTMLElement>(null);
   const animationController = useRef<HTMLElement>(null);
 

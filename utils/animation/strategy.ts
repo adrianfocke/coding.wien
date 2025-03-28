@@ -1,18 +1,20 @@
 import type { RefObject } from "react";
-import type { AnimationProp } from "../../tina/template-fields/animation";
+import type { ComponentAnimation } from "../../tina/template-fields/animation";
 import { ClickStrategy } from "./strategies/Click";
 import { VisibleInViewportStrategy } from "./strategies/VisibleInViewport";
 
-const animationToAnimationCssClass: Record<AnimationProp["animation"], string> =
-  {
-    flip: "animateFlip",
-    "grow-in": "animateGrowIn",
-    ping: "animatePing",
-    "zoom-in-picture": "animateZoomInPicture",
-  };
+const animationToAnimationCssClass: Record<
+  ComponentAnimation["animation"],
+  string
+> = {
+  flip: "animateFlip",
+  "grow-in": "animateGrowIn",
+  ping: "animatePing",
+  "zoom-in-picture": "animateZoomInPicture",
+};
 
 export type AnimationStrategyProps = {
-  animation: AnimationProp["animation"];
+  animation: ComponentAnimation["animation"];
   animationContainer: RefObject<HTMLElement>;
   animationController?: RefObject<HTMLElement>;
 };
@@ -23,7 +25,7 @@ export interface Strategy {
 }
 
 export const addAnimationClassToAnimationContainer = (
-  animation: AnimationProp["animation"],
+  animation: ComponentAnimation["animation"],
   animationContainer: RefObject<HTMLElement>
 ) => {
   const animationClass = animationToAnimationCssClass[animation];
@@ -33,8 +35,10 @@ export const addAnimationClassToAnimationContainer = (
     : animationContainer.current?.classList.add(animationClass);
 };
 
-export const animateOnToStrategy: Record<AnimationProp["animateOn"], Strategy> =
-  {
-    click: new ClickStrategy(),
-    "visible-in-viewport": new VisibleInViewportStrategy(),
-  };
+export const animateOnToStrategy: Record<
+  ComponentAnimation["animateOn"],
+  Strategy
+> = {
+  click: new ClickStrategy(),
+  "visible-in-viewport": new VisibleInViewportStrategy(),
+};

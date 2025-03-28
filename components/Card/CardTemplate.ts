@@ -1,7 +1,7 @@
 import type { Template } from "tinacms";
 import animation from "../../tina/template-fields/animation";
 import intl from "../../tina/template-fields/intl";
-import size from "../../tina/template-fields/size";
+import layout from "../../tina/template-fields/layout";
 
 const fields: Template["fields"] = [
   {
@@ -26,5 +26,5 @@ const fields: Template["fields"] = [
 
 export default {
   name: "Card",
-  fields: [animation, size, intl(fields)],
+  fields: [animation, layout, intl(fields)],
 } as Template;

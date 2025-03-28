@@ -7,16 +7,15 @@ import type {
 } from "../../tina/__generated__/types";
 import defaultComponents from "../../tina/components/default-components";
 import { imageComponent } from "../../tina/components/variable-components";
+import { getLayoutProps } from "../../tina/template-fields/layout";
 import type { CustomComponentProps } from "../../tina/types";
 import { LanguageContext } from "../../utils/context/language";
-import { buildHeight } from "../../utils/radix-sizes";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 
 export default function Slideshow({
   content,
-  size,
-  margin,
+  layout,
   settings,
 }: CustomComponentProps<
   PageBodySlideshowContentFilter,
@@ -28,12 +27,11 @@ export default function Slideshow({
 
   return (
     <>
-      <Box
-        mt={margin?.marginTop}
-        mb={margin?.marginBottom}
+      <p>Slider</p>
+      {/* <Box
         position={"relative"}
-        width={"100%"}
-        height={buildHeight(size)}
+        height={getLayoutProps(layout)("height")}
+        width={getLayoutProps(layout)("width")}
         ref={slideshowContainer as Ref<HTMLDivElement>}
       >
         <Flex
@@ -103,7 +101,7 @@ export default function Slideshow({
               )}
           </Flex>
         </Flex>
-      </Box>
+      </Box> */}
     </>
   );
 }

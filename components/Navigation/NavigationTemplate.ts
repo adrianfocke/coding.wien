@@ -1,7 +1,7 @@
 import type { Template } from "tinacms";
 import animation from "../../tina/template-fields/animation";
 import intl from "../../tina/template-fields/intl";
-import size from "../../tina/template-fields/size";
+import layout from "../../tina/template-fields/layout";
 
 // Settings should not be intled
 const settings: Template["fields"][number] = {
@@ -13,7 +13,7 @@ const settings: Template["fields"][number] = {
       name: "variant",
       label: "Navigation variant",
       type: "string",
-      options: ["main", "footer"]
+      options: ["main", "footer"],
     },
   ],
 };
@@ -48,5 +48,5 @@ const fields: Template["fields"] = [
 
 export default {
   name: "Navigation",
-  fields: [animation, size, settings, intl(fields)],
+  fields: [animation, layout, settings, intl(fields)],
 } as Template;

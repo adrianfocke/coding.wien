@@ -1,4 +1,3 @@
-import type { ButtonProps } from "@radix-ui/themes";
 import type { Components } from "tinacms/dist/rich-text";
 import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
@@ -9,78 +8,54 @@ import Slideshow from "../../components/Slideshow/Slideshow";
 import type { CustomComponentProps } from "../types";
 
 export default {
-  Slideshow: (props: CustomComponentProps) => {
-    const { animation, settings, content, margin, size } = props;
-    return (
-      <Slideshow
-        animation={animation}
-        settings={settings}
-        content={content}
-        margin={margin}
-        size={size}
-      />
-    );
-  },
-  Button: (
-    props: CustomComponentProps & { variant: ButtonProps["variant"] }
-  ) => {
-    const { animation, content, settings, size, variant } = props;
-    return (
-      <Button
-        animation={animation}
-        content={content}
-        variant={variant}
-        settings={settings}
-        size={size}
-      />
-    );
-  },
-  Card: (props: CustomComponentProps) => {
-    const { animation, content, settings, size } = props;
-    return (
-      <Card
-        animation={animation}
-        content={content}
-        settings={settings}
-        size={size}
-      />
-    );
-  },
-  Hero: (props: CustomComponentProps) => {
-    const { animation, content, settings, margin, size } = props;
-    return (
-      <Hero
-        animation={animation}
-        content={content}
-        settings={settings}
-        size={size}
-        margin={margin}
-      />
-    );
-  },
-  HighlightedSection: (props: CustomComponentProps) => {
-    const { animation, content, settings, size, margin } = props;
-    return (
-      <HighlightedSection
-        animation={animation}
-        content={content}
-        settings={settings}
-        size={size}
-        margin={margin}
-      />
-    );
-  },
-  Navigation: (props: CustomComponentProps) => {
-    const { animation, content, settings, size } = props;
-    return (
-      <Navigation
-        animation={animation}
-        settings={settings}
-        content={content}
-        size={size}
-      />
-    );
-  },
+  Slideshow: (props: CustomComponentProps) => (
+    <Slideshow
+      animation={props.animation}
+      content={props.content}
+      layout={props.layout}
+      settings={props.settings}
+    />
+  ),
+  Button: (props: CustomComponentProps) => (
+    <Button
+      animation={props.animation}
+      content={props.content}
+      layout={props.layout}
+      settings={props.settings}
+    />
+  ),
+  Card: (props: CustomComponentProps) => (
+    <Card
+      animation={props.animation}
+      content={props.content}
+      layout={props.layout}
+      settings={props.settings}
+    />
+  ),
+  Hero: (props: CustomComponentProps) => (
+    <Hero
+      animation={props.animation}
+      content={props.content}
+      layout={props.layout}
+      settings={props.settings}
+    />
+  ),
+  HighlightedSection: (props: CustomComponentProps) => (
+    <HighlightedSection
+      animation={props.animation}
+      content={props.content}
+      layout={props.layout}
+      settings={props.settings}
+    />
+  ),
+  Navigation: (props: CustomComponentProps) => (
+    <Navigation
+      animation={props.animation}
+      content={props.content}
+      layout={props.layout}
+      settings={props.settings}
+    />
+  ),
 
   // Grid: (
   //   props: GridProps & {

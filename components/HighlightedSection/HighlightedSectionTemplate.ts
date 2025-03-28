@@ -1,8 +1,7 @@
 import type { Template } from "tinacms";
 import animation from "../../tina/template-fields/animation";
 import intl from "../../tina/template-fields/intl";
-import margin from "../../tina/template-fields/margin";
-import size from "../../tina/template-fields/size";
+import layout from "../../tina/template-fields/layout";
 import ButtonTemplate from "../Button/ButtonTemplate";
 
 const fields: Template["fields"] = [
@@ -21,5 +20,5 @@ const fields: Template["fields"] = [
 export default {
   name: "HighlightedSection",
   label: "Highlighted Section",
-  fields: [animation, size, margin, intl(fields)],
+  fields: [animation, layout, intl(fields)],
 } as Template;

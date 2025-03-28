@@ -3,17 +3,16 @@ import { useContext, type Ref } from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import customComponents from "../../tina/components/custom-components";
 import defaultComponents from "../../tina/components/default-components";
+import { getLayoutProps } from "../../tina/template-fields/layout";
 import type { CustomComponentProps } from "../../tina/types";
 import useAnimation from "../../utils/animation/useAnimation";
 import { LanguageContext } from "../../utils/context/language";
-import { buildHeight, buildWidth } from "../../utils/radix-sizes";
 import styles from "./HighlightedSection.module.css";
 
 export default function HighlightedSection({
   animation,
   content,
-  margin,
-  size,
+  layout,
 }: CustomComponentProps<any>) {
   const language = useContext(LanguageContext);
   const { animationContainer } = useAnimation(animation);
@@ -21,11 +20,9 @@ export default function HighlightedSection({
   return (
     <Box
       p={"4"}
-      mt={margin?.marginTop}
-      mb={margin?.marginBottom}
       className={styles.box}
-      height={buildHeight(size)}
-      width={buildWidth(size)}
+      height={getLayoutProps(layout)("height")}
+      width={getLayoutProps(layout)("width")}
       overflow={"scroll"}
       ref={animationContainer as Ref<HTMLDivElement>}
     >
