@@ -1,6 +1,7 @@
 import { Box, Button, Flex } from "@radix-ui/themes";
-import { useContext, type Ref } from "react";
+import { useContext, useEffect, useState, type Ref } from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import client from "../../tina/__generated__/client";
 import type {
   PageBodySlideshowContentFilter,
   PageBodySlideshowSettingsFilter,
@@ -14,6 +15,7 @@ import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 
 export default function Slideshow({
+  animation,
   content,
   layout,
   settings,
@@ -28,11 +30,12 @@ export default function Slideshow({
   return (
     <>
       <p>Slider</p>
-      {/* <Box
+      <Box
         position={"relative"}
         height={getLayoutProps(layout)("height")}
         width={getLayoutProps(layout)("width")}
         ref={slideshowContainer as Ref<HTMLDivElement>}
+        style={{ backgroundColor: "lightcyan" }}
       >
         <Flex
           className={styles.slideContainer}
@@ -42,8 +45,8 @@ export default function Slideshow({
           wrap="nowrap"
           ref={slideshow as Ref<HTMLDivElement>}
         >
-          {content?.[language]?.slides?.elements &&
-            (content?.[language]?.slides?.elements as any).map((element, i) => (
+          {/* {content?.[language]?.slides &&
+            (content?.[language]?.slides as any).map((element, i) => (
               <Flex
                 align={"center"}
                 justify={"center"}
@@ -61,7 +64,7 @@ export default function Slideshow({
                   className={styles.slideshowOverlay}
                 >
                   <TinaMarkdown
-                    content={element.element}
+                    content={element}
                     components={{
                       ...defaultComponents,
                       ...imageComponent["responsive"],
@@ -69,10 +72,10 @@ export default function Slideshow({
                   />
                 </Flex>
               </Flex>
-            ))}
+            ))} */}
         </Flex>
 
-        <Flex justify={"center"}>
+        {/* <Flex justify={"center"}>
           <Flex
             justify={"center"}
             position={"absolute"}
@@ -81,27 +84,25 @@ export default function Slideshow({
             gap={"1"}
             className={styles.slideControls}
           >
-            {content?.[language]?.slides?.elements &&
-              (content?.[language]?.slides?.elements as []).map(
-                (element, index) => (
-                  <Button
-                    size={"1"}
-                    radius="full"
-                    onClick={() => goToSlide(index + 1)}
-                    key={index}
-                    className={`${
-                      index === isActiveSlide
-                        ? styles.activeSlideControl
-                        : styles.slideControl
-                    } ${styles.control}`}
-                  >
-                    <Box></Box>
-                  </Button>
-                )
-              )}
+            {content?.[language]?.slides &&
+              (content?.[language]?.slides as []).map((element, index) => (
+                <Button
+                  size={"1"}
+                  radius="full"
+                  onClick={() => goToSlide(index + 1)}
+                  key={index}
+                  className={`${
+                    index === isActiveSlide
+                      ? styles.activeSlideControl
+                      : styles.slideControl
+                  } ${styles.control}`}
+                >
+                  <Box></Box>
+                </Button>
+              ))}
           </Flex>
-        </Flex>
-      </Box> */}
+        </Flex> */}
+      </Box>
     </>
   );
 }

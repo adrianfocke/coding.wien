@@ -1,8 +1,8 @@
 import { defineConfig } from "tinacms";
 import page from "./collections/page";
-import work from "./collections/work";
+import project from "./collections/project";
 
-const collections = [page, work];
+const collections = [page, project];
 
 export default defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,

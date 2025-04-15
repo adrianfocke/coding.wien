@@ -1,31 +1,25 @@
 import type { Template } from "tinacms";
-import animation from "../../tina/template-fields/animation";
-import intl from "../../tina/template-fields/intl";
-import layout from "../../tina/template-fields/layout";
+import { exportTemplate } from "../../tina/utils";
 
-// Settings should not be intled
-const settings: Template["fields"][number] = {
-  name: "settings",
-  label: "Slideshow settings",
-  type: "object",
-  fields: [
-    {
-      name: "nextSlideTimeout",
-      label: "Next slide timeout",
-      type: "number",
-    },
-  ],
-};
-
-const fields: Template["fields"] = [
+const settings: Template["fields"] = [
   {
-    name: "slides",
-    label: "Slides",
-    type: "string",
+    name: "nextSlideTimeout",
+    label: "Next slide timeout",
+    type: "number",
   },
 ];
 
-export default {
+const fields: Template["fields"] = [
+  {
+    name: "reference",
+    label: "Item",
+    type: "reference",
+    collections: ["project"],
+  },
+];
+
+export default exportTemplate({
   name: "Slideshow",
-  fields: [animation, layout, settings, intl(fields)],
-} as Template;
+  settings,
+  fields,
+});

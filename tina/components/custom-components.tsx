@@ -1,3 +1,4 @@
+import type { Template } from "tinacms";
 import type { Components } from "tinacms/dist/rich-text";
 import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
@@ -5,6 +6,9 @@ import Hero from "../../components/Hero/Hero";
 import HighlightedSection from "../../components/HighlightedSection/HighlightedSection";
 import Navigation from "../../components/Navigation/Navigation";
 import Slideshow from "../../components/Slideshow/Slideshow";
+import animation from "../template-fields/animation";
+import intl from "../template-fields/intl";
+import layout from "../template-fields/layout";
 import type { CustomComponentProps } from "../types";
 
 export default {

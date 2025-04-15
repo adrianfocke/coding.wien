@@ -27,6 +27,10 @@ const layoutProps = [
   "paddingBottom",
   "paddingLeft",
   "paddingRight",
+  "marginTop",
+  "marginBottom",
+  "marginLeft",
+  "marginRight",
 ] as const;
 
 type LayoutProp = (typeof layoutProps)[number];
