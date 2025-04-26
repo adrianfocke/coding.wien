@@ -4,8 +4,8 @@ import type { GenerateMetadataProps } from "../../../tina/types";
 import ClientPage from "./client-page";
 
 export async function generateStaticParams() {
-  const pages = await client.queries.workConnection();
-  const paths = pages.data?.workConnection?.edges?.map((edge) => ({
+  const pages = await client.queries.projectConnection();
+  const paths = pages.data?.projectConnection?.edges?.map((edge) => ({
     filename: edge?.node?._sys.breadcrumbs,
   }));
 
@@ -17,23 +17,21 @@ export async function generateMetadata({
 }: GenerateMetadataProps): Promise<Metadata> {
   const title = (await params).filename[0];
 
-  const work = await client.queries.work({
+  const work = await client.queries.project({
     relativePath: `${title}.json`,
   });
 
   return {
-    title: work.data.work.name,
-    description: work.data.work.seo,
+    title: work.data.project.name,
+    description: work.data.project.seo,
   };
 }
 
-export default async function Page(
-  props: {
-    params: Promise<{ filename: string[] }>;
-  }
-) {
+export default async function Page(props: {
+  params: Promise<{ filename: string[] }>;
+}) {
   const params = await props.params;
-  const data = await client.queries.work({
+  const data = await client.queries.project({
     relativePath: `${params.filename}.json`,
   });
 

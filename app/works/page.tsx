@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const pages = (
-    await client.queries.workConnection()
-  ).data.workConnection.edges?.sort(
+    await client.queries.projectConnection()
+  ).data.projectConnection.edges?.sort(
     (a, b) =>
-      new Date(b!.node?.startDate!).getTime() -
-      new Date(a!.node?.startDate!).getTime()
+      new Date(b!.node?._sys.filename!).getTime() -
+      new Date(a!.node?._sys.filename!).getTime()
   );
 
   return <ClientPage props={pages} />;
