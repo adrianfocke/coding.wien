@@ -28,15 +28,7 @@ export const exportTemplate = (template: {
         type: "object",
         fields: template.settings,
       },
-      intl([
-        {
-          name: "fields",
-          label: "Fields",
-          type: "object",
-          list: true,
-          fields: template.fields,
-        },
-      ]),
+      intl(template.fields),
     ],
   };
 };

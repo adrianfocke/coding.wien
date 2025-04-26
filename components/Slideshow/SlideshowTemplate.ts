@@ -11,10 +11,22 @@ const settings: Template["fields"] = [
 
 const fields: Template["fields"] = [
   {
-    name: "reference",
-    label: "Item",
-    type: "reference",
-    collections: ["project"],
+    name: "slides",
+    label: "Slides",
+    type: "object",
+    list: true,
+    fields: [
+      { name: "text", type: "string" },
+      { name: "image", type: "image" },
+      { name: "heading", type: "string" },
+    ],
+    ui: {
+      itemProps(item) {
+        return {
+          label: item.heading ? `${item.heading}` : "Empty heading",
+        };
+      },
+    },
   },
 ];
 

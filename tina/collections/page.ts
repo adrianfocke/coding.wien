@@ -1,9 +1,4 @@
 import type { Collection } from "tinacms";
-import ButtonTemplate from "../../components/Button/ButtonTemplate";
-import CardTemplate from "../../components/Card/CardTemplate";
-import HeroTemplate from "../../components/Hero/HeroTemplate";
-import HighlightedSectionTemplate from "../../components/HighlightedSection/HighlightedSectionTemplate";
-import NavigationTemplate from "../../components/Navigation/NavigationTemplate";
 import SlideshowTemplate from "../../components/Slideshow/SlideshowTemplate";
 import { default as fileName } from "../template-fields/file-name";
 import { default as seo } from "../template-fields/seo";
@@ -21,14 +16,7 @@ export default {
       name: "body",
       label: "Main Content",
       type: "rich-text",
-      templates: [
-        ButtonTemplate,
-        CardTemplate,
-        HeroTemplate,
-        HighlightedSectionTemplate,
-        NavigationTemplate,
-        SlideshowTemplate,
-      ],
+      templates: [SlideshowTemplate],
     },
   ],
   ui: {
