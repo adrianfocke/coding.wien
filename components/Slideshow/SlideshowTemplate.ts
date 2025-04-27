@@ -19,6 +19,8 @@ const fields: Template["fields"] = [
       { name: "text", type: "string" },
       { name: "image", type: "image" },
       { name: "heading", type: "string" },
+      { name: "linksTo", type: "string" },
+      { name: "linkText", type: "string" },
     ],
     ui: {
       itemProps(item) {

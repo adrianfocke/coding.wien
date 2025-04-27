@@ -27,9 +27,3 @@
 .sans {
   font-weight: 300;
 }
-
-a {
-  color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
-}

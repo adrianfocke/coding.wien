@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Heading } from "@radix-ui/themes";
 import Image from "next/image";
+import Link from "next/link";
 import { useContext, type Ref } from "react";
 import type {
   PageBodySlideshowContentFilter,
@@ -41,7 +42,13 @@ export default function Slideshow(
         {props.content?.[language]?.slides &&
           (
             props.content?.[language]?.slides as [
-              { image: string; text: string; heading: string }
+              {
+                image: string;
+                text: string;
+                heading: string;
+                linksTo: string;
+                linkText: string;
+              }
             ]
           ).map((element, i) => (
             <Flex
@@ -53,10 +60,22 @@ export default function Slideshow(
               maxWidth={"100%"}
               style={{ scrollSnapAlign: "start" }}
             >
-              <Heading as="h1">{element.heading}</Heading>
-              <p>{element.text}</p>
-
-              <p>{i}</p>
+              <Flex
+                mx={"4"}
+                p={"4"}
+                justify={"center"}
+                align={"center"}
+                direction={"column"}
+                className={styles.slide}
+              >
+                <Heading as="h1">{element.heading}</Heading>
+                <p>{element.text}</p>
+                <Link href={`${element.linksTo}`}>
+                  <Button variant={"outline"}>
+                    {element.linkText ?? element.linksTo}
+                  </Button>
+                </Link>
+              </Flex>
 
               {element.image && (
                 <Image

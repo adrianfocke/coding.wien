@@ -1,4 +1,5 @@
 .slideContainer {
+  border-radius: var(--radius-6);
   -ms-overflow-style: none;
   scrollbar-width: none;
   height: 100%;
@@ -7,6 +8,11 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+.slide {
+  background: var(--white-hue);
+  border-radius: var(--radius-6);
 }
 
 .slideControls {
