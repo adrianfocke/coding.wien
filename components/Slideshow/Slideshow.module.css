@@ -1,5 +1,4 @@
 .slideContainer {
-  border-radius: var(--radius-6);
   -ms-overflow-style: none;
   scrollbar-width: none;
   height: 100%;
@@ -13,6 +12,16 @@
 .slide {
   background: var(--white-hue);
   border-radius: var(--radius-6);
+  color: var(--white);
+
+  .slideHeading {
+    font-family: var(--font-serif);
+  }
+
+  .slideButton {
+    font-family: var(--font-serif);
+    font-size: larger;
+  }
 }
 
 .slideControls {

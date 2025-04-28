@@ -20,8 +20,6 @@
 
 .serif {
   font-family: var(--font-serif);
-  letter-spacing: 1px;
-  font-weight: 400;
 }
 
 .sans {

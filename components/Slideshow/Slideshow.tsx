@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading } from "@radix-ui/themes";
+import { Box, Button, Flex, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, type Ref } from "react";
@@ -68,10 +68,13 @@ export default function Slideshow(
                 direction={"column"}
                 className={styles.slide}
               >
-                <Heading as="h1">{element.heading}</Heading>
+                <Text className={styles.slideHeading} size={"8"}>
+                  {element.heading}
+                </Text>
+
                 <p>{element.text}</p>
                 <Link href={`${element.linksTo}`}>
-                  <Button variant={"outline"}>
+                  <Button className={styles.slideButton} variant={"outline"}>
                     {element.linkText ?? element.linksTo}
                   </Button>
                 </Link>
