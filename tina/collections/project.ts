@@ -1,6 +1,5 @@
 import type { Collection } from "tinacms";
 import fileName from "../template-fields/file-name";
-import seo from "../template-fields/seo";
 import { sanitizeFilenameForURL } from "../utils";
 
 export default {
@@ -8,10 +7,7 @@ export default {
   name: "project",
   path: "content/projects",
   format: "json",
-  fields: [
-    seo,
-    fileName,
-  ],
+  fields: [fileName],
   ui: {
     router: ({ document }) => {
       return `/works/${document._sys.filename}`;

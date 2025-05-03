@@ -1,6 +1,6 @@
 import type { Template } from "tinacms";
 import animation from "./template-fields/animation";
-import intl from "./template-fields/intl";
+import intl, { languages, languageToLabel } from "./template-fields/intl";
 import layout from "./template-fields/layout";
 
 export const sanitizeFilenameForURL = (filename: string) =>
@@ -30,5 +30,23 @@ export const exportTemplate = (template: {
       },
       intl(template.fields),
     ],
+  };
+};
+
+export const exportIntlTemplate = (
+  template: Template & { type: string }
+): Template & { type: string } => {
+  return {
+    name: template.name,
+    label: template.label,
+    type: template.type,
+    fields: languages.map((language) => {
+      return {
+        name: language,
+        label: languageToLabel[language],
+        type: "object",
+        fields: template.fields,
+      };
+    }),
   };
 };

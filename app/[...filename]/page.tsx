@@ -18,15 +18,22 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: GenerateMetadataProps): Promise<Metadata> {
+
+  const language =
+    ((await cookies()).get("language")?.value as Language) ?? "en";
+
   const title = (await params).filename[0];
 
   const page = await client.queries.page({
     relativePath: `${title}.mdx`,
   });
 
+  const seoTitle = page.data.page.seo?.[language]?.title;
+  const seoMetaDescription = page.data.page.seo?.[language]?.metaDescription;
+
   return {
-    title: title[0].toUpperCase() + title.slice(1),
-    description: (page.data.page as Page & { seo: string }).seo,
+    title: seoTitle && seoTitle[0].toUpperCase() + seoTitle.slice(1),
+    description: seoMetaDescription && seoMetaDescription,
   };
 }
 

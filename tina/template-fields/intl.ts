@@ -1,9 +1,9 @@
 import type { Template } from "tinacms";
 
-const languages = ["de", "en"] as const;
+export const languages = ["de", "en"] as const;
 export type Language = (typeof languages)[number];
 
-const languageToLabel: Record<(typeof languages)[number], string> = {
+export const languageToLabel: Record<(typeof languages)[number], string> = {
   de: "German",
   en: "English",
 };

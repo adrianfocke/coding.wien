@@ -23,7 +23,6 @@ export async function generateMetadata({
 
   return {
     title: work.data.project.name,
-    description: work.data.project.seo,
   };
 }
 

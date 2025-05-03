@@ -1,7 +1,7 @@
 import type { Collection } from "tinacms";
 import SlideshowTemplate from "../../components/Slideshow/SlideshowTemplate";
 import { default as fileName } from "../template-fields/file-name";
-import { default as seo } from "../template-fields/seo";
+import seo from "../template-fields/seo";
 import { sanitizeFilenameForURL } from "../utils";
 
 export default {
