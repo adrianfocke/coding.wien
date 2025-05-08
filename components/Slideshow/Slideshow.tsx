@@ -50,7 +50,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
               style={{ scrollSnapAlign: "start" }}
             >
               <Flex
-                mx={"4"}
+                mx={"5"}
                 p={"4"}
                 justify={"center"}
                 align={"center"}
@@ -65,12 +65,15 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                   {element.heading}
                 </Heading>
 
-                <p>{element.text}</p>
+                <Text mt={"3"} mb={"3"} align={"center"}>
+                  {element.text}
+                </Text>
                 <Link href={`${element.linksTo}`}>
                   <Button
                     size={"3"}
                     className={`serif ${styles.link}`}
                     variant={"outline"}
+                    color={"gray"}
                     radius={"full"}
                   >
                     <Text size={"5"}>
