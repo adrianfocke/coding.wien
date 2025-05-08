@@ -1,7 +1,7 @@
 import type { Collection } from "tinacms";
 import SlideshowTemplate from "../../components/Slideshow/SlideshowTemplate";
-import { default as fileName } from "../template-fields/file-name";
-import seo from "../template-fields/seo";
+import { default as fileName } from "../templates/file-name";
+import seo from "../templates/seo";
 import { sanitizeFilenameForURL } from "../utils";
 
 export default {
@@ -10,13 +10,16 @@ export default {
   path: "content/page",
   format: "mdx",
   fields: [
-    fileName,
+    ...fileName,
     seo,
     {
       name: "body",
       label: "Main Content",
       type: "rich-text",
       templates: [SlideshowTemplate],
+      toolbarOverride: [
+        /* "bold", "italic", "link", "image", "heading", */ "embed",
+      ],
     },
   ],
   ui: {

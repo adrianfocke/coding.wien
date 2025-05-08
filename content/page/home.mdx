@@ -17,30 +17,27 @@ seo:
     metaDescription: This is the homepage
 body: |
   <Slideshow
-    content={{
-      en: {
-        slides: [
-          {
-            text: "Die Webseite von Valerie Voigt zeigt sich in ganz neuem Glanz.",
-            heading: "Vorhang auf!",
-            image: "/uploads/sunset-7704594_640.jpg",
-            linksTo: "about",
-            linkText: "Zum Projekt"
-          },
-          { image: "/uploads/agentur.jpg", text: "234tz", heading: "53467" },
-          {
-            image: "/uploads/Bidgood_One-Young-Man-Bent-.jpg",
-            text: "hioguzf",
-            heading: "lkhjh"
-          }
-        ]
-      }
-    }}
     layout={{
-      md: { height: "500px" },
       initial: { height: "60vh" },
-      xs: { height: "60vh" }
+      xs: { height: "60vh" },
+      sm: { height: "50vh" },
+      md: { height: "30vh" },
+      lg: { height: "30vh" },
+      xl: { height: "30vh" }
     }}
+    en={{
+      slides: [
+        {
+          image: "/uploads/Bidgood_One-Young-Man-Bent-.jpg",
+          text: "Coole Sache, ich komm fix vorbei, weil taugt mir gut!",
+          heading: "Vorhang auf!",
+          linksTo: "about",
+          linkText: "Mehr erfahren"
+        },
+        {}
+      ]
+    }}
+    nextSlideTimeout={3000}
   />
 ---
 

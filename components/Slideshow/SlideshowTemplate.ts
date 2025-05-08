@@ -1,5 +1,6 @@
 import type { Template } from "tinacms";
-import { exportTemplate } from "../../tina/utils";
+import intlTemplate from "../../tina/templates/intlTemplate";
+import layout from "../../tina/templates/layout";
 
 const settings: Template["fields"] = [
   {
@@ -9,31 +10,33 @@ const settings: Template["fields"] = [
   },
 ];
 
-const fields: Template["fields"] = [
+export default intlTemplate(
   {
-    name: "slides",
-    label: "Slides",
+    name: "Slideshow",
+    label: "Slideshow",
     type: "object",
-    list: true,
     fields: [
-      { name: "text", type: "string" },
-      { name: "image", type: "image" },
-      { name: "heading", type: "string" },
-      { name: "linksTo", type: "string" },
-      { name: "linkText", type: "string" },
-    ],
-    ui: {
-      itemProps(item) {
-        return {
-          label: item.heading ? `${item.heading}` : "Empty heading",
-        };
+      {
+        name: "slides",
+        label: "Slides",
+        type: "object",
+        list: true,
+        fields: [
+          { name: "text", label: "Text", type: "string" },
+          { name: "image", label: "Image", type: "image" },
+          { name: "heading", label: "Heading", type: "string" },
+          { name: "linksTo", label: "Link", type: "string" },
+          { name: "linkText", label: "Link Text", type: "string" },
+        ],
+        ui: {
+          itemProps(item) {
+            return {
+              label: item.heading ? `${item.heading}` : "Empty heading",
+            };
+          },
+        },
       },
-    },
+    ],
   },
-];
-
-export default exportTemplate({
-  name: "Slideshow",
-  settings,
-  fields,
-});
+  [...settings, ...layout]
+);

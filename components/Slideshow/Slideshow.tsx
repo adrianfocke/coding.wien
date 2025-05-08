@@ -2,34 +2,24 @@ import { Box, Button, Flex, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, type Ref } from "react";
-import type {
-  PageBodySlideshowContentFilter,
-  PageBodySlideshowSettingsFilter,
-} from "../../tina/__generated__/types";
-import { getLayoutProps } from "../../tina/template-fields/layout";
-import type { CustomComponentProps } from "../../tina/types";
+import type { PageBodySlideshowFilter } from "../../tina/__generated__/types";
+import { getLayoutProps } from "../../tina/templates/layout";
 import { LanguageContext } from "../../utils/context/language";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 
-export default function Slideshow(
-  props: CustomComponentProps<
-    PageBodySlideshowContentFilter,
-    PageBodySlideshowSettingsFilter
-  >
-) {
+export default function Slideshow(props: PageBodySlideshowFilter) {
   const language = useContext(LanguageContext);
   const { slideshow, slideshowContainer, goToSlide, isActiveSlide } =
-    useSlideshow(props.settings);
-
-  console.log(getLayoutProps(props.layout)("height"));
+    useSlideshow({ nextSlideTimeout: props.nextSlideTimeout });
 
   return (
     <Box
       position={"relative"}
-      height={getLayoutProps(props.layout)("height")}
-      width={getLayoutProps(props.layout)("width")}
+      height={getLayoutProps((props as any).layout)("height")}
+      width={getLayoutProps((props as any).layout)("width")}
       ref={slideshowContainer as Ref<HTMLDivElement>}
+      style={{ border: "1px solid red" }}
     >
       <Flex
         className={styles.slideContainer}
@@ -39,9 +29,9 @@ export default function Slideshow(
         wrap="nowrap"
         ref={slideshow as Ref<HTMLDivElement>}
       >
-        {props.content?.[language]?.slides &&
+        {props?.[language]?.slides &&
           (
-            props.content?.[language]?.slides as [
+            props?.[language]?.slides as [
               {
                 image: string;
                 text: string;
@@ -103,8 +93,8 @@ export default function Slideshow(
           gap={"1"}
           className={styles.slideControls}
         >
-          {props.content?.[language]?.slides &&
-            (props.content?.[language]?.slides as []).map((element, index) => (
+          {props?.[language]?.slides &&
+            (props?.[language]?.slides as []).map((element, index) => (
               <Button
                 size={"1"}
                 radius="full"

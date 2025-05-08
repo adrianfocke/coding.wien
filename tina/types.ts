@@ -1,17 +1,10 @@
-import type { ComponentAnimation } from "./template-fields/animation";
-import type { ComponentLayout } from "./template-fields/layout";
+import type { languages } from "./templates/intlTemplate";
+import type { layoutProps } from "./templates/layout";
 
 export type GenerateMetadataProps = {
   params: Promise<{ filename: string[] }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export type CustomComponentProps<
-  ComponentContent = undefined,
-  ComponentSettings = undefined
-> = {
-  animation?: ComponentAnimation;
-  content?: ComponentContent;
-  layout?: ComponentLayout;
-  settings?: ComponentSettings;
-};
+export type Language = (typeof languages)[number];
+export type LayoutProp = (typeof layoutProps)[number];

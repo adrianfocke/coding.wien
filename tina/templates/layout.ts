@@ -1,5 +1,6 @@
 import type { Breakpoint } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { Template } from "tinacms";
+import type { LayoutProp } from "../types";
 import { isSizeUnit, Regex } from "../validation";
 
 const breakpoints: Breakpoint[] = [
@@ -20,7 +21,7 @@ const breakpointToLabel: Record<(typeof breakpoints)[number], string> = {
   xl: "Desktops",
 };
 
-const layoutProps = [
+export const layoutProps = [
   "height",
   "width",
   "paddingTop",
@@ -33,11 +34,9 @@ const layoutProps = [
   "marginRight",
 ] as const;
 
-type LayoutProp = (typeof layoutProps)[number];
-export type ComponentLayout = Record<Breakpoint, Partial<LayoutProp>>;
-
 export const getLayoutProps =
-  (layout: ComponentLayout | undefined) => (layoutProp: LayoutProp) => ({
+  (layout: Record<Breakpoint, Partial<LayoutProp>> | undefined) =>
+  (layoutProp: LayoutProp) => ({
     initial: layout?.["initial"]?.[layoutProp],
     xs: layout?.["xs"]?.[layoutProp],
     sm: layout?.["sm"]?.[layoutProp],
@@ -46,31 +45,33 @@ export const getLayoutProps =
     xl: layout?.["xl"]?.[layoutProp],
   });
 
-export default {
-  name: "layout",
-  label: "Layout",
-  type: "object",
-  fields: breakpoints.map((breakpoint) => {
-    return {
-      name: breakpoint,
-      label: breakpointToLabel[breakpoint],
-      type: "object",
-      fields: layoutProps.map((layoutProp) => {
-        return {
-          name: layoutProp,
-          label: layoutProp,
-          type: "string",
-          ui: {
-            validate: (value) =>
-              isSizeUnit(
-                value,
-                layoutProp.includes("padding")
-                  ? Regex.radixSizeUnit
-                  : Regex.sizeUnit
-              ),
-          },
-        };
-      }),
-    };
-  }),
-} as Template["fields"][number];
+export default [
+  {
+    name: "layout",
+    label: "Layout",
+    type: "object",
+    fields: breakpoints.map((breakpoint) => {
+      return {
+        name: breakpoint,
+        label: breakpointToLabel[breakpoint],
+        type: "object",
+        fields: layoutProps.map((layoutProp) => {
+          return {
+            name: layoutProp,
+            label: layoutProp,
+            type: "string",
+            ui: {
+              validate: (value) =>
+                isSizeUnit(
+                  value,
+                  layoutProp.includes("padding")
+                    ? Regex.radixSizeUnit
+                    : Regex.sizeUnit
+                ),
+            },
+          };
+        }),
+      };
+    }),
+  },
+] as Template["fields"];

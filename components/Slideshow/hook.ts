@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { PageBodySlideshowSettingsFilter } from "../../tina/__generated__/types";
 
-export const useSlideshow = (
-  slideshowSettings?: PageBodySlideshowSettingsFilter
-) => {
+export const useSlideshow = (slideshowSettings?: any) => {
   const slideshowContainer = useRef<HTMLElement>(null);
   const slideshow = useRef<HTMLElement>(null);
 

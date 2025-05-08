@@ -1,6 +1,6 @@
-import { exportIntlTemplate } from "../utils";
+import intlTemplate from "./intlTemplate";
 
-export default exportIntlTemplate({
+export default intlTemplate({
   name: "seo",
   label: "SEO",
   type: "object",
