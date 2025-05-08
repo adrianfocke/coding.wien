@@ -3,7 +3,6 @@
   scrollbar-width: none;
   height: 100%;
   width: 100%;
-  overscroll-behavior: contain;
 
   &::-webkit-scrollbar {
     display: none;
