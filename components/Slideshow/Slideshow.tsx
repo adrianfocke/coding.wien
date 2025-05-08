@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Text } from "@radix-ui/themes";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { useContext, type Ref } from "react";
 import type { PageBodySlideshowFilter } from "../../tina/__generated__/types";
