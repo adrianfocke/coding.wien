@@ -21,7 +21,14 @@ export default {
     );
   },
   h1(props) {
-    return <Heading className="serif" size={"9"} {...props} />;
+    return (
+      <Heading
+        className="serif"
+        size={"9"}
+        style={{ fontWeight: "normal" }}
+        {...props}
+      />
+    );
   },
   h2(props) {
     return <Heading mt={"6"} className="serif" size={"8"} {...props} />;

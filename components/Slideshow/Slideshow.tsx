@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Text } from "@radix-ui/themes";
+import { Box, Button, Flex, Heading, Text } from "@radix-ui/themes";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useContext, type Ref } from "react";
@@ -16,10 +16,9 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
   return (
     <Box
       position={"relative"}
-      height={getLayoutProps((props as any).layout)("height")}
-      width={getLayoutProps((props as any).layout)("width")}
+      height={getLayoutProps(props.layout as any)("height")}
+      width={getLayoutProps(props.layout as any)("width")}
       ref={slideshowContainer as Ref<HTMLDivElement>}
-      style={{ border: "1px solid red" }}
     >
       <Flex
         className={styles.slideContainer}
@@ -58,14 +57,25 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                 direction={"column"}
                 className={styles.slide}
               >
-                <Text className={styles.slideHeading} size={"8"}>
+                <Heading
+                  className="serif"
+                  size={"9"}
+                  style={{ fontWeight: "normal" }}
+                >
                   {element.heading}
-                </Text>
+                </Heading>
 
                 <p>{element.text}</p>
                 <Link href={`${element.linksTo}`}>
-                  <Button className={styles.slideButton} variant={"outline"}>
-                    {element.linkText ?? element.linksTo}
+                  <Button
+                    size={"3"}
+                    className={`serif ${styles.link}`}
+                    variant={"outline"}
+                    radius={"full"}
+                  >
+                    <Text size={"5"}>
+                      {element.linkText ?? element.linksTo}
+                    </Text>
                   </Button>
                 </Link>
               </Flex>
