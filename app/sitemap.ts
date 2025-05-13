@@ -1,30 +1,19 @@
 import type { MetadataRoute } from "next";
+import project from "../project";
+import client from "../tina/__generated__/client";
+import { sanitizeFilenameForURL } from "../tina/utils";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: "https://www.valerievoigt.com/",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 1,
-    },
-    {
-      url: "https://www.valerievoigt.com/works",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: "https://www.valerievoigt.com/about",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: "https://www.valerievoigt.com/contact",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
-  ];
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const pages = (
+    await client.queries.pageConnection()
+  ).data.pageConnection.edges?.map((page) => page);
+
+  return pages!.map((page) => ({
+    url: `https://www.${project.url}/${sanitizeFilenameForURL(
+      page!.node!.name
+    )}`,
+    lastModified: new Date(),
+    changeFrequency: "yearly",
+    priority: 0.5,
+  }));
 }

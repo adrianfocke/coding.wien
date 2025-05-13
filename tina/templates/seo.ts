@@ -19,5 +19,11 @@ export default intlTemplate({
         description: "Descriptive information for better web search listing",
       },
     },
+    {
+      name: "metaKeywords",
+      label: "Meta keywords",
+      type: "string",
+      list: true,
+    },
   ],
 });
