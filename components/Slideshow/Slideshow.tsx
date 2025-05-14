@@ -71,7 +71,8 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                 <Link href={`${element.linksTo}`}>
                   <Button
                     size={"3"}
-                    className={`serif ${styles.link}`}
+                    title={`Button link to ${element.linksTo}`}
+                    className="serif secondaryButton"
                     variant={"outline"}
                     color={"gray"}
                     radius={"full"}
@@ -109,6 +110,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
           {props?.[language]?.slides &&
             (props?.[language]?.slides as []).map((element, index) => (
               <Button
+                title={`Button link to next slide`}
                 size={"1"}
                 radius="full"
                 onClick={() => goToSlide(index + 1)}

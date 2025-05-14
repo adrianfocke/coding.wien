@@ -25,3 +25,13 @@
 .sans {
   font-weight: 300;
 }
+
+.primaryButton {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.secondaryButton {
+  background-color: var(--white);
+  color: var(--black);
+}

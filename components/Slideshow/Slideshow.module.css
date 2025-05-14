@@ -13,11 +13,6 @@
     border-radius: var(--radius-6);
     color: var(--white);
   }
-
-  .link {
-    background-color: var(--white);
-    color: var(--black);
-  }
 }
 
 .slideControls {
