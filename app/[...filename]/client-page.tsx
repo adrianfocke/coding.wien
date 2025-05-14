@@ -1,5 +1,4 @@
 "use client";
-import { Container } from "@radix-ui/themes";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
@@ -30,9 +29,7 @@ export default function ClientPage(props: ClientPageProps) {
   return (
     <div data-testid="client-page">
       <LanguageContext.Provider value={props.language}>
-        <Container>
-          <TinaMarkdown content={body} components={components} />
-        </Container>
+        <TinaMarkdown content={body} components={components} />
       </LanguageContext.Provider>
     </div>
   );

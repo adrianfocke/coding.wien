@@ -18,6 +18,11 @@
   --font-weight: 300;
 }
 
+a {
+  color: var(--black);
+  text-decoration: none;
+}
+
 .serif {
   font-family: var(--font-serif);
 }

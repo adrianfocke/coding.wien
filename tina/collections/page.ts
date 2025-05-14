@@ -1,5 +1,6 @@
 import type { Collection } from "tinacms";
 import HeroTemplate from "../../components/Hero/HeroTemplate";
+import NavigationTemplate from "../../components/Navigation/NavigationTemplate";
 import SlideshowTemplate from "../../components/Slideshow/SlideshowTemplate";
 import { default as fileName } from "../templates/file-name";
 import seo from "../templates/seo";
@@ -17,7 +18,7 @@ export default {
       name: "body",
       label: "Main Content",
       type: "rich-text",
-      templates: [HeroTemplate, SlideshowTemplate],
+      templates: [HeroTemplate, SlideshowTemplate, NavigationTemplate],
       toolbarOverride: [
         /* "bold", "italic", "link", "image", "heading", */ "embed",
       ],

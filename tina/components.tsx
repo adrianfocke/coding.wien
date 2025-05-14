@@ -2,10 +2,15 @@ import { Heading, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import type { Components } from "tinacms/dist/rich-text";
 import Hero from "../components/Hero/Hero";
+import Navigation from "../components/Navigation/Navigation";
 import Slideshow from "../components/Slideshow/Slideshow";
 
 export default {
   /* Custom components */
+  Navigation: (props: any) => {
+    console.log("Slideshow props: ", props);
+    return <Navigation {...props} />;
+  },
   Hero: (props: any) => {
     console.log("Hero props: ", props);
     return <Hero {...props} />;
