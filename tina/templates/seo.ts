@@ -17,6 +17,11 @@ export default intlTemplate({
       ui: {
         component: "textarea",
         description: "Descriptive information for better web search listing",
+        validate: (value) => {
+          if (value?.length > 165) {
+            return "Meta desciption should not be longer than 165 characters";
+          }
+        },
       },
     },
     {
