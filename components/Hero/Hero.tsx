@@ -7,14 +7,15 @@ import {
   Link,
   Text,
 } from "@radix-ui/themes";
-import { useContext } from "react";
+import { use } from "react";
+import { tinaField } from "tinacms/dist/react";
 import type { PageBodyHeroFilter } from "../../tina/__generated__/types";
 import { getLayoutProps } from "../../tina/templates/layout";
 import { LanguageContext } from "../../utils/context/language";
 import styles from "./Hero.module.css";
 
 export default function Hero(props: PageBodyHeroFilter) {
-  const language = useContext(LanguageContext);
+  const language = use(LanguageContext);
 
   return (
     <Container>
@@ -32,6 +33,7 @@ export default function Hero(props: PageBodyHeroFilter) {
           className={styles.slide}
         >
           <Heading
+            data-tina-field={tinaField(props.en, "heading")}
             className="serif"
             size={"9"}
             style={{ fontWeight: "normal" }}

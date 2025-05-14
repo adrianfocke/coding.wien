@@ -1,7 +1,7 @@
 import { Box, Button, Container, Flex, Heading, Text } from "@radix-ui/themes";
 import Image from "next/legacy/image";
 import Link from "next/link";
-import { useContext, type Ref } from "react";
+import { use, type Ref } from "react";
 import type { PageBodySlideshowFilter } from "../../tina/__generated__/types";
 import { getLayoutProps } from "../../tina/templates/layout";
 import { LanguageContext } from "../../utils/context/language";
@@ -9,7 +9,7 @@ import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 
 export default function Slideshow(props: PageBodySlideshowFilter) {
-  const language = useContext(LanguageContext);
+  const language = use(LanguageContext);
   const { slideshow, slideshowContainer, goToSlide, isActiveSlide } =
     useSlideshow({ nextSlideTimeout: props.nextSlideTimeout });
 
