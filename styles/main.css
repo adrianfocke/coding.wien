@@ -39,6 +39,7 @@ a {
   background-size: contain;
   background-color: var(--white);
   color: var(--white);
+  min-height: fit-content;
 }
 
 .secondaryButton {
@@ -46,4 +47,17 @@ a {
   border: 1px solid var(--black);
   background-color: var(--white);
   color: var(--black);
+  min-height: fit-content;
+}
+
+@media (orientation: portrait) {
+  .primaryButton {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .secondaryButton {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
 }
