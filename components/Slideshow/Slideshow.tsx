@@ -61,7 +61,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
             >
               <Flex
                 mx={"5"}
-                p={"4"}
+                p={"6"}
                 justify={"center"}
                 align={"center"}
                 direction={"column"}
