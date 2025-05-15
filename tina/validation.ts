@@ -1,6 +1,6 @@
 export enum Regex {
-  "sizeUnit" = "(|[0-9]+(.[0-9]+)?(px|vw|%|vh))",
-  "radixSizeUnit" = "-?[0-9]",
+  "sizeUnit" = "([0-9]+(.[0-9]+)?(px|vw|%|vh))?",
+  "radixSizeUnit" = "(-?[0-9])?",
 }
 
 export const isSizeUnit = (value: string, regex: Regex) => {

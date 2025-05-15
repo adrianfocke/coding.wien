@@ -8,7 +8,6 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { use } from "react";
-import { tinaField } from "tinacms/dist/react";
 import type { PageBodyHeroFilter } from "../../tina/__generated__/types";
 import { getLayoutProps } from "../../tina/templates/layout";
 import { LanguageContext } from "../../utils/context/language";
@@ -16,13 +15,22 @@ import styles from "./Hero.module.css";
 
 export default function Hero(props: PageBodyHeroFilter) {
   const language = use(LanguageContext);
+  const { layout } = props as any;
 
   return (
     <Container>
       <Box
         position={"relative"}
-        height={getLayoutProps(props.layout as any)("height")}
-        width={getLayoutProps(props.layout as any)("width")}
+        height={getLayoutProps(layout)("height")}
+        width={getLayoutProps(layout)("width")}
+        pt={getLayoutProps(layout)("paddingTop")}
+        pb={getLayoutProps(layout)("paddingBottom")}
+        pr={getLayoutProps(layout)("paddingRight")}
+        pl={getLayoutProps(layout)("paddingLeft")}
+        mt={getLayoutProps(layout)("marginTop")}
+        mb={getLayoutProps(layout)("marginBottom")}
+        mr={getLayoutProps(layout)("marginRight")}
+        ml={getLayoutProps(layout)("marginLeft")}
       >
         <Flex
           mx={"5"}
@@ -33,7 +41,7 @@ export default function Hero(props: PageBodyHeroFilter) {
           className={styles.slide}
         >
           <Heading
-            data-tina-field={tinaField(props.en, "heading")}
+            align={"center"}
             className="serif"
             size={"9"}
             style={{ fontWeight: "normal" }}
@@ -41,7 +49,7 @@ export default function Hero(props: PageBodyHeroFilter) {
             {(props?.[language]?.heading as any) ?? ""}
           </Heading>
 
-          <Text mt={"3"} mb={"3"} align={"center"}>
+          <Text mt={"3"} mb={"5"} align={"center"}>
             {props?.[language]?.text as any}
           </Text>
 

@@ -64,7 +64,8 @@ export default [
               validate: (value) =>
                 isSizeUnit(
                   value,
-                  layoutProp.includes("padding")
+                  layoutProp.includes("padding") ||
+                    layoutProp.includes("margin")
                     ? Regex.radixSizeUnit
                     : Regex.sizeUnit
                 ),
