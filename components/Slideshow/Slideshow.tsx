@@ -18,7 +18,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
   return (
     <Box
       position={"relative"}
-      height={getLayoutProps(props.layout as any)("height")}
+      minHeight={getLayoutProps(props.layout as any)("height")}
       width={getLayoutProps(props.layout as any)("width")}
       pt={getLayoutProps(layout)("paddingTop")}
       pb={getLayoutProps(layout)("paddingBottom")}
