@@ -15,24 +15,28 @@
     border-radius: var(--radius-6);
     color: var(--white);
   }
-}
 
-.slideControls {
-  background: var(--white-hue);
-  border-radius: var(--radius-6);
+  .slideControls {
+    bottom: 0;
+    z-index: 1;
+    background: var(--white-hue);
+    border-radius: var(--radius-6);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
 
-  .control {
-    height: 16px;
-    width: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    .control {
+      height: 16px;
+      width: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    }
+    .activeSlideControl {
+      background-color: var(--white);
+    }
+
+    .slideControl {
+      background-color: var(--grey);
+    }
   }
-  .activeSlideControl {
-    background-color: var(--white);
-  }
-  
-  .slideControl {
-    background-color: var(--grey);
-  }
-  
 }

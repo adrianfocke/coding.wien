@@ -18,8 +18,6 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
   return (
     <Box
       position={"relative"}
-      minHeight={getLayoutProps(props.layout as any)("height")}
-      width={getLayoutProps(props.layout as any)("width")}
       pt={getLayoutProps(layout)("paddingTop")}
       pb={getLayoutProps(layout)("paddingBottom")}
       pr={getLayoutProps(layout)("paddingRight")}
@@ -31,6 +29,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
       ref={slideshowContainer as Ref<HTMLDivElement>}
     >
       <Flex
+        minHeight={getLayoutProps(props.layout as any)("height")}
         className={styles.slideContainer}
         style={{ scrollSnapType: "x mandatory" }}
         overflowX="auto"
@@ -106,16 +105,13 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
               )}
             </Flex>
           ))}
-      </Flex>
 
-      <Flex justify={"center"}>
         <Flex
+          className={styles.slideControls}
           justify={"center"}
           position={"absolute"}
-          bottom={"16px"}
           p={"2"}
           gap={"1"}
-          className={styles.slideControls}
         >
           {props?.[language]?.slides &&
             (props?.[language]?.slides as []).map((element, index) => (
