@@ -27,7 +27,7 @@ export default function ClientPage(props: ClientPageProps) {
   const { body } = data.page;
 
   return (
-    <div data-testid="client-page">
+    <div data-testid="client-page" className="test-responsive">
       <LanguageContext.Provider value={props.language}>
         <TinaMarkdown content={body} components={components} />
       </LanguageContext.Provider>

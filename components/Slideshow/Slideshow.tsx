@@ -15,6 +15,10 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
   const { slideshow, slideshowContainer, goToSlide, isActiveSlide } =
     useSlideshow({ nextSlideTimeout: props.nextSlideTimeout });
 
+  if (!window || window === undefined) {
+    return null;
+  }
+
   return (
     <Box
       position={"relative"}
@@ -29,7 +33,10 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
       ref={slideshowContainer as Ref<HTMLDivElement>}
     >
       <Flex
-        minHeight={getLayoutProps(props.layout as any)("height")}
+        minHeight={getLayoutProps(
+          props.layout as any,
+          window.innerHeight
+        )("height")}
         className={styles.slideContainer}
         style={{ scrollSnapType: "x mandatory" }}
         overflowX="auto"
