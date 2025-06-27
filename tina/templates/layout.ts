@@ -39,7 +39,7 @@ const transformViewportUnitIntoPixels = (
   vhUnit?: string
 ) => {
   if (windowInnerHeight && vhUnit) {
-    return (window.innerHeight * Number(vhUnit.slice(0, 2))) / 100;
+    return (window.innerHeight * Number(vhUnit.slice(0, 2))) / 100 + "px";
   }
   return vhUnit;
 };
