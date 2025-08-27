@@ -1,6 +1,9 @@
 "use client";
-import { useTina } from "tinacms/dist/react";
+import { tinaField, useTina } from "tinacms/dist/react";
 import type { ProjectQuery } from "../../../tina/__generated__/types";
+import { Text } from "@radix-ui/themes";
+import { use } from "react";
+import { LanguageContext } from "../../../utils/context/language";
 
 interface ClientPageProps {
   query: string;
@@ -18,8 +21,16 @@ export default function ClientPage(props: ClientPageProps) {
     data: props.data,
   });
 
+  const language = use(LanguageContext);
+
   const { project } = data;
   console.log(project);
 
-  return <></>;
+  return (
+    <>
+      <div data-tina-field={tinaField(project.content?.[language], "title")}>
+        <Text>{project.content?.[language]?.title}</Text>
+      </div>
+    </>
+  );
 }
