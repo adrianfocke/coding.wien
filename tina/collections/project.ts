@@ -32,6 +32,49 @@ export default {
           label: "URL",
           type: "string",
         },
+        {
+          name: "images",
+          label: "Images",
+          type: "object",
+          list: true,
+          fields: [
+            {
+              name: "image",
+              label: "Image",
+              type: "image",
+            },
+            {
+              name: "altText",
+              label: "Alt text",
+              type: "string",
+            },
+          ],
+          ui: {
+            description:
+              "First image will be used as the hero image on the project page.",
+          },
+        },
+        {
+          name: "textblocks",
+          label: "Text blocks",
+          type: "object",
+          list: true,
+          fields: [
+            {
+              name: "text",
+              label: "Text block",
+              type: "rich-text",
+              toolbarOverride: ["heading"],
+            },
+          ],
+          ui: {
+            itemProps(item) {
+              return {
+                label: "Text block",
+              };
+            },
+          },
+        },
       ],
     }),
   ],

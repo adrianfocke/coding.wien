@@ -35,12 +35,22 @@ export default {
       <Heading
         className="serif"
         size={"9"}
+        my={"6"}
         style={{ fontWeight: "normal" }}
         {...props}
       />
     );
   },
   h2(props) {
-    return <Heading mt={"6"} className="serif" size={"8"} {...props} />;
+    return (
+      <Heading
+        mt={"6"}
+        mb={"4"}
+        className="sans"
+        size={"6"}
+        style={{ fontWeight: "500" }}
+        {...props}
+      />
+    );
   },
 } as Components<{}>;

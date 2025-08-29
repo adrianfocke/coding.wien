@@ -3,7 +3,24 @@
   "content": {
     "en": {
       "title": "My new breathwork event",
-      "punchline": "Lets go, breath in and out and khumbaka!"
+      "punchline": "Lets go, breath in and out and khumbaka!",
+      "images": [
+        {
+          "image": "/uploads/Schauspielhaus_Capri_c_Ruiz_Cruz_HighRes_05A5673.jpg",
+          "altText": "Image shows the project"
+        },
+        {
+          "image": "/uploads/Bidgood_One-Young-Man-Bent-.jpg"
+        }
+      ],
+      "textblocks": [
+        {
+          "text": "# Valerie Voigt hat gute Karten – egal ob im Theater oder online!\n\nOder zumindest die Kommunikation. Reduktion, Natürlichkeit, Stil, der Sinn fürs Schöne und nicht zuletzt jede Menge Humor kennzeichnen seit jeher das Brand Design von Joseph Brot. In der Kommunikation fokussieren wir gezielt auf die Produkte, die USPs und die Einzigartigkeit – verpacken die Themen aber immer in witzige Texte.\n"
+        },
+        {
+          "text": "Entwicklung von Webapplikationen aller Größen, basierend auf modernster Web-Technologie. Wir verwenden React und Nextjs für unsere Webseiten.\n\n## Die Challenge\n\nErarbeiten eines Design-Konzepts mit Aussagekraft und Charakter. Wir arbeiten mit freiberuflichen Designer:innen zusammen.\n\n## Unser Approach\n\nDu kannst Dir bei uns eine zweite Meinung zu deiner Idee und deren Umsetzung einholen. So gehst Du gestärkt ins Kreieren!\n"
+        }
+      ]
     }
   }
 }
