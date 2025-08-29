@@ -13,29 +13,29 @@
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
-    "@radix-ui/react-accordion": "^1.2.1",
-    "@radix-ui/react-form": "^0.1.0",
-    "@radix-ui/react-icons": "^1.3.0",
-    "@radix-ui/react-navigation-menu": "^1.2.1",
-    "@radix-ui/themes": "^3.1.3",
-    "@types/react": "^18.3.1",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-form": "^0.1.8",
+    "@radix-ui/react-icons": "^1.3.2",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/themes": "^3.2.1",
+    "@types/react": "^18.3.24",
     "next": "15.1.2",
-    "nodemailer": "^6.9.15",
-    "npm": "^10.8.3",
+    "nodemailer": "^6.10.1",
+    "npm": "^10.9.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tinacms": "^2.5.2",
+    "tinacms": "^2.8.2",
     "typescript": "5.5.2"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "15.1.2",
-    "@playwright/test": "^1.47.1",
-    "@tinacms/cli": "0.0.0-7f57e8c-20250506032247",
-    "@types/node": "^22.5.5",
-    "@types/nodemailer": "^6.4.16",
+    "@playwright/test": "^1.55.0",
+    "@tinacms/cli": "1.10.2",
+    "@types/node": "^22.18.0",
+    "@types/nodemailer": "^6.4.19",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.1.2",
-    "husky": "^9.1.6"
+    "husky": "^9.1.7"
   },
   "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
 }
