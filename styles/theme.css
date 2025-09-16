@@ -1,11 +1,60 @@
 :root {
-  /* ...existing theme variables... */
+  --all-white: #211e1e;
+  --black: #0d0c0c;
+  --border-radius: 8px;
+  --border-width: 2px;
+  --button-bg: var(--primary);
+  --button-color: #fff;
+  --button-font-size: 1rem;
+  --button-hover-bg: #1765c1;
+  --button-padding: 0.75em 1.5em;
+  --button-radius: var(--border-radius);
+  --color-background: #fff;
+  --color-border: #222;
+  --color-secondary: #e91e63;
+  --color-text: #222;
+  --font-family: "Inter", sans-serif;
   --font-normal: normal;
   --font-weight-500: 500;
+  --font-weight: 300;
+  --grey-hue: color-mix(in srgb, var(--grey) 10%, transparent);
+  --grey: #353535;
+  --icon-button-height: 20px;
+  --icon-button-width: 24px;
   --margin-top-100: 100px;
-  --z-index-minus-1: -1;
+  --primary-hue: color-mix(in srgb, var(--primary) 13%, transparent);
+  --primary: #1786b4;
+  --radius-6: 6px;
   --scroll-snap-align-start: start;
   --scroll-snap-type-x-mandatory: x mandatory;
+  --white-hue: color-mix(in srgb, var(--white) 13%, transparent);
+  --white: #fafafa;
+  --z-index-minus-1: -1;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.button {
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  border-radius: var(--button-radius);
+  background: var(--button-bg);
+  color: var(--button-color);
+  border: var(--border-width) solid var(--border-color);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.button:hover {
+  background: var(--button-hover-bg);
 }
 
 .scrollSnapMandatory {
@@ -35,44 +84,40 @@
 .marginTop100 {
   margin-top: var(--margin-top-100);
 }
-/* Central theme variables for easy customization */
-:root {
-  --color-primary: #1a73e8;
-  --color-secondary: #e91e63;
-  --color-background: #fff;
-  --color-text: #222;
-  --border-radius: 8px;
-  --border-width: 2px;
-  --color-border: #222;
-  --font-family: 'Inter', sans-serif;
-  --button-padding: 0.75em 1.5em;
-  --button-font-size: 1rem;
-  --button-radius: var(--border-radius);
-  --button-bg: var(--color-primary);
-  --button-color: #fff;
-  --button-hover-bg: #1765c1;
-  --white-hue: #f9f9f9;
-  --white: #fff;
-  --grey: #e0e0e0;
-  --radius-6: 6px;
+
+.serif {
+  font-family: var(--font-serif);
 }
 
-body {
-  background: var(--color-background);
-  color: var(--color-text);
-  font-family: var(--font-family);
+.sans {
+  font-weight: 300;
 }
 
-.button {
-  padding: var(--button-padding);
-  font-size: var(--button-font-size);
-  border-radius: var(--button-radius);
-  background: var(--button-bg);
-  color: var(--button-color);
-  border: var(--border-width) solid var(--border-color);
-  cursor: pointer;
-  transition: background 0.2s;
+.primaryButton {
+  border: 1px solid var(--primary);
+  background-image: url("../public/bg/bg-6.png");
+  background-size: contain;
+  background-color: var(--white);
+  color: var(--white);
+  min-height: fit-content;
 }
-.button:hover {
-  background: var(--button-hover-bg);
+
+.secondaryButton {
+  box-shadow: none;
+  border: 1px solid var(--black);
+  background-color: var(--white);
+  color: var(--black);
+  min-height: fit-content;
+}
+
+@media (orientation: portrait) {
+  .primaryButton {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .secondaryButton {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
 }
