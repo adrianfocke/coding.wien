@@ -22,7 +22,7 @@ export default function Form({ test }: FormProps) {
 
   return (
     <Box width={{ sm: "80vw", md: "440px" }}>
-      <Card style={{ width: "100%" }} variant="ghost">
+      <Card className={`cardFullWidth`} variant="ghost">
         <RadixForm.Root
           onSubmit={async (event) => {
             event.preventDefault();
@@ -57,7 +57,11 @@ export default function Form({ test }: FormProps) {
 
           <RadixForm.Submit asChild>
             <Flex align={"center"} direction={"row"} gap={"2"} my={"2"}>
-              <Button mt={"4"} disabled={state !== "idle"}>
+              <Button
+                mt={"4"}
+                disabled={state !== "idle"}
+                className={`button unsetAll`}
+              >
                 <Spinner loading={state === "sending"}></Spinner>
                 {state === "idle" && "Senden"}
                 {state === "sending" && "Senden"}

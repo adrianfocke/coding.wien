@@ -32,13 +32,7 @@ export default {
   },
   h1(props) {
     return (
-      <Heading
-        className="serif"
-        size={"9"}
-        my={"6"}
-        style={{ fontWeight: "normal" }}
-        {...props}
-      />
+      <Heading size={"9"} my={"6"} className={`fontNormal serif`} {...props} />
     );
   },
   h2(props) {
@@ -46,9 +40,8 @@ export default {
       <Heading
         mt={"6"}
         mb={"4"}
-        className="sans"
         size={"6"}
-        style={{ fontWeight: "500" }}
+        className={`fontWeight500 sans`}
         {...props}
       />
     );

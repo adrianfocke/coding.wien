@@ -9,14 +9,24 @@ export default function Navigation(props: PageBodyNavigationFilter) {
   const language = use(LanguageContext);
 
   return (
-    <Flex className={styles.navContainer} p={"4"} justify={"between"}>
+    <Flex
+      className={styles.navContainer}
+      p={"4"}
+      justify={"between"}
+      role="navigation"
+      aria-label="Main Navigation"
+    >
       <Text>{props?.[language]?.logo as any}</Text>
       <Flex gap={"4"}>
         {(
           props?.[language]?.links as [{ linksTo: string; linkText: string }]
         ).map((link, index) => {
           return (
-            <Link key={index} href={`${link.linksTo}`}>
+            <Link
+              key={index}
+              href={`${link.linksTo}`}
+              aria-label={link.linkText}
+            >
               <Text>{link.linkText}</Text>
             </Link>
           );

@@ -37,7 +37,7 @@ export default function ClientPage(props: ClientPageProps) {
           key={"abc"}
           width={"100%"}
           height={"30vh"}
-          style={{ scrollSnapAlign: "start" }}
+          className="scrollSnapAlignStart"
         >
           <Image
             priority={true}
@@ -45,7 +45,7 @@ export default function ClientPage(props: ClientPageProps) {
             alt={`Slider image for `}
             layout="fill"
             objectFit="cover"
-            style={{ zIndex: "-1" }}
+            className="zIndexMinus1"
           />
         </Box>
       </div>

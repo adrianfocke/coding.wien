@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
-      <body style={{ margin: 0 }}>
+      <body className="bodyNoMargin">
         <Theme>
           <main>{children}</main>
         </Theme>

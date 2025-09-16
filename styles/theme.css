@@ -1,0 +1,78 @@
+:root {
+  /* ...existing theme variables... */
+  --font-normal: normal;
+  --font-weight-500: 500;
+  --margin-top-100: 100px;
+  --z-index-minus-1: -1;
+  --scroll-snap-align-start: start;
+  --scroll-snap-type-x-mandatory: x mandatory;
+}
+
+.scrollSnapMandatory {
+  scroll-snap-type: var(--scroll-snap-type-x-mandatory);
+}
+.scrollSnapAlignStart {
+  scroll-snap-align: var(--scroll-snap-align-start);
+}
+.fontNormal {
+  font-weight: var(--font-normal);
+}
+.fontWeight500 {
+  font-weight: var(--font-weight-500);
+}
+.zIndexMinus1 {
+  z-index: var(--z-index-minus-1);
+}
+.cardFullWidth {
+  width: 100%;
+}
+.unsetAll {
+  all: unset;
+}
+.bodyNoMargin {
+  margin: 0;
+}
+.marginTop100 {
+  margin-top: var(--margin-top-100);
+}
+/* Central theme variables for easy customization */
+:root {
+  --color-primary: #1a73e8;
+  --color-secondary: #e91e63;
+  --color-background: #fff;
+  --color-text: #222;
+  --border-radius: 8px;
+  --border-width: 2px;
+  --color-border: #222;
+  --font-family: 'Inter', sans-serif;
+  --button-padding: 0.75em 1.5em;
+  --button-font-size: 1rem;
+  --button-radius: var(--border-radius);
+  --button-bg: var(--color-primary);
+  --button-color: #fff;
+  --button-hover-bg: #1765c1;
+  --white-hue: #f9f9f9;
+  --white: #fff;
+  --grey: #e0e0e0;
+  --radius-6: 6px;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+.button {
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  border-radius: var(--button-radius);
+  background: var(--button-bg);
+  color: var(--button-color);
+  border: var(--border-width) solid var(--border-color);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.button:hover {
+  background: var(--button-hover-bg);
+}

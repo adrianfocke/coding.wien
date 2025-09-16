@@ -37,8 +37,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
           props.layout as any,
           window.innerHeight
         )("height")}
-        className={styles.slideContainer}
-        style={{ scrollSnapType: "x mandatory" }}
+        className={`${styles.slideContainer} scrollSnapMandatory`}
         overflowX="auto"
         overflowY="hidden"
         wrap="nowrap"
@@ -63,7 +62,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
               key={i}
               minWidth={"100%"}
               maxWidth={"100%"}
-              style={{ scrollSnapAlign: "start" }}
+              className={`${styles.slide} scrollSnapAlignStart`}
             >
               <Flex
                 mx={"5"}
@@ -74,9 +73,8 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                 className={styles.slide}
               >
                 <Heading
-                  className="serif"
                   size={"9"}
-                  style={{ fontWeight: "normal" }}
+                  className={`${styles.slide} fontNormal serif`}
                 >
                   {element.heading}
                 </Heading>
@@ -92,6 +90,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                     variant={"outline"}
                     color={"gray"}
                     radius={"full"}
+                    aria-label={element.linkText ?? element.linksTo}
                   >
                     <Text size={"5"}>
                       {element.linkText ?? element.linksTo}
@@ -104,10 +103,14 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                 <Image
                   priority={i === 0}
                   src={element.image}
-                  alt={`Slider image for ${element.heading}`}
+                  alt={
+                    element.heading
+                      ? `Image for ${element.heading}`
+                      : "Slideshow image"
+                  }
                   layout="fill"
                   objectFit="cover"
-                  style={{ zIndex: "-1" }}
+                  className={`zIndexMinus1`}
                 />
               )}
             </Flex>

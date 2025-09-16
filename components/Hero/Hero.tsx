@@ -42,9 +42,8 @@ export default function Hero(props: PageBodyHeroFilter) {
         >
           <Heading
             align={"center"}
-            className="serif"
             size={"9"}
-            style={{ fontWeight: "normal" }}
+            className={`${styles.slide} fontNormal serif`}
           >
             {(props?.[language]?.heading as any) ?? ""}
           </Heading>

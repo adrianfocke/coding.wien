@@ -9,7 +9,7 @@ export default function ClientPage({ props }: ClientPageProps) {
   console.log(props);
   return (
     <>
-      <div style={{ marginTop: "100px" }}>
+      <div className="marginTop100">
         <Container mx="2"></Container>
       </div>
     </>
