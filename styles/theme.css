@@ -1,7 +1,7 @@
 :root {
   --all-white: #211e1e;
   --black: #0d0c0c;
-  --border-radius: 8px;
+  --border-radius: 0px;
   --border-width: 2px;
   --button-bg: var(--primary);
   --button-color: #fff;

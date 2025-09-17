@@ -62,7 +62,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
               key={i}
               minWidth={"100%"}
               maxWidth={"100%"}
-              className={`${styles.slide} scrollSnapAlignStart`}
+              className={`scrollSnapAlignStart`}
             >
               <Flex
                 mx={"5"}
@@ -72,10 +72,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                 direction={"column"}
                 className={styles.slide}
               >
-                <Heading
-                  size={"9"}
-                  className={`${styles.slide} fontNormal serif`}
-                >
+                <Heading size={"9"} className={`fontNormal serif`}>
                   {element.heading}
                 </Heading>
 

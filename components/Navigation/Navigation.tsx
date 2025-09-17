@@ -8,6 +8,8 @@ import styles from "./Navigation.module.css";
 export default function Navigation(props: PageBodyNavigationFilter) {
   const language = use(LanguageContext);
 
+  // TODO use in layout
+
   return (
     <Flex
       className={styles.navContainer}

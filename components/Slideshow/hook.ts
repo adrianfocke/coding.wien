@@ -97,6 +97,7 @@ export const useSlideshow = (slideshowSettings?: any) => {
     goToSlide,
     nextSlide,
     previousSlide,
+    // TODO smth is wrong here
     isActiveSlide: displayedSlide - 1,
   };
 };
