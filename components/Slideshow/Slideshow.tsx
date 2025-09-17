@@ -15,10 +15,6 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
   const { slideshow, slideshowContainer, goToSlide, isActiveSlide } =
     useSlideshow({ nextSlideTimeout: props.nextSlideTimeout });
 
-  if (!window || window === undefined) {
-    return null;
-  }
-
   return (
     <Box
       position={"relative"}
@@ -33,10 +29,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
       ref={slideshowContainer as Ref<HTMLDivElement>}
     >
       <Flex
-        minHeight={getLayoutProps(
-          props.layout as any,
-          window.innerHeight
-        )("height")}
+        minHeight={getLayoutProps(props.layout as any)("height")}
         className={`${styles.slideContainer} scrollSnapMandatory`}
         overflowX="auto"
         overflowY="hidden"
@@ -108,6 +101,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                   layout="fill"
                   objectFit="cover"
                   className={`zIndexMinus1`}
+                  style={{ position: "fixed" }}
                 />
               )}
             </Flex>
