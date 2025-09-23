@@ -19,6 +19,17 @@ seo:
       - coding
       - wien
 body: |
+  <Hero
+    en={{
+      text: "Ich packe Dich und deine Praxis in das Format einer transformierenden Yogastunde.",
+      heading: "Deine Stadt, deine Praxis, deine neue Yogalehrerin?",
+      linksToSecondary: "Stundenplan ansehen",
+      linksToPrimary: "Jetzt gleich anmelden",
+      linkTextPrimary: "/",
+      linkTextSecondary: "/"
+    }}
+  />
+
   <Slideshow
     layout={{
       xs: { height: "500px" },
@@ -29,11 +40,23 @@ body: |
     }}
     en={{
       slides: [
-        { image: "/uploads/Schauspielhaus_Capri_c_Ruiz_Cruz_HighRes_05A5673.jpg" },
-        { image: "/uploads/agentur.jpg" }
+        {
+          image: "/uploads/hero.jpg",
+          text: "Ich starte durch und morgen halte ich meine erste Yogastunde.",
+          heading: "Vorhang auf!",
+          linksTo: "works/breathwork-event",
+          linkText: "Zeig mir das Event"
+        },
+        {
+          heading: "Public Interest",
+          text: "Meine wöchentliche Stunde im Alkemy findet mittwochs statt.",
+          image: "/uploads/jade-stephens-yNo9dpaQA4M-unsplash.jpg",
+          linksTo: "/",
+          linkText: "Jetzt anmelden"
+        }
       ]
     }}
-    nextSlideTimeout={4000}
+    nextSlideTimeout={6000}
   />
 ---
 

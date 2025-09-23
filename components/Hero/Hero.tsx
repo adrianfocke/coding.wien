@@ -16,11 +16,10 @@ export default function Hero(props: PageBodyHeroFilter) {
   const language = use(LanguageContext);
 
   return (
-    <Container>
+    <Container my={"8"}>
       <Box position={"relative"}>
         <Flex
           mx={"5"}
-          p={"4"}
           justify={"center"}
           align={"center"}
           direction={"column"}
@@ -31,11 +30,12 @@ export default function Hero(props: PageBodyHeroFilter) {
             size={"9"}
             className={`${styles.slide} fontNormal serif`}
           >
-            {(props?.[language]?.heading as any) ?? ""}
+            {(props?.[language]?.heading as any) ?? "Add your heading"}
           </Heading>
 
           <Text mt={"3"} mb={"5"} align={"center"}>
-            {props?.[language]?.text as any}
+            {(props?.[language]?.text as any) ??
+              "Add your exciting text for getting interest."}
           </Text>
 
           <Flex gap={"4"}>
@@ -50,7 +50,8 @@ export default function Hero(props: PageBodyHeroFilter) {
               >
                 <Text size={"5"}>
                   {props?.[language]?.linksToPrimary ??
-                    (props?.[language]?.linkTextPrimary as any)}
+                    (props?.[language]?.linkTextPrimary as any) ??
+                    "Add your primary link"}
                 </Text>
               </Button>
             </Link>
@@ -66,7 +67,8 @@ export default function Hero(props: PageBodyHeroFilter) {
               >
                 <Text size={"5"}>
                   {props?.[language]?.linksToSecondary ??
-                    (props?.[language]?.linkTextSecondary as any)}
+                    (props?.[language]?.linkTextSecondary as any) ??
+                    "Add your secondary link"}
                 </Text>
               </Button>
             </Link>

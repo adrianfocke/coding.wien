@@ -34,6 +34,15 @@ export default intlTemplate(
               label: item.heading ? `${item.heading}` : "Empty heading",
             };
           },
+          defaultItem() {
+            return {
+              heading: "Add your heading",
+              text: "Add your text to spark interest",
+              image: "/uploads/hero2.jpg",
+              linksTo: "/",
+              linkText: "Add your link",
+            };
+          },
         },
       },
     ],

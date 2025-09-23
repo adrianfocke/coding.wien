@@ -1,15 +1,8 @@
 import { Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
-import { use } from "react";
-import type { PageBodyNavigationFilter } from "../../tina/__generated__/types";
-import { LanguageContext } from "../../utils/context/language";
 import styles from "./Navigation.module.css";
 
-export default function Navigation(props: PageBodyNavigationFilter) {
-  const language = use(LanguageContext);
-
-  // TODO use in layout
-
+export default function Navigation() {
   return (
     <Flex
       className={styles.navContainer}
@@ -18,21 +11,16 @@ export default function Navigation(props: PageBodyNavigationFilter) {
       role="navigation"
       aria-label="Main Navigation"
     >
-      <Text>{props?.[language]?.logo as any}</Text>
+      <Link key={"1"} href={`/`} aria-label={"About link"}>
+        <Text>Yoga+Me</Text>
+      </Link>
       <Flex gap={"4"}>
-        {(
-          props?.[language]?.links as [{ linksTo: string; linkText: string }]
-        ).map((link, index) => {
-          return (
-            <Link
-              key={index}
-              href={`${link.linksTo}`}
-              aria-label={link.linkText}
-            >
-              <Text>{link.linkText}</Text>
-            </Link>
-          );
-        })}
+        <Link key={"11"} href={`/`} aria-label={"About link"}>
+          <Text>About</Text>
+        </Link>
+        <Link key={"12"} href={`/`} aria-label={"Classes link"}>
+          <Text>Classes</Text>
+        </Link>
       </Flex>
     </Flex>
   );

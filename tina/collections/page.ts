@@ -18,7 +18,7 @@ export default {
       name: "body",
       label: "Main Content",
       type: "rich-text",
-      templates: [HeroTemplate, SlideshowTemplate, NavigationTemplate],
+      templates: [HeroTemplate, SlideshowTemplate],
       toolbarOverride: [
         /* "bold", "italic", "link", "image", "heading", */ "embed",
       ],

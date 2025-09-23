@@ -58,11 +58,15 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                   direction={"column"}
                   className={styles.slide}
                 >
-                  <Heading size={"9"} className={`fontNormal serif`}>
+                  <Heading
+                    align={"center"}
+                    size={"9"}
+                    className={`fontNormal serif`}
+                  >
                     {element.heading}
                   </Heading>
 
-                  <Text mt={"3"} mb={"3"} align={"center"}>
+                  <Text mt={"3"} m={"3"} align={"center"}>
                     {element.text}
                   </Text>
                   <Link href={`${element.linksTo}`}>
@@ -94,7 +98,6 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                     layout="fill"
                     objectFit="cover"
                     className={`zIndexMinus1`}
-                    style={{ position: "fixed" }}
                   />
                 )}
               </Flex>

@@ -5,6 +5,7 @@ import React from "react";
 import project from "../project";
 import "../styles/main.css";
 import { sans, serif } from "./fonts";
+import Navigation from "../components/Navigation/Navigation";
 
 export const metadata: Metadata = {
   title: {
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="bodyNoMargin">
         <Theme>
+          <Navigation />
           <main>{children}</main>
         </Theme>
       </body>

@@ -5,8 +5,16 @@ export default intlTemplate({
   label: "Hero",
   type: "object",
   fields: [
-    { name: "text", label: "Text", type: "string" },
-    { name: "heading", label: "Heading", type: "string" },
+    {
+      name: "text",
+      label: "Text",
+      type: "string",
+    },
+    {
+      name: "heading",
+      label: "Heading",
+      type: "string",
+    },
     { name: "linksToPrimary", label: "Primary Link", type: "string" },
     { name: "linkTextPrimary", label: "Primary Link Text", type: "string" },
     { name: "linksToSecondary", label: "Secondary Link", type: "string" },
