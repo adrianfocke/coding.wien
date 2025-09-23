@@ -19,66 +19,18 @@ seo:
       - coding
       - wien
 body: |
-  <Navigation
-    en={{
-      logo: "Coding.wien",
-      links: [
-        { linkText: "About", linksTo: "about" },
-        { linkText: "Projects", linksTo: "works" }
-      ]
-    }}
-  />
-
-  <Hero
-    en={{
-      text: "Wir packen Ideen, Menschen und Produkte in das Format einer Webseite.",
-      heading: "Deine Stadt, deine Idee – deine Webseite?",
-      linkTextPrimary: "Jetzt kontaktieren",
-      linkTextSecondary: "Mehr erfahren"
-    }}
-    layout={{
-      initial: {
-        paddingTop: "5",
-        paddingBottom: "5",
-        paddingLeft: "",
-        paddingRight: ""
-      },
-      xl: { height: "50vh" }
-    }}
-  />
-
   <Slideshow
     layout={{
-      initial: { height: "70vh", paddingLeft: "4", paddingRight: "4" },
-      xs: { height: "30vh" },
-      sm: { height: "60vh" },
-      md: { height: "60vh" },
-      lg: { height: "60vh" },
-      xl: { height: "60vh" }
+      xs: { height: "500px" },
+      lg: { height: "500px" },
+      sm: { height: "500px" },
+      md: { height: "500px" },
+      xl: { height: "500px" }
     }}
     en={{
       slides: [
-        {
-          image: "/uploads/Schauspielhaus_Capri_c_Ruiz_Cruz_HighRes_05A5673.jpg",
-          text: "Die Webseite von Valerie Voigt zeigt sich in ganz neuem Glanz.",
-          heading: "Vorhang auf!",
-          linksTo: "about",
-          linkText: "Zum Projekt"
-        },
-        {
-          text: "Also ich finde das toll.",
-          image: "/uploads/agentur.jpg",
-          heading: "Super Sache",
-          linksTo: "contact",
-          linkText: "Jetzt kontaktieren"
-        },
-        {
-          text: "Mega nice",
-          image: "/uploads/Bidgood_One-Young-Man-Bent-.jpg",
-          heading: "Mega nice",
-          linksTo: "bal",
-          linkText: "wdopehfi"
-        }
+        { image: "/uploads/Schauspielhaus_Capri_c_Ruiz_Cruz_HighRes_05A5673.jpg" },
+        { image: "/uploads/agentur.jpg" }
       ]
     }}
     nextSlideTimeout={4000}

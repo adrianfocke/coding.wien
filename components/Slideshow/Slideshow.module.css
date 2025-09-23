@@ -1,9 +1,6 @@
 .slideContainer {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  height: 100%;
-  width: 100%;
-  border-radius: var(--border-radius);
 }
 
 .slideContainer::-webkit-scrollbar {
@@ -15,8 +12,6 @@
   background: var(--white-hue);
   border-radius: var(--radius-6);
   color: var(--white);
-  min-height: 50%;
-  min-width: 50%;
 }
 
 @media screen and (orientation: portrait) {

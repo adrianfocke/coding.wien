@@ -1,5 +1,5 @@
 export enum Regex {
-  "sizeUnit" = "([0-9]+(.[0-9]+)?(px|vw|%|vh))?",
+  "sizeUnit" = "([0-9]+(.[0-9]+)?(px))?",
   "radixSizeUnit" = "(-?[0-9])?",
 }
 

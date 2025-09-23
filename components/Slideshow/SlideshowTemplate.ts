@@ -1,6 +1,6 @@
 import type { Template } from "tinacms";
 import intlTemplate from "../../tina/templates/intlTemplate";
-import layout from "../../tina/templates/layout";
+import { layout } from "../../tina/templates/layout";
 
 const settings: Template["fields"] = [
   {
@@ -38,5 +38,5 @@ export default intlTemplate(
       },
     ],
   },
-  [...settings, ...layout]
+  [...settings, ...layout(["height"])]
 );
