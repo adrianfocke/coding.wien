@@ -10,7 +10,6 @@ import {
 import { use } from "react";
 import type { PageBodyHeroFilter } from "../../tina/__generated__/types";
 import { LanguageContext } from "../../utils/context/language";
-import styles from "./Hero.module.css";
 
 export default function Hero(props: PageBodyHeroFilter) {
   const language = use(LanguageContext);
@@ -18,18 +17,8 @@ export default function Hero(props: PageBodyHeroFilter) {
   return (
     <Container my={"8"}>
       <Box position={"relative"}>
-        <Flex
-          mx={"5"}
-          justify={"center"}
-          align={"center"}
-          direction={"column"}
-          className={styles.slide}
-        >
-          <Heading
-            align={"center"}
-            size={"9"}
-            className={`${styles.slide} fontNormal serif`}
-          >
+        <Flex mx={"5"} justify={"center"} align={"center"} direction={"column"}>
+          <Heading align={"center"} size={"9"} className={`fontNormal serif`}>
             {(props?.[language]?.heading as any) ?? "Add your heading"}
           </Heading>
 

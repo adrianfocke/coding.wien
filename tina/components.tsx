@@ -3,15 +3,17 @@ import Link from "next/link";
 import type { Components } from "tinacms/dist/rich-text";
 import Hero from "../components/Hero/Hero";
 import Slideshow from "../components/Slideshow/Slideshow";
+import Form from "../components/Form/Form";
 
 export default {
   /* Custom components */
+  Form: (props: any) => {
+    return <Form {...props} />;
+  },
   Hero: (props: any) => {
-    console.log("Hero props: ", props);
     return <Hero {...props} />;
   },
   Slideshow: (props: any) => {
-    console.log("Slideshow props: ", props);
     return <Slideshow {...props} />;
   },
   /* Standard components */

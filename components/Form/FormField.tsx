@@ -5,16 +5,18 @@ import { Callout, Flex, TextArea, TextField } from "@radix-ui/themes";
 const validationHint = (
   validationType: Form.FormMessageProps["match"],
   name?: string
-) => `Bitte prüfen Sie das Format Ihrer ${name}`;
+) => `Bitte prüfen Sie das Format Ihres Felds: ${name}`;
 
 export const FormField = ({
-  inputType,
   name,
   validations,
+  placeholder,
+  text,
 }: {
-  inputType?: "email" | "text";
-  name: string;
+  name: "email" | "text" | "name";
   validations: Form.FormMessageProps["match"][];
+  placeholder?: string;
+  text?: string;
 }) => (
   <Form.Field name={name}>
     <Flex
@@ -24,7 +26,7 @@ export const FormField = ({
       gap={"2"}
       my={"2"}
     >
-      <Form.Label>{name.charAt(0).toUpperCase() + name.slice(1)}</Form.Label>
+      <Form.Label>{text}</Form.Label>
 
       {validations.map((validationType: Form.FormMessageProps["match"]) => (
         <Form.Message key={`${validationType}`} match={validationType}>
@@ -39,16 +41,16 @@ export const FormField = ({
     </Flex>
 
     <Form.Control asChild>
-      {inputType === "email" ? (
+      {name === "email" ? (
         <TextField.Root
-          placeholder="Geben Sie Ihre Email ein"
+          placeholder={placeholder}
           type="email"
           required
         ></TextField.Root>
-      ) : inputType === "text" ? (
-        <TextArea placeholder="Geben Sie Ihre Anfrage ein" required />
+      ) : name === "text" ? (
+        <TextArea placeholder={placeholder} required />
       ) : (
-        <TextField.Root placeholder="Geben Sie Ihren Namen ein" required />
+        <TextField.Root placeholder={placeholder} required />
       )}
     </Form.Control>
   </Form.Field>

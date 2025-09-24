@@ -1,10 +1,10 @@
 import type { Collection } from "tinacms";
 import HeroTemplate from "../../components/Hero/HeroTemplate";
-import NavigationTemplate from "../../components/Navigation/NavigationTemplate";
 import SlideshowTemplate from "../../components/Slideshow/SlideshowTemplate";
 import { default as fileName } from "../templates/file-name";
 import seo from "../templates/seo";
 import { sanitizeFilenameForURL } from "../utils";
+import FormTemplate from "../../components/Form/FormTemplate";
 
 export default {
   label: "Pages",
@@ -18,7 +18,7 @@ export default {
       name: "body",
       label: "Main Content",
       type: "rich-text",
-      templates: [HeroTemplate, SlideshowTemplate],
+      templates: [FormTemplate, HeroTemplate, SlideshowTemplate],
       toolbarOverride: [
         /* "bold", "italic", "link", "image", "heading", */ "embed",
       ],
