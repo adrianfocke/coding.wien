@@ -10,19 +10,30 @@ import {
 import { use } from "react";
 import type { PageBodyHeroFilter } from "../../tina/__generated__/types";
 import { LanguageContext } from "../../utils/context/language";
+import { tinaField } from "tinacms/dist/react";
 
 export default function Hero(props: PageBodyHeroFilter) {
   const language = use(LanguageContext);
 
   return (
-    <Container my={"8"}>
+    <Container py={"8"}>
       <Box position={"relative"}>
         <Flex mx={"5"} justify={"center"} align={"center"} direction={"column"}>
-          <Heading align={"center"} size={"9"} className={`fontNormal serif`}>
+          <Heading
+            align={"center"}
+            size={"9"}
+            className={`fontNormal serif`}
+            data-tina-field={tinaField(props[language], "heading")}
+          >
             {(props?.[language]?.heading as any) ?? "Add your heading"}
           </Heading>
 
-          <Text mt={"3"} mb={"5"} align={"center"}>
+          <Text
+            mt={"3"}
+            mb={"5"}
+            align={"center"}
+            data-tina-field={tinaField(props[language], "text")}
+          >
             {(props?.[language]?.text as any) ??
               "Add your exciting text for getting interest."}
           </Text>

@@ -19,7 +19,7 @@ const breakpointToLabel: Record<(typeof breakpoints)[number], string> = {
   xl: "Desktops",
 };
 
-export const layoutProps = ["height", "width"] as const;
+export const layoutProps = ["height", "width", "columns"] as const;
 
 export const getLayoutProp = (
   layout:
@@ -51,20 +51,26 @@ export const layout = (
           label: breakpointToLabel[breakpoint],
           type: "object",
           fields: availableLayoutProps.map((layoutProp) => {
+            if (layoutProp === "columns") {
+              return {
+                name: layoutProp,
+                label: layoutProp,
+                type: "number",
+              };
+            }
+
+            if (layoutProp === "height" || layoutProp === "width") {
+              return {
+                name: layoutProp,
+                label: layoutProp,
+                type: "number",
+              };
+            }
+
             return {
               name: layoutProp,
               label: layoutProp,
               type: "string",
-              ui: {
-                validate: (value) =>
-                  isSizeUnit(
-                    value,
-                    layoutProp.includes("padding") ||
-                      layoutProp.includes("margin")
-                      ? Regex.radixSizeUnit
-                      : Regex.sizeUnit
-                  ),
-              },
             };
           }),
         };

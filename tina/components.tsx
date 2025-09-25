@@ -4,11 +4,16 @@ import type { Components } from "tinacms/dist/rich-text";
 import Hero from "../components/Hero/Hero";
 import Slideshow from "../components/Slideshow/Slideshow";
 import Form from "../components/Form/Form";
+import Grid from "../components/Grid/Grid";
+import Image from "next/image";
 
 export default {
   /* Custom components */
   Form: (props: any) => {
     return <Form {...props} />;
+  },
+  Grid: (props: any) => {
+    return <Grid {...props} />;
   },
   Hero: (props: any) => {
     return <Hero {...props} />;
@@ -40,6 +45,18 @@ export default {
         size={"6"}
         className={`fontWeight500 sans`}
         {...props}
+      />
+    );
+  },
+  img(props) {
+    return (
+      <Image
+        src={props?.url ?? "/404"}
+        alt={props?.alt ?? "Image"}
+        height={400}
+        width={200}
+        className={`zIndexMinus1`}
+        style={{ border: "1px solid blue" }}
       />
     );
   },

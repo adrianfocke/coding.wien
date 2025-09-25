@@ -8,11 +8,11 @@ import { LanguageContext } from "../../utils/context/language";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 import { useBreakpoint } from "../../utils/hooks/breakoint";
+import { tinaField } from "tinacms/dist/react";
 
 export default function Slideshow(props: PageBodySlideshowFilter) {
   const language = use(LanguageContext);
   const breakpoint = useBreakpoint();
-  const { layout } = props as any;
 
   const { slideshow, slideshowContainer, goToSlide, isActiveSlide } =
     useSlideshow({ nextSlideTimeout: props.nextSlideTimeout });
@@ -50,7 +50,9 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                 minWidth={"100%"}
                 maxWidth={"100%"}
                 className={`scrollSnapAlignStart`}
-                height={getLayoutProp(layout)("height")[breakpoint]}
+                height={
+                  getLayoutProp((props as any).layout)("height")[breakpoint]
+                }
               >
                 <Flex
                   justify={"center"}
@@ -62,11 +64,23 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                     align={"center"}
                     size={"9"}
                     className={`fontNormal serif`}
+                    data-tina-field={tinaField(
+                      props[language]?.slides![i],
+                      "heading"
+                    )}
                   >
                     {element.heading}
                   </Heading>
 
-                  <Text mt={"3"} m={"3"} align={"center"}>
+                  <Text
+                    mt={"3"}
+                    m={"3"}
+                    align={"center"}
+                    data-tina-field={tinaField(
+                      props[language]?.slides![i],
+                      "text"
+                    )}
+                  >
                     {element.text}
                   </Text>
                   <Link href={`${element.linksTo}`}>

@@ -7,6 +7,7 @@ const settings: Template["fields"] = [
     name: "nextSlideTimeout",
     label: "Next slide timeout",
     type: "number",
+    description: "Time in milliseconds before moving to the next slide",
   },
 ];
 
