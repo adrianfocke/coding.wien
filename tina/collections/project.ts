@@ -80,7 +80,7 @@ export default {
   ],
   ui: {
     router: ({ document }) => {
-      return `/works/${document._sys.filename}`;
+      return `/projects/${document._sys.filename}`;
     },
     filename: {
       readonly: true,

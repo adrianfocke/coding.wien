@@ -7,6 +7,7 @@ export default intlTemplate(
     label: "Grid",
     type: "object",
     fields: [
+      { name: "heading", label: "Heading", type: "string" },
       {
         name: "gridItems",
         label: "Grid Item",
@@ -17,10 +18,11 @@ export default intlTemplate(
             name: "gridItem",
             label: "Grid Item",
             type: "rich-text",
+            toolbarOverride: ["heading", "bold", "image", "embed"],
           },
         ],
       },
     ],
   },
-  [...layout(["columns"])]
+  [...layout(["columns", "gap"])]
 );

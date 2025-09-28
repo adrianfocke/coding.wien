@@ -17,6 +17,7 @@ export default intlTemplate(
     label: "Slideshow",
     type: "object",
     fields: [
+      { name: "heading", label: "Heading", type: "string" },
       {
         name: "slides",
         label: "Slides",
@@ -26,7 +27,19 @@ export default intlTemplate(
           { name: "text", label: "Text", type: "string" },
           { name: "image", label: "Image", type: "image" },
           { name: "heading", label: "Heading", type: "string" },
-          { name: "linksTo", label: "Link", type: "string" },
+          {
+            name: "linksToReference",
+            label: "Internal link",
+            type: "reference",
+            collections: ["project"],
+          },
+          {
+            name: "linksTo",
+            label: "External link",
+            type: "string",
+            description:
+              "If you fill in an internal link, this will be ignored",
+          },
           { name: "linkText", label: "Link Text", type: "string" },
         ],
         ui: {
@@ -40,7 +53,6 @@ export default intlTemplate(
               heading: "Add your heading",
               text: "Add your text to spark interest",
               image: "/uploads/hero2.jpg",
-              linksTo: "/",
               linkText: "Add your link",
             };
           },

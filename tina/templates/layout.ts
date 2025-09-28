@@ -1,7 +1,8 @@
 import type { Breakpoint } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { Template } from "tinacms";
 import type { LayoutProp } from "../types";
-import { isSizeUnit, Regex } from "../validation";
+
+export const radixSizes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 const breakpoints: Exclude<Breakpoint, "initial">[] = [
   "xs",
@@ -19,7 +20,16 @@ const breakpointToLabel: Record<(typeof breakpoints)[number], string> = {
   xl: "Desktops",
 };
 
-export const layoutProps = ["height", "width", "columns"] as const;
+export const layoutDefaults: Record<
+  string,
+  "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+> = {
+  paddingY: "8",
+  gap: "4",
+  columns: "2",
+};
+
+export const layoutProps = ["height", "width", "columns", "gap"] as const;
 
 export const getLayoutProp = (
   layout:
@@ -38,7 +48,7 @@ export const getLayoutProp = (
 };
 
 export const layout = (
-  availableLayoutProps: [Partial<(typeof layoutProps)[number]>]
+  availableLayoutProps: (typeof layoutProps)[number][]
 ): Template["fields"] => {
   return [
     {
@@ -51,14 +61,16 @@ export const layout = (
           label: breakpointToLabel[breakpoint],
           type: "object",
           fields: availableLayoutProps.map((layoutProp) => {
-            if (layoutProp === "columns") {
+            if (layoutProp === "columns" || layoutProp === "gap") {
               return {
                 name: layoutProp,
                 label: layoutProp,
-                type: "number",
+                type: "string",
+                options: radixSizes,
               };
             }
 
+            // TODO add px validation
             if (layoutProp === "height" || layoutProp === "width") {
               return {
                 name: layoutProp,

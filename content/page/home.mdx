@@ -21,61 +21,54 @@ seo:
 body: |
   <Hero
     en={{
-      text: "Ich packe Dich und deine Praxis in das Format einer transformierenden Yogastunde.",
-      heading: "Deine Stadt, deine Praxis, deine neue Yogalehrerin?",
-      linksToSecondary: "Stundenplan ansehen",
-      linksToPrimary: "Jetzt gleich anmelden",
-      linkTextPrimary: "/",
-      linkTextSecondary: "/"
+      heading: "Deine Stadt, deine Idee – deine Webseite?",
+      text: "Wir packen Ideen, Menschen und Produkte in das Format einer Webseite.",
+      linkTextPrimary: "Jetzt kontaktieren",
+      linkTextSecondary: "Mehr erfahren"
     }}
   />
 
   <Slideshow
-    layout={{
-      xs: { height: "500px" },
-      lg: { height: "500px" },
-      sm: { height: "500px" },
-      md: { height: "500px" },
-      xl: { height: "500px" }
-    }}
     en={{
       slides: [
         {
-          image: "/uploads/hero.jpg",
-          text: "Ich starte durch und morgen halte ich meine erste Yogastunde.",
-          heading: "Vorhang auf!",
-          linksTo: "works/breathwork-event",
-          linkText: "Zeig mir das Event"
-        },
-        {
-          heading: "Public Interest",
-          text: "Meine wöchentliche Stunde im Alkemy findet mittwochs statt.",
-          image: "/uploads/jade-stephens-yNo9dpaQA4M-unsplash.jpg",
+          heading: "Om Shanti Webseite",
+          text: "Hanna ist Breath and Growth und ihre Webseite zeigt genau das: Wachstum und Connected Breath",
+          image: "/uploads/hero2.jpg",
           linksTo: "/",
-          linkText: "Jetzt anmelden"
+          linkText: "Zur Case Study",
+          linksToReference: "content/projects/breathwork-event.json"
         }
-      ]
+      ],
+      heading: ""
     }}
-    nextSlideTimeout={6000}
-  />
-
-  <Form
-    en={{
-      name: "Dein Name",
-      namePlaceholder: "Gib deinen Namen ein...",
-      emailPlaceholder: "Gib deine Email ein...",
-      textPlaceholder: "Gib deine Anfage ein...",
-      text: "Deine Anfrage",
-      email: "Deine Email",
-      sendButtonText: "Senden"
-    }}
+    layout={{ lg: { height: 500 } }}
   />
 
   <Grid
     en={{
-      gridItems: [{ gridItem: "fegerf34g5\n", text: "3g45" }, { gridItem: "llh\n" }]
+      gridItems: [
+        {
+          gridItem:
+            "**Webdevelopment und SEO**\n\nAll-inclusive Webseiten, am neuesten Stand der Technik. Egal wie groß du denkst: ich habe das Know-How und die passende Technologie, um Dich digital zu erheben. Die Oberfläche zum Bearbeiten ist schlicht und intuitiv, da kann Wordpress nicht mithalten.\n",
+          text: "3g45"
+        },
+        {
+          gridItem:
+            "**Digitale Beratung**\n\nIch biete Unterstützung für all-things-web, Betriebssysteme und mehr an. Du kannst dich wichtigeren Dingen widmen und bist gleichzeitig technisch gut aufgehoben. Gemeinsam erarbeiten wir für dich sichere und nützliche Strategien zur Nutzung digitaler Tools.\n"
+        },
+        {
+          gridItem:
+            "**1:1 Yoga-Teaching**\n\nYoga ist ein integraler Teil meines Lebens. Mein Auftrag ist, Menschen zu stärken, egal ob digital oder durch  Yogapraxis. Praktiziere mit mir, denn ein klarer Geist hilft Dir auch in deinem Cause. Auf Anfrage mache ich auch Stunden für dein Business.\n"
+        },
+        {
+          gridItem:
+            "**Shanti Package**\n\nDein Unternehmen hat einen Cause, den die Welt braucht und deine finanziellen Ressourcen sind knapp? Für ausgewählte Ideen biete ich meine Dienste abseits von monetärem Austausch an. Geld ist ein Mittel, das Wachstum der Seele aber ist unbezahlbar.\n"
+        }
+      ],
+      heading: "Das machen wir:"
     }}
-    layout={{ xs: { columns: 1 } }}
+    layout={{ xs: { columns: 1 }, lg: { columns: "2", gap: "4" } }}
   />
 ---
 
