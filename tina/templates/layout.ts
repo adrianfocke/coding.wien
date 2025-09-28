@@ -24,6 +24,7 @@ export const layoutDefaults: Record<
   string,
   "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
 > = {
+  paddingX: "4",
   paddingY: "8",
   gap: "4",
   columns: "2",

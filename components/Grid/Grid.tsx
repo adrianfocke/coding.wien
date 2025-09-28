@@ -7,6 +7,7 @@ import { useBreakpoint } from "../../utils/hooks/breakoint";
 import { getLayoutProp, layoutDefaults } from "../../tina/templates/layout";
 import { tinaField } from "tinacms/dist/react";
 import styles from "./Grid.module.css";
+import components from "../../tina/components";
 
 export default function Grid(props: PageBodyGridFilter) {
   const language = use(LanguageContext);
@@ -17,7 +18,7 @@ export default function Grid(props: PageBodyGridFilter) {
   }
 
   return (
-    <Container py={layoutDefaults.paddingY}>
+    <Container py={layoutDefaults.paddingY} px={layoutDefaults.paddingX}>
       {props?.[language]?.heading && (
         <Heading
           size={"8"}
@@ -44,7 +45,10 @@ export default function Grid(props: PageBodyGridFilter) {
             key={i}
             data-tina-field={tinaField(props[language]?.gridItems![i]!)}
           >
-            <TinaMarkdown content={(item as any).gridItem} />
+            <TinaMarkdown
+              content={(item as any).gridItem}
+              components={components}
+            />
           </div>
         ))}
       </RadixGrid>

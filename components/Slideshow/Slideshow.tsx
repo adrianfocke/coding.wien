@@ -111,7 +111,6 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                     <Text size={"5"}>
                       {element.linkText ?? element.linksTo}
                     </Text>
-                    <p>{turnReferenceIntoLink(element.linksToReference)}</p>
                   </Button>
                 </Link>
               </Flex>

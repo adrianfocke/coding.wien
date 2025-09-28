@@ -15,9 +15,31 @@ export default intlTemplate({
       label: "Heading",
       type: "string",
     },
-    { name: "linksToPrimary", label: "Primary Link", type: "string" },
+    {
+      name: "linksToReferencePrimary",
+      label: "Internal primary link",
+      type: "reference",
+      collections: ["page"],
+    },
+    {
+      name: "linksToPrimary",
+      label: "Primary Link",
+      type: "string",
+      description: "If you fill in an internal link, this will be ignored",
+    },
     { name: "linkTextPrimary", label: "Primary Link Text", type: "string" },
-    { name: "linksToSecondary", label: "Secondary Link", type: "string" },
+    {
+      name: "linksToReferenceSecondary",
+      label: "Internal secondary link",
+      type: "reference",
+      collections: ["page"],
+    },
+    {
+      name: "linksToSecondary",
+      label: "Secondary Link",
+      type: "string",
+      description: "If you fill in an internal link, this will be ignored",
+    },
     {
       name: "linkTextSecondary",
       label: "Secondary Link Text",

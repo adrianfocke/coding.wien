@@ -15,7 +15,7 @@ export default function Navigation() {
         <Text>Yoga+Me</Text>
       </Link>
       <Flex gap={"4"}>
-        <Link key={"11"} href={`/`} aria-label={"About link"}>
+        <Link key={"11"} href={`/about`} aria-label={"About link"}>
           <Text>About</Text>
         </Link>
         <Link key={"12"} href={`/`} aria-label={"Classes link"}>

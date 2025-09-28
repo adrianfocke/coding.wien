@@ -6,6 +6,7 @@ export default [
     label: "Name",
     type: "string",
     required: true,
+    description: "Name will be used for the url name",
     ui: {
       validate: (value) => {
         // Regex for letters, numbers, umlaute, blank and hyphen

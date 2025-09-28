@@ -24,7 +24,9 @@ body: |
       heading: "Deine Stadt, deine Idee – deine Webseite?",
       text: "Wir packen Ideen, Menschen und Produkte in das Format einer Webseite.",
       linkTextPrimary: "Jetzt kontaktieren",
-      linkTextSecondary: "Mehr erfahren"
+      linkTextSecondary: "Mehr erfahren",
+      linksToReferencePrimary: "content/page/about.mdx",
+      linksToReferenceSecondary: "content/page/about.mdx"
     }}
   />
 
@@ -38,11 +40,19 @@ body: |
           linksTo: "/",
           linkText: "Zur Case Study",
           linksToReference: "content/projects/breathwork-event.json"
+        },
+        {
+          heading: "Add your heading",
+          text: "Add your text to spark interest",
+          image: "/uploads/carl-barcelo-nqUHQkuVj3c-unsplash.jpg",
+          linkText: "Add your link",
+          linksToReference: ""
         }
       ],
       heading: ""
     }}
     layout={{ lg: { height: 500 } }}
+    nextSlideTimeout={6000}
   />
 
   <Grid
@@ -50,25 +60,25 @@ body: |
       gridItems: [
         {
           gridItem:
-            "**Webdevelopment und SEO**\n\nAll-inclusive Webseiten, am neuesten Stand der Technik. Egal wie groß du denkst: ich habe das Know-How und die passende Technologie, um Dich digital zu erheben. Die Oberfläche zum Bearbeiten ist schlicht und intuitiv, da kann Wordpress nicht mithalten.\n",
+            "**Webdevelopment und SEO**\n\nWir machen Webseiten am neuesten Stand der Technik. Egal wie groß Du denkst: wir haben das Know-How und die passende Technologie, um Dich digital zu erheben. Unser Tech-Stack (Nextjs, Radix UI und TinaCMS) ist schlank, schnell und skalierbar.\n",
           text: "3g45"
         },
         {
           gridItem:
-            "**Digitale Beratung**\n\nIch biete Unterstützung für all-things-web, Betriebssysteme und mehr an. Du kannst dich wichtigeren Dingen widmen und bist gleichzeitig technisch gut aufgehoben. Gemeinsam erarbeiten wir für dich sichere und nützliche Strategien zur Nutzung digitaler Tools.\n"
+            "**Digitale Beratung**\n\nWir bieten Unterstützung für all-things-web, Betriebssysteme und mehr an. Du kannst Dich wichtigeren Dingen widmen und bist gleichzeitig technisch gut aufgehoben. Gemeinsam erarbeiten wir für Dich sichere und nützliche Strategien zur Nutzung digitaler Tools.\n"
         },
         {
           gridItem:
-            "**1:1 Yoga-Teaching**\n\nYoga ist ein integraler Teil meines Lebens. Mein Auftrag ist, Menschen zu stärken, egal ob digital oder durch  Yogapraxis. Praktiziere mit mir, denn ein klarer Geist hilft Dir auch in deinem Cause. Auf Anfrage mache ich auch Stunden für dein Business.\n"
+            "**1:1 Yoga-Teachings**\n\nYoga ist ein integraler Teil unserer Leben. Unser Auftrag ist, Menschen zu stärken, egal ob digital oder durch individuell angepasste Yogapraxis. Praktiziere mit uns und Deine Ideen werden sprießen – auf Anfrage auch in Deinem Unternehmen.\n"
         },
         {
           gridItem:
-            "**Shanti Package**\n\nDein Unternehmen hat einen Cause, den die Welt braucht und deine finanziellen Ressourcen sind knapp? Für ausgewählte Ideen biete ich meine Dienste abseits von monetärem Austausch an. Geld ist ein Mittel, das Wachstum der Seele aber ist unbezahlbar.\n"
+            "**Shanti Package**\n\nDein Business hat einen Cause, den die Welt braucht und Deine finanziellen Ressourcen sind knapp? Für ausgewählte Ideen bieten wir Dienste abseits von monetärem Austausch an. Geld ist ein Mittel, das Wachstum der Seele aber ist unbezahlbar.\n"
         }
       ],
       heading: "Das machen wir:"
     }}
-    layout={{ xs: { columns: 1 }, lg: { columns: "2", gap: "4" } }}
+    layout={{ xs: { columns: "1" }, lg: { columns: "2", gap: "4" } }}
   />
 ---
 
