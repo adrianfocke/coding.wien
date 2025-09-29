@@ -18,7 +18,7 @@ export default intlTemplate(
             name: "gridItem",
             label: "Grid Item",
             type: "rich-text",
-            toolbarOverride: ["heading", "bold", "image", "embed"],
+            overrides: { toolbar: ["bold", "image"] },
           },
         ],
       },

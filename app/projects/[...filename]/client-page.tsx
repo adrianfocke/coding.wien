@@ -46,7 +46,6 @@ export default function ClientPage(props: ClientPageProps) {
             alt={`Slider image for `}
             layout="fill"
             objectFit="cover"
-            className="zIndexMinus1"
           />
           <Heading
             align={"center"}

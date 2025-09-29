@@ -69,9 +69,6 @@ a {
 .fontWeight500 {
   font-weight: var(--font-weight-500);
 }
-.zIndexMinus1 {
-  z-index: var(--z-index-minus-1);
-}
 .cardFullWidth {
   width: 100%;
 }

@@ -51,7 +51,6 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
             ]
           ).map((element, i) => (
             <Flex
-              align={"center"}
               justify={"center"}
               position={"relative"}
               key={i}
@@ -68,6 +67,10 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                 align={"center"}
                 direction={"column"}
                 className={styles.slide}
+                mt={"5"}
+                mb={"9"}
+                p={"5"}
+                width={"80vw"}
               >
                 <Heading
                   align={"center"}
@@ -126,7 +129,6 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                   }
                   layout="fill"
                   objectFit="cover"
-                  className={`zIndexMinus1`}
                 />
               )}
             </Flex>

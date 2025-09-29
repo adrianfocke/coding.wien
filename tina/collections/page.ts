@@ -20,9 +20,7 @@ export default {
       label: "Main Content",
       type: "rich-text",
       templates: [FormTemplate, HeroTemplate, SlideshowTemplate, GridTemplate],
-      toolbarOverride: [
-        /* "bold", "italic", "link", "image", "heading", */ "embed",
-      ],
+      overrides: { toolbar: ["embed"] },
     },
   ],
   ui: {

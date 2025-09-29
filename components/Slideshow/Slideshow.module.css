@@ -12,9 +12,6 @@
   background: var(--white-hue);
   border-radius: var(--radius-6);
   color: var(--white);
-  height: calc(80% - 24px);
-  margin-bottom: 24px;
-  width: 64%;
 }
 
 .slideControls {

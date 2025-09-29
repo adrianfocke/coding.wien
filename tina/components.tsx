@@ -22,30 +22,11 @@ export default {
     return <Slideshow {...props} />;
   },
   /* Standard components */
-  p(props) {
-    return <Text className="sans" size={"4"} {...props} />;
-  },
   a(props) {
     return (
       <Link className="serif" href={props?.url ?? "/404"}>
         <Text>{props?.children.props.content[0].text}</Text>
       </Link>
-    );
-  },
-  h1(props) {
-    return (
-      <Heading size={"9"} my={"6"} className={`fontNormal serif`} {...props} />
-    );
-  },
-  h2(props) {
-    return (
-      <Heading
-        mt={"6"}
-        mb={"4"}
-        size={"6"}
-        className={`fontWeight500 sans`}
-        {...props}
-      />
     );
   },
   img(props) {
@@ -55,8 +36,6 @@ export default {
         alt={props?.alt ?? "Image"}
         height={400}
         width={200}
-        className={`zIndexMinus1`}
-        style={{ border: "1px solid blue" }}
       />
     );
   },
