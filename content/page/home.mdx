@@ -19,66 +19,36 @@ seo:
       - coding
       - wien
 body: |
-  <Hero
+  <Testimonials
     en={{
-      heading: "Deine Stadt, deine Idee – deine Webseite?",
-      text: "Wir packen Ideen, Menschen und Produkte in das Format einer Webseite.",
-      linkTextPrimary: "Jetzt kontaktieren",
-      linkTextSecondary: "Mehr erfahren",
-      linksToReferencePrimary: "content/page/about.mdx",
-      linksToReferenceSecondary: "content/page/about.mdx"
-    }}
-  />
-
-  <Slideshow
-    en={{
-      slides: [
+      testimonials: [
         {
-          heading: "Om Shanti Webseite",
-          text: "Hanna ist Breath and Growth und ihre Webseite zeigt genau das: Wachstum und Connected Breath",
-          image: "/uploads/hero2.jpg",
-          linksTo: "/",
-          linkText: "Zur Case Study",
-          linksToReference: "content/projects/breathwork-event.json"
+          image: "/uploads/brooke-balentine-lZsmCrIGbho-unsplash.jpg",
+          name: "Brooke Balentine",
+          testimonial: "It's good stuff, really!",
+          heading: "wef",
+          text: "few",
+          author: "wef"
         },
         {
-          heading: "Add your heading",
-          text: "Add your text to spark interest",
-          image: "/uploads/carl-barcelo-nqUHQkuVj3c-unsplash.jpg",
-          linkText: "Add your link",
-          linksToReference: ""
+          heading: "qdoepfiwbruih",
+          text: "Add your testimonial text",
+          author: "Author name"
+        },
+        {
+          heading: "Add your headingfeqwger",
+          text: "Add your testimonial text",
+          author: "Author name"
+        },
+        {
+          heading: "er3g45",
+          text: "Add your testimonial text",
+          author: "Author name"
         }
       ],
-      heading: ""
+      visibleCount: 2
     }}
-    layout={{ lg: { height: 500 } }}
-    nextSlideTimeout={6000}
-  />
-
-  <Grid
-    en={{
-      gridItems: [
-        {
-          gridItem:
-            "**Webdevelopment und SEO**\n\nWir machen Webseiten am neuesten Stand der Technik. Egal wie groß Du denkst: wir haben das Know-How und die passende Technologie, um Dich digital zu erheben. Unser Tech-Stack (Nextjs, Radix UI und TinaCMS) ist schlank, schnell und skalierbar.\n",
-          text: "3g45"
-        },
-        {
-          gridItem:
-            "**Digitale Beratung**\n\nWir bieten Unterstützung für all-things-web, Betriebssysteme und mehr an. Du kannst Dich wichtigeren Dingen widmen und bist gleichzeitig technisch gut aufgehoben. Gemeinsam erarbeiten wir für Dich sichere und nützliche Strategien zur Nutzung digitaler Tools.\n"
-        },
-        {
-          gridItem:
-            "**1:1 Yoga-Teachings**\n\nYoga ist ein integraler Teil unserer Leben. Unser Auftrag ist, Menschen zu stärken, egal ob digital oder durch individuell angepasste Yogapraxis. Praktiziere mit uns und Deine Ideen werden sprießen – auf Anfrage auch in Deinem Unternehmen.\n"
-        },
-        {
-          gridItem:
-            "**Shanti Package**\n\nDein Business hat einen Cause, den die Welt braucht und Deine finanziellen Ressourcen sind knapp? Für ausgewählte Ideen bieten wir Dienste abseits von monetärem Austausch an. Geld ist ein Mittel, das Wachstum der Seele aber ist unbezahlbar.\n"
-        }
-      ],
-      heading: "Das machen wir:"
-    }}
-    layout={{ xs: { columns: "1" }, lg: { columns: "2", gap: "4" } }}
+    visibleCount={2}
   />
 ---
 
