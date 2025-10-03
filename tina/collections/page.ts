@@ -6,7 +6,6 @@ import seo from "../templates/seo";
 import { sanitizeFilenameForURL } from "../utils";
 import FormTemplate from "../../components/Form/FormTemplate";
 import GridTemplate from "../../components/Grid/GridTemplate";
-import TestimonialsTemplate from "../../components/Testimonials/TestimonialsTemplate";
 
 export default {
   label: "Pages",
@@ -20,13 +19,7 @@ export default {
       name: "body",
       label: "Main Content",
       type: "rich-text",
-      templates: [
-        FormTemplate,
-        HeroTemplate,
-        SlideshowTemplate,
-        GridTemplate,
-        TestimonialsTemplate,
-      ],
+      templates: [FormTemplate, HeroTemplate, SlideshowTemplate, GridTemplate],
       overrides: { toolbar: ["embed"] },
     },
   ],

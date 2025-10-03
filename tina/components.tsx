@@ -6,7 +6,6 @@ import Slideshow from "../components/Slideshow/Slideshow";
 import Form from "../components/Form/Form";
 import Grid from "../components/Grid/Grid";
 import Image from "next/image";
-import Testimonials from "../components/Testimonials/Testimonials";
 
 export default {
   /* Custom components */
@@ -21,9 +20,6 @@ export default {
   },
   Slideshow: (props: any) => {
     return <Slideshow {...props} />;
-  },
-  Testimonials: (props: any) => {
-    return <Testimonials {...props} />;
   },
   /* Standard components */
   a(props) {
