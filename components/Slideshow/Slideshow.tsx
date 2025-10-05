@@ -11,12 +11,16 @@ import { useBreakpoint } from "../../utils/hooks/breakoint";
 import { tinaField } from "tinacms/dist/react";
 import { turnReferenceIntoLink } from "../../tina/utils";
 
-export default function Slideshow(props: PageBodySlideshowFilter) {
+export default function Slideshow(
+  props: PageBodySlideshowFilter & { variant?: "testimonials" }
+) {
   const language = use(LanguageContext);
   const breakpoint = useBreakpoint();
 
   const { slideshow, slideshowContainer, goToSlide, isActiveSlide } =
     useSlideshow({ nextSlideTimeout: props.nextSlideTimeout });
+
+  console.log("Slideshow props: ", props, props.variant ?? "normal");
 
   return (
     <Box position={"relative"} ref={slideshowContainer as Ref<HTMLDivElement>}>
