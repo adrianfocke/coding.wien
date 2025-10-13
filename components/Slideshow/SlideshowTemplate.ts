@@ -2,12 +2,21 @@ import type { Template } from "tinacms";
 import intlTemplate from "../../tina/templates/intlTemplate";
 import { layout } from "../../tina/templates/layout";
 
+const slideshowTypes = ["slideshow", "testimonial"] as const;
+export type SlideshowType = (typeof slideshowTypes)[number];
+
 const settings: Template["fields"] = [
   {
     name: "nextSlideTimeout",
     label: "Next slide timeout",
     type: "number",
     description: "Time in milliseconds before moving to the next slide",
+  },
+  {
+    name: "variant",
+    label: "Variant",
+    type: "string",
+    options: [...slideshowTypes],
   },
 ];
 

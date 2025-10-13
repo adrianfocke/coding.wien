@@ -37,3 +37,14 @@
 .slideControl {
   background-color: var(--grey);
 }
+
+
+.testimonialControls {
+  bottom: 0;
+  z-index: 1;
+  background: var(--white-hue);
+  border-radius: var(--radius-6);
+  right: 10%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}

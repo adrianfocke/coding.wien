@@ -1,4 +1,4 @@
-import { Heading, Text } from "@radix-ui/themes";
+import { Text } from "@radix-ui/themes";
 import Link from "next/link";
 import type { Components } from "tinacms/dist/rich-text";
 import Hero from "../components/Hero/Hero";
@@ -6,7 +6,6 @@ import Slideshow from "../components/Slideshow/Slideshow";
 import Form from "../components/Form/Form";
 import Grid from "../components/Grid/Grid";
 import Image from "next/image";
-import Testimonial from "../components/Testimonial/Testimonial";
 
 export default {
   /* Custom components */
@@ -21,9 +20,6 @@ export default {
   },
   Slideshow: (props: any) => {
     return <Slideshow {...props} />;
-  },
-  Testimonial: (props: any) => {
-    return <Testimonial {...props} />;
   },
   /* Standard components */
   a(props) {

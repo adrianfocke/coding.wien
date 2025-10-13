@@ -10,17 +10,16 @@ import useSlideshow from "./hook";
 import { useBreakpoint } from "../../utils/hooks/breakoint";
 import { tinaField } from "tinacms/dist/react";
 import { turnReferenceIntoLink } from "../../tina/utils";
+import type { SlideshowType } from "./SlideshowTemplate";
 
-export default function Slideshow(
-  props: PageBodySlideshowFilter & { variant?: "testimonials" }
-) {
+export default function Slideshow(props: PageBodySlideshowFilter) {
   const language = use(LanguageContext);
   const breakpoint = useBreakpoint();
 
-  const { slideshow, slideshowContainer, goToSlide, isActiveSlide } =
+  const { slideshow, slideshowContainer, goToSlide, isActiveSlide, jumpSlide } =
     useSlideshow({ nextSlideTimeout: props.nextSlideTimeout });
 
-  console.log("Slideshow props: ", props, props.variant ?? "normal");
+  const slideshowType = props.variant as SlideshowType | undefined;
 
   return (
     <Box position={"relative"} ref={slideshowContainer as Ref<HTMLDivElement>}>
@@ -60,11 +59,14 @@ export default function Slideshow(
               key={i}
               minWidth={"100%"}
               maxWidth={"100%"}
-              className={`scrollSnapAlignStart`}
+              className={
+                slideshowType === "slideshow" ? `scrollSnapAlignStart` : ""
+              }
               height={
                 getLayoutProp((props as any).layout)("height")[breakpoint] +
                 "px"
               }
+              style={{ border: "1px solid red" }}
             >
               <Flex
                 justify={"center"}
@@ -138,31 +140,54 @@ export default function Slideshow(
             </Flex>
           ))}
 
-        <Flex
-          className={styles.slideControls}
-          justify={"center"}
-          position={"absolute"}
-          p={"2"}
-          gap={"1"}
-        >
-          {props?.[language]?.slides &&
-            (props?.[language]?.slides as []).map((element, index) => (
-              <Button
-                title={`Button link to next slide`}
-                size={"1"}
-                radius="full"
-                onClick={() => goToSlide(index + 1)}
-                key={index}
-                className={`${
-                  index === isActiveSlide
-                    ? styles.activeSlideControl
-                    : styles.slideControl
-                } ${styles.control}`}
-              >
-                <Box></Box>
-              </Button>
-            ))}
-        </Flex>
+        {slideshowType === "slideshow" ||
+          (!slideshowType && (
+            <Flex
+              className={styles.slideControls}
+              justify={"center"}
+              position={"absolute"}
+              p={"2"}
+              gap={"1"}
+            >
+              {props?.[language]?.slides &&
+                (props?.[language]?.slides as []).map((element, index) => (
+                  <Button
+                    title={`Button link to next slide`}
+                    size={"1"}
+                    radius="full"
+                    onClick={() => goToSlide(index + 1)}
+                    key={index}
+                    className={`${
+                      index === isActiveSlide
+                        ? styles.activeSlideControl
+                        : styles.slideControl
+                    } ${styles.control}`}
+                  >
+                    <Box></Box>
+                  </Button>
+                ))}
+            </Flex>
+          ))}
+
+        {slideshowType === "testimonial" && (
+          <Flex
+            className={styles.testimonialControls}
+            justify={"center"}
+            position={"absolute"}
+            p={"2"}
+            gap={"1"}
+          >
+            <Button
+              title={`Button link to next slide`}
+              size={"1"}
+              radius="full"
+              onClick={() => jumpSlide()}
+              className={`${styles.control}`}
+            >
+              <Box></Box>
+            </Button>
+          </Flex>
+        )}
       </Flex>
     </Box>
   );

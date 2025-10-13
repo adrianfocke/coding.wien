@@ -36,6 +36,24 @@ export const useSlideshow = (slideshowSettings?: any) => {
     setDisplayedSlide(slideNumber);
   };
 
+  const jumpSlide = () => {
+    if (!slideshow.current) return;
+    const containerWidth =
+      slideshowContainer.current?.offsetWidth ??
+      slideshow.current.offsetWidth ??
+      0;
+    const currentLeft = slideshow.current.scrollLeft ?? 0;
+    const desired = Math.round(currentLeft + containerWidth * 1);
+    const maxScroll = Math.max(
+      0,
+      (slideshow.current.scrollWidth ?? 0) -
+        (slideshow.current.clientWidth ?? 0)
+    );
+
+    const target = Math.min(desired, maxScroll);
+    scrollToPosition(target);
+  };
+
   const nextSlide = useCallback(() => {
     if (!numberOfImages) {
       return;
@@ -98,6 +116,7 @@ export const useSlideshow = (slideshowSettings?: any) => {
     nextSlide,
     previousSlide,
     // TODO smth is wrong here
+    jumpSlide,
     isActiveSlide: displayedSlide - 1,
   };
 };
