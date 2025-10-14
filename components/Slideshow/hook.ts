@@ -38,20 +38,20 @@ export const useSlideshow = (slideshowSettings?: any) => {
 
   const jumpSlide = () => {
     if (!slideshow.current) return;
-    const containerWidth =
-      slideshowContainer.current?.offsetWidth ??
-      slideshow.current.offsetWidth ??
-      0;
-    const currentLeft = slideshow.current.scrollLeft ?? 0;
-    const desired = Math.round(currentLeft + containerWidth * 1);
-    const maxScroll = Math.max(
-      0,
-      (slideshow.current.scrollWidth ?? 0) -
-        (slideshow.current.clientWidth ?? 0)
-    );
 
-    const target = Math.min(desired, maxScroll);
-    scrollToPosition(target);
+    const currentLeft = slideshow.current.scrollLeft;
+    const slides = Array.from(slideshow.current.children) as HTMLElement[];
+
+    // Find the first slide that starts after the current scroll position
+    const nextSlide = slides.find((slide) => slide.offsetLeft > currentLeft);
+    
+    if (nextSlide) {
+      // If there's a next slide, scroll to its start
+      scrollToPosition(nextSlide.offsetLeft);
+    } else {
+      // If we're at the end, scroll back to the first slide
+      scrollToPosition(0);
+    }
   };
 
   const nextSlide = useCallback(() => {

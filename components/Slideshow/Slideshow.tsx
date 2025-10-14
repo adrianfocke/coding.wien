@@ -58,16 +58,14 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
               justify={"center"}
               position={"relative"}
               key={i}
-              minWidth={"100%"}
-              maxWidth={"100%"}
-              className={
-                slideshowType === "slideshow" ? `scrollSnapAlignStart` : ""
-              }
+              minWidth={slideshowType === "testimonial" ? "80%" : "100%"}
+              maxWidth={slideshowType === "testimonial" ? "80%" : "100%"}
+              className={`scrollSnapAlignStart`}
               height={
                 getLayoutProp((props as any).layout)("height")[breakpoint] +
                 "px"
               }
-              style={{ border: "1px solid red" }}
+              mr={slideshowType === "testimonial" ? "4" : "0"}
             >
               <Flex
                 justify={"center"}
@@ -77,7 +75,6 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                 mt={"5"}
                 mb={"9"}
                 p={"5"}
-                width={"80vw"}
               >
                 <Heading
                   align={"center"}
@@ -176,6 +173,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
             gap={"1"}
           >
             <IconButton
+              variant="surface"
               title={`Button link to next slide`}
               size={"1"}
               radius="full"
