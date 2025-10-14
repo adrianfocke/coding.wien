@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Text } from "@radix-ui/themes";
+import { Box, Button, Flex, Heading, IconButton, Text } from "@radix-ui/themes";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { use, type Ref } from "react";
@@ -11,6 +11,7 @@ import { useBreakpoint } from "../../utils/hooks/breakoint";
 import { tinaField } from "tinacms/dist/react";
 import { turnReferenceIntoLink } from "../../tina/utils";
 import type { SlideshowType } from "./SlideshowTemplate";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 export default function Slideshow(props: PageBodySlideshowFilter) {
   const language = use(LanguageContext);
@@ -139,36 +140,33 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
               )}
             </Flex>
           ))}
-
-        {slideshowType === "slideshow" ||
-          (!slideshowType && (
-            <Flex
-              className={styles.slideControls}
-              justify={"center"}
-              position={"absolute"}
-              p={"2"}
-              gap={"1"}
-            >
-              {props?.[language]?.slides &&
-                (props?.[language]?.slides as []).map((element, index) => (
-                  <Button
-                    title={`Button link to next slide`}
-                    size={"1"}
-                    radius="full"
-                    onClick={() => goToSlide(index + 1)}
-                    key={index}
-                    className={`${
-                      index === isActiveSlide
-                        ? styles.activeSlideControl
-                        : styles.slideControl
-                    } ${styles.control}`}
-                  >
-                    <Box></Box>
-                  </Button>
-                ))}
-            </Flex>
-          ))}
-
+        {slideshowType === "slideshow" && (
+          <Flex
+            className={styles.slideControls}
+            justify={"center"}
+            position={"absolute"}
+            p={"2"}
+            gap={"1"}
+          >
+            {props?.[language]?.slides &&
+              (props?.[language]?.slides as []).map((element, index) => (
+                <Button
+                  title={`Button link to next slide`}
+                  size={"1"}
+                  radius="full"
+                  onClick={() => goToSlide(index + 1)}
+                  key={index}
+                  className={`${
+                    index === isActiveSlide
+                      ? styles.activeSlideControl
+                      : styles.slideControl
+                  } ${styles.control}`}
+                >
+                  <Box></Box>
+                </Button>
+              ))}
+          </Flex>
+        )}
         {slideshowType === "testimonial" && (
           <Flex
             className={styles.testimonialControls}
@@ -177,15 +175,14 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
             p={"2"}
             gap={"1"}
           >
-            <Button
+            <IconButton
               title={`Button link to next slide`}
               size={"1"}
               radius="full"
               onClick={() => jumpSlide()}
-              className={`${styles.control}`}
             >
-              <Box></Box>
-            </Button>
+              <ArrowRightIcon />
+            </IconButton>
           </Flex>
         )}
       </Flex>
