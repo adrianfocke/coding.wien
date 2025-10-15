@@ -44,3 +44,5 @@ TODO
 .vscode
 
 tsconfig.tsbuildinfo
+
+*.png

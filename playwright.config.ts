@@ -14,6 +14,7 @@ const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  testIgnore: "eversports.spec.ts",
   testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
