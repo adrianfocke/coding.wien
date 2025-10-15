@@ -29,6 +29,8 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
           size={"8"}
           className={`fontNormal serif`}
           mb={"4"}
+          ml={"4"}
+          mr={"4"}
           data-tina-field={tinaField(props[language], "heading")}
         >
           {props?.[language]?.heading as any}
@@ -45,7 +47,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
           (
             props?.[language]?.slides as [
               {
-                image: string;
+                images: { image: string; portraitImage: string };
                 text: string;
                 heading: string;
                 linksTo: string;
@@ -61,7 +63,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
               minWidth={slideshowType === "testimonial" ? "80%" : "100%"}
               maxWidth={slideshowType === "testimonial" ? "80%" : "100%"}
               className={`scrollSnapAlignStart`}
-              height={
+              minHeight={
                 getLayoutProp((props as any).layout)("height")[breakpoint] +
                 "px"
               }
@@ -74,7 +76,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                 className={styles.slide}
                 mt={"5"}
                 mb={"9"}
-                p={"5"}
+                p={"6"}
               >
                 <Heading
                   align={"center"}
@@ -122,10 +124,14 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                 </Link>
               </Flex>
 
-              {element.image && (
+              {element.images && (
                 <Image
                   priority={i === 0}
-                  src={element.image}
+                  src={
+                    breakpoint === "xs"
+                      ? element.images.portraitImage
+                      : element.images.image
+                  }
                   alt={
                     element.heading
                       ? `Image for ${element.heading}`

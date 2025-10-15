@@ -2,7 +2,19 @@ import type { Breakpoint } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { Template } from "tinacms";
 import type { LayoutProp } from "../types";
 
-export const radixSizes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+export const radixSizes = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+] as const;
+type RadixSize = (typeof radixSizes)[number];
 
 const breakpoints: Exclude<Breakpoint, "initial">[] = [
   "xs",
@@ -20,14 +32,11 @@ const breakpointToLabel: Record<(typeof breakpoints)[number], string> = {
   xl: "Desktops",
 };
 
-export const layoutDefaults: Record<
-  string,
-  "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
-> = {
+export const layoutDefaults: Record<string, RadixSize> = {
   paddingX: "4",
   paddingY: "8",
   gap: "4",
-  columns: "2",
+  columns: "1",
 };
 
 export const layoutProps = ["height", "width", "columns", "gap"] as const;
@@ -67,7 +76,7 @@ export const layout = (
                 name: layoutProp,
                 label: layoutProp,
                 type: "string",
-                options: radixSizes,
+                options: [...radixSizes],
               };
             }
 

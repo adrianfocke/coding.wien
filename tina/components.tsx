@@ -1,4 +1,4 @@
-import { Text } from "@radix-ui/themes";
+import { Box, Heading, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import type { Components } from "tinacms/dist/rich-text";
 import Hero from "../components/Hero/Hero";
@@ -6,6 +6,7 @@ import Slideshow from "../components/Slideshow/Slideshow";
 import Form from "../components/Form/Form";
 import Grid from "../components/Grid/Grid";
 import Image from "next/image";
+import Highlight from "../components/Highlight/Highlight";
 
 export default {
   /* Custom components */
@@ -18,8 +19,18 @@ export default {
   Hero: (props: any) => {
     return <Hero {...props} />;
   },
+  Highlight: (props: any) => {
+    return <Highlight {...props} />;
+  },
   Slideshow: (props: any) => {
     return <Slideshow {...props} />;
+  },
+  h1(props) {
+    return (
+      <Heading align={"center"} size={"9"} className={`fontNormal serif`}>
+        {props?.children}
+      </Heading>
+    );
   },
   /* Standard components */
   a(props) {

@@ -21,6 +21,16 @@ export default intlTemplate(
             overrides: { toolbar: ["bold", "image"] },
           },
         ],
+        ui: {
+          itemProps: (item) => {
+            console.log("Item: ", item.gridItem.children[0].children[0].text);
+            return {
+              label: item.gridItem.children[0].children[0].text
+                ? item.gridItem.children[0].children[0].text
+                : "Grid item",
+            };
+          },
+        },
       },
     ],
   },

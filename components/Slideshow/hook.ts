@@ -104,7 +104,7 @@ export const useSlideshow = (slideshowSettings?: any) => {
       if (slideshowSettings?.nextSlideTimeout) {
         nextSlide();
       }
-    }, slideshowSettings?.nextSlideTimeout as number);
+    }, (slideshowSettings?.nextSlideTimeout as number) * 1000);
 
     return () => clearInterval(interval);
   }, [nextSlide, slideshowSettings?.nextSlideTimeout]);

@@ -19,37 +19,86 @@ seo:
       - coding
       - wien
 body: |
+  <Hero
+    en={{
+      linksToReferencePrimary: "",
+      linksToReferenceSecondary: "content/page/about.mdx",
+      heading: "Deine Stadt, deine Idee – deine Webseite?",
+      text: "Wir packen Ideen, Menschen und Produkte in das Format einer Webseite.",
+      linkTextPrimary: "Jetzt kontaktieren",
+      linkTextSecondary: "Mehr erfahren",
+      linksToPrimary: "mailto:afocke@pm.me"
+    }}
+  />
+
   <Slideshow
     en={{
       slides: [
         {
-          heading: "Add your heading",
-          text: "Add your text to spark interest",
+          heading: "YogaMitCoco.at",
+          text: "Trust the Journey: Eine maßgeschneiderte Seite für eine Wiener Yogalehrerin und Raumhalterin",
           image: "/uploads/hero2.jpg",
-          linkText: "Add your link"
+          linkText: "Zu ihrer Story",
+          linksToReference: "content/projects/yogamitcoco.json",
+          portraitImage: "/uploads/projects/yogamitcoco.jpg",
+          images: {
+            image: "/uploads/projects/yogamitcoco.jpg",
+            portraitImage: "/uploads/projects/yogamitcoco-portrait.jpg"
+          }
         },
         {
-          heading: "Add your heading",
-          text: "Add your text to spark interest",
+          heading: "BreathAndGrowth.at",
+          text: "Alles beginnt mit einem Atemzug: Breathwork und Yogalehrerin Hanna in ihrem neuen Look, gemacht von uns.",
           image: "/uploads/hero2.jpg",
-          linkText: "Add your link"
-        },
-        {
-          heading: "Add your heading",
-          text: "Add your text to spark interest",
-          image: "/uploads/hero2.jpg",
-          linkText: "Add your link"
+          linkText: "Zu ihrer Story",
+          linksToReference: "content/projects/breathandgrowth.json",
+          images: {
+            image: "/uploads/projects/breath-and-growth.png",
+            portraitImage: "/uploads/projects/breath-and-growth-portrait.jpg"
+          }
         }
       ],
-      heading: "Das sagen meine Kund:innen"
+      heading: ""
     }}
-    variant="testimonial"
+    nextSlideTimeout=""
     layout={{
       lg: { height: 500 },
       xl: { height: 500 },
       md: { height: 400 },
       sm: { height: 400 },
-      xs: { height: 400 }
+      xs: { height: 300 }
+    }}
+    variant="slideshow"
+  />
+
+  <Grid
+    en={{
+      heading: "Das machen wir:",
+      gridItems: [
+        {
+          gridItem:
+            "**Webdevelopment und SEO**\n\nAll-inclusive Webseiten, am neuesten Stand der Technik. Egal wie groß du denkst: ich habe das Know-How und die passende Technologie, um Dich digital zu erheben. Die Oberfläche zum Bearbeiten ist schlicht und intuitiv, da kann Wordpress nicht mithalten.\n"
+        },
+        {
+          gridItem:
+            "**Digitale Beratung**\n\nIch biete Unterstützung für all-things-web, Betriebssysteme und mehr an. Du kannst dich wichtigeren Dingen widmen und bist gleichzeitig technisch gut aufgehoben. Gemeinsam erarbeiten wir für dich sichere und nützliche Strategien zur Nutzung digitaler Tools.\n"
+        },
+        {
+          gridItem:
+            "**1:1 Yoga-Teaching**\n\nYoga ist ein integraler Teil meines Lebens. Mein Auftrag ist, Menschen zu stärken, egal ob digital oder durch  Yogapraxis. Praktiziere mit mir, denn ein klarer Geist hilft Dir auch in deinem Cause. Auf Anfrage mache ich auch Stunden für dein Business.\n"
+        },
+        {
+          gridItem:
+            "**Shanti Package**\n\nDein Unternehmen hat einen Cause, den die Welt braucht und deine finanziellen Ressourcen sind knapp? Für ausgewählte Ideen biete ich meine Dienste abseits von monetärem Austausch an. Geld ist ein Mittel, das Wachstum der Seele aber ist unbezahlbar.\n"
+        }
+      ]
+    }}
+    layout={{
+      sm: { columns: "2" },
+      md: { columns: "2" },
+      xs: { columns: "1" },
+      lg: { columns: "2" },
+      xl: { columns: "2" }
     }}
   />
 ---

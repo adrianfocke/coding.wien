@@ -1,7 +1,8 @@
+import type { Breakpoint } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import { useEffect, useState } from "react";
 
 export function useBreakpoint() {
-  const [breakpoint, setBreakpoint] = useState("xs");
+  const [breakpoint, setBreakpoint] = useState("initial");
 
   useEffect(() => {
     function handleResize() {
@@ -17,5 +18,5 @@ export function useBreakpoint() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return breakpoint;
+  return breakpoint as Breakpoint;
 }

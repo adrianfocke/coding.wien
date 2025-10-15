@@ -1,20 +1,24 @@
 import type { Template } from "tinacms";
 import intlTemplate from "../../tina/templates/intlTemplate";
 import { layout } from "../../tina/templates/layout";
+import templateDescriptions from "../../tina/templates/template-descriptions";
 
 const slideshowTypes = ["slideshow", "testimonial"] as const;
 export type SlideshowType = (typeof slideshowTypes)[number];
 
+const slideshowTimeouts = ["2", "3", "4", "5", "6"] as const;
+export type slideshowTimeouts = (typeof slideshowTimeouts)[number];
+
 const settings: Template["fields"] = [
   {
     name: "nextSlideTimeout",
-    label: "Next slide timeout",
-    type: "number",
-    description: "Time in milliseconds before moving to the next slide",
+    label: "Next slide in seconds",
+    type: "string",
+    options: [...slideshowTimeouts],
   },
   {
     name: "variant",
-    label: "Variant",
+    label: "Slideshow variant",
     type: "string",
     options: [...slideshowTypes],
   },
@@ -33,23 +37,37 @@ export default intlTemplate(
         type: "object",
         list: true,
         fields: [
-          { name: "text", label: "Text", type: "string" },
-          { name: "image", label: "Image", type: "image" },
           { name: "heading", label: "Heading", type: "string" },
+          { name: "text", label: "Text", type: "string" },
+          {
+            name: "images",
+            label: "Image",
+            type: "object",
+            fields: [
+              { name: "image", label: "Image", type: "image" },
+              {
+                name: "portraitImage",
+                label: "Alternative image",
+                type: "image",
+                description:
+                  "Alternative image for portrait devices (like phones)",
+              },
+            ],
+          },
+          { name: "linkText", label: "Link Text", type: "string" },
           {
             name: "linksToReference",
             label: "Internal link",
             type: "reference",
             collections: ["project"],
+            description: templateDescriptions.internalLink,
           },
           {
             name: "linksTo",
             label: "External link",
             type: "string",
-            description:
-              "If you fill in an internal link, this will be ignored",
+            description: templateDescriptions.externalLink,
           },
-          { name: "linkText", label: "Link Text", type: "string" },
         ],
         ui: {
           itemProps(item) {
