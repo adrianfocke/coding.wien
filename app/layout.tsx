@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className="bodyNoMargin">
         <Theme>
           <Navigation />
-          <main>{children}</main>
+          <main style={{ paddingBottom: "60px" }}>{children}</main>
         </Theme>
       </body>
     </html>

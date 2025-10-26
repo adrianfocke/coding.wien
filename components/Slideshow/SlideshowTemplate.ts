@@ -79,7 +79,10 @@ export default intlTemplate(
             return {
               heading: "Add your heading",
               text: "Add your text to spark interest",
-              image: "/uploads/hero2.jpg",
+              images: {
+                image: "/uploads/placeholders/gradient.jpg",
+                portraitImage: "/uploads/placeholders/gradient2.jpg",
+              },
               linkText: "Add your link",
             };
           },

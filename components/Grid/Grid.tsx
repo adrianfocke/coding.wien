@@ -4,21 +4,29 @@ import type { PageBodyGridFilter } from "../../tina/__generated__/types";
 import { LanguageContext } from "../../utils/context/language";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { useBreakpoint } from "../../utils/hooks/breakoint";
-import { getLayoutProp, layoutDefaults } from "../../tina/templates/layout";
+import { getLayoutProp } from "../../tina/templates/layout";
 import { tinaField } from "tinacms/dist/react";
 import styles from "./Grid.module.css";
 import components from "../../tina/components";
+import type { GridType } from "./GridTemplate";
 
 export default function Grid(props: PageBodyGridFilter) {
   const language = use(LanguageContext);
   const breakpoint = useBreakpoint();
+
+  const gridType = props.variant as GridType | undefined;
+
+  console.log("Props: ", gridType);
 
   if (!props?.[language]?.gridItems) {
     return <Box>Grid component: Please add your grid items.</Box>;
   }
 
   return (
-    <Container py={layoutDefaults.paddingY} px={layoutDefaults.paddingX}>
+    <Container
+      my={getLayoutProp((props as any).layout)("marginY")[breakpoint]}
+      px={"5"}
+    >
       {props?.[language]?.heading && (
         <Heading
           size={"8"}
@@ -30,14 +38,12 @@ export default function Grid(props: PageBodyGridFilter) {
         </Heading>
       )}
       <RadixGrid
+        p={gridType === "card" ? "4" : undefined}
+        className={gridType === "card" ? styles.grid : ""}
         columns={
-          getLayoutProp((props as any).layout)("columns")[breakpoint] ??
-          layoutDefaults.columns
+          getLayoutProp((props as any).layout)("columns")[breakpoint] ?? "2"
         }
-        gap={
-          getLayoutProp((props as any).layout)("gap")[breakpoint] ??
-          layoutDefaults.gap
-        }
+        gap={getLayoutProp((props as any).layout)("gap")[breakpoint] ?? "2"}
       >
         {(props?.[language]?.gridItems as []).map((item, i) => (
           <div

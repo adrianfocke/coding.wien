@@ -11,14 +11,16 @@ import { use } from "react";
 import type { PageBodyHeroFilter } from "../../tina/__generated__/types";
 import { LanguageContext } from "../../utils/context/language";
 import { tinaField } from "tinacms/dist/react";
-import { layoutDefaults } from "../../tina/templates/layout";
 import { turnReferenceIntoLink } from "../../tina/utils";
+import { getLayoutProp } from "../../tina/templates/layout";
+import { useBreakpoint } from "../../utils/hooks/breakoint";
 
 export default function Hero(props: PageBodyHeroFilter) {
   const language = use(LanguageContext);
+  const breakpoint = useBreakpoint();
 
   return (
-    <Container py={layoutDefaults.paddingY}>
+    <Container my={getLayoutProp((props as any).layout)("marginY")[breakpoint]}>
       <Box position={"relative"}>
         <Flex mx={"5"} justify={"center"} align={"center"} direction={"column"}>
           <Heading

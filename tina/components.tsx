@@ -32,12 +32,42 @@ export default {
       </Heading>
     );
   },
+  h2(props) {
+    return (
+      <Heading align={"center"} size={"6"} className={`fontNormal serif`}>
+        {props?.children}
+      </Heading>
+    );
+  },
+  h3(props) {
+    return (
+      <Heading align={"center"} size={"5"} className={`fontNormal serif`}>
+        {props?.children}
+      </Heading>
+    );
+  },
+  h4(props) {
+    return (
+      <Text as="p" size={"5"}>
+        {props?.children}
+      </Text>
+    );
+  },
+  h5(props) {
+    return <Text as="p">Heading 5 not supported</Text>;
+  },
+  h6(props) {
+    return <Text as="p">Heading 6 not supported</Text>;
+  },
   /* Standard components */
+  p(props) {
+    return <Text as="p">{props?.children}</Text>;
+  },
   a(props) {
     return (
-      <Link className="serif" href={props?.url ?? "/404"}>
-        <Text>{props?.children.props.content[0].text}</Text>
-      </Link>
+      <Heading align={"center"} size={"5"} className={`fontNormal serif`}>
+        {props?.children}
+      </Heading>
     );
   },
   img(props) {

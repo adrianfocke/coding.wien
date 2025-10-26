@@ -3,3 +3,9 @@
   width: 100%;
   height: auto;
 }
+
+.grid {
+  border: 1px solid var(--black);
+  border-radius: var(--radius-small);
+  box-shadow: var(--box-shadow);
+}

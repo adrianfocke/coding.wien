@@ -11,7 +11,7 @@
 .slide {
   z-index: 1;
   background: var(--white-hue);
-  border-radius: var(--radius-6);
+  border-radius: var(--radius-small);
   color: var(--white);
   width: 90%;
 }
@@ -20,7 +20,7 @@
   bottom: 0;
   z-index: 1;
   background: var(--white-hue);
-  border-radius: var(--radius-6);
+  border-radius: var(--radius-large);
   left: 50%;
   transform: translate(-50%, -50%);
   white-space: nowrap;
@@ -45,7 +45,7 @@
   bottom: 0;
   z-index: 1;
   background: var(--white-hue);
-  border-radius: var(--radius-6);
+  border-radius: var(--radius-medium);
   right: 10%;
   transform: translate(-50%, -50%);
   white-space: nowrap;

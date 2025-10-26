@@ -16,12 +16,12 @@ test("has title", async ({ page }) => {
   // Get the FrameLocator (this doesn't wait, it just defines the path)
   const iframeLocator = iframeContainer.frameLocator("iframe");
 
-  await expect(iframeContainer).toBeDefined()
-  
-  const date = new Date();
+  await expect(iframeContainer).toBeDefined();
 
   await page.screenshot({
-    path: `screenshot-${date.toISOString()}.png`,
+    path: `screenshot-${new Date().toISOString()}.png`,
     fullPage: true,
   });
+
+  console.log("Page:", iframeContainer);
 });

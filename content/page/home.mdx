@@ -29,6 +29,13 @@ body: |
       linkTextSecondary: "Mehr erfahren",
       linksToPrimary: "mailto:afocke@pm.me"
     }}
+    layout={{
+      xs: { marginY: "6" },
+      sm: { marginY: "6" },
+      md: { marginY: "6" },
+      lg: { marginY: "6" },
+      xl: { marginY: "6" }
+    }}
   />
 
   <Slideshow
@@ -94,11 +101,31 @@ body: |
       ]
     }}
     layout={{
+      sm: { columns: "2", marginY: "6" },
+      md: { columns: "2", marginY: "6" },
+      xs: { columns: "1", marginY: "6" },
+      lg: { columns: "2", marginY: "6" },
+      xl: { columns: "2", marginY: "6" }
+    }}
+  />
+
+  <Grid
+    variant="card"
+    layout={{
+      lg: { columns: "2" },
+      xs: { columns: "1" },
       sm: { columns: "2" },
       md: { columns: "2" },
-      xs: { columns: "1" },
-      lg: { columns: "2" },
       xl: { columns: "2" }
+    }}
+    en={{
+      gridItems: [
+        {
+          gridItem:
+            "Überzeugt?\n\nBuche Dein Erstgespräch und lass Ideen Realität werden. Wir sind bereit!\n"
+        },
+        { gridItem: "BUTTON\n" }
+      ]
     }}
   />
 ---

@@ -1,5 +1,18 @@
+import type { Template } from "tinacms";
 import intlTemplate from "../../tina/templates/intlTemplate";
 import { layout } from "../../tina/templates/layout";
+
+const gridTypes = ["grid", "card"] as const;
+export type GridType = (typeof gridTypes)[number];
+
+const settings: Template["fields"] = [
+  {
+    name: "variant",
+    label: "Grid variant",
+    type: "string",
+    options: [...gridTypes],
+  },
+];
 
 export default intlTemplate(
   {
@@ -22,17 +35,20 @@ export default intlTemplate(
           },
         ],
         ui: {
-          itemProps: (item) => {
-            console.log("Item: ", item.gridItem.children[0].children[0].text);
-            return {
-              label: item.gridItem.children[0].children[0].text
-                ? item.gridItem.children[0].children[0].text
-                : "Grid item",
-            };
+          itemProps: (item: any) => {
+            const label =
+              item?.gridItem?.children?.[0]?.children?.[0]?.text ||
+              item?.gridItem?.children?.[0]?.text ||
+              (typeof item?.gridItem === "string"
+                ? item.gridItem
+                : undefined) ||
+              "Grid item";
+
+            return { label };
           },
         },
       },
     ],
   },
-  [...layout(["columns", "gap"])]
+  [...settings, ...layout(["columns", "gap", "marginY"])]
 );

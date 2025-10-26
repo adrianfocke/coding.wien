@@ -3,6 +3,7 @@
   --black: #0d0c0c;
   --border-radius: 0px;
   --border-width: 2px;
+  --box-shadow: 0px 1px 8px 0px var(--grey-hue);
   --button-bg: var(--primary);
   --button-color: #fff;
   --button-font-size: 1rem;
@@ -24,7 +25,9 @@
   --margin-top-100: 100px;
   --primary-hue: color-mix(in srgb, var(--primary) 13%, transparent);
   --primary: #1786b4;
-  --radius-6: 6px;
+  --radius-small: 3px;
+  --radius-medium: 6px;
+  --radius-large: 16px;
   --scroll-snap-align-start: start;
   --scroll-snap-type-x-mandatory: x mandatory;
   --white-hue: color-mix(in srgb, var(--white) 13%, transparent);
