@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Callout,
+  Container,
   Flex,
   Heading,
   IconButton,
@@ -49,16 +50,22 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
   }
 
   return (
-    <Box position={"relative"} ref={slideshowContainer as Ref<HTMLDivElement>}>
+    <Box
+      position={"relative"}
+      ref={slideshowContainer as Ref<HTMLDivElement>}
+      my={getLayoutProp((props as any).layout)("marginY")[breakpoint] ?? "6"}
+    >
       {props?.[language]?.heading && (
-        <Heading
-          size={"8"}
-          m={"4"}
-          className={`fontNormal serif`}
-          data-tina-field={tinaField(props[language], "heading")}
-        >
-          {props?.[language]?.heading as any}
-        </Heading>
+        <Container>
+          <Heading
+            size={"8"}
+            m={"4"}
+            className={`fontNormal serif`}
+            data-tina-field={tinaField(props[language], "heading")}
+          >
+            {props?.[language]?.heading as any}
+          </Heading>
+        </Container>
       )}
 
       <Flex

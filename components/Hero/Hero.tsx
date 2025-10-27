@@ -22,7 +22,7 @@ export default function Hero(props: PageBodyHeroFilter) {
 
   return (
     <Container
-      my={getLayoutProp((props as any).layout)("marginY")[breakpoint] ?? "4"}
+      my={getLayoutProp((props as any).layout)("marginY")[breakpoint] ?? "6"}
     >
       <Box position={"relative"}>
         <Flex mx={"5"} justify={"center"} align={"center"} direction={"column"}>

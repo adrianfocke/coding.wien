@@ -37,7 +37,9 @@ export default function Grid(props: PageBodyGridFilter) {
   }
 
   return (
-    <Container my={getLayoutProp((props as any).layout)("marginY")[breakpoint]}>
+    <Container
+      my={getLayoutProp((props as any).layout)("marginY")[breakpoint] ?? "6"}
+    >
       {props?.[language]?.heading && (
         <Heading
           size={"8"}

@@ -12,7 +12,6 @@ import { sendForm } from "./action";
 import { FormField } from "./FormField";
 import { useForm } from "./hook";
 import type { PageBodyFormFilter } from "../../tina/__generated__/types";
-import styles from "./Form.module.css";
 import { use } from "react";
 import { LanguageContext } from "../../utils/context/language";
 import { tinaField } from "tinacms/dist/react";
@@ -20,10 +19,11 @@ import { displayTextOrPlaceholder, placeholders } from "../helpers";
 
 export default function Form(props: PageBodyFormFilter) {
   const language = use(LanguageContext);
+
   const { state, setFormState } = useForm();
 
   return (
-    <Container className={styles.formContainer}>
+    <Container>
       {props?.[language]?.heading && (
         <Heading
           size={"8"}

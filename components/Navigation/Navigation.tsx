@@ -12,14 +12,14 @@ export default function Navigation() {
       aria-label="Main Navigation"
     >
       <Link key={"1"} href={`/`} aria-label={"About link"}>
-        <Text>Yoga+Me</Text>
+        <Text>Coding.wien</Text>
       </Link>
       <Flex gap={"4"}>
         <Link key={"11"} href={`/about`} aria-label={"About link"}>
-          <Text>About</Text>
+          <Text>Über mich</Text>
         </Link>
         <Link key={"12"} href={`/`} aria-label={"Classes link"}>
-          <Text>Classes</Text>
+          <Text>Projekte</Text>
         </Link>
       </Flex>
     </Flex>
