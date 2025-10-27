@@ -1,5 +1,4 @@
 import intlTemplate from "../../tina/templates/intlTemplate";
-import templateDescriptions from "../../tina/templates/template-descriptions";
 
 export default intlTemplate({
   name: "Highlight",
@@ -9,6 +8,11 @@ export default intlTemplate({
     {
       name: "heading",
       label: "Heading",
+      type: "string",
+    },
+    {
+      name: "punchline",
+      label: "Punchline",
       type: "string",
     },
     {
@@ -32,20 +36,6 @@ export default intlTemplate({
           description: "Alternative image for portrait devices (like phones)",
         },
       ],
-    },
-    { name: "linkText", label: "Link Text", type: "string" },
-    {
-      name: "linksToReference",
-      label: "Internal link",
-      type: "reference",
-      collections: ["project"],
-      description: templateDescriptions.internalLink,
-    },
-    {
-      name: "linksTo",
-      label: "External link",
-      type: "string",
-      description: templateDescriptions.externalLink,
     },
   ],
 });

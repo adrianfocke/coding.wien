@@ -3,6 +3,7 @@ import type { InputMaybe, StringFilter } from "../tina/__generated__/types";
 // TODO intl
 export const placeholders = {
   heading: "Add your captivating heading",
+  punchline: "Add your punchline",
   text: "Add your captivating text",
   link: "Add your link",
   image: "/uploads/placeholders/gradient.jpg",
@@ -18,7 +19,7 @@ export const placeholders = {
     sendButtonTextSending: "Sending...",
     sendButtonTextSuccess: "Sent!",
     sendButtonTextError: "Error!",
-    validationHint: "Please check the format of your field"
+    validationHint: "Please check the format of your field",
   },
 };
 
