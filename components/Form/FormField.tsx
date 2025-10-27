@@ -1,11 +1,6 @@
 import * as Form from "@radix-ui/react-form";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
-import { Callout, Flex, TextArea, TextField } from "@radix-ui/themes";
-
-const validationHint = (
-  validationType: Form.FormMessageProps["match"],
-  name?: string
-) => `Bitte prüfen Sie das Format Ihres Felds: ${name}`;
+import { Flex, TextArea, TextField, Text } from "@radix-ui/themes";
+import { placeholders } from "../helpers";
 
 export const FormField = ({
   name,
@@ -30,12 +25,7 @@ export const FormField = ({
 
       {validations.map((validationType: Form.FormMessageProps["match"]) => (
         <Form.Message key={`${validationType}`} match={validationType}>
-          <Callout.Root size={"1"} variant={"outline"}>
-            <Callout.Icon>
-              <InfoCircledIcon />
-            </Callout.Icon>
-            <Callout.Text>{validationHint(validationType, name)}</Callout.Text>
-          </Callout.Root>
+          <Text color={"gray"}>{placeholders.form.validationHint}</Text>
         </Form.Message>
       ))}
     </Flex>

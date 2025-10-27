@@ -16,8 +16,22 @@ export default intlTemplate({
       label: "Text",
       type: "string",
       ui: {
-        component: "textarea"
-      }
+        component: "textarea",
+      },
+    },
+    {
+      name: "images",
+      label: "Image",
+      type: "object",
+      fields: [
+        { name: "image", label: "Image", type: "image" },
+        {
+          name: "portraitImage",
+          label: "Alternative image",
+          type: "image",
+          description: "Alternative image for portrait devices (like phones)",
+        },
+      ],
     },
     { name: "linkText", label: "Link Text", type: "string" },
     {
@@ -33,6 +47,5 @@ export default intlTemplate({
       type: "string",
       description: templateDescriptions.externalLink,
     },
-    
   ],
 });

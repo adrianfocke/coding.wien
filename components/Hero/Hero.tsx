@@ -14,13 +14,16 @@ import { tinaField } from "tinacms/dist/react";
 import { turnReferenceIntoLink } from "../../tina/utils";
 import { getLayoutProp } from "../../tina/templates/layout";
 import { useBreakpoint } from "../../utils/hooks/breakoint";
+import { displayTextOrPlaceholder, placeholders } from "../helpers";
 
 export default function Hero(props: PageBodyHeroFilter) {
   const language = use(LanguageContext);
   const breakpoint = useBreakpoint();
 
   return (
-    <Container my={getLayoutProp((props as any).layout)("marginY")[breakpoint]}>
+    <Container
+      my={getLayoutProp((props as any).layout)("marginY")[breakpoint] ?? "4"}
+    >
       <Box position={"relative"}>
         <Flex mx={"5"} justify={"center"} align={"center"} direction={"column"}>
           <Heading
@@ -29,7 +32,10 @@ export default function Hero(props: PageBodyHeroFilter) {
             className={`fontNormal serif`}
             data-tina-field={tinaField(props[language], "heading")}
           >
-            {(props?.[language]?.heading as any) ?? "Add your heading"}
+            {displayTextOrPlaceholder(
+              props?.[language]?.heading,
+              placeholders.heading
+            )}
           </Heading>
 
           <Text
@@ -37,8 +43,10 @@ export default function Hero(props: PageBodyHeroFilter) {
             align={"center"}
             data-tina-field={tinaField(props[language], "text")}
           >
-            {(props?.[language]?.text as any) ??
-              "Add your exciting text for getting interest."}
+            {displayTextOrPlaceholder(
+              props?.[language]?.text,
+              placeholders.text
+            )}
           </Text>
 
           <Flex gap={"4"}>
@@ -60,9 +68,10 @@ export default function Hero(props: PageBodyHeroFilter) {
                 radius={"full"}
               >
                 <Text size={"5"}>
-                  {props?.[language]?.linkTextPrimary ??
-                    (props?.[language]?.linksToPrimary as any) ??
-                    "Add your primary link"}
+                  {displayTextOrPlaceholder(
+                    props?.[language]?.linkTextPrimary,
+                    placeholders.link
+                  )}
                 </Text>
               </Button>
             </Link>
@@ -85,9 +94,10 @@ export default function Hero(props: PageBodyHeroFilter) {
                 radius={"full"}
               >
                 <Text size={"5"}>
-                  {props?.[language]?.linkTextSecondary ??
-                    (props?.[language]?.linksToSecondary as any) ??
-                    "Add your secondary link"}
+                  {displayTextOrPlaceholder(
+                    props?.[language]?.linkTextSecondary,
+                    placeholders.link
+                  )}
                 </Text>
               </Button>
             </Link>

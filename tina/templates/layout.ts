@@ -2,18 +2,7 @@ import type { Breakpoint } from "@radix-ui/themes/dist/cjs/props/prop-def";
 import type { Template } from "tinacms";
 import type { LayoutProp } from "../types";
 
-export const radixSizes = [
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-] as const;
+const radixSizes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] as const;
 type RadixSize = (typeof radixSizes)[number];
 
 const breakpoints: Exclude<Breakpoint, "initial">[] = [

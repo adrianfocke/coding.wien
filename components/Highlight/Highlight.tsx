@@ -12,15 +12,14 @@ export default function Highlight(props: PageBodyHeroFilter) {
       {props?.[language]?.heading && (
         <Heading
           size={"8"}
+          m={"4"}
           className={`fontNormal serif`}
-          mb={"4"}
-          ml={"4"}
-          mr={"4"}
           data-tina-field={tinaField(props[language], "heading")}
         >
           {props?.[language]?.heading as any}
         </Heading>
       )}
+
       <Flex>
         <Text data-tina-field={tinaField(props[language], "text")}>
           {props?.[language]?.text as any}

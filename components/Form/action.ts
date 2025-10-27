@@ -3,9 +3,9 @@
 export const sendForm = async (formData: {
   name: string;
   email: string;
-  anfrage: string;
+  text: string;
 }) => {
-  const { name, email, anfrage } = formData;
+  const { name, email, text } = formData;
   const nodemailer = await import("nodemailer");
 
   const transporter = nodemailer.createTransport({
@@ -23,7 +23,7 @@ export const sendForm = async (formData: {
       from: process.env.MAIL_SENDER,
       to: process.env.MAIL_RECEIVER,
       subject: "Anfrage via Homepage",
-      text: `${name} ${email} schreibt: ${anfrage}`,
+      text: `${name} ${email} schreibt: \n\n${text}`,
     });
   } catch (error) {
     throw new Error("Email could not be sent!", error);

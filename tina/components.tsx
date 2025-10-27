@@ -1,5 +1,4 @@
-import { Box, Heading, Text } from "@radix-ui/themes";
-import Link from "next/link";
+import { Heading, Text } from "@radix-ui/themes";
 import type { Components } from "tinacms/dist/rich-text";
 import Hero from "../components/Hero/Hero";
 import Slideshow from "../components/Slideshow/Slideshow";
@@ -61,7 +60,18 @@ export default {
   },
   /* Standard components */
   p(props) {
-    return <Text as="p">{props?.children}</Text>;
+    return (
+      <Text as="p" mb={"2"}>
+        {props?.children}
+      </Text>
+    );
+  },
+  span(props) {
+    return (
+      <Text as="p" mb={"2"}>
+        {props?.children}
+      </Text>
+    );
   },
   a(props) {
     return (

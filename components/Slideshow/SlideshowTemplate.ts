@@ -2,12 +2,12 @@ import type { Template } from "tinacms";
 import intlTemplate from "../../tina/templates/intlTemplate";
 import { layout } from "../../tina/templates/layout";
 import templateDescriptions from "../../tina/templates/template-descriptions";
+import { placeholders } from "../helpers";
 
 const slideshowTypes = ["slideshow", "testimonial"] as const;
 export type SlideshowType = (typeof slideshowTypes)[number];
 
 const slideshowTimeouts = ["2", "3", "4", "5", "6"] as const;
-export type slideshowTimeouts = (typeof slideshowTimeouts)[number];
 
 const settings: Template["fields"] = [
   {
@@ -77,13 +77,10 @@ export default intlTemplate(
           },
           defaultItem() {
             return {
-              heading: "Add your heading",
-              text: "Add your text to spark interest",
               images: {
-                image: "/uploads/placeholders/gradient.jpg",
-                portraitImage: "/uploads/placeholders/gradient2.jpg",
+                image: placeholders.image,
+                portraitImage: placeholders.portraitImage,
               },
-              linkText: "Add your link",
             };
           },
         },

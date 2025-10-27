@@ -1,6 +1,7 @@
 import type { Template } from "tinacms";
 import intlTemplate from "../../tina/templates/intlTemplate";
 import { layout } from "../../tina/templates/layout";
+import FormTemplate from "../Form/FormTemplate";
 
 const gridTypes = ["grid", "card"] as const;
 export type GridType = (typeof gridTypes)[number];
@@ -31,7 +32,8 @@ export default intlTemplate(
             name: "gridItem",
             label: "Grid Item",
             type: "rich-text",
-            overrides: { toolbar: ["bold", "image"] },
+            templates: [FormTemplate],
+            overrides: { toolbar: ["bold", "image", "embed"] },
           },
         ],
         ui: {

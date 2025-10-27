@@ -1,8 +1,20 @@
-import { Box, Button, Flex, Heading, IconButton, Text } from "@radix-ui/themes";
+import {
+  Box,
+  Button,
+  Callout,
+  Flex,
+  Heading,
+  IconButton,
+  Text,
+} from "@radix-ui/themes";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { use, type Ref } from "react";
-import type { PageBodySlideshowFilter } from "../../tina/__generated__/types";
+import type {
+  InputMaybe,
+  PageBodySlideshowFilter,
+  StringFilter,
+} from "../../tina/__generated__/types";
 import { getLayoutProp } from "../../tina/templates/layout";
 import { LanguageContext } from "../../utils/context/language";
 import styles from "./Slideshow.module.css";
@@ -11,7 +23,8 @@ import { useBreakpoint } from "../../utils/hooks/breakoint";
 import { tinaField } from "tinacms/dist/react";
 import { turnReferenceIntoLink } from "../../tina/utils";
 import type { SlideshowType } from "./SlideshowTemplate";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon, InfoCircledIcon } from "@radix-ui/react-icons";
+import { displayTextOrPlaceholder, placeholders } from "../helpers";
 
 export default function Slideshow(props: PageBodySlideshowFilter) {
   const language = use(LanguageContext);
@@ -22,20 +35,32 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
 
   const slideshowType = props.variant as SlideshowType | undefined;
 
+  if (!props?.[language]?.slides) {
+    return (
+      <Callout.Root m={"4"} data-tina-field={tinaField(props)}>
+        <Callout.Icon>
+          <InfoCircledIcon />
+        </Callout.Icon>
+        <Callout.Text>
+          Add your slides in the component to see something here.
+        </Callout.Text>
+      </Callout.Root>
+    );
+  }
+
   return (
     <Box position={"relative"} ref={slideshowContainer as Ref<HTMLDivElement>}>
       {props?.[language]?.heading && (
         <Heading
           size={"8"}
+          m={"4"}
           className={`fontNormal serif`}
-          mb={"4"}
-          ml={"4"}
-          mr={"4"}
           data-tina-field={tinaField(props[language], "heading")}
         >
           {props?.[language]?.heading as any}
         </Heading>
       )}
+
       <Flex
         className={`${styles.slideContainer} scrollSnapMandatory`}
         overflowX="auto"
@@ -48,11 +73,11 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
             props?.[language]?.slides as [
               {
                 images: { image: string; portraitImage: string };
-                text: string;
-                heading: string;
-                linksTo: string;
+                text: InputMaybe<StringFilter> | undefined;
+                heading: InputMaybe<StringFilter> | undefined;
+                linksTo: InputMaybe<StringFilter> | undefined;
                 linksToReference: string;
-                linkText: string;
+                linkText: any;
               }
             ]
           ).map((element, i) => (
@@ -87,7 +112,10 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                     "heading"
                   )}
                 >
-                  {element.heading}
+                  {displayTextOrPlaceholder(
+                    element.heading,
+                    placeholders.heading
+                  )}
                 </Heading>
 
                 <Text
@@ -99,7 +127,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                     "text"
                   )}
                 >
-                  {element.text}
+                  {displayTextOrPlaceholder(element.text, placeholders.text)}
                 </Text>
                 <Link
                   href={`${
@@ -118,7 +146,10 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                     aria-label={element.linkText ?? element.linksTo}
                   >
                     <Text size={"5"}>
-                      {element.linkText ?? element.linksTo}
+                      {displayTextOrPlaceholder(
+                        element.linkText,
+                        placeholders.link
+                      )}
                     </Text>
                   </Button>
                 </Link>
@@ -143,33 +174,34 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
               )}
             </Flex>
           ))}
-        {slideshowType === "slideshow" && (
-          <Flex
-            className={styles.slideControls}
-            justify={"center"}
-            position={"absolute"}
-            p={"2"}
-            gap={"1"}
-          >
-            {props?.[language]?.slides &&
-              (props?.[language]?.slides as []).map((element, index) => (
-                <Button
-                  title={`Button link to next slide`}
-                  size={"1"}
-                  radius="full"
-                  onClick={() => goToSlide(index + 1)}
-                  key={index}
-                  className={`${
-                    index === isActiveSlide
-                      ? styles.activeSlideControl
-                      : styles.slideControl
-                  } ${styles.control}`}
-                >
-                  <Box></Box>
-                </Button>
-              ))}
-          </Flex>
-        )}
+        {slideshowType === "slideshow" ||
+          (slideshowType === undefined && (
+            <Flex
+              className={styles.slideControls}
+              justify={"center"}
+              position={"absolute"}
+              p={"2"}
+              gap={"1"}
+            >
+              {props?.[language]?.slides &&
+                (props?.[language]?.slides as []).map((element, index) => (
+                  <Button
+                    title={`Button link to next slide`}
+                    size={"1"}
+                    radius="full"
+                    onClick={() => goToSlide(index + 1)}
+                    key={index}
+                    className={`${
+                      index === isActiveSlide
+                        ? styles.activeSlideControl
+                        : styles.slideControl
+                    } ${styles.control}`}
+                  >
+                    <Box></Box>
+                  </Button>
+                ))}
+            </Flex>
+          ))}
         {slideshowType === "testimonial" && (
           <Flex
             className={styles.testimonialControls}

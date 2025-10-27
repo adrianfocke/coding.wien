@@ -2,9 +2,14 @@ import intlTemplate from "../../tina/templates/intlTemplate";
 
 export default intlTemplate({
   name: "Form",
-  label: "Newsletter Form",
+  label: "Contact Form",
   type: "object",
   fields: [
+    {
+      name: "heading",
+      label: "Heading",
+      type: "string",
+    },
     { name: "name", label: "Name", type: "string" },
     { name: "namePlaceholder", label: "Name Placeholder", type: "string" },
     { name: "email", label: "email", type: "string" },
