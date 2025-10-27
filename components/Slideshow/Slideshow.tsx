@@ -167,7 +167,7 @@ export default function Slideshow(props: PageBodySlideshowFilter) {
                   priority={i === 0}
                   src={
                     breakpoint === "xs"
-                      ? element.images.portraitImage
+                      ? element.images.portraitImage || element.images.image
                       : element.images.image
                   }
                   alt={
