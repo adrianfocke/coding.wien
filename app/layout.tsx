@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="bodyNoMargin">
-        <Theme>
+        <Theme scaling={"110%"}>
           <Navigation />
           <main style={{ paddingBottom: "60px" }}>{children}</main>
         </Theme>
