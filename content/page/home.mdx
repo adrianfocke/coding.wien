@@ -23,13 +23,41 @@ body: |
     en={{
       linksToReferencePrimary: "",
       linksToReferenceSecondary: "content/page/about.mdx",
-      text: "Ich packe Ideen, Menschen und Produkte in digitale Formate.",
-      heading: "Deine Stadt, deine Idee – deine Webseite?",
+      text: "Mein Name ist Adrian und ich packe Ideen, Menschen und Produkte in digitale Formate.",
+      heading: "Kommunikation ist gut, wenn Mensch sie fühlt.",
       linkTextPrimary: "Jetzt kontaktieren",
       linksToPrimary: "mailto:afocke@pm.me",
       linkTextSecondary: "Mehr erfahren"
     }}
     layout={{ lg: { marginY: "6" } }}
+  />
+
+  <Grid
+    en={{
+      gridItems: [
+        {
+          gridItem:
+            "Servus, mein Name ist Adrian. Ich verwende he/him Pronomen und lebe in Wien. Wenn ich nicht gerade mit Bits und Bytes um mich werfe, verbringe ich meine Zeit vermutlich draußen – präferiert im Grünen, am Berg, im Zug oder auf meiner Yogamatte. Ich bezeichne mich als selbst als Aktivisten und stehe für Dinge, die mir wichtig sind, ein. Dazu zählen zum Beispiel: Karma Yoga und Seva-Dienste, Weiterbildung im Kosmos Kritische Männlichkeit, LEBENSmittelretten. Ich glaube, dass ich generell ein Mensch bin, der Dinge entweder mit Intention tut oder sonst lieber gleich sein lässt. Meditieren, chinesisches Essen und Interior Design sind meine Go-To-Themen, mögliche Nerd-Outs sind Zugstrecken, Openstreetmaps und I Ching. Ich sehe mich als selbst als Anchor. Ich kann gut motivieren, bin lustig und fühle mich gut wenn ich andere erheben kann. Außerdem habe ich Dinge gerne geordnet, was wahrscheinlich mein Fable für Coding erklärt.\n"
+        }
+      ]
+    }}
+    layout={{
+      xs: { columns: "1" },
+      sm: { columns: "1" },
+      md: { columns: "1" },
+      lg: { columns: "1" },
+      xl: { columns: "1" }
+    }}
+  />
+
+  <Highlight
+    en={{
+      heading: "Meine Mission:",
+      punchline:
+        "Female Empowerment, zuhören, verstehenwollen, ehrlich sein, reisen, Räume halten, Privilegien sehen und hinterfragen, Männer* in ihre Sanftheit bringen, Yogi:nis unterstützen, Dir den Rücken stärken.",
+      text: "Om Shanti Shanti",
+      images: { image: "/uploads/projects/mymind-XUlsF9LYeVk-unsplash.jpg" }
+    }}
   />
 
   <Slideshow
@@ -55,7 +83,8 @@ body: |
         {
           images: {
             image: "/uploads/projects/theme-photos-N0khKuzbDX8-unsplash.jpg",
-            portraitImage: "/uploads/placeholders/gradient2.jpg"
+            portraitImage:
+              "/uploads/projects/mahdi-chaghari-fndK7V0I2X8-unsplash.jpg"
           },
           linksToReference: "",
           heading: "Wann startest Du durch?",
@@ -64,7 +93,7 @@ body: |
           linksTo: "mailto:afocke@pm.me"
         }
       ],
-      heading: ""
+      heading: "Read these stories:"
     }}
     layout={{
       lg: { height: 530 },
@@ -74,6 +103,7 @@ body: |
       xl: { height: 530 }
     }}
     nextSlideTimeout=""
+    variant="testimonial"
   />
 
   <Grid
@@ -99,51 +129,6 @@ body: |
       heading: "Das biete ich an:"
     }}
     layout={{ xs: { columns: "1" } }}
-  />
-
-  <Slideshow
-    en={{
-      slides: [
-        {
-          images: {
-            image:
-              "/uploads/projects/breath_and_growth_1721116644_3413296261284564803_67414846556.jpg",
-            portraitImage:
-              "/uploads/projects/breath_and_growth_1721116644_3413296261284564803_67414846556.jpg"
-          },
-          linksToReference: "",
-          heading: ""
-        },
-        {
-          images: {
-            image: "/uploads/projects/coco.webp",
-            portraitImage: "/uploads/projects/coco.webp"
-          },
-          linksToReference: ""
-        },
-        {
-          images: {
-            image: "/uploads/placeholders/gradient.jpg",
-            portraitImage: "/uploads/placeholders/gradient2.jpg"
-          }
-        },
-        {
-          images: {
-            image: "/uploads/placeholders/gradient.jpg",
-            portraitImage: "/uploads/placeholders/gradient2.jpg"
-          }
-        }
-      ],
-      heading: "Das sagen meine Kund*innen:"
-    }}
-    variant="testimonial"
-    layout={{
-      lg: { height: 530 },
-      xl: { height: 530 },
-      md: { height: 530 },
-      sm: { height: 530 },
-      xs: { height: 350 }
-    }}
   />
 ---
 

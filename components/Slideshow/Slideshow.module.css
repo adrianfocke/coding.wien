@@ -1,7 +1,6 @@
 .slideContainer {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  background-color: var(--grey-hue);
 }
 
 .slideContainer::-webkit-scrollbar {
@@ -42,6 +41,7 @@
 
 
 .testimonialControls {
+  display: none;
   bottom: 0;
   z-index: 1;
   background: var(--white-hue);

@@ -1,7 +1,7 @@
 import { use } from "react";
 import type { PageBodyHighlightFilter } from "../../tina/__generated__/types";
 import { LanguageContext } from "../../utils/context/language";
-import { Box, Flex, Heading, Text } from "@radix-ui/themes";
+import { Box, Flex, Heading } from "@radix-ui/themes";
 import { tinaField } from "tinacms/dist/react";
 import Image from "next/legacy/image";
 import { displayTextOrPlaceholder, placeholders } from "../helpers";
@@ -35,7 +35,7 @@ export default function Highlight(props: PageBodyHighlightFilter) {
         </div>
 
         <Box py={"4"} style={{ position: "relative", zIndex: 1 }}>
-          <Flex gap={"4"} mx={"4"} direction={"column"}>
+          <Flex mx={"4"} direction={"column"}>
             <Heading
               size={"8"}
               className={`fontNormal serif`}
@@ -46,12 +46,12 @@ export default function Highlight(props: PageBodyHighlightFilter) {
                 placeholders.punchline
               )}
             </Heading>
-            <Text data-tina-field={tinaField(props[language], "text")}>
+            {/* <Text data-tina-field={tinaField(props[language], "text")}>
               {displayTextOrPlaceholder(
                 props?.[language]?.text,
                 placeholders.text
               )}
-            </Text>
+            </Text> */}
           </Flex>
         </Box>
       </Box>
