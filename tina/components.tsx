@@ -1,11 +1,26 @@
-import { Heading, Text } from "@radix-ui/themes";
+import { Text as RadixText } from "@radix-ui/themes";
 import type { Components } from "tinacms/dist/rich-text";
-import Hero from "../components/Hero/Hero";
 import Slideshow from "../components/Slideshow/Slideshow";
 import Form from "../components/Form/Form";
 import Grid from "../components/Grid/Grid";
-import Image from "next/image";
-import Highlight from "../components/Highlight/Highlight";
+import Heading from "../components/Heading/Heading";
+import Image from "../components/Image/Image";
+import HeadingTemplate from "../components/Heading/HeadingTemplate";
+import ImageTemplate from "../components/Image/ImageTemplate";
+import TextTemplate from "../components/Text/TextTemplate";
+import Text from "../components/Text/Text";
+import GridTemplate from "../components/Grid/GridTemplate";
+import SlideshowTemplate from "../components/Slideshow/SlideshowTemplate";
+import FormTemplate from "../components/Form/FormTemplate";
+
+export const templates = [
+  FormTemplate,
+  GridTemplate,
+  HeadingTemplate,
+  ImageTemplate,
+  SlideshowTemplate,
+  TextTemplate,
+];
 
 export default {
   /* Custom components */
@@ -15,74 +30,39 @@ export default {
   Grid: (props: any) => {
     return <Grid {...props} />;
   },
-  Hero: (props: any) => {
-    return <Hero {...props} />;
+  Heading: (props: any) => {
+    return <Heading {...props} />;
   },
-  Highlight: (props: any) => {
-    return <Highlight {...props} />;
+  Image: (props: any) => {
+    return <Image {...props} />;
+  },
+  Text: (props: any) => {
+    return <Text {...props} />;
   },
   Slideshow: (props: any) => {
     return <Slideshow {...props} />;
   },
-  h1(props) {
-    return (
-      <Heading align={"center"} size={"9"} className={`fontNormal serif`}>
-        {props?.children}
-      </Heading>
-    );
-  },
-  h2(props) {
-    return (
-      <Heading align={"center"} size={"6"} className={`fontNormal serif`}>
-        {props?.children}
-      </Heading>
-    );
-  },
-  h3(props) {
-    return (
-      <Heading align={"center"} size={"5"} className={`fontNormal serif`}>
-        {props?.children}
-      </Heading>
-    );
-  },
-  h4(props) {
-    return (
-      <Text as="p" size={"5"}>
-        {props?.children}
-      </Text>
-    );
-  },
-  h5(props) {
-    return <Text as="p">Heading 5 not supported</Text>;
-  },
-  h6(props) {
-    return <Text as="p">Heading 6 not supported</Text>;
-  },
   /* Standard components */
   p(props) {
     return (
-      <Text as="p" mb={"2"}>
-        {props?.children}
-      </Text>
+      <RadixText size={{ initial: "4", md: "6" }}>{props?.children}</RadixText>
     );
   },
   span(props) {
     return (
-      <Text as="p" mb={"2"}>
-        {props?.children}
-      </Text>
+      <RadixText size={{ initial: "4", md: "6" }}>{props?.children}</RadixText>
     );
   },
   a(props) {
     return (
-      <Heading align={"center"} size={"5"} className={`fontNormal serif`}>
-        {props?.children}
-      </Heading>
+      <RadixText size={{ initial: "4", md: "6" }}>{props?.children}</RadixText>
     );
   },
   img(props) {
     return (
       <Image
+        // TODO
+        //@ts-ignore
         src={props?.url ?? "/404"}
         alt={props?.alt ?? "Image"}
         height={400}

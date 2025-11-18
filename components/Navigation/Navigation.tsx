@@ -11,15 +11,15 @@ export default function Navigation() {
       role="navigation"
       aria-label="Main Navigation"
     >
-      <Link key={"1"} href={`/`} aria-label={"About link"}>
-        <Text>Home</Text>
+      <Link key={"1"} href={`/`}>
+        <Text size={{ initial: "5", md: "7" }}>Start</Text>
       </Link>
       <Flex gap={"4"}>
-        <Link key={"11"} href={`/about`} aria-label={"About link"}>
-          <Text>Über mich</Text>
+        <Link key={"11"} href={`/about`}>
+          <Text size={{ initial: "5", md: "7" }}>Über mich</Text>
         </Link>
-        <Link key={"12"} href={`/`} aria-label={"Classes link"}>
-          <Text>Stories</Text>
+        <Link key={"12"} href={`/`}>
+          <Text size={{ initial: "5", md: "7" }}>Stories</Text>
         </Link>
       </Flex>
     </Flex>

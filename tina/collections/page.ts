@@ -1,12 +1,8 @@
 import type { Collection } from "tinacms";
-import HeroTemplate from "../../components/Hero/HeroTemplate";
-import SlideshowTemplate from "../../components/Slideshow/SlideshowTemplate";
 import { default as fileName } from "../templates/file-name";
 import seo from "../templates/seo";
 import { sanitizeFilenameForURL } from "../utils";
-import FormTemplate from "../../components/Form/FormTemplate";
-import GridTemplate from "../../components/Grid/GridTemplate";
-import HighlightTemplate from "../../components/Highlight/HighlightTemplate";
+import { templates } from "../components";
 
 export default {
   label: "Pages",
@@ -17,17 +13,11 @@ export default {
     ...fileName,
     seo,
     {
-      name: "body",
-      label: "Main Content",
-      type: "rich-text",
-      templates: [
-        FormTemplate,
-        HeroTemplate,
-        HighlightTemplate,
-        SlideshowTemplate,
-        GridTemplate,
-      ],
-      overrides: { toolbar: ["embed"] },
+      name: "blocks",
+      label: "Blocks",
+      type: "object",
+      list: true,
+      templates,
     },
   ],
   ui: {

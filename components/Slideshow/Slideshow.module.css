@@ -1,6 +1,7 @@
 .slideContainer {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-snap-type: x mandatory;
 }
 
 .slideContainer::-webkit-scrollbar {
@@ -8,45 +9,13 @@
 }
 
 .slide {
-  z-index: 1;
-  background: var(--white-hue);
-  border-radius: var(--radius-small);
-  color: var(--white);
-  width: 90%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
-.slideControls {
-  bottom: 0;
-  z-index: 1;
-  background: var(--white-hue);
-  border-radius: var(--radius-large);
+.controls {
   left: 50%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-}
-
-.control {
-  height: 16px;
-  width: 16px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-}
-.activeSlideControl {
-  background-color: var(--white);
-}
-
-.slideControl {
-  background-color: var(--grey);
-}
-
-
-.testimonialControls {
-  display: none;
-  bottom: 0;
-  z-index: 1;
-  background: var(--white-hue);
-  border-radius: var(--radius-medium);
-  right: 10%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
+  transform: translateX(-50%);
+  z-Index: 1;
+  pointer-events: "auto";
 }

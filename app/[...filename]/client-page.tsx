@@ -1,11 +1,11 @@
 "use client";
 import { useTina } from "tinacms/dist/react";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
 import "../../styles/main.css";
 import type { PageQuery } from "../../tina/__generated__/types";
 import components from "../../tina/components";
 import type { Language } from "../../tina/types";
 import { LanguageContext } from "../../utils/context/language";
+import { use } from "react";
 
 type ClientPageProps = {
   query: string;
@@ -24,12 +24,30 @@ export default function ClientPage(props: ClientPageProps) {
     data: props.data,
   });
 
-  const { body } = data.page;
+  const language = use(LanguageContext);
 
   return (
     <div data-testid="client-page" /* className="test-responsive" */>
-      <LanguageContext.Provider value={props.language}>
-        <TinaMarkdown content={body} components={components} />
+      <LanguageContext.Provider value={language}>
+        {data.page.blocks?.map((block, i) => {
+          if (!block?.__typename) return null;
+
+          const componentName = block.__typename.replace("PageBlocks", "");
+          const Component = (components as any)[componentName];
+
+          console.log("Rendering block:", componentName, block);
+
+          if (!Component) return null;
+
+          return (
+            <Component
+              key={i}
+              {...block[language]}
+              {...(block as any).settings}
+              {...(block as any).__typename}
+            />
+          );
+        })}
       </LanguageContext.Provider>
     </div>
   );
