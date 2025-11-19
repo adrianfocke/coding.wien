@@ -2,7 +2,6 @@ import type { Collection } from "tinacms";
 import fileName from "../templates/file-name";
 import seo from "../templates/seo";
 import { sanitizeFilenameForURL } from "../utils";
-import intlTemplate from "../templates/intlTemplate";
 
 export default {
   label: "Projects",
@@ -12,7 +11,7 @@ export default {
   fields: [
     ...fileName,
     seo,
-    intlTemplate({
+    {
       name: "content",
       label: "Content",
       type: "object",
@@ -76,7 +75,7 @@ export default {
           },
         },
       ],
-    }),
+    },
   ],
   ui: {
     router: ({ document }) => {

@@ -12,13 +12,14 @@ import Text from "../components/Text/Text";
 import GridTemplate from "../components/Grid/GridTemplate";
 import SlideshowTemplate from "../components/Slideshow/SlideshowTemplate";
 import FormTemplate from "../components/Form/FormTemplate";
+import Link from "next/link";
 
 export const templates = [
+  HeadingTemplate("forBlockRendering"),
+  ImageTemplate("forBlockRendering"),
+  SlideshowTemplate("forBlockRendering"),
   FormTemplate,
   GridTemplate,
-  HeadingTemplate,
-  ImageTemplate,
-  SlideshowTemplate,
   TextTemplate,
 ];
 
@@ -31,6 +32,11 @@ export default {
     return <Grid {...props} />;
   },
   Heading: (props: any) => {
+    console.log("Heading props:", props);
+    return <Heading {...props} />;
+  },
+  HeadingRT: (props: any) => {
+    console.log("Heading props:", props);
     return <Heading {...props} />;
   },
   Image: (props: any) => {
@@ -54,8 +60,11 @@ export default {
     );
   },
   a(props) {
+    console.log("Link props:", props);
     return (
-      <RadixText size={{ initial: "4", md: "6" }}>{props?.children}</RadixText>
+      <RadixText size={{ initial: "4", md: "6" }} color="gold">
+        <Link href={props?.url!}>{props?.children}</Link>
+      </RadixText>
     );
   },
   img(props) {
@@ -69,5 +78,24 @@ export default {
         width={200}
       />
     );
+  },
+  /* Standard components that are replaced with custom ones and should not render */
+  h1(props) {
+    return <></>;
+  },
+  h2(props) {
+    return <></>;
+  },
+  h3(props) {
+    return <></>;
+  },
+  h4(props) {
+    return <></>;
+  },
+  h5(props) {
+    return <></>;
+  },
+  h6(props) {
+    return <></>;
   },
 } as Components<{}>;

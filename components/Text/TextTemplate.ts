@@ -1,38 +1,25 @@
 import type { Template } from "tinacms";
-import intlTemplate from "../../tina/templates/intlTemplate";
+import HeadingTemplate from "../Heading/HeadingTemplate";
+import { wrapWithLanguages } from "../helpers";
+import ImageTemplate from "../Image/ImageTemplate";
+import SlideshowTemplate from "../Slideshow/SlideshowTemplate";
 
-const settings: Template["fields"] = [
+const fields: Template["fields"] = [
   {
-    name: "settings",
-    label: "Settings",
-    type: "object",
-    fields: [
-      {
-        name: "align",
-        label: "Alignment",
-        type: "string",
-        options: ["left", "center", "right"],
-        ui: {
-          defaultValue: "left",
-        },
-      },
+    name: "text",
+    label: "Text",
+    type: "rich-text",
+    toolbarOverride: ["bold", "embed"],
+    templates: [
+      HeadingTemplate("forRichTextRendering"),
+      ImageTemplate("forRichTextRendering"),
+      SlideshowTemplate("forRichTextRendering"),
     ],
   },
 ];
 
-export default intlTemplate(
-  {
-    name: "Text",
-    label: "Text",
-    type: "object",
-    fields: [
-      {
-        name: "text",
-        label: "Text",
-        type: "rich-text",
-        toolbarOverride: ["bold"],
-      },
-    ],
-  },
-  [...settings]
-);
+export default {
+  name: "Text",
+  label: "Text",
+  fields: wrapWithLanguages(fields),
+};

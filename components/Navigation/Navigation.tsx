@@ -1,27 +1,29 @@
 import { Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
-import styles from "./Navigation.module.css";
+import type { NavigationEnFilter } from "../../tina/__generated__/types";
+import { tinaField } from "tinacms/dist/react";
 
-export default function Navigation() {
+export default function Navigation(props: NavigationEnFilter) {
   return (
     <Flex
-      className={styles.navContainer}
       p={"4"}
       justify={"between"}
       role="navigation"
       aria-label="Main Navigation"
+      style={{ borderBottom: "1px solid var(--accent-9)" }}
     >
-      <Link key={"1"} href={`/`}>
-        <Text size={{ initial: "5", md: "7" }}>Start</Text>
+      <Link key={"1"} href={`/`} data-tina-field={tinaField(props, "logo")}>
+        <Text size={{ initial: "5", md: "7" }}>{(props as any).logo}</Text>
       </Link>
-      <Flex gap={"4"}>
-        <Link key={"11"} href={`/about`}>
-          <Text size={{ initial: "5", md: "7" }}>Über mich</Text>
-        </Link>
-        <Link key={"12"} href={`/`}>
-          <Text size={{ initial: "5", md: "7" }}>Stories</Text>
-        </Link>
-      </Flex>
+      {props.links && (
+        <Flex gap={"4"}>
+          {(props as any).links?.map((link, index) => (
+            <Link key={index} href={link.href || `/`}>
+              <Text size={{ initial: "5", md: "7" }}>{link.label}</Text>
+            </Link>
+          ))}
+        </Flex>
+      )}
     </Flex>
   );
 }

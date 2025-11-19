@@ -1,31 +1,30 @@
 import type { Template } from "tinacms";
-import intlTemplate from "../../tina/templates/intlTemplate";
+import { wrapWithLanguages } from "../helpers";
 
-const settings: Template["fields"] = [
+const fields: Template["fields"] = [
+  { name: "heading", label: "Heading", type: "string" },
   {
-    name: "settings",
-    label: "Settings",
-    type: "object",
-    fields: [
-      {
-        name: "align",
-        label: "Alignment",
-        type: "string",
-        options: ["left", "center", "right"],
-        ui: {
-          defaultValue: "left",
-        },
-      },
-    ],
+    name: "align",
+    label: "Alignment",
+    type: "string",
+    options: ["left", "center", "right"],
+    ui: {
+      defaultValue: "left",
+    },
+  },
+  {
+    name: "as",
+    label: "Heading size",
+    type: "string",
+    options: ["h1", "h2", "h3", "h4", "h5", "h6"],
+    ui: {
+      defaultValue: "h1",
+    },
   },
 ];
 
-export default intlTemplate(
-  {
-    name: "Heading",
-    label: "Heading",
-    type: "object",
-    fields: [{ name: "heading", label: "Heading", type: "string" }],
-  },
-  [...settings]
-);
+export default (variant: "forBlockRendering" | "forRichTextRendering") => ({
+  name: "Heading",
+  label: "Heading",
+  fields: variant === "forBlockRendering" ? wrapWithLanguages(fields) : fields,
+});

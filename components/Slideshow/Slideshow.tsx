@@ -4,6 +4,7 @@ import type { PageBlocksSlideshowEn } from "../../tina/__generated__/types";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 import Image from "../Image/Image";
+import { DotFilledIcon } from "@radix-ui/react-icons";
 
 export default function Slideshow(props: PageBlocksSlideshowEn) {
   const { slideshow, scrollToSlide } = useSlideshow({
@@ -31,7 +32,11 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
             minWidth={"100%"}
             flexShrink={"0"}
           >
-            <Image image={slide?.image} text={slide?.text} />
+            <Image
+              {...slide}
+              //@ts-expect-error this is to access via tinaField
+              _content_source={(slide as any)?._content_source}
+            />
           </Box>
         ))}
       </Flex>
@@ -49,7 +54,7 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
             key={index}
             onClick={() => scrollToSlide(index + 1)}
           >
-            {index + 1}
+            <DotFilledIcon />
           </Button>
         ))}
       </Flex>

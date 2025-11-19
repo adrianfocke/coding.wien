@@ -5,7 +5,6 @@ import React from "react";
 import project from "../project";
 import "../styles/main.css";
 import { sans, serif } from "./fonts";
-import Navigation from "../components/Navigation/Navigation";
 
 export const metadata: Metadata = {
   title: {
@@ -21,10 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
-      <body className="bodyNoMargin">
-        <Theme scaling={"110%"}>
-          <Navigation />
-          <main style={{ paddingBottom: "60px" }}>{children}</main>
+      <body style={{ margin: 0 }}>
+        <Theme>
+          <main>{children}</main>
         </Theme>
       </body>
     </html>

@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import project from "../../project";
 import client from "../../tina/__generated__/client";
 import type { Page } from "../../tina/__generated__/types";
-import type { GenerateMetadataProps, Language } from "../../tina/types";
+import type { GenerateMetadataProps } from "../../tina/types";
 import ClientPage from "./client-page";
 
 export async function generateStaticParams() {
@@ -18,8 +18,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: GenerateMetadataProps): Promise<Metadata> {
-  const language =
-    ((await cookies()).get("language")?.value as Language) ?? "en";
+  const language = (await cookies()).get("language")?.value ?? "en";
 
   const title = (await params).filename[0];
 
@@ -46,12 +45,11 @@ export default async function Page(props: {
   params: Promise<{ filename: string[] }>;
 }) {
   const params = await props.params;
-  const data = await client.queries.page({
+  const data = await client.queries.pageAndNavigation({
     relativePath: `${params.filename}.mdx`,
   });
 
-  const language =
-    ((await cookies()).get("language")?.value as Language) ?? "en";
+  const language = (await cookies()).get("language")?.value ?? "en";
 
   return <ClientPage {...data} language={language} />;
 }

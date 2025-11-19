@@ -1,43 +1,31 @@
 import type { Template } from "tinacms";
-import intlTemplate from "../../tina/templates/intlTemplate";
+import { wrapWithLanguages } from "../helpers";
 
-const settings: Template["fields"] = [
+const fields: Template["fields"] = [
   {
-    name: "settings",
-    label: "Settings",
+    name: "slides",
+    label: "Slides",
     type: "object",
+    list: true,
     fields: [
+      { name: "image", label: "Image", type: "image" },
       {
-        name: "nextSlideTimeout",
-        label: "Next slide in seconds",
-        type: "number",
+        name: "text",
+        label: "Text Overlay",
+        type: "rich-text",
+        toolbarOverride: ["bold"],
       },
     ],
+  },
+  {
+    name: "nextSlideTimeout",
+    label: "Next slide in seconds",
+    type: "number",
   },
 ];
 
-export default intlTemplate(
-  {
-    name: "Slideshow",
-    label: "Slideshow",
-    type: "object",
-    fields: [
-      {
-        name: "slides",
-        label: "Slides",
-        type: "object",
-        list: true,
-        fields: [
-          { name: "image", label: "Image", type: "image" },
-          {
-            name: "text",
-            label: "Text Overlay",
-            type: "rich-text",
-            toolbarOverride: ["bold"],
-          },
-        ],
-      },
-    ],
-  },
-  [...settings]
-);
+export default (variant: "forBlockRendering" | "forRichTextRendering") => ({
+  name: "Slideshow",
+  label: "Slideshow",
+  fields: variant === "forBlockRendering" ? wrapWithLanguages(fields) : fields,
+});

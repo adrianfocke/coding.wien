@@ -1,0 +1,22 @@
+{
+  "logo": "Logo",
+  "links": [
+    {
+      "label": "wderfgt",
+      "url": ""
+    }
+  ],
+  "en": {
+    "logo": "Logo",
+    "links": [
+      {
+        "label": "Über mich",
+        "href": "content/page/about.mdx"
+      },
+      {
+        "label": "Stories",
+        "href": ""
+      }
+    ]
+  }
+}

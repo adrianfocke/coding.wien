@@ -1,19 +1,20 @@
-import type { InputMaybe, StringFilter } from "../tina/__generated__/types";
+import type { Template } from "tinacms";
 
-const isEmptyStringOrUndefinded = (
-  value: InputMaybe<StringFilter> | undefined
-) => {
-  if (value === undefined) return true;
-  if ((value as unknown as string).trim() === "") return true;
-  return false;
-};
+export const wrapWithLanguages = (
+  fields: Template["fields"]
+): Template["fields"] => {
+  const languages = ["de", "en"] as const;
+  const languageToLabel: Record<(typeof languages)[number], string> = {
+    de: "German",
+    en: "English",
+  };
 
-export const displayTextOrPlaceholder = (
-  textFromProp: InputMaybe<StringFilter> | undefined,
-  placeholder: string
-) => {
-  if (isEmptyStringOrUndefinded(textFromProp)) {
-    return placeholder;
-  }
-  return textFromProp as unknown as string;
+  return languages.map((language) => {
+    return {
+      name: language,
+      label: languageToLabel[language],
+      type: "object",
+      fields: fields,
+    };
+  });
 };

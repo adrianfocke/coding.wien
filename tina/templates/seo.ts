@@ -1,6 +1,4 @@
-import intlTemplate from "./intlTemplate";
-
-export default intlTemplate({
+export default {
   name: "seo",
   label: "SEO",
   type: "object",
@@ -31,4 +29,4 @@ export default intlTemplate({
       list: true,
     },
   ],
-});
+};
