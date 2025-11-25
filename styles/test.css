@@ -1,7 +1,6 @@
-@import "./colors.css";
 
 .test {
-    border: 1px solid var(--primary-7);
+    border: 1px solid red;
 }
 
 .test-responsive::before {
@@ -11,7 +10,7 @@
     content: "";
     left: 0;
     padding: 2px 4px;
-    background-color: var(--primary-3);
+    background-color: red;
 
 }
 

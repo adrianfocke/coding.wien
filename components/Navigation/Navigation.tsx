@@ -10,7 +10,7 @@ export default function Navigation(props: NavigationEnFilter) {
       justify={"between"}
       role="navigation"
       aria-label="Main Navigation"
-      style={{ borderBottom: "1px solid var(--accent-9)" }}
+      style={{ borderBottom: "1px solid var(--accent-8)" }}
     >
       <Link key={"1"} href={`/`} data-tina-field={tinaField(props, "logo")}>
         <Text size={{ initial: "5", md: "7" }}>{(props as any).logo}</Text>

@@ -10,6 +10,12 @@ const fields: Template["fields"] = [
     fields: [
       { name: "image", label: "Image", type: "image" },
       {
+        name: "alt",
+        label: "Alt Text",
+        type: "string",
+        description: "Descriptive text for the image",
+      },
+      {
         name: "text",
         label: "Text Overlay",
         type: "rich-text",

@@ -77,7 +77,6 @@ export default function Form(props: any) {
       </RadixForm.Root> */}
 
       <RadixForm.Root
-        className="FormRoot"
         onSubmit={async (event) => {
           event.preventDefault();
           setFormState("sending");
@@ -95,7 +94,7 @@ export default function Form(props: any) {
             .catch(() => setFormState("error"));
         }}
       >
-        <RadixForm.Field className="FormField" name="email">
+        <RadixForm.Field name="email">
           <div
             style={{
               display: "flex",
@@ -103,19 +102,19 @@ export default function Form(props: any) {
               justifyContent: "space-between",
             }}
           >
-            <RadixForm.Label className="FormLabel">Email</RadixForm.Label>
-            <RadixForm.Message className="FormMessage" match="valueMissing">
+            <RadixForm.Label>Email</RadixForm.Label>
+            <RadixForm.Message match="valueMissing">
               Please enter your email
             </RadixForm.Message>
-            <RadixForm.Message className="FormMessage" match="typeMismatch">
+            <RadixForm.Message match="typeMismatch">
               Please provide a valid email
             </RadixForm.Message>
           </div>
           <RadixForm.Control asChild>
-            <input className="Input" type="email" required />
+            <input type="email" required />
           </RadixForm.Control>
         </RadixForm.Field>
-        <RadixForm.Field className="FormField" name="question">
+        <RadixForm.Field name="question">
           <div
             style={{
               display: "flex",
@@ -123,13 +122,13 @@ export default function Form(props: any) {
               justifyContent: "space-between",
             }}
           >
-            <RadixForm.Label className="FormLabel">Question</RadixForm.Label>
-            <RadixForm.Message className="FormMessage" match="valueMissing">
+            <RadixForm.Label>Question</RadixForm.Label>
+            <RadixForm.Message match="valueMissing">
               Please enter a question
             </RadixForm.Message>
           </div>
           <RadixForm.Control asChild>
-            <textarea className="Textarea" required />
+            <textarea required />
           </RadixForm.Control>
         </RadixForm.Field>
         <RadixForm.Submit asChild>

@@ -29,7 +29,7 @@ export default function ClientPage(props: ClientPageProps) {
   const language = use(LanguageContext);
 
   return (
-    <div data-testid="client-page" /* className="test-responsive" */>
+    <div data-testid="client-page">
       <LanguageContext.Provider value={language}>
         <Navigation {...data.navigation?.[language]} />
 

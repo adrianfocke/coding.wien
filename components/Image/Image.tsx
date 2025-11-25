@@ -14,6 +14,7 @@ const aspectRatioMap: Record<string, number> = {
 };
 
 export default function Image(props: PageBlocksImageEn) {
+  console.log("Rendering Image alt prop:", props.alt);
   return (
     <Box position="relative">
       <AspectRatio
@@ -25,8 +26,7 @@ export default function Image(props: PageBlocksImageEn) {
             props.image && props.image !== "" ? props.image : placeholders.image
           }
           fill
-          // TODO
-          alt=""
+          alt={props.alt ?? ""}
         />
         <Flex position="absolute" inset="0" style={{ zIndex: 1 }}>
           <Box p={{ initial: "5", md: "9" }}>

@@ -27,10 +27,10 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
       >
         {props.slides.map((slide, index) => (
           <Box
-            className={styles.slide}
             key={index}
             minWidth={"100%"}
             flexShrink={"0"}
+            style={{ scrollSnapAlign: "start", scrollSnapStop: "always" }}
           >
             <Image
               {...slide}
@@ -42,11 +42,16 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
       </Flex>
 
       <Flex
-        className={styles.controls}
         direction={"row"}
         position={"absolute"}
         bottom={{ initial: "4", md: "7" }}
         gap={"2"}
+        left={"50%"}
+        style={{
+          transform: "translateX(-50%)",
+          pointerEvents: "auto",
+          zIndex: 1,
+        }}
       >
         {props.slides.map((slide, index) => (
           <Button
