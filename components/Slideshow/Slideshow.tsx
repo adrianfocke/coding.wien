@@ -28,8 +28,9 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
   }
 
   return (
-    <Box position={"relative"}>
+    <Box position={"relative"} className="test">
       <Flex
+        gap={"6"}
         className={styles.slideContainer}
         overflowX="auto"
         overflowY="hidden"

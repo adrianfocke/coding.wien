@@ -10,6 +10,7 @@ const fields: Template["fields"] = [
     type: "string",
     description: "Descriptive text for the image",
   },
+  { name: "whiteTextOverlay", label: "White Text Overlay", type: "boolean" },
   {
     name: "text",
     label: "Text Overlay",

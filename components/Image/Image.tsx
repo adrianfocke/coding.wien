@@ -31,6 +31,7 @@ export default function Image(
       <AspectRatio
         ratio={aspectRatioMap[(props as any).aspectRatio] ?? 16 / 9}
         data-tina-field={isEditable ? tinaField(props, "image") : undefined}
+        style={{ overflow: "hidden" }}
       >
         {!props.hideImage && (
           <NextImage
@@ -51,6 +52,9 @@ export default function Image(
               data-tina-field={
                 isEditable ? tinaField(props, "text") : undefined
               }
+              style={{
+                color: props.whiteTextOverlay ? "white" : "var(--text-12)",
+              }}
             >
               <TinaMarkdown content={props.text} components={components} />
             </div>

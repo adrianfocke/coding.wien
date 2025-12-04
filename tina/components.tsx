@@ -1,4 +1,4 @@
-import { Text as RadixText } from "@radix-ui/themes";
+import { Text as RadixText, Heading as RadixHeading } from "@radix-ui/themes";
 import type { Components } from "tinacms/dist/rich-text";
 import Slideshow from "../components/Slideshow/Slideshow";
 import Form from "../components/Form/Form";
@@ -51,7 +51,12 @@ export default {
   /* Standard components */
   p(props) {
     return (
-      <RadixText size={{ initial: "4", md: "6" }}>{props?.children}</RadixText>
+      <RadixText
+        style={{ fontFamily: "var(--font-serif)" }}
+        size={{ initial: "4", md: "6" }}
+      >
+        {props?.children}
+      </RadixText>
     );
   },
   span(props) {
@@ -81,13 +86,43 @@ export default {
   },
   /* Standard components that are replaced with custom ones and should not render */
   h1(props) {
-    return <></>;
+    return (
+      <RadixHeading
+        as="h1"
+        {...props}
+        size={{
+          initial: "8",
+          md: "9",
+        }}
+        style={{ fontFamily: "var(--font-serif)" }}
+      />
+    );
   },
   h2(props) {
-    return <></>;
+    return (
+      <RadixHeading
+        as="h2"
+        {...props}
+        size={{
+          initial: "7",
+          md: "8",
+        }}
+        style={{ fontFamily: "var(--font-serif)" }}
+      />
+    );
   },
   h3(props) {
-    return <></>;
+    return (
+      <RadixHeading
+        as="h2"
+        {...props}
+        size={{
+          initial: "6",
+          md: "7",
+        }}
+        style={{ fontFamily: "var(--font-serif)" }}
+      />
+    );
   },
   h4(props) {
     return <></>;

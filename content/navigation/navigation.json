@@ -7,23 +7,20 @@
     }
   ],
   "en": {
-    "logo": "Logo",
+    "logo": "",
     "links": [
       {
-        "label": "Home",
-        "href": ""
+        "label": "Home"
       },
       {
-        "label": "Meine Räume",
-        "href": ""
+        "label": "Meine Räume"
       },
       {
         "label": "Über mich",
         "href": "content/page/about.mdx"
       },
       {
-        "label": "Events",
-        "href": ""
+        "label": "Events"
       }
     ]
   }

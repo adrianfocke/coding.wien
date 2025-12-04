@@ -1,5 +1,5 @@
-import { Inter as Sans, Instrument_Serif as Serif } from 'next/font/google';
- 
+import { Inter as Sans, Raleway as Serif } from "next/font/google";
+
 export const serif = Serif({
   weight: "400",
   style: ["normal"],
