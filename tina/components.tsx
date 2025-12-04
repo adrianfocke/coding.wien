@@ -18,7 +18,7 @@ export const templates = [
   HeadingTemplate("forBlockRendering"),
   ImageTemplate("forBlockRendering"),
   SlideshowTemplate("forBlockRendering"),
-  FormTemplate,
+  FormTemplate("forBlockRendering"),
   GridTemplate,
   TextTemplate,
 ];

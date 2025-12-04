@@ -3,6 +3,7 @@ import { wrapWithLanguages } from "../helpers";
 import HeadingTemplate from "../Heading/HeadingTemplate";
 import ImageTemplate from "../Image/ImageTemplate";
 import SlideshowTemplate from "../Slideshow/SlideshowTemplate";
+import FormTemplate from "../Form/FormTemplate";
 
 const fields: Template["fields"] = [
   {
@@ -19,6 +20,7 @@ const fields: Template["fields"] = [
           HeadingTemplate("forRichTextRendering"),
           ImageTemplate("forRichTextRendering"),
           SlideshowTemplate("forRichTextRendering"),
+          FormTemplate("forRichTextRendering"),
         ],
         toolbarOverride: ["embed"],
       },

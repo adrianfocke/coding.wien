@@ -1,5 +1,6 @@
 import type { Template } from "tinacms";
 import { wrapWithLanguages } from "../helpers";
+import { allowedAspectRatios } from "./Image";
 
 const fields: Template["fields"] = [
   { name: "image", label: "Image", type: "image" },
@@ -19,7 +20,7 @@ const fields: Template["fields"] = [
     name: "aspectRatio",
     label: "Aspect Ratio",
     type: "string",
-    options: ["16/9", "4/3", "1/1", "3/4"],
+    options: allowedAspectRatios,
     ui: {
       defaultValue: "16/9",
     },

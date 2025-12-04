@@ -7,13 +7,24 @@ import Image from "../Image/Image";
 import { DotFilledIcon } from "@radix-ui/react-icons";
 
 export default function Slideshow(props: PageBlocksSlideshowEn) {
+  const numberOfSlidesShown = props.numberOfSlidesShown || 1;
+
   const { slideshow, scrollToSlide } = useSlideshow({
     numberOfSlides: props.slides?.length,
+    numberOfSlidesShown,
     nextSlideTimeout: (props as any).nextSlideTimeout,
   });
 
   if (!props.slides) {
     return null;
+  }
+
+  const hasNextSlideHint = (props as any).hintNextSlide;
+  const showNextSlidePreview = numberOfSlidesShown === 1 && hasNextSlideHint;
+
+  let slideWidthPercent = 100 / numberOfSlidesShown;
+  if (showNextSlidePreview) {
+    slideWidthPercent = 80;
   }
 
   return (
@@ -28,11 +39,13 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
         {props.slides.map((slide, index) => (
           <Box
             key={index}
-            minWidth={"100%"}
+            minWidth={`${slideWidthPercent}%`}
             flexShrink={"0"}
             style={{ scrollSnapAlign: "start", scrollSnapStop: "always" }}
           >
             <Image
+              hideImage={(slide as any).hideImage}
+              aspectRatio={numberOfSlidesShown === 1 ? "16/9" : "1/1"}
               {...slide}
               //@ts-expect-error this is to access via tinaField
               _content_source={(slide as any)?._content_source}
@@ -41,28 +54,30 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
         ))}
       </Flex>
 
-      <Flex
-        direction={"row"}
-        position={"absolute"}
-        bottom={{ initial: "4", md: "7" }}
-        gap={"2"}
-        left={"50%"}
-        style={{
-          transform: "translateX(-50%)",
-          pointerEvents: "auto",
-          zIndex: 1,
-        }}
-      >
-        {props.slides.map((slide, index) => (
-          <Button
-            radius="full"
-            key={index}
-            onClick={() => scrollToSlide(index + 1)}
-          >
-            <DotFilledIcon />
-          </Button>
-        ))}
-      </Flex>
+      {(props as any).showControls && (
+        <Flex
+          direction={"row"}
+          position={"absolute"}
+          bottom={{ initial: "4", md: "7" }}
+          gap={"2"}
+          left={"50%"}
+          style={{
+            transform: "translateX(-50%)",
+            pointerEvents: "auto",
+            zIndex: 1,
+          }}
+        >
+          {props.slides.map((slide, index) => (
+            <Button
+              radius="full"
+              key={index}
+              onClick={() => scrollToSlide(index + 1)}
+            >
+              <DotFilledIcon />
+            </Button>
+          ))}
+        </Flex>
+      )}
     </Box>
   );
 }

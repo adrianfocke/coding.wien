@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 
 export const useSlideshow = (slideshowSettings?: {
   numberOfSlides?: number;
+  numberOfSlidesShown?: number;
   nextSlideTimeout: number;
 }) => {
   const slideshow = useRef<HTMLElement>(null);
@@ -11,11 +12,12 @@ export const useSlideshow = (slideshowSettings?: {
   const scrollToSlide = (number: number) => {
     if (!slideshow.current || !slideshow.current?.offsetWidth) return;
 
+    const numberOfSlidesShown = slideshowSettings?.numberOfSlidesShown || 1;
+    const slideWidth = slideshow.current.offsetWidth / numberOfSlidesShown;
+
     activeSlideRef.current = number;
     slideshow.current.scroll({
-      left:
-        slideshow.current?.offsetWidth * number -
-        slideshow.current?.offsetWidth,
+      left: slideWidth * number - slideWidth,
       behavior: "smooth",
     });
   };
@@ -47,6 +49,7 @@ export const useSlideshow = (slideshowSettings?: {
   }, [
     slideshowSettings?.nextSlideTimeout,
     slideshowSettings?.numberOfSlides,
+    slideshowSettings?.numberOfSlidesShown,
     slideshow.current?.offsetWidth,
   ]);
 

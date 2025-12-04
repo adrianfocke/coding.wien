@@ -2,8 +2,12 @@ import { tinaField } from "tinacms/dist/react";
 import type { PageBlocksHeadingEn } from "../../tina/__generated__/types";
 import { Heading as RadixHeading } from "@radix-ui/themes";
 import placeholders from "../placeholders";
+import { TinaEditContext } from "../../utils/context/tina";
+import { useContext } from "react";
 
 export default function Heading(props: PageBlocksHeadingEn) {
+  const { isEditable } = useContext(TinaEditContext);
+
   return (
     <RadixHeading
       align={(props as any).align ?? "left"}
@@ -13,7 +17,7 @@ export default function Heading(props: PageBlocksHeadingEn) {
         md: "9",
       }}
     >
-      <div data-tina-field={tinaField(props)}>
+      <div data-tina-field={isEditable ? tinaField(props) : undefined}>
         {props.heading ?? placeholders.text}
       </div>
     </RadixHeading>

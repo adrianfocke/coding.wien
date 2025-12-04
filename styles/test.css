@@ -1,6 +1,6 @@
 
 .test {
-    border: 1px solid red;
+    border: 1px solid var(--warning-7);
 }
 
 .test-responsive::before {
@@ -10,7 +10,7 @@
     content: "";
     left: 0;
     padding: 2px 4px;
-    background-color: red;
+    background-color: var(--warning-9);
 
 }
 

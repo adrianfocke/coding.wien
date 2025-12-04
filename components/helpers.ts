@@ -1,9 +1,15 @@
 import type { Template } from "tinacms";
 
+export type IntlElementFieldMap = Record<
+  string,
+  Record<(typeof languages)[number], string>
+>;
+
+const languages = ["de", "en"] as const;
+
 export const wrapWithLanguages = (
   fields: Template["fields"]
 ): Template["fields"] => {
-  const languages = ["de", "en"] as const;
   const languageToLabel: Record<(typeof languages)[number], string> = {
     de: "German",
     en: "English",

@@ -10,11 +10,19 @@
     "logo": "Logo",
     "links": [
       {
+        "label": "Home",
+        "href": ""
+      },
+      {
+        "label": "Meine Räume",
+        "href": ""
+      },
+      {
         "label": "Über mich",
         "href": "content/page/about.mdx"
       },
       {
-        "label": "Stories",
+        "label": "Events",
         "href": ""
       }
     ]
