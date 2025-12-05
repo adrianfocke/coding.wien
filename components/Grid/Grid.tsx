@@ -3,7 +3,7 @@ import type {
   PageBlocksGridEn,
   PageBlocksGridEnItems,
 } from "../../tina/__generated__/types";
-import { Grid as RadixGrid } from "@radix-ui/themes";
+import { Grid as RadixGrid, Container } from "@radix-ui/themes";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import components from "../../tina/components";
 import { TinaEditContext } from "../../utils/context/tina";
@@ -15,15 +15,22 @@ export default function Grid(props: PageBlocksGridEn) {
 
   return (
     <TinaEditContext.Provider value={{ isEditable: false }}>
-      <RadixGrid columns={"2"}>
-        {(props.items as PageBlocksGridEnItems[]).map((item, i) => {
-          return (
-            <div key={i} data-tina-field={tinaField(item)}>
-              <TinaMarkdown content={item.content} components={components} />
-            </div>
-          );
-        })}
-      </RadixGrid>
+      <Container
+        mt={props.margin?.top ?? "0"}
+        mb={props.margin?.bottom ?? "0"}
+        mr={props.margin?.right ?? "0"}
+        ml={props.margin?.left ?? "0"}
+      >
+        <RadixGrid columns={"2"} gap={"4"}>
+          {(props.items as PageBlocksGridEnItems[]).map((item, i) => {
+            return (
+              <div key={i} data-tina-field={tinaField(item)}>
+                <TinaMarkdown content={item.content} components={components} />
+              </div>
+            );
+          })}
+        </RadixGrid>
+      </Container>
     </TinaEditContext.Provider>
   );
 }

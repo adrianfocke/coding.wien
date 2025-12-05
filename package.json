@@ -19,7 +19,7 @@
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/themes": "^3.2.1",
     "@types/react": "^18.3.24",
-    "next": "15.1.2",
+    "next": "latest",
     "nodemailer": "^6.10.1",
     "npm": "^10.9.3",
     "react": "^18.3.1",
@@ -33,8 +33,6 @@
     "@tinacms/cli": "latest",
     "@types/node": "^22.18.0",
     "@types/nodemailer": "^6.4.19",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "15.1.2",
     "husky": "^9.1.7"
   },
   "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"

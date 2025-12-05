@@ -28,9 +28,15 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
   }
 
   return (
-    <Box position={"relative"} className="test">
+    <Box
+      position={"relative"}
+      mt={props.margin?.top ?? "0"}
+      mb={props.margin?.bottom ?? "0"}
+      mr={props.margin?.right ?? "0"}
+      ml={props.margin?.left ?? "0"}
+    >
       <Flex
-        gap={"6"}
+        gap={"4"}
         className={styles.slideContainer}
         overflowX="auto"
         overflowY="hidden"
@@ -45,8 +51,6 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
             style={{ scrollSnapAlign: "start", scrollSnapStop: "always" }}
           >
             <Image
-              hideImage={(slide as any).hideImage}
-              aspectRatio={numberOfSlidesShown === 1 ? "16/9" : "1/1"}
               {...slide}
               //@ts-expect-error this is to access via tinaField
               _content_source={(slide as any)?._content_source}
@@ -59,7 +63,7 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
         <Flex
           direction={"row"}
           position={"absolute"}
-          bottom={{ initial: "4", md: "7" }}
+          bottom={{ initial: "0", md: "7" }}
           gap={"2"}
           left={"50%"}
           style={{

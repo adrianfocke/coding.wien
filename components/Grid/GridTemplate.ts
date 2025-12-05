@@ -4,6 +4,7 @@ import HeadingTemplate from "../Heading/HeadingTemplate";
 import ImageTemplate from "../Image/ImageTemplate";
 import SlideshowTemplate from "../Slideshow/SlideshowTemplate";
 import FormTemplate from "../Form/FormTemplate";
+import { MarginField } from "../fields";
 
 const fields: Template["fields"] = [
   {
@@ -37,6 +38,7 @@ const fields: Template["fields"] = [
       },
     },
   },
+  MarginField,
 ];
 
 export default {

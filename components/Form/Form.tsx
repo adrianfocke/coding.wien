@@ -38,7 +38,9 @@ export default function Form(props: any) {
               <Flex direction={"column"} gap={"1"}>
                 <Flex justify={"between"}>
                   <RadixForm.Label className={styles.FormLabel}>
-                    {ui.nameLabel[language]}
+                    <Text size={{ initial: "4", md: "5" }}>
+                      {ui.nameLabel[language]}
+                    </Text>
                   </RadixForm.Label>
                   <RadixForm.Message
                     className={styles.FormMessage}
@@ -63,7 +65,9 @@ export default function Form(props: any) {
               <Flex direction={"column"} gap={"1"}>
                 <Flex justify={"between"}>
                   <RadixForm.Label className={styles.FormLabel}>
-                    {ui.textLabel[language]}
+                    <Text size={{ initial: "4", md: "5" }}>
+                      {ui.textLabel[language]}
+                    </Text>
                   </RadixForm.Label>
                   <RadixForm.Message
                     className={styles.FormMessage}
@@ -86,7 +90,9 @@ export default function Form(props: any) {
               <Flex direction={"column"} gap={"1"}>
                 <Flex justify={"between"}>
                   <RadixForm.Label className={styles.FormLabel}>
-                    {ui.emailLabel[language]}
+                    <Text size={{ initial: "4", md: "5" }}>
+                      {ui.emailLabel[language]}
+                    </Text>
                   </RadixForm.Label>
                   <RadixForm.Message
                     className={styles.FormMessage}

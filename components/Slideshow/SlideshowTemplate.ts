@@ -1,5 +1,7 @@
 import type { Template } from "tinacms";
 import { wrapWithLanguages } from "../helpers";
+import { MarginField } from "../fields";
+import { allowedAspectRatios } from "../Image/Image";
 
 const fields: Template["fields"] = [
   {
@@ -16,12 +18,27 @@ const fields: Template["fields"] = [
         description: "Descriptive text for the image",
       },
       {
+        name: "whiteTextOverlay",
+        label: "White Text Overlay",
+        type: "boolean",
+      },
+
+      {
         name: "text",
         label: "Text Overlay",
         type: "rich-text",
         toolbarOverride: ["bold"],
       },
       { name: "hideImage", label: "Hide Image", type: "boolean" },
+      {
+        name: "aspectRatio",
+        label: "Aspect Ratio",
+        type: "string",
+        options: allowedAspectRatios,
+        ui: {
+          defaultValue: "16/9",
+        },
+      },
     ],
   },
   {
@@ -52,6 +69,7 @@ const fields: Template["fields"] = [
     label: "Show slideshow controls",
     type: "boolean",
   },
+  MarginField,
 ];
 
 export default (variant: "forBlockRendering" | "forRichTextRendering") => ({

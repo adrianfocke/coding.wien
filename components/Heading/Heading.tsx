@@ -1,6 +1,6 @@
 import { tinaField } from "tinacms/dist/react";
 import type { PageBlocksHeadingEn } from "../../tina/__generated__/types";
-import { Box, Heading as RadixHeading } from "@radix-ui/themes";
+import { Box, Heading as RadixHeading, Container } from "@radix-ui/themes";
 import placeholders from "../placeholders";
 import { TinaEditContext } from "../../utils/context/tina";
 import { useContext } from "react";
@@ -18,7 +18,12 @@ export default function Heading(
   const isEditable = props.isEditable ?? contextIsEditable;
 
   return (
-    <Box>
+    <Container
+      mt={props.margin?.top ?? "4"}
+      mb={props.margin?.bottom ?? "4"}
+      mr={props.margin?.right ?? "4"}
+      ml={props.margin?.left ?? "4"}
+    >
       <RadixHeading
         align={(props as any).align ?? "left"}
         as={(props as any).as ?? "h1"}
@@ -32,6 +37,6 @@ export default function Heading(
           {props.heading ?? placeholders.text}
         </div>
       </RadixHeading>
-    </Box>
+    </Container>
   );
 }

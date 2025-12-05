@@ -1,5 +1,6 @@
 import type { Template } from "tinacms";
 import { wrapWithLanguages } from "../helpers";
+import { MarginField } from "../fields";
 
 const fields: Template["fields"] = [
   { name: "heading", label: "Heading", type: "string" },
@@ -21,6 +22,7 @@ const fields: Template["fields"] = [
       defaultValue: "h1",
     },
   },
+  MarginField,
 ];
 
 export default (variant: "forBlockRendering" | "forRichTextRendering") => ({

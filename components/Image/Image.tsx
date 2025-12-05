@@ -27,7 +27,13 @@ export default function Image(
   const { isEditable } = useContext(TinaEditContext);
 
   return (
-    <Box position="relative">
+    <Box
+      position="relative"
+      mt={props.margin?.top ?? "0"}
+      mb={props.margin?.bottom ?? "0"}
+      mr={props.margin?.right ?? "0"}
+      ml={props.margin?.left ?? "0"}
+    >
       <AspectRatio
         ratio={aspectRatioMap[(props as any).aspectRatio] ?? 16 / 9}
         data-tina-field={isEditable ? tinaField(props, "image") : undefined}
@@ -47,7 +53,7 @@ export default function Image(
         )}
 
         <Flex position="absolute" inset="0" style={{ zIndex: 1 }}>
-          <Box p={{ initial: "5", md: "9" }}>
+          <Box>
             <div
               data-tina-field={
                 isEditable ? tinaField(props, "text") : undefined

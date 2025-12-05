@@ -32,11 +32,6 @@ export default {
     return <Grid {...props} />;
   },
   Heading: (props: any) => {
-    console.log("Heading props:", props);
-    return <Heading {...props} />;
-  },
-  HeadingRT: (props: any) => {
-    console.log("Heading props:", props);
     return <Heading {...props} />;
   },
   Image: (props: any) => {
@@ -53,7 +48,7 @@ export default {
     return (
       <RadixText
         style={{ fontFamily: "var(--font-serif)" }}
-        size={{ initial: "4", md: "6" }}
+        size={{ initial: "4", md: "5" }}
       >
         {props?.children}
       </RadixText>

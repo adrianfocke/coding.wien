@@ -1,6 +1,7 @@
 import type { Template } from "tinacms";
 import { wrapWithLanguages } from "../helpers";
 import { allowedAspectRatios } from "./Image";
+import { MarginField } from "../fields";
 
 const fields: Template["fields"] = [
   { name: "image", label: "Image", type: "image" },
@@ -26,6 +27,7 @@ const fields: Template["fields"] = [
       defaultValue: "16/9",
     },
   },
+  MarginField,
 ];
 
 export default (variant: "forBlockRendering" | "forRichTextRendering") => ({

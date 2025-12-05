@@ -1,8 +1,6 @@
 .Input,
 .Textarea {
-  border-radius: var(--radius-2);
   padding-left: 8px;
-  font-size: var(--font-size-2);
   border: 1px solid white;
 }
 
