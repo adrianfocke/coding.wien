@@ -48,8 +48,11 @@ export default function Image(
                 : placeholders.image
             }
             fill
-            objectFit="cover"
             alt={props.alt ?? ""}
+            style={{
+              maxWidth: "100%",
+              objectFit: "cover",
+            }}
           />
         )}
 
@@ -88,7 +91,6 @@ export default function Image(
           </Flex>
         )}
       </AspectRatio>
-
       {(props.textPosition as TextPosition) === "underneath" && (
         <Box>
           <div
