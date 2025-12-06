@@ -10,7 +10,8 @@ const fields: Template["fields"] = [
     list: true,
     fields: [
       { name: "label", label: "Label", type: "string" },
-      { name: "href", label: "URL", type: "reference", collections: ["page"]   },
+      { name: "href", label: "URL", type: "reference", collections: ["page"] },
+      { name: "fallbackHref", label: "URL", type: "string" },
     ],
     ui: {
       itemProps: (item: any) => {
@@ -23,7 +24,7 @@ const fields: Template["fields"] = [
 ];
 
 export default {
-  label: "Navigation",
+  label: "Navigation Menu",
   name: "navigation",
   path: "content/navigation",
   format: "json",

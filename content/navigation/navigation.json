@@ -13,7 +13,9 @@
         "label": "Home"
       },
       {
-        "label": "Meine Räume"
+        "label": "Meine Räume",
+        "href": "",
+        "fallbackHref": "spaces"
       },
       {
         "label": "Über mich",

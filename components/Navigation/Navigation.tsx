@@ -29,7 +29,7 @@ export default function Navigation(props: NavigationEnFilter) {
           {(props as any).links?.map((link, index) => (
             <Link
               key={index}
-              href={link.href || `/`}
+              href={link.href ?? link.fallbackHref ?? "/"}
               aria-current={link.href === "/" ? "page" : undefined}
             >
               <Text size={{ initial: "5", md: "7" }}>{link.label}</Text>

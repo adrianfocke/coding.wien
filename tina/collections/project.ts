@@ -4,7 +4,7 @@ import seo from "../templates/seo";
 import { sanitizeFilenameForURL } from "../utils";
 
 export default {
-  label: "Projects",
+  label: "Meine Projekte",
   name: "project",
   path: "content/projects",
   format: "json",
