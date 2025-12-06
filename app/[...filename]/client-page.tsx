@@ -24,8 +24,6 @@ export default function ClientPage(props: ClientPageProps) {
     data: props.data,
   });
 
-  console.log("ClientPage data:", data);
-
   return (
     <div data-testid="client-page">
       <LanguageContext.Provider value={props.language}>

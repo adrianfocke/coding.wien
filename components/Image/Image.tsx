@@ -11,10 +11,7 @@ import type { TextPosition } from "./ImageTemplate";
 
 export const allowedAspectRatios = ["16/9", "4/3", "1/1", "3/4", "5/1"];
 
-export const aspectRatioMap: Record<
-  (typeof allowedAspectRatios)[number],
-  number
-> = {
+const aspectRatioMap: Record<(typeof allowedAspectRatios)[number], number> = {
   "16/9": 16 / 9,
   "4/3": 4 / 3,
   "1/1": 1,
@@ -48,7 +45,8 @@ export default function Image(
                 : placeholders.image
             }
             fill
-            alt={props.alt ?? ""}
+            alt={props.alt || "Image content"}
+            role={!props.alt ? "presentation" : undefined}
             style={{
               maxWidth: "100%",
               objectFit: "cover",

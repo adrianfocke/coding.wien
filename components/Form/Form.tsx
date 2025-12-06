@@ -4,7 +4,7 @@ import { sendForm, type FormData } from "./action";
 import { useForm } from "./hook";
 import { tinaField } from "tinacms/dist/react";
 import styles from "./Form.module.css";
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import { LanguageContext } from "../../utils/context/language";
 import ui from "./ui";
 
@@ -12,26 +12,31 @@ export default function Form(props: any) {
   const { state, setFormState } = useForm();
   const language = useContext(LanguageContext);
 
+  const handleSubmit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      setFormState("sending");
+
+      const formData = Object.fromEntries(
+        new FormData(event.currentTarget)
+      ) as FormData;
+
+      formData.formVariant = "contact";
+
+      sendForm(formData)
+        .then(() => setFormState("sent"))
+        .catch(() => setFormState("error"));
+    },
+    [setFormState]
+  );
+
   return (
     <Box>
       {props.variant === "contact" && (
         <RadixForm.Root
           className={styles.FormRoot}
           key={1}
-          onSubmit={async (event) => {
-            event.preventDefault();
-            setFormState("sending");
-
-            const formData = Object.fromEntries(
-              new FormData(event.currentTarget)
-            ) as FormData;
-
-            formData.formVariant = "contact";
-
-            sendForm(formData)
-              .then(() => setFormState("sent"))
-              .catch(() => setFormState("error"));
-          }}
+          onSubmit={handleSubmit}
         >
           <Flex direction={"column"} gap={"1"}>
             <RadixForm.Field className={styles.FormField} name="name">

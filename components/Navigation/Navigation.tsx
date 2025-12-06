@@ -27,7 +27,11 @@ export default function Navigation(props: NavigationEnFilter) {
       {props.links && (
         <Flex gap={"4"}>
           {(props as any).links?.map((link, index) => (
-            <Link key={index} href={link.href || `/`}>
+            <Link
+              key={index}
+              href={link.href || `/`}
+              aria-current={link.href === "/" ? "page" : undefined}
+            >
               <Text size={{ initial: "5", md: "7" }}>{link.label}</Text>
             </Link>
           ))}

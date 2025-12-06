@@ -1,5 +1,5 @@
 import { Box, Button, Flex } from "@radix-ui/themes";
-import { type Ref } from "react";
+import { type Ref, useMemo } from "react";
 import type { PageBlocksSlideshowEn } from "../../tina/__generated__/types";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
@@ -9,11 +9,16 @@ import { DotFilledIcon } from "@radix-ui/react-icons";
 export default function Slideshow(props: PageBlocksSlideshowEn) {
   const numberOfSlidesShown = props.numberOfSlidesShown || 1;
 
-  const { slideshow, scrollToSlide } = useSlideshow({
-    numberOfSlides: props.slides?.length,
-    numberOfSlidesShown,
-    nextSlideTimeout: (props as any).nextSlideTimeout,
-  });
+  const slideshowSettings = useMemo(
+    () => ({
+      numberOfSlides: props.slides?.length,
+      numberOfSlidesShown,
+      nextSlideTimeout: (props as any).nextSlideTimeout,
+    }),
+    [props.slides?.length, numberOfSlidesShown, (props as any).nextSlideTimeout]
+  );
+
+  const { slideshow, scrollToSlide } = useSlideshow(slideshowSettings);
 
   if (!props.slides) {
     return null;
@@ -77,6 +82,7 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
               radius="full"
               key={index}
               onClick={() => scrollToSlide(index + 1)}
+              aria-label={`Go to slide ${index + 1}`}
             >
               <DotFilledIcon />
             </Button>

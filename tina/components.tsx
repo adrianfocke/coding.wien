@@ -60,7 +60,6 @@ export default {
     );
   },
   a(props) {
-    console.log("Link props:", props);
     return (
       <RadixText size={{ initial: "4", md: "6" }} color="gold">
         <Link href={props?.url!}>{props?.children}</Link>
