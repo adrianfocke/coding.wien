@@ -45,11 +45,12 @@ export default async function Page(props: {
   params: Promise<{ filename: string[] }>;
 }) {
   const params = await props.params;
+  const cookieStore = await cookies();
+  const language = cookieStore.get("language")?.value ?? "en";
+
   const data = await client.queries.pageAndNavigation({
     relativePath: `${params.filename}.mdx`,
   });
-
-  const language = (await cookies()).get("language")?.value ?? "en";
 
   return <ClientPage {...data} language={language} />;
 }

@@ -5,7 +5,7 @@ export type IntlElementFieldMap = Record<
   Record<(typeof languages)[number], string>
 >;
 
-const languages = ["de", "en"] as const;
+export const languages = ["de", "en"] as const;
 
 export const wrapWithLanguages = (
   fields: Template["fields"]

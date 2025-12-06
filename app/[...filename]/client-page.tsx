@@ -4,8 +4,8 @@ import "../../styles/main.css";
 import type { PageAndNavigationQuery } from "../../tina/__generated__/types";
 import components from "../../tina/components";
 import { LanguageContext } from "../../utils/context/language";
-import { use } from "react";
 import Navigation from "../../components/Navigation/Navigation";
+import Footer from "../../components/Footer/Footer";
 
 type ClientPageProps = {
   query: string;
@@ -26,12 +26,10 @@ export default function ClientPage(props: ClientPageProps) {
 
   console.log("ClientPage data:", data);
 
-  const language = use(LanguageContext);
-
   return (
     <div data-testid="client-page">
-      <LanguageContext.Provider value={language}>
-        <Navigation {...data.navigation?.[language]} />
+      <LanguageContext.Provider value={props.language}>
+        <Navigation {...data.navigation?.[props.language]} />
 
         {data.page.blocks?.map((block, i) => {
           if (!block?.__typename) return null;
@@ -44,11 +42,13 @@ export default function ClientPage(props: ClientPageProps) {
           return (
             <Component
               key={i}
-              {...block[language]}
+              {...block[props.language]}
               {...(block as any).settings}
             />
           );
         })}
+
+        <Footer />
       </LanguageContext.Provider>
     </div>
   );
