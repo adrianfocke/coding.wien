@@ -28,14 +28,18 @@
     "typescript": "5.5.2"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "15.1.2",
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.1",
+    "@next/eslint-plugin-next": "^16.0.7",
     "@playwright/test": "^1.55.0",
     "@tinacms/cli": "latest",
     "@types/node": "^22.18.0",
     "@types/nodemailer": "^6.4.19",
     "eslint": "^9.39.1",
-    "eslint-config-next": "latest",
-    "husky": "^9.1.7"
+    "eslint-config-next": "^16.0.7",
+    "globals": "^16.5.0",
+    "husky": "^9.1.7",
+    "typescript-eslint": "^8.48.1"
   },
-  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
+  "packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a"
 }

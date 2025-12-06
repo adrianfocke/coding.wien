@@ -5,6 +5,7 @@ import React from "react";
 import project from "../project";
 import "../styles/main.css";
 import { sans, serif } from "./fonts";
+import { LanguageInitializer } from "./LanguageInitializer";
 
 export const metadata: Metadata = {
   title: {
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body style={{ margin: 0 }}>
+        <LanguageInitializer />
         <Theme>
           <main>{children}</main>
         </Theme>

@@ -7,7 +7,7 @@ export const useSlideshow = (slideshowSettings?: {
 }) => {
   const slideshow = useRef<HTMLElement>(null);
   const activeSlideRef = useRef<number>(1);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const scrollToSlide = (number: number) => {
     if (!slideshow.current || !slideshow.current?.offsetWidth) return;

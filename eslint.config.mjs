@@ -1,21 +1,67 @@
-import nextTypescript from "eslint-config-next/typescript";
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
+import { defineConfig } from "eslint/config";
+import globals from "globals";
+import js from "@eslint/js";
+import nextPlugin from "@next/eslint-plugin-next";
+import tseslint from "typescript-eslint";
 
-const eslintConfig = defineConfig([
-  ...nextTypescript,
-  ...nextVitals,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
+export default defineConfig([
   {
-    ignores: ["node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts"]
-  }
+    ignores: [
+      "node_modules/",
+      ".next/",
+      "out/",
+      "dist/",
+      "build/",
+      "coverage/",
+      "tina/__generated__/",
+      "public/admin/",
+    ],
+  },
+  {
+    files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+    },
+  },
+  ...tseslint.configs.recommended.map((config) => ({
+    ...config,
+    files: config.files || ["**/*.ts", "**/*.tsx"],
+  })),
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: process.cwd(),
+      },
+    },
+    rules: {
+      "no-extra-boolean-cast": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+    },
+  },
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    plugins: {
+      "@next/next": nextPlugin,
+    },
+    rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs["core-web-vitals"].rules,
+    },
+  },
 ]);
-
-export default eslintConfig;
