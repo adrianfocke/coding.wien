@@ -3,6 +3,9 @@ import { wrapWithLanguages } from "../helpers";
 import { allowedAspectRatios } from "./Image";
 import { MarginField } from "../fields";
 
+export type TextPosition = (typeof textPositions)[number];
+export const textPositions = ["center", "underneath", "half-way"] as const;
+
 const fields: Template["fields"] = [
   { name: "image", label: "Image", type: "image" },
   {
@@ -17,6 +20,12 @@ const fields: Template["fields"] = [
     label: "Text Overlay",
     type: "rich-text",
     toolbarOverride: ["bold", "italic", "link"],
+  },
+  {
+    name: "textPosition",
+    label: "Text position",
+    type: "string",
+    options: [...textPositions],
   },
   {
     name: "aspectRatio",

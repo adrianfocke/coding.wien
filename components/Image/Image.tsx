@@ -7,6 +7,7 @@ import components from "../../tina/components";
 import placeholders from "../placeholders";
 import { TinaEditContext } from "../../utils/context/tina";
 import { useContext } from "react";
+import type { TextPosition } from "./ImageTemplate";
 
 export const allowedAspectRatios = ["16/9", "4/3", "1/1", "3/4", "5/1"];
 
@@ -52,21 +53,54 @@ export default function Image(
           />
         )}
 
-        <Flex position="absolute" inset="0" style={{ zIndex: 1 }}>
-          <Box>
-            <div
-              data-tina-field={
-                isEditable ? tinaField(props, "text") : undefined
-              }
-              style={{
-                color: props.whiteTextOverlay ? "white" : "var(--text-12)",
-              }}
-            >
-              <TinaMarkdown content={props.text} components={components} />
-            </div>
-          </Box>
-        </Flex>
+        {(props.textPosition as TextPosition) !== "underneath" && (
+          <Flex
+            position="absolute"
+            inset="0"
+            style={{ zIndex: 1 }}
+            align={
+              (props.textPosition as TextPosition) !== "center"
+                ? (props.textPosition as TextPosition) === "half-way"
+                  ? "center"
+                  : undefined
+                : "center"
+            }
+            justify={
+              (props.textPosition as TextPosition) !== "center"
+                ? (props.textPosition as TextPosition) === "half-way"
+                  ? "start"
+                  : undefined
+                : "center"
+            }
+          >
+            <Box>
+              <div
+                data-tina-field={
+                  isEditable ? tinaField(props, "text") : undefined
+                }
+                style={{
+                  color: props.whiteTextOverlay ? "white" : "var(--text-12)",
+                }}
+              >
+                <TinaMarkdown content={props.text} components={components} />
+              </div>
+            </Box>
+          </Flex>
+        )}
       </AspectRatio>
+
+      {(props.textPosition as TextPosition) === "underneath" && (
+        <Box>
+          <div
+            data-tina-field={isEditable ? tinaField(props, "text") : undefined}
+            style={{
+              color: props.whiteTextOverlay ? "white" : "var(--text-12)",
+            }}
+          >
+            <TinaMarkdown content={props.text} components={components} />
+          </div>
+        </Box>
+      )}
     </Box>
   );
 }

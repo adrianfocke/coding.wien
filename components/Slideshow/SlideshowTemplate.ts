@@ -2,6 +2,7 @@ import type { Template } from "tinacms";
 import { wrapWithLanguages } from "../helpers";
 import { MarginField } from "../fields";
 import { allowedAspectRatios } from "../Image/Image";
+import { textPositions } from "../Image/ImageTemplate";
 
 const fields: Template["fields"] = [
   {
@@ -22,7 +23,12 @@ const fields: Template["fields"] = [
         label: "White Text Overlay",
         type: "boolean",
       },
-
+      {
+        name: "textPosition",
+        label: "Text position",
+        type: "string",
+        options: [...textPositions],
+      },
       {
         name: "text",
         label: "Text Overlay",
