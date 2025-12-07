@@ -1,7 +1,7 @@
 import type { Template } from "tinacms";
 import { wrapWithLanguages } from "../helpers";
-import { allowedAspectRatios } from "./Image";
 import { MarginField } from "../fields";
+import { allowedAspectRatios } from "../../constants/aspectRatios";
 
 export type TextPosition = (typeof textPositions)[number];
 export const textPositions = ["center", "underneath", "half-way"] as const;
@@ -31,7 +31,7 @@ const fields: Template["fields"] = [
     name: "aspectRatio",
     label: "Aspect Ratio",
     type: "string",
-    options: allowedAspectRatios,
+    options: [...allowedAspectRatios],
     ui: {
       defaultValue: "16/9",
     },

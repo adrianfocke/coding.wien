@@ -46,22 +46,17 @@ export default {
   /* Standard components */
   p(props) {
     return (
-      <RadixText
-        style={{ fontFamily: "var(--font-serif)" }}
-        size={{ initial: "4", md: "5" }}
-      >
+      <RadixText style={{ fontFamily: "var(--font-serif)" }}>
         {props?.children}
       </RadixText>
     );
   },
   span(props) {
-    return (
-      <RadixText size={{ initial: "4", md: "6" }}>{props?.children}</RadixText>
-    );
+    return <RadixText>{props?.children}</RadixText>;
   },
   a(props) {
     return (
-      <RadixText size={{ initial: "4", md: "6" }} color="gold">
+      <RadixText color="gold">
         <Link href={props?.url!}>{props?.children}</Link>
       </RadixText>
     );

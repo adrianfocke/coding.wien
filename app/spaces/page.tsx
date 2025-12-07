@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import client from "../../tina/__generated__/client";
 import ClientPage from "./client-page";
 
@@ -8,6 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
+  const cookieStore = await cookies();
+  const language = cookieStore.get("language")?.value ?? "en";
+
   const pages = (
     await client.queries.spaceConnection()
   ).data.spaceConnection.edges?.sort(
@@ -16,5 +20,5 @@ export default async function Page() {
       new Date(a!.node?._sys.filename!).getTime()
   );
 
-  return <ClientPage props={pages} />;
+  return <ClientPage props={pages as any} language={language} />;
 }

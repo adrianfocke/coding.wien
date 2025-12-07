@@ -128,7 +128,6 @@ export default function Form(props: any) {
             <Button
               mt={"4"}
               variant={"outline"}
-              color={"gray"}
               radius={"full"}
               disabled={state !== "idle"}
             >

@@ -1,8 +1,8 @@
 import type { Template } from "tinacms";
 import { wrapWithLanguages } from "../helpers";
 import { MarginField } from "../fields";
-import { allowedAspectRatios } from "../Image/Image";
 import { textPositions } from "../Image/ImageTemplate";
+import { allowedAspectRatios } from "../../constants/aspectRatios";
 
 const fields: Template["fields"] = [
   {
@@ -33,14 +33,14 @@ const fields: Template["fields"] = [
         name: "text",
         label: "Text Overlay",
         type: "rich-text",
-        toolbarOverride: ["bold"],
+        toolbarOverride: ["bold", "link"],
       },
       { name: "hideImage", label: "Hide Image", type: "boolean" },
       {
         name: "aspectRatio",
         label: "Aspect Ratio",
         type: "string",
-        options: allowedAspectRatios,
+        options: [...allowedAspectRatios],
         ui: {
           defaultValue: "16/9",
         },

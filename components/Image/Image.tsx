@@ -8,8 +8,7 @@ import placeholders from "../placeholders";
 import { TinaEditContext } from "../../utils/context/tina";
 import { useContext } from "react";
 import type { TextPosition } from "./ImageTemplate";
-
-export const allowedAspectRatios = ["16/9", "4/3", "1/1", "3/4", "5/1"];
+import { allowedAspectRatios } from "../../constants/aspectRatios";
 
 const aspectRatioMap: Record<(typeof allowedAspectRatios)[number], number> = {
   "16/9": 16 / 9,
@@ -80,7 +79,9 @@ export default function Image(
                   isEditable ? tinaField(props, "text") : undefined
                 }
                 style={{
-                  color: props.whiteTextOverlay ? "white" : "var(--text-12)",
+                  color: props.whiteTextOverlay
+                    ? "var(--color-background)"
+                    : "var(--gray-12)",
                 }}
               >
                 <TinaMarkdown content={props.text} components={components} />
