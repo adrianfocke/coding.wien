@@ -1,11 +1,10 @@
 import { defineConfig } from "tinacms";
 import page from "./collections/page";
-import project from "./collections/project";
 import navigation from "./collections/navigation";
 import space from "./collections/space";
 import event from "./collections/event";
 
-const collections = [page, project, navigation, space, event];
+const collections = [page, navigation, space, event];
 
 export default defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
