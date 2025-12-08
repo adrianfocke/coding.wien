@@ -27,13 +27,16 @@ export async function generateMetadata({
   });
 
   const seoTitle = page.data.page.seo?.[language]?.title;
+  const pageTitle = seoTitle
+    ? seoTitle[0].toUpperCase() + seoTitle.slice(1)
+    : title[0].toUpperCase() + title.slice(1);
   const seoMetaDescription = page.data.page.seo?.[language]?.metaDescription;
   const seoKeywords = page.data.page.seo?.[language]?.metaKeywords?.map(
     (item, index) => (index === 0 ? item : ` ${item}`)
   );
 
   return {
-    title: seoTitle && seoTitle[0].toUpperCase() + seoTitle.slice(1),
+    title: pageTitle,
     description: seoMetaDescription && seoMetaDescription,
     applicationName: project.applicationName,
     authors: project.authors,
