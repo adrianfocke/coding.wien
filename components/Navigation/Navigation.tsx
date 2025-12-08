@@ -6,7 +6,11 @@ import type { NavigationEnFilter } from "../../tina/__generated__/types";
 import { tinaField } from "tinacms/dist/react";
 import { getHrefFromId } from "../../utils/getHrefFromId";
 
-export default function Navigation(props: NavigationEnFilter) {
+export default function Navigation(
+  props: NavigationEnFilter & { showLogo?: boolean }
+) {
+  const showLogo = props.showLogo === undefined ? true : props.showLogo;
+
   return (
     <Flex
       p={"4"}
@@ -16,10 +20,11 @@ export default function Navigation(props: NavigationEnFilter) {
     >
       <Link key={"1"} href={`/`}>
         <Text
+          style={{ fontFamily: "var(--font-sans)" }}
           size={{ initial: "5", md: "7" }}
           data-tina-field={tinaField(props, "logo")}
         >
-          {(props as any).logo}
+          {props.showLogo && (props as any).logo}
         </Text>
       </Link>
 

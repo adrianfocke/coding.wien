@@ -55,5 +55,7 @@ export default async function Page(props: {
     relativePath: `${params.filename}.mdx`,
   });
 
-  return <ClientPage {...data} language={language} />;
+  const showLogo = params.filename[0] === "home";
+
+  return <ClientPage {...data} language={language} showLogo={!showLogo} />;
 }

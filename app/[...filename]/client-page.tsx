@@ -14,6 +14,7 @@ type ClientPageProps = {
   };
   data: PageAndNavigationQuery;
   language: string;
+  showLogo?: boolean;
 };
 
 export default function ClientPage(props: ClientPageProps) {
@@ -27,7 +28,10 @@ export default function ClientPage(props: ClientPageProps) {
   return (
     <div data-testid="client-page">
       <LanguageContext.Provider value={props.language}>
-        <Navigation {...data.navigation?.[props.language]} />
+        <Navigation
+          {...data.navigation?.[props.language]}
+          showLogo={props.showLogo}
+        />
 
         {data.page.blocks?.map((block, i) => {
           if (!block?.__typename) return null;

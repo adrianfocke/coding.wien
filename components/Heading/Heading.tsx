@@ -19,16 +19,24 @@ export default function Heading(
 
   return (
     <Container
-      mt={props.margin?.top ?? "4"}
-      mb={props.margin?.bottom ?? "4"}
-      mr={props.margin?.right ?? "4"}
-      ml={props.margin?.left ?? "4"}
+      style={{
+        background: props.coloredBackground ? "var(--accent-9)" : undefined,
+      }}
+      pt={props.margin?.top ?? "4"}
+      pb={props.margin?.bottom ?? "4"}
+      pr={props.margin?.right ?? "4"}
+      pl={props.margin?.left ?? "4"}
     >
       <RadixHeading
         align={(props as any).align ?? "left"}
         as={(props as any).as ?? "h1"}
         size={headingSizes[(props.as as any) ?? "h1"] as any}
-        style={{ fontFamily: "var(--font-serif)" }}
+        style={{
+          fontFamily: "var(--font-serif)",
+          color: props.coloredBackground
+            ? "var(--color-background)"
+            : "inherit",
+        }}
       >
         <div
           data-tina-field={isEditable ? tinaField(props) : undefined}

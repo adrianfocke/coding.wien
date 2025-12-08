@@ -14,6 +14,14 @@ const fields: Template["fields"] = [
     },
   },
   {
+    name: "coloredBackground",
+    label: "Colored Background",
+    type: "boolean",
+    ui: {
+      defaultValue: false,
+    },
+  },
+  {
     name: "as",
     label: "Heading size",
     type: "string",

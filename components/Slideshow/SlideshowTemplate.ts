@@ -55,6 +55,14 @@ const fields: Template["fields"] = [
     ],
   },
   {
+    name: "coloredBackground",
+    label: "Colored Background",
+    type: "boolean",
+    ui: {
+      defaultValue: false,
+    },
+  },
+  {
     name: "nextSlideTimeout",
     label: "Next slide in seconds",
     type: "number",

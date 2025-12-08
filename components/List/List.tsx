@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Grid, Container, Box } from "@radix-ui/themes";
+import { Grid, Container, Box, Heading } from "@radix-ui/themes";
 import Image from "../Image/Image";
 
 export interface ListItem {
@@ -22,7 +22,11 @@ interface ListProps {
   emptyMessage?: string;
 }
 
-export default function List({ items, baseUrl, emptyMessage = "No items found" }: ListProps) {
+export default function List({
+  items,
+  baseUrl,
+  emptyMessage = "No items found",
+}: ListProps) {
   if (!items || items.length === 0) {
     return (
       <Container>
@@ -41,14 +45,7 @@ export default function List({ items, baseUrl, emptyMessage = "No items found" }
           const href = `${baseUrl}/${item._sys.filename}`;
 
           return (
-            <Link
-              key={i}
-              href={href}
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-              }}
-            >
+            <Link key={i} href={href}>
               <Box>
                 {item.image && (
                   <Image
@@ -58,9 +55,7 @@ export default function List({ items, baseUrl, emptyMessage = "No items found" }
                   />
                 )}
                 <Box p="4">
-                  <h3 style={{ margin: 0 }}>
-                    {item.name || item._sys.filename}
-                  </h3>
+                  <Heading as="h3">{item.name || item._sys.filename}</Heading>
                 </Box>
               </Box>
             </Link>

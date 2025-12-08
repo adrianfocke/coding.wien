@@ -6,7 +6,7 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import components from "../../tina/components";
 import placeholders from "../placeholders";
 import { TinaEditContext } from "../../utils/context/tina";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import type { TextPosition } from "./ImageTemplate";
 import { allowedAspectRatios } from "../../constants/aspectRatios";
 
@@ -25,6 +25,7 @@ export default function Image(
     fallbackHref?: string;
   }
 ) {
+  const aspectRatioRef = useRef<HTMLDivElement>(null);
   const { isEditable } = useContext(TinaEditContext);
 
   const imageContent = (
@@ -37,6 +38,7 @@ export default function Image(
     >
       <Container>
         <AspectRatio
+          ref={aspectRatioRef}
           ratio={aspectRatioMap[(props as any).aspectRatio] ?? 16 / 9}
           data-tina-field={isEditable ? tinaField(props, "image") : undefined}
           style={{ overflow: "hidden" }}
@@ -102,20 +104,22 @@ export default function Image(
         </AspectRatio>
       </Container>
       {(props.textPosition as TextPosition) === "underneath" && (
-        <Container>
-          <Box pt="4">
-            <div
-              data-tina-field={
-                isEditable ? tinaField(props, "text") : undefined
-              }
-              style={{
-                color: props.whiteTextOverlay ? "white" : "var(--text-12)",
-              }}
-            >
-              <TinaMarkdown content={props.text} components={components} />
-            </div>
-          </Box>
-        </Container>
+        <Box
+          pt="4"
+          style={{
+            height: "fit-content",
+            maxWidth: aspectRatioRef.current?.offsetWidth,
+          }}
+        >
+          <div
+            data-tina-field={isEditable ? tinaField(props, "text") : undefined}
+            style={{
+              color: props.whiteTextOverlay ? "white" : "var(--text-12)",
+            }}
+          >
+            <TinaMarkdown content={props.text} components={components} />
+          </div>
+        </Box>
       )}
     </Box>
   );

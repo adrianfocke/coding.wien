@@ -49,11 +49,14 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
 
   const content = (
     <Box
+      style={{
+        background: props.coloredBackground ? "var(--accent-9)" : undefined,
+      }}
       position={"relative"}
-      mt={props.margin?.top ?? "0"}
-      mb={props.margin?.bottom ?? "0"}
-      mr={props.margin?.right ?? "0"}
-      ml={props.margin?.left ?? "0"}
+      pt={props.margin?.top ?? "0"}
+      pb={props.margin?.bottom ?? "0"}
+      pr={props.margin?.right ?? "0"}
+      pl={props.margin?.left ?? "0"}
     >
       <Flex
         gap={"4"}
