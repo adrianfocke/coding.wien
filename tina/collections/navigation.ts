@@ -10,7 +10,6 @@ const fields: Template["fields"] = [
     list: true,
     fields: [
       { name: "label", label: "Label", type: "string" },
-      { name: "href", label: "URL", type: "reference", collections: ["page"] },
       { name: "fallbackHref", label: "URL", type: "string" },
     ],
     ui: {

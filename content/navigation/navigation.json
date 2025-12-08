@@ -10,19 +10,19 @@
     "logo": "",
     "links": [
       {
-        "label": "Home"
+        "label": "Home",
+        "fallbackHref": "/"
       },
       {
         "label": "Meine Räume",
-        "fallbackHref": "spaces"
+        "fallbackHref": "/spaces"
       },
       {
         "label": "Über mich",
-        "href": "content/page/about.mdx"
+        "fallbackHref": "/about"
       },
       {
         "label": "Events",
-        "href": "",
         "fallbackHref": "/events"
       }
     ]

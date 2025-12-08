@@ -45,8 +45,6 @@ export default function ClientPage(props: ClientPageProps) {
             />
           );
         })}
-
-        <Footer />
       </LanguageContext.Provider>
     </div>
   );

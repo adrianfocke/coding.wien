@@ -77,9 +77,7 @@ export default function Navigation(props: NavigationEnFilter) {
       {props.links && (
         <Flex gap={"4"} display={{ initial: "none", md: "flex" }}>
           {(props as any).links?.map((link, index) => {
-            const href = link.href?.id
-              ? getHrefFromId(link.href.id)
-              : link.fallbackHref ?? "/";
+            const href = link.fallbackHref ?? "/";
 
             return (
               <Link

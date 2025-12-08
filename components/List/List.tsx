@@ -49,25 +49,7 @@ export default function List({ items, baseUrl, emptyMessage = "No items found" }
                 color: "inherit",
               }}
             >
-              <Box
-                style={{
-                  border: "1px solid var(--gray-6)",
-                  borderRadius: "var(--radius-2)",
-                  overflow: "hidden",
-                  transition: "all 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--accent-9)";
-                  e.currentTarget.style.transform = "scale(1.02)";
-                  e.currentTarget.style.boxShadow =
-                    "0 4px 12px rgba(0,0,0,0.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--gray-6)";
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
+              <Box>
                 {item.image && (
                   <Image
                     image={item.image}
