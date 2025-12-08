@@ -14,7 +14,6 @@
       },
       {
         "label": "Meine Räume",
-        "href": "",
         "fallbackHref": "spaces"
       },
       {
@@ -22,7 +21,9 @@
         "href": "content/page/about.mdx"
       },
       {
-        "label": "Events"
+        "label": "Events",
+        "href": "",
+        "fallbackHref": "/events"
       }
     ]
   }

@@ -6,9 +6,28 @@ import { tinaField } from "tinacms/dist/react";
 export default function Navigation(props: NavigationEnFilter) {
   const getHrefFromId = (id?: string) => {
     if (!id) return "/";
-    // Extract filename without .mdx from id (e.g., "content/page/about.mdx" -> "/about")
-    const filename = id.split("/").pop()?.replace(".mdx", "") || "";
-    return filename ? `/${filename}` : "/";
+    // Extract collection and filename from id
+    // e.g., "content/page/about.mdx" -> "/about"
+    // e.g., "content/spaces" -> "/spaces" (collection link)
+    // e.g., "content/spaces/yoga.json" -> "/spaces/yoga" (individual item)
+    const parts = id.split("/");
+    const lastPart = parts[parts.length - 1];
+
+    // If it ends with .mdx or .json, it's a specific file
+    if (lastPart?.includes(".")) {
+      const filename = lastPart.replace(/\.(mdx|json)$/, "");
+      const collection = parts[parts.length - 2];
+
+      // Only include collection in path if it's not 'page'
+      if (collection && collection !== "page") {
+        return `/${collection}/${filename}`;
+      }
+      return `/${filename}`;
+    }
+
+    // Otherwise it's a collection link (e.g., "content/spaces")
+    const collection = parts[parts.length - 1];
+    return `/${collection}`;
   };
 
   return (
@@ -21,7 +40,6 @@ export default function Navigation(props: NavigationEnFilter) {
         borderBottom: "1px solid var(--accent-8)",
         fontFamily: "var(--font-serif)",
       }}
-      data-tina-field={tinaField(props)}
     >
       <Link key={"1"} href={`/`}>
         <Text
