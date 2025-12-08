@@ -5,17 +5,31 @@ import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 import Image from "../Image/Image";
 import { DotFilledIcon } from "@radix-ui/react-icons";
+import useBreakpoint from "../../utils/useBreakpoint";
 
 export default function Slideshow(props: PageBlocksSlideshowEn) {
+  const breakpoint = useBreakpoint();
   const numberOfSlidesShown = props.numberOfSlidesShown || 1;
+  const numberOfSlidesShownOnMobile =
+    (props as any).numberOfSlidesShownOnMobile || 1;
+
+  // Use mobile count on small screens, otherwise use desktop count
+  const effectiveNumberOfSlides =
+    breakpoint === "initial"
+      ? numberOfSlidesShownOnMobile
+      : numberOfSlidesShown;
 
   const slideshowSettings = useMemo(
     () => ({
       numberOfSlides: props.slides?.length,
-      numberOfSlidesShown,
+      numberOfSlidesShown: effectiveNumberOfSlides,
       nextSlideTimeout: (props as any).nextSlideTimeout,
     }),
-    [props.slides?.length, numberOfSlidesShown, (props as any).nextSlideTimeout]
+    [
+      props.slides?.length,
+      effectiveNumberOfSlides,
+      (props as any).nextSlideTimeout,
+    ]
   );
 
   const { slideshow, scrollToSlide } = useSlideshow(slideshowSettings);
@@ -25,9 +39,10 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
   }
 
   const hasNextSlideHint = (props as any).hintNextSlide;
-  const showNextSlidePreview = numberOfSlidesShown === 1 && hasNextSlideHint;
+  const showNextSlidePreview =
+    effectiveNumberOfSlides === 1 && hasNextSlideHint;
 
-  let slideWidthPercent = 100 / numberOfSlidesShown;
+  let slideWidthPercent = 100 / effectiveNumberOfSlides;
   if (showNextSlidePreview) {
     slideWidthPercent = 80;
   }

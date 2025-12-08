@@ -66,6 +66,19 @@ const fields: Template["fields"] = [
     },
   },
   {
+    name: "numberOfSlidesShownOnMobile",
+    label: "Number of slides shown on mobile",
+    type: "number",
+    ui: {
+      defaultValue: 1,
+      validate: (value: number) => {
+        if (value < 1) {
+          return "At least 1 slide must be shown.";
+        }
+      },
+    },
+  },
+  {
     name: "hintNextSlide",
     label: "Hint next slide",
     type: "boolean",

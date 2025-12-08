@@ -57,7 +57,11 @@ export default function Image(
           <Flex
             position="absolute"
             inset="0"
-            p={props.textPosition === "hero-inset" ? "9" : "0"}
+            p={
+              props.textPosition === "hero-inset"
+                ? { initial: "2", md: "9" }
+                : "0"
+            }
             style={{ zIndex: 1 }}
             align={
               (props.textPosition as TextPosition) !== "center"
