@@ -8,6 +8,11 @@ export const serif = Serif({
   variable: "--font-serif",
 });
 
+// export const serif = localFont({
+//   src: "./Safira.woff2",
+//   variable: "--font-serif",
+// });
+
 export const sans = Sans({
   weight: "variable",
   style: ["normal"],

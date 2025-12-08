@@ -48,7 +48,7 @@ export default {
     return (
       <RadixText
         size={{ initial: "4", md: "5" }}
-        style={{ fontFamily: "var(--font-serif)" }}
+        style={{ fontFamily: "var(--font-sans)" }}
       >
         {props?.children}
       </RadixText>
@@ -58,7 +58,7 @@ export default {
     return (
       <RadixText
         size={{ initial: "4", md: "5" }}
-        style={{ fontFamily: "var(--font-serif)" }}
+        style={{ fontFamily: "var(--font-sans)" }}
       >
         {props?.children}
       </RadixText>
@@ -68,7 +68,7 @@ export default {
     return (
       <RadixText
         size={{ initial: "4", md: "5" }}
-        style={{ fontFamily: "var(--font-serif)" }}
+        style={{ fontFamily: "var(--font-sans)" }}
       >
         <Link href={props?.url!}>{props?.children}</Link>
       </RadixText>

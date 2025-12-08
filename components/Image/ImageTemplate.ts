@@ -12,6 +12,13 @@ export const textPositions = [
 ] as const;
 
 export const ImageFields: Template["fields"] = [
+  {
+    name: "href",
+    label: "URL",
+    type: "reference",
+    collections: ["page", "space", "event"],
+  },
+  { name: "fallbackHref", label: "URL", type: "string" },
   { name: "image", label: "Image", type: "image" },
   {
     name: "alt",

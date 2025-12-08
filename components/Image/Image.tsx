@@ -19,11 +19,15 @@ const aspectRatioMap: Record<(typeof allowedAspectRatios)[number], number> = {
 };
 
 export default function Image(
-  props: PageBlocksImageEn & { hideImage?: boolean }
+  props: PageBlocksImageEn & {
+    hideImage?: boolean;
+    href?: { id?: string };
+    fallbackHref?: string;
+  }
 ) {
   const { isEditable } = useContext(TinaEditContext);
 
-  return (
+  const imageContent = (
     <Box
       position="relative"
       mt={props.margin?.top ?? "0"}
@@ -109,4 +113,6 @@ export default function Image(
       )}
     </Box>
   );
+
+  return imageContent;
 }

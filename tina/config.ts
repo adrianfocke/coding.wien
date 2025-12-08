@@ -25,6 +25,9 @@ export default defineConfig({
   schema: {
     collections,
   },
+  client: {
+    referenceDepth: 1,
+  },
   cmsCallback: (cms) => {
     cms.flags.set("branch-switcher", true);
     return cms;
