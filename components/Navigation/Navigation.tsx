@@ -4,6 +4,13 @@ import type { NavigationEnFilter } from "../../tina/__generated__/types";
 import { tinaField } from "tinacms/dist/react";
 
 export default function Navigation(props: NavigationEnFilter) {
+  const getHrefFromId = (id?: string) => {
+    if (!id) return "/";
+    // Extract filename without .mdx from id (e.g., "content/page/about.mdx" -> "/about")
+    const filename = id.split("/").pop()?.replace(".mdx", "") || "";
+    return filename ? `/${filename}` : "/";
+  };
+
   return (
     <Flex
       p={"4"}
@@ -26,15 +33,21 @@ export default function Navigation(props: NavigationEnFilter) {
       </Link>
       {props.links && (
         <Flex gap={"4"}>
-          {(props as any).links?.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href ?? link.fallbackHref ?? "/"}
-              aria-current={link.href === "/" ? "page" : undefined}
-            >
-              <Text size={{ initial: "5", md: "7" }}>{link.label}</Text>
-            </Link>
-          ))}
+          {(props as any).links?.map((link, index) => {
+            const href = link.href?.id
+              ? getHrefFromId(link.href.id)
+              : link.fallbackHref ?? "/";
+
+            return (
+              <Link
+                key={index}
+                href={href}
+                aria-current={href === "/" ? "page" : undefined}
+              >
+                <Text size={{ initial: "5", md: "7" }}>{link.label}</Text>
+              </Link>
+            );
+          })}
         </Flex>
       )}
     </Flex>

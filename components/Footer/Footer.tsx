@@ -23,15 +23,7 @@ export default function Footer() {
   };
 
   return (
-    <Flex
-      p={"4"}
-      justify={"between"}
-      align={"center"}
-      style={{
-        borderTop: "1px solid var(--accent-8)",
-        marginTop: "auto",
-      }}
-    >
+    <Flex p={"4"} justify={"between"} align={"center"}>
       <Text size="2">© 2025</Text>
       <Select.Root value={language} onValueChange={handleLanguageChange}>
         <Select.Trigger aria-label="Select language" />
