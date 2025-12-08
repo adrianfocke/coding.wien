@@ -3,6 +3,7 @@ const project = require("./project.js");
 /** @type {import('next').NextConfig} */
 
 module.exports = {
+  allowedDevOrigins: ["192.168.1.211"],
   images: {
     remotePatterns: [
       {
