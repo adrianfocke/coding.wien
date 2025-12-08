@@ -1,6 +1,6 @@
-import { Inter as Sans, Raleway as Serif } from "next/font/google";
+import { Raleway as Sans } from "next/font/google";
 
-export const serif = Serif({
+export const serif = Sans({
   weight: "400",
   style: ["normal"],
   subsets: ["latin"],
