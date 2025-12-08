@@ -34,7 +34,7 @@ export default async function Page(props: {
   const cookieStore = await cookies();
   const language = cookieStore.get("language")?.value ?? "en";
 
-  const data = await client.queries.space({
+  const data = await client.queries.spaceAndNavigation({
     relativePath: `${params.filename}.json`,
   });
 

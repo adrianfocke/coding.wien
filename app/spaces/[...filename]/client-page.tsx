@@ -1,7 +1,10 @@
 "use client";
 import { useTina } from "tinacms/dist/react";
 import "../../../styles/main.css";
-import type { SpaceQuery } from "../../../tina/__generated__/types";
+import type {
+  SpaceAndNavigationQuery,
+  SpaceQuery,
+} from "../../../tina/__generated__/types";
 import components from "../../../tina/components";
 import { LanguageContext } from "../../../utils/context/language";
 import Navigation from "../../../components/Navigation/Navigation";
@@ -12,7 +15,7 @@ type ClientPageProps = {
   variables: {
     relativePath: string;
   };
-  data: SpaceQuery;
+  data: SpaceAndNavigationQuery;
   language: string;
 };
 
@@ -27,6 +30,8 @@ export default function ClientPage(props: ClientPageProps) {
   return (
     <div data-testid="client-page">
       <LanguageContext.Provider value={props.language}>
+        <Navigation {...data.navigation?.[props.language]} />
+
         {data.space.blocks?.map((block, i) => {
           if (!block?.__typename) return null;
 
