@@ -36,7 +36,7 @@ export default function List({
   }
 
   return (
-    <Container py="9">
+    <Container>
       <Grid columns={{ initial: "1", md: "2" }} gap="4">
         {items.map((edge, i) => {
           const item = edge?.node;
@@ -54,9 +54,7 @@ export default function List({
                     aspectRatio={item.aspectRatio || "16/9"}
                   />
                 )}
-                <Box p="4">
-                  <Heading as="h3">{item.name || item._sys.filename}</Heading>
-                </Box>
+                <Heading as="h3">{item.name || item._sys.filename}</Heading>
               </Box>
             </Link>
           );

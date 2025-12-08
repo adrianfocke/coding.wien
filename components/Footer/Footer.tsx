@@ -4,6 +4,7 @@ import { Flex, Select, Text } from "@radix-ui/themes";
 import { useContext } from "react";
 import { LanguageContext } from "../../utils/context/language";
 import { languages } from "../helpers";
+import Link from "next/link";
 
 const languageLabels: Record<string, string> = {
   de: "Deutsch",
@@ -23,9 +24,28 @@ export default function Footer() {
   };
 
   return (
-    <Flex p={"4"} justify={"between"} align={"center"}>
-      <Text size="2">© 2025</Text>
-      <Select.Root value={language} onValueChange={handleLanguageChange}>
+    <Flex
+      mt={"6"}
+      p={"4"}
+      justify={"between"}
+      align={"center"}
+      style={{
+        background: "var(--accent-9)",
+      }}
+    >
+      <div>
+        <Link href="/contact">
+          <Text mr={"4"} size="2" style={{ color: "var(--color-background)" }}>
+            Kontakt
+          </Text>
+        </Link>
+        <Link href="/imprint">
+          <Text size="2" style={{ color: "var(--color-background)" }}>
+            Impressum
+          </Text>
+        </Link>
+      </div>
+      {/* <Select.Root value={language} onValueChange={handleLanguageChange}>
         <Select.Trigger aria-label="Select language" />
         <Select.Content>
           {languages.map((lang) => (
@@ -34,7 +54,7 @@ export default function Footer() {
             </Select.Item>
           ))}
         </Select.Content>
-      </Select.Root>
+      </Select.Root> */}
     </Flex>
   );
 }

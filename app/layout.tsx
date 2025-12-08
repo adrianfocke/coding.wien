@@ -6,6 +6,7 @@ import project from "../project";
 import "../styles/main.css";
 import { sans, serif } from "./fonts";
 import { LanguageInitializer } from "./LanguageInitializer";
+import Footer from "../components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -25,8 +26,8 @@ export default function RootLayout({
         <LanguageInitializer />
         <Theme>
           <main>{children}</main>
+          <Footer />
         </Theme>
-        {/* <Footer /> */}
       </body>
     </html>
   );

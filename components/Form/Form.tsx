@@ -83,7 +83,7 @@ export default function Form(props: any) {
                 </Flex>
                 <RadixForm.Control asChild>
                   <textarea
-                    className={styles.Textarea}
+                    className={styles.Input}
                     placeholder={ui.textPlaceholder[language]}
                     required
                   />
@@ -125,12 +125,7 @@ export default function Form(props: any) {
           </Flex>
 
           <RadixForm.Submit asChild>
-            <Button
-              mt={"4"}
-              variant={"outline"}
-              radius={"full"}
-              disabled={state !== "idle"}
-            >
+            <Button mt={"4"} radius={"full"} disabled={state !== "idle"}>
               <Text size={"5"}>
                 <Spinner loading={state === "sending"}></Spinner>
                 {state === "idle" && ui.buttonStateIdle[language]}

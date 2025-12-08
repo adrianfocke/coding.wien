@@ -22,9 +22,9 @@ export default function Navigation(
         <Text
           style={{ fontFamily: "var(--font-sans)" }}
           size={{ initial: "5", md: "7" }}
-          data-tina-field={tinaField(props, "logo")}
+          data-tina-field={tinaField(props)}
         >
-          {props.showLogo && (props as any).logo}
+          {showLogo && (props as any).logo}
         </Text>
       </Link>
 
@@ -37,7 +37,14 @@ export default function Navigation(
                 <HamburgerMenuIcon width="20" height="20" />
               </Button>
             </Popover.Trigger>
-            <Popover.Content width="360px" side="bottom" align="end">
+            <Popover.Content
+              style={{
+                width: "fit-content",
+                background: "var(--color-background)",
+              }}
+              side="bottom"
+              align="end"
+            >
               <Flex direction="column" gap="3">
                 {(props as any).links?.map((link, index) => {
                   const href = link.href?.id

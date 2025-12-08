@@ -116,12 +116,8 @@ export default {
   h3(props) {
     return (
       <RadixHeading
-        as="h2"
+        as="h3"
         {...props}
-        size={{
-          initial: "6",
-          md: "7",
-        }}
         style={{ fontFamily: "var(--font-serif)" }}
       />
     );
