@@ -1,4 +1,4 @@
-import { Box, Button, Flex } from "@radix-ui/themes";
+import { Box, Button, Flex, Container } from "@radix-ui/themes";
 import { type Ref, useMemo } from "react";
 import type { PageBlocksSlideshowEn } from "../../tina/__generated__/types";
 import styles from "./Slideshow.module.css";
@@ -32,7 +32,7 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
     slideWidthPercent = 80;
   }
 
-  return (
+  const content = (
     <Box
       position={"relative"}
       mt={props.margin?.top ?? "0"}
@@ -91,4 +91,8 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
       )}
     </Box>
   );
+
+  const fullwidth = (props as any).fullwidth ?? false;
+
+  return fullwidth ? content : <Container>{content}</Container>;
 }

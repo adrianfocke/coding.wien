@@ -4,9 +4,14 @@ import { MarginField } from "../fields";
 import { allowedAspectRatios } from "../../constants/aspectRatios";
 
 export type TextPosition = (typeof textPositions)[number];
-export const textPositions = ["center", "underneath", "half-way"] as const;
+export const textPositions = [
+  "center",
+  "underneath",
+  "half-way",
+  "hero-inset",
+] as const;
 
-const fields: Template["fields"] = [
+export const ImageFields: Template["fields"] = [
   { name: "image", label: "Image", type: "image" },
   {
     name: "alt",
@@ -36,11 +41,13 @@ const fields: Template["fields"] = [
       defaultValue: "16/9",
     },
   },
-  MarginField,
 ];
 
 export default (variant: "forBlockRendering" | "forRichTextRendering") => ({
   name: "Image",
   label: "Image",
-  fields: variant === "forBlockRendering" ? wrapWithLanguages(fields) : fields,
+  fields:
+    variant === "forBlockRendering"
+      ? wrapWithLanguages([...ImageFields, MarginField])
+      : [...ImageFields, MarginField],
 });

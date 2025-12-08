@@ -36,16 +36,9 @@ export default function Navigation(props: NavigationEnFilter) {
       justify={"between"}
       role="navigation"
       aria-label="Main Navigation"
-      style={{
-        borderBottom: "1px solid var(--accent-8)",
-        fontFamily: "var(--font-serif)",
-      }}
     >
       <Link key={"1"} href={`/`}>
-        <Text
-          size={{ initial: "5", md: "7" }}
-          data-tina-field={tinaField(props, "logo")}
-        >
+        <Text data-tina-field={tinaField(props, "logo")}>
           {(props as any).logo}
         </Text>
       </Link>
@@ -62,7 +55,12 @@ export default function Navigation(props: NavigationEnFilter) {
                 href={href}
                 aria-current={href === "/" ? "page" : undefined}
               >
-                <Text size={{ initial: "5", md: "7" }}>{link.label}</Text>
+                <Text
+                  size={{ initial: "4", md: "5" }}
+                  style={{ fontFamily: "var(--font-serif)" }}
+                >
+                  {link.label}
+                </Text>
               </Link>
             );
           })}
