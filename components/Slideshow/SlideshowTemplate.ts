@@ -31,6 +31,15 @@ const fields: Template["fields"] = [
         options: [...textPositions],
       },
       {
+        name: "align",
+        label: "Text Alignment",
+        type: "string",
+        options: ["left", "center", "right"],
+        ui: {
+          defaultValue: "left",
+        },
+      },
+      {
         name: "text",
         label: "Text Overlay",
         type: "rich-text",

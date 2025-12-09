@@ -106,6 +106,7 @@ export default function Image(
                   color: props.whiteTextOverlay
                     ? "var(--color-background)"
                     : "var(--gray-12)",
+                  textAlign: (props.align as any) || "left",
                 }}
               >
                 <TinaMarkdown
