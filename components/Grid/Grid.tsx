@@ -16,6 +16,7 @@ export default function Grid(props: PageBlocksGridEn) {
   return (
     <TinaEditContext.Provider value={{ isEditable: false }}>
       <Container
+        px={{ initial: "4" }}
         mt={props.margin?.top ?? "0"}
         mb={props.margin?.bottom ?? "0"}
         mr={props.margin?.right ?? "0"}

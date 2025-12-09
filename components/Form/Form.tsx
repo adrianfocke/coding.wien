@@ -31,7 +31,7 @@ export default function Form(props: any) {
   );
 
   return (
-    <Box>
+    <Box mb={"4"}>
       {props.variant === "contact" && (
         <RadixForm.Root
           className={styles.FormRoot}
@@ -156,37 +156,40 @@ export default function Form(props: any) {
               .catch(() => setFormState("error"));
           }}
         >
-          <div data-tina-field={tinaField(props, "email")}>
-            <RadixForm.Field name="email">
-              <RadixForm.Label className={styles.FormLabel}>
-                {ui.emailLabel[language]}
-              </RadixForm.Label>
-              <RadixForm.Message
-                className={styles.FormMessage}
-                match="valueMissing"
-              >
-                {ui.emailValidationMessage[language]}
-              </RadixForm.Message>
-              <RadixForm.Message
-                className={styles.FormMessage}
-                match="typeMismatch"
-              >
-                {ui.emailValidationMessage[language]}
-              </RadixForm.Message>
+          <RadixForm.Field className={styles.FormField} name="email">
+            <Flex direction={"column"} gap={"1"}>
+              <Flex justify={"between"}>
+                <RadixForm.Label className={styles.FormLabel}>
+                  <Text size={{ initial: "4", md: "5" }}>
+                    {ui.emailLabel[language]}
+                  </Text>
+                </RadixForm.Label>
+                <RadixForm.Message
+                  className={styles.FormMessage}
+                  match="valueMissing"
+                >
+                  {ui.emailValidationMessage[language]}
+                </RadixForm.Message>
+                <RadixForm.Message
+                  className={styles.FormMessage}
+                  match="typeMismatch"
+                >
+                  {ui.emailValidationMessage[language]}
+                </RadixForm.Message>
+              </Flex>
               <RadixForm.Control asChild>
-                <input type="email" required />
+                <input
+                  placeholder={ui.emailPlaceholder[language]}
+                  className={styles.Input}
+                  type="email"
+                  required
+                />
               </RadixForm.Control>
-            </RadixForm.Field>
-          </div>
+            </Flex>
+          </RadixForm.Field>
 
           <RadixForm.Submit asChild>
-            <Button
-              size={"3"}
-              variant={"outline"}
-              color={"gray"}
-              radius={"full"}
-              disabled={state !== "idle"}
-            >
+            <Button mt={"4"} radius={"full"} disabled={state !== "idle"}>
               <Text size={"5"}>
                 <Spinner loading={state === "sending"}></Spinner>
                 {state === "idle" && ui.buttonStateIdle[language]}

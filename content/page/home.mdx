@@ -34,15 +34,14 @@ blocks:
   - en:
       slides:
         - image: /uploads/projects/breath-and-growth-portrait.jpg
-          href: content/spaces/breathwork.json
-          fallbackHref: ''
+          fallbackHref: /spaces/breathwork
           whiteTextOverlay: false
           textPosition: underneath
           text: |
             [Breathwork](/spaces/breathwork)
           aspectRatio: 3/4
         - image: /uploads/projects/breath.webp
-          href: content/spaces/yoga.json
+          fallbackHref: /spaces/yoga
           whiteTextOverlay: false
           textPosition: underneath
           text: |
@@ -50,14 +49,14 @@ blocks:
           aspectRatio: 3/4
         - image: >-
             /uploads/projects/breath_and_growth_1721116644_3413296261284564803_67414846556.jpg
-          href: content/spaces/mentoring.json
+          fallbackHref: /spaces/mentoring
           whiteTextOverlay: false
           textPosition: underneath
           text: |
             Mentoring
           aspectRatio: 3/4
         - image: /uploads/projects/breath-and-growth-portrait.jpg
-          href: content/spaces/consulting.json
+          fallbackHref: /spaces/consulting
           whiteTextOverlay: false
           textPosition: underneath
           text: |
@@ -77,7 +76,7 @@ blocks:
       whiteTextOverlay: true
       text: |
         ## A dream is simply realtity waiting to happen.
-      textPosition: center
+      textPosition: half-way
       aspectRatio: 5/1
       margin:
         top: '6'
@@ -175,7 +174,13 @@ blocks:
   - en:
       items:
         - content: |
+            Hinterlasse mir gerne eine Nachricht:
+
             <Form variant="contact" />
+
+            oder melde dich für den Newsletter an:
+
+            <Form variant="newsletter" />
         - content: >
             <Image
             image="/uploads/projects/breath_and_growth_1721116644_3413296261284564803_67414846556.jpg"
