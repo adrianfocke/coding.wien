@@ -1,9 +1,3 @@
-.slideContainer {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
-}
-
 .slideContainer::-webkit-scrollbar {
   display: none;
 }

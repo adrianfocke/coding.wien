@@ -1,40 +1,43 @@
 import type { Template } from "tinacms";
-import { wrapWithLanguages } from "../helpers";
-import { MarginField } from "../fields";
+import { createIntlField } from "../../tina/tina-fields/component-fields";
+import {
+  AlignField,
+  TextSizeField,
+  MarginXField,
+  MarginYField,
+  PaddingXField,
+  PaddingYField,
+} from "../../tina/tina-fields/granular-fields";
 
-const fields: Template["fields"] = [
-  { name: "heading", label: "Heading", type: "string" },
-  {
-    name: "align",
-    label: "Alignment",
-    type: "string",
-    options: ["left", "center", "right"],
-    ui: {
-      defaultValue: "left",
-    },
-  },
-  {
-    name: "coloredBackground",
-    label: "Colored Background",
-    type: "boolean",
-    ui: {
-      defaultValue: false,
-    },
-  },
-  {
-    name: "as",
-    label: "Heading size",
-    type: "string",
-    options: ["h1", "h2", "h3", "h4", "h5", "h6"],
-    ui: {
-      defaultValue: "h1",
-    },
-  },
-  MarginField,
-];
-
-export default (variant: "forBlockRendering" | "forRichTextRendering") => ({
+export default {
   name: "Heading",
   label: "Heading",
-  fields: variant === "forBlockRendering" ? wrapWithLanguages(fields) : fields,
-});
+  fields: [
+    {
+      name: "content",
+      label: "Content",
+      type: "object",
+      fields: [
+        ...createIntlField({
+          name: "text",
+          label: "Text",
+          type: "string",
+          ui: { component: "textarea" },
+        }),
+      ],
+    },
+    {
+      name: "settings",
+      label: "Settings",
+      type: "object",
+      fields: [
+        AlignField,
+        TextSizeField,
+        MarginXField,
+        MarginYField,
+        PaddingXField,
+        PaddingYField,
+      ],
+    },
+  ],
+} as Template;

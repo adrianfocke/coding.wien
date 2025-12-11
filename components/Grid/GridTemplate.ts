@@ -1,48 +1,45 @@
 import type { Template } from "tinacms";
-import { wrapWithLanguages } from "../helpers";
+import { ImageTemplate } from "../Image/ImageTemplate";
+import {
+  MarginXField,
+  MarginYField,
+  PaddingXField,
+  PaddingYField,
+} from "../../tina/tina-fields/granular-fields";
 import HeadingTemplate from "../Heading/HeadingTemplate";
-import ImageTemplate from "../Image/ImageTemplate";
-import SlideshowTemplate from "../Slideshow/SlideshowTemplate";
-import FormTemplate from "../Form/FormTemplate";
-import { MarginField } from "../fields";
-
-const fields: Template["fields"] = [
-  {
-    name: "items",
-    label: "Grid Type",
-    type: "object",
-    list: true,
-    fields: [
-      {
-        name: "content",
-        label: "Content",
-        type: "rich-text",
-        templates: [
-          HeadingTemplate("forRichTextRendering"),
-          ImageTemplate("forRichTextRendering"),
-          SlideshowTemplate("forRichTextRendering"),
-          FormTemplate("forRichTextRendering"),
-        ],
-        toolbarOverride: ["embed"],
-      },
-    ],
-    ui: {
-      itemProps: (item: any) => {
-        const label =
-          item?.content?.children?.[0]?.children?.[0]?.text ||
-          item?.content?.children?.[0]?.text ||
-          (typeof item?.gridItem === "string" ? item.content : undefined) ||
-          "Grid item";
-
-        return { label };
-      },
-    },
-  },
-  MarginField,
-];
+import TextTemplate from "../Text/TextTemplate";
 
 export default {
   name: "Grid",
   label: "Grid",
-  fields: wrapWithLanguages(fields),
-};
+  fields: [
+    {
+      name: "content",
+      label: "Content",
+      type: "object",
+      fields: [
+        {
+          name: "items",
+          label: "Grid Items",
+          type: "object",
+          list: true,
+          fields: [
+            {
+              name: "blocks",
+              label: "Content Blocks",
+              type: "object",
+              list: true,
+              templates: [HeadingTemplate, TextTemplate, ImageTemplate],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "settings",
+      label: "Settings",
+      type: "object",
+      fields: [MarginXField, MarginYField, PaddingXField, PaddingYField],
+    },
+  ],
+} as Template;

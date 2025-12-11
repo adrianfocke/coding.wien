@@ -1,6 +1,5 @@
 "use client";
 import Navigation from "../../components/Navigation/Navigation";
-import List from "../../components/List/List";
 import { LanguageContext } from "../../utils/context/language";
 
 interface SpaceEdge {
@@ -32,7 +31,6 @@ export default function ClientPage({
   return (
     <LanguageContext.Provider value={currentLang}>
       <Navigation {...navigation?.[currentLang]} />
-      <List items={props} baseUrl="/spaces" emptyMessage="No spaces found" />
     </LanguageContext.Provider>
   );
 }

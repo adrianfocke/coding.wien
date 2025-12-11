@@ -3,8 +3,8 @@
 import { Flex, Select, Text } from "@radix-ui/themes";
 import { useContext } from "react";
 import { LanguageContext } from "../../utils/context/language";
-import { languages } from "../helpers";
 import Link from "next/link";
+import { languages } from "../../tina/tina-fields/component-fields";
 
 const languageLabels: Record<string, string> = {
   de: "Deutsch",
@@ -45,7 +45,7 @@ export default function Footer() {
           </Text>
         </Link>
       </div>
-      {/* <Select.Root value={language} onValueChange={handleLanguageChange}>
+      <Select.Root value={language} onValueChange={handleLanguageChange}>
         <Select.Trigger aria-label="Select language" />
         <Select.Content>
           {languages.map((lang) => (
@@ -54,7 +54,7 @@ export default function Footer() {
             </Select.Item>
           ))}
         </Select.Content>
-      </Select.Root> */}
+      </Select.Root>
     </Flex>
   );
 }

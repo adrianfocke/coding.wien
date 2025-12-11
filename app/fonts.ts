@@ -1,5 +1,4 @@
 import { Raleway as Sans } from "next/font/google";
-// import localFont from "next/font/local";
 
 export const serif = Sans({
   weight: "400",
@@ -8,11 +7,6 @@ export const serif = Sans({
   display: "swap",
   variable: "--font-serif",
 });
-
-// export const serif = localFont({
-//   src: "./Safira.woff2",
-//   variable: "--font-serif",
-// });
 
 export const sans = Sans({
   weight: "variable",

@@ -25,6 +25,8 @@ export default function ClientPage(props: ClientPageProps) {
     data: props.data,
   });
 
+  console.log("ClientPage data:", data.page);
+
   return (
     <div data-testid="client-page">
       <LanguageContext.Provider value={props.language}>
@@ -41,12 +43,11 @@ export default function ClientPage(props: ClientPageProps) {
 
           if (!Component) return null;
 
+          const blockData =
+            (block[props.language as keyof typeof block] as any) || block;
+
           return (
-            <Component
-              key={i}
-              {...block[props.language]}
-              {...(block as any).settings}
-            />
+            <Component key={i} {...blockData} {...(block as any).settings} />
           );
         })}
       </LanguageContext.Provider>

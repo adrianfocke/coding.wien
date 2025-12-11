@@ -1,63 +1,50 @@
 import type { Template } from "tinacms";
-import { wrapWithLanguages } from "../helpers";
-import { MarginField } from "../fields";
-import { allowedAspectRatios } from "../../constants/aspectRatios";
+import {
+  AspectRatioField,
+  AlignField,
+  MarginXField,
+  MarginYField,
+  PaddingXField,
+  PaddingYField,
+} from "../../tina/tina-fields/granular-fields";
+import HeadingTemplate from "../Heading/HeadingTemplate";
+import TextTemplate from "../Text/TextTemplate";
 
-export type TextPosition = (typeof textPositions)[number];
-export const textPositions = [
-  "center",
-  "underneath",
-  "half-way",
-  "hero-inset",
-] as const;
-
-export const ImageFields: Template["fields"] = [
-  { name: "fallbackHref", label: "URL", type: "string" },
-  { name: "image", label: "Image", type: "image" },
-  {
-    name: "alt",
-    label: "Alt Text",
-    type: "string",
-    description: "Descriptive text for the image",
-  },
-  { name: "whiteTextOverlay", label: "White Text Overlay", type: "boolean" },
-  {
-    name: "text",
-    label: "Text Overlay",
-    type: "rich-text",
-    toolbarOverride: ["bold", "italic", "link"],
-  },
-  {
-    name: "textPosition",
-    label: "Text position",
-    type: "string",
-    options: [...textPositions],
-  },
-  {
-    name: "align",
-    label: "Text Alignment",
-    type: "string",
-    options: ["left", "center", "right"],
-    ui: {
-      defaultValue: "left",
-    },
-  },
-  {
-    name: "aspectRatio",
-    label: "Aspect Ratio",
-    type: "string",
-    options: [...allowedAspectRatios],
-    ui: {
-      defaultValue: "16/9",
-    },
-  },
-];
-
-export default (variant: "forBlockRendering" | "forRichTextRendering") => ({
+export const ImageTemplate: Template = {
   name: "Image",
   label: "Image",
-  fields:
-    variant === "forBlockRendering"
-      ? wrapWithLanguages([...ImageFields, MarginField])
-      : [...ImageFields, MarginField],
-});
+  fields: [
+    {
+      name: "content",
+      label: "Content",
+      type: "object",
+      fields: [
+        {
+          name: "image",
+          label: "Image",
+          type: "image",
+        },
+        {
+          name: "blocks",
+          label: "Content Blocks",
+          type: "object",
+          list: true,
+          templates: [HeadingTemplate, TextTemplate],
+        },
+      ],
+    },
+    {
+      name: "settings",
+      label: "Settings",
+      type: "object",
+      fields: [
+        AspectRatioField,
+        AlignField,
+        MarginXField,
+        MarginYField,
+        PaddingXField,
+        PaddingYField,
+      ],
+    },
+  ],
+} as Template;
