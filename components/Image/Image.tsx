@@ -9,6 +9,7 @@ import { TinaEditContext } from "../../utils/context/tina";
 import { useContext, useRef } from "react";
 import type { TextPosition } from "./ImageTemplate";
 import { allowedAspectRatios } from "../../constants/aspectRatios";
+import Link from "next/link";
 
 const aspectRatioMap: Record<(typeof allowedAspectRatios)[number], number> = {
   "16/9": 16 / 9,
@@ -21,12 +22,24 @@ const aspectRatioMap: Record<(typeof allowedAspectRatios)[number], number> = {
 export default function Image(
   props: PageBlocksImageEn & {
     hideImage?: boolean;
-    href?: { id?: string };
     fallbackHref?: string;
   }
 ) {
   const aspectRatioRef = useRef<HTMLDivElement>(null);
   const { isEditable } = useContext(TinaEditContext);
+
+  console.log("Rendering Image with props:", props.fallbackHref);
+
+  // Disable link rendering in TinaMarkdown when fallbackHref exists to avoid nested <a> tags
+  const markdownComponents = props.fallbackHref
+    ? {
+        ...components,
+        a: (props: any) => {
+          // Just render the text without a link
+          return <>{props?.children}</>;
+        },
+      }
+    : components;
 
   const imageContent = (
     <Box
@@ -84,7 +97,7 @@ export default function Image(
                 : "center"
             }
           >
-            <Box>
+            <Box mx="4">
               <div
                 data-tina-field={
                   isEditable ? tinaField(props, "text") : undefined
@@ -93,9 +106,13 @@ export default function Image(
                   color: props.whiteTextOverlay
                     ? "var(--color-background)"
                     : "var(--gray-12)",
+                  textAlign: (props.align as any) || "left",
                 }}
               >
-                <TinaMarkdown content={props.text} components={components} />
+                <TinaMarkdown
+                  content={props.text}
+                  components={markdownComponents}
+                />
               </div>
             </Box>
           </Flex>
@@ -107,6 +124,7 @@ export default function Image(
           style={{
             height: "fit-content",
             maxWidth: aspectRatioRef.current?.offsetWidth,
+            textAlign: (props.align as any) || "left",
           }}
         >
           <div
@@ -115,12 +133,19 @@ export default function Image(
               color: props.whiteTextOverlay ? "white" : "var(--text-12)",
             }}
           >
-            <TinaMarkdown content={props.text} components={components} />
+            <TinaMarkdown
+              content={props.text}
+              components={markdownComponents}
+            />
           </div>
         </Box>
       )}
     </Box>
   );
 
-  return imageContent;
+  return props.fallbackHref ? (
+    <Link href={props.fallbackHref}>{imageContent}</Link>
+  ) : (
+    imageContent
+  );
 }

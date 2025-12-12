@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Grid, Container, Box, Heading } from "@radix-ui/themes";
+import { Grid, Container, Box, Heading, Text } from "@radix-ui/themes";
 import Image from "../Image/Image";
 
 export interface ListItem {
@@ -42,21 +42,26 @@ export default function List({
           const item = edge?.node;
           if (!item) return null;
 
-          const href = `${baseUrl}/${item._sys.filename}`;
+          const filenameWithoutExtension = item._sys.filename.replace(
+            /\.(mdx|json)$/,
+            ""
+          );
+          const href = `${baseUrl}/${filenameWithoutExtension}`;
 
           return (
-            <Link key={i} href={href}>
-              <Box>
-                {item.image && (
-                  <Image
-                    image={item.image}
-                    alt={item.alt || item.name || item._sys.filename}
-                    aspectRatio={item.aspectRatio || "16/9"}
-                  />
-                )}
-                <Heading as="h3">{item.name || item._sys.filename}</Heading>
-              </Box>
-            </Link>
+            <Box key={i}>
+              {item.image && (
+                <Image
+                  fallbackHref={href}
+                  image={item.image}
+                  alt={item.alt || item.name || item._sys.filename}
+                  aspectRatio={item.aspectRatio || "16/9"}
+                />
+              )}
+              <Text size={{ initial: "4", md: "5" }}>
+                {item.name || item._sys.filename}
+              </Text>
+            </Box>
           );
         })}
       </Grid>

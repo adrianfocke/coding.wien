@@ -1,4 +1,14 @@
 {
   "name": "Breathwork",
-  "image": "/uploads/projects/breath-and-growth-portrait.jpg"
+  "image": "/uploads/projects/breath-and-growth.png",
+  "blocks": [
+    {
+      "en": {
+        "image": "/uploads/projects/breath-and-growth-portrait.jpg",
+        "text": "Breathwork\n",
+        "textPosition": "underneath"
+      },
+      "_template": "Image"
+    }
+  ]
 }

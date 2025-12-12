@@ -2,55 +2,42 @@ import type { IntlElementFieldMap } from "../helpers";
 
 export default {
   nameLabel: {
-    de: "Dein Name",
-    en: "Your name",
+    en: "Dein Name",
   },
   namePlaceholder: {
-    de: "Gib deinen Namen ein...",
-    en: "Enter your name...",
+    en: "Gib deinen Namen ein...",
   },
   nameValidationMessage: {
-    de: "Bitte gib deinen Namen ein.",
-    en: "Please enter your name.",
+    en: "Bitte gib deinen Namen ein.",
   },
   emailLabel: {
-    de: "Deine Email",
-    en: "Your email",
+    en: "Deine Email",
   },
   emailPlaceholder: {
-    de: "Gib deine Email ein...",
-    en: "Enter your email...",
+    en: "Gib deine Email ein...",
   },
   emailValidationMessage: {
-    de: "Bitte gib deine Email ein.",
-    en: "Please enter your email.",
+    en: "Bitte gib deine Email ein.",
   },
   textLabel: {
-    de: "Deine Nachricht",
-    en: "Your message",
+    en: "Deine Nachricht",
   },
   textPlaceholder: {
-    de: "Gib deine Nachricht ein...",
-    en: "Enter your message...",
+    en: "Gib deine Nachricht ein...",
   },
   textValidationMessage: {
-    de: "Bitte gib deine Nachricht ein.",
-    en: "Please enter your message.",
-    },
+    en: "Bitte gib deine Nachricht ein.",
+  },
   buttonStateIdle: {
-    de: "Senden",
-    en: "Send",
+    en: "Senden",
   },
   buttonStateSending: {
-    de: "Senden...",
-    en: "Sending...",
+    en: "Senden...",
   },
   buttonStateSent: {
-    de: "Gesendet!",
-    en: "Sent!",
+    en: "Gesendet!",
   },
   buttonStateError: {
-    de: "Fehler. Bitte versuche es erneut.",
-    en: "Error. Please try again.",
-  },    
+    en: "Fehler. Bitte versuche es erneut.",
+  },
 } as IntlElementFieldMap;    
