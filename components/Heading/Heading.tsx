@@ -3,9 +3,11 @@ import { tinaField } from "tinacms/dist/react";
 import { useContext } from "react";
 import { LanguageContext } from "../../utils/context/language";
 import type { PageBlocksHeading } from "../../tina/__generated__/types";
+import { findIntlValue } from "../../tina/tina-fields/component-fields";
 
 export default function Component(props: PageBlocksHeading) {
   const language = useContext(LanguageContext);
+  const text = findIntlValue(language, "text");
 
   return (
     <Box
@@ -19,9 +21,7 @@ export default function Component(props: PageBlocksHeading) {
         align={(props.settings?.align as any) ?? "left"}
         size={(props.settings?.textSize as any) ?? "9"}
       >
-        {language === "en"
-          ? props.content?.text_en
-          : props.content?.text_de || "Add your heading here"}
+        {props.content?.[text] || "Add your heading here"}
       </Heading>
     </Box>
   );

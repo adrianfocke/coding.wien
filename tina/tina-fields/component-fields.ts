@@ -13,10 +13,7 @@ export const createIntlField = (field: Template["fields"][number]) => {
   }));
 };
 
-export const findIntlValue = (
-  language: (typeof languages)[number],
-  key: string
-) => {
+export const findIntlValue = (language: Language, key: string) => {
   return `${key}_${language}`;
 };
 

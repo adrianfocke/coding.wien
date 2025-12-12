@@ -5,6 +5,7 @@ import client from "../../tina/__generated__/client";
 import type { Page } from "../../tina/__generated__/types";
 import type { GenerateMetadataProps } from "../../tina/types";
 import ClientPage from "./client-page";
+import { findIntlValue } from "../../tina/tina-fields/component-fields";
 
 export async function generateStaticParams() {
   const pages = await client.queries.pageConnection();
@@ -22,42 +23,21 @@ export async function generateMetadata({
 
   const title = (await params).filename[0];
 
-  console.log("Generating metadata for title:", title);
-
   const page = await client.queries.page({
     relativePath: `${title}.mdx`,
   });
 
-  const metaTitle =
-    language === "en"
-      ? page.data.page?.seo_en?.title && page.data.page?.seo_en?.title !== ""
-        ? page.data.page?.seo_en?.title
-        : title[0].toUpperCase() + title.slice(1)
-      : page.data.page?.seo_de?.title && page.data.page?.seo_de?.title !== ""
-      ? page.data.page?.seo_de?.title
-      : title[0].toUpperCase() + title.slice(1);
-
-  const metaDescription =
-    language === "en"
-      ? page.data.page?.seo_en?.metaDescription ??
-        "No meta description available"
-      : page.data.page?.seo_de?.metaDescription ??
-        "Keine Meta-Beschreibung verfügbar";
-  const seoKeywords =
-    language === "en"
-      ? page.data.page?.seo_en?.metaKeywords?.map((item, index) =>
-          index === 0 ? item : ` ${item}`
-        )
-      : page.data.page?.seo_de?.metaKeywords?.map((item, index) =>
-          index === 0 ? item : ` ${item}`
-        );
+  const seo = findIntlValue(language as any, "seo");
 
   return {
-    title: metaTitle,
-    description: metaDescription,
+    title:
+      page.data.page?.[seo]?.title ?? title[0].toUpperCase() + title.slice(1),
+    description: page.data.page?.[seo]?.metaDescription,
     applicationName: project.applicationName,
     authors: project.authors,
-    keywords: String(seoKeywords),
+    keywords: page.data.page?.[seo]?.metaKeywords?.map((item, index) =>
+      index === 0 ? item : ` ${item}`
+    ),
   };
 }
 
