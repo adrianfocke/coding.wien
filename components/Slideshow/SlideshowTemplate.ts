@@ -107,11 +107,11 @@ const fields: Template["fields"] = [
     type: "boolean",
     ui: { defaultValue: true },
   },
-  // {
-  //   name: "showControls",
-  //   label: "Show slideshow controls",
-  //   type: "boolean",
-  // },
+  {
+    name: "showControls",
+    label: "Show slideshow controls",
+    type: "boolean",
+  },
   MarginField,
 ];
 

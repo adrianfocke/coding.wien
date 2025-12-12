@@ -4,7 +4,11 @@ import type { PageBlocksSlideshowEn } from "../../tina/__generated__/types";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 import Image from "../Image/Image";
-import { DotFilledIcon } from "@radix-ui/react-icons";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  DotFilledIcon,
+} from "@radix-ui/react-icons";
 import useBreakpoint from "../../utils/useBreakpoint";
 
 export default function Slideshow(props: PageBlocksSlideshowEn) {
@@ -32,7 +36,8 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
     ]
   );
 
-  const { slideshow, scrollToSlide } = useSlideshow(slideshowSettings);
+  const { slideshow, scrollToSlide, nextSlide } =
+    useSlideshow(slideshowSettings);
 
   if (!props.slides) {
     return null;
@@ -84,27 +89,24 @@ export default function Slideshow(props: PageBlocksSlideshowEn) {
 
       {(props as any).showControls && (
         <Flex
+          display={{ initial: "flex", md: "none" }}
           direction={"row"}
           position={"absolute"}
-          bottom={{ initial: "0", md: "7" }}
+          bottom={"50%"}
           gap={"2"}
-          left={"50%"}
+          right={"8px"}
           style={{
-            transform: "translateX(-50%)",
             pointerEvents: "auto",
             zIndex: 1,
           }}
         >
-          {props.slides.map((slide, index) => (
-            <Button
-              radius="full"
-              key={index}
-              onClick={() => scrollToSlide(index + 1)}
-              aria-label={`Go to slide ${index + 1}`}
-            >
-              <DotFilledIcon />
-            </Button>
-          ))}
+          <Button
+            radius="full"
+            onClick={nextSlide}
+            aria-label={`Go to next slide`}
+          >
+            <ArrowRightIcon />
+          </Button>
         </Flex>
       )}
     </Box>

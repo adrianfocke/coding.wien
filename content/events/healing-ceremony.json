@@ -1,5 +1,12 @@
 {
   "name": "Healing Ceremony",
+  "seo": {
+    "title": "Breath & Growth",
+    "metaDescription": "Heal!",
+    "metaKeywords": [
+      "yoga"
+    ]
+  },
   "image": "/uploads/projects/austin-ban-juHayWuaaoQ-unsplash.jpg",
   "alt": "Healing ceremony event",
   "aspectRatio": "16/9",

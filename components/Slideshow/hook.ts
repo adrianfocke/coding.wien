@@ -9,6 +9,17 @@ export const useSlideshow = (slideshowSettings?: {
   const activeSlideRef = useRef<number>(1);
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
+  const nextSlide = () => {
+    if (!slideshowSettings?.numberOfSlides) return;
+
+    const next =
+      activeSlideRef.current === slideshowSettings.numberOfSlides
+        ? 1
+        : activeSlideRef.current + 1;
+
+    scrollToSlide(next);
+  };
+
   const scrollToSlide = (number: number) => {
     if (!slideshow.current || !slideshow.current?.offsetWidth) return;
 
@@ -31,12 +42,7 @@ export const useSlideshow = (slideshowSettings?: {
 
     const scheduleNextSlide = () => {
       timeoutRef.current = setTimeout(() => {
-        const nextSlide =
-          activeSlideRef.current === slideshowSettings.numberOfSlides
-            ? 1
-            : activeSlideRef.current + 1;
-
-        scrollToSlide(nextSlide);
+        nextSlide();
         scheduleNextSlide();
       }, slideshowSettings.nextSlideTimeout * 1000);
     };
@@ -56,6 +62,7 @@ export const useSlideshow = (slideshowSettings?: {
   return {
     slideshow,
     scrollToSlide,
+    nextSlide,
   };
 };
 
