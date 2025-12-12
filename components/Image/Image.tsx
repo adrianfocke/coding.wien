@@ -1,11 +1,10 @@
 import { AspectRatio, Flex, Box } from "@radix-ui/themes";
 import NextImage from "next/image";
-import { aspectRatioMap } from "../../tina/tina-fields/granular-fields";
+import { aspectRatioMap } from "../../tina/templating/granular-fields";
 import { tinaField } from "tinacms/dist/react";
-import renderBlocks from "../../tina/tina-fields/renderBlocks";
-import placeholders from "../placeholders";
 import type { PageBlocksImage } from "../../tina/__generated__/types";
-import useBreakpoint from "../../utils/useBreakpoint";
+import useBreakpoint from "../../utils/hook/useBreakpoint";
+import { renderBlocks } from "../../tina/templating/utils";
 
 export default function Component(props: PageBlocksImage) {
   const breakpoint = useBreakpoint();
@@ -32,7 +31,7 @@ export default function Component(props: PageBlocksImage) {
             props.content?.image !== null &&
             props.content?.image !== ""
               ? props.content.image
-              : placeholders.image
+              : "/uploads/placeholders/gradient.jpg"
           }
           blurDataURL={props.content?.blurImage ?? undefined}
           placeholder={props.content?.blurImage ? "blur" : "empty"}

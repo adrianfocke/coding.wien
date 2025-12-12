@@ -1,5 +1,3 @@
-import type { IntlElementFieldMap } from "../helpers";
-
 export default {
   nameLabel: {
     en: "Dein Name",
@@ -40,4 +38,4 @@ export default {
   buttonStateError: {
     en: "Fehler. Bitte versuche es erneut.",
   },
-} as IntlElementFieldMap;    
+} as any;

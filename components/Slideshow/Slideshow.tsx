@@ -1,9 +1,9 @@
 import { Box, Flex } from "@radix-ui/themes";
 import type { PageBlocksSlideshow } from "../../tina/__generated__/types";
 import type { Ref } from "react";
-import renderBlocks from "../../tina/tina-fields/renderBlocks";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
+import { renderBlocks } from "../../tina/templating/utils";
 
 export default function Component(props: PageBlocksSlideshow) {
   const { slideshow, scrollToSlide } = useSlideshow({

@@ -6,7 +6,7 @@ import Slideshow from "../components/Slideshow/Slideshow";
 import Image from "../components/Image/Image";
 import Text from "../components/Text/Text";
 import GridTemplate from "../components/Grid/GridTemplate";
-import { ImageTemplate } from "../components/Image/ImageTemplate";
+import ImageTemplate from "../components/Image/ImageTemplate";
 import SlideshowTemplate from "../components/Slideshow/SlideshowTemplate";
 import HeadingTemplate from "../components/Heading/HeadingTemplate";
 import TextTemplate from "../components/Text/TextTemplate";

@@ -1,7 +1,8 @@
 import { Box, Grid } from "@radix-ui/themes";
 import { useEditState } from "tinacms/dist/react";
 import type { PageBlocksGrid } from "../../tina/__generated__/types";
-import renderBlocks, { EditHelper } from "../../tina/tina-fields/renderBlocks";
+import EditHelper from "../../tina/templating/EditHelper";
+import { renderBlocks } from "../../tina/templating/utils";
 
 export default function Component(props: PageBlocksGrid) {
   const { edit } = useEditState();

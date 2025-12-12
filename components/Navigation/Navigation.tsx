@@ -2,13 +2,9 @@ import { Flex, Text, Button, Box } from "@radix-ui/themes";
 import Link from "next/link";
 import { Popover } from "@radix-ui/themes";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import type { NavigationEnFilter } from "../../tina/__generated__/types";
 import { tinaField } from "tinacms/dist/react";
-import { getHrefFromId } from "../../utils/getHrefFromId";
 
-export default function Navigation(
-  props: NavigationEnFilter & { showLogo?: boolean }
-) {
+export default function Navigation(props: any & { showLogo?: boolean }) {
   const showLogo = props.showLogo === undefined ? true : props.showLogo;
 
   return (
@@ -47,9 +43,7 @@ export default function Navigation(
             >
               <Flex direction="column" gap="3">
                 {(props as any).links?.map((link, index) => {
-                  const href = link.href?.id
-                    ? getHrefFromId(link.href.id)
-                    : link.fallbackHref ?? "/";
+                  const href = link.fallbackHref ?? "/";
 
                   return (
                     <Link

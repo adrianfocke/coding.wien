@@ -3,7 +3,7 @@ import { tinaField } from "tinacms/dist/react";
 import { useContext } from "react";
 import { LanguageContext } from "../../utils/context/language";
 import type { PageBlocksHeading } from "../../tina/__generated__/types";
-import { findIntlValue } from "../../tina/tina-fields/component-fields";
+import { findIntlValue } from "../../tina/templating/special-fields";
 
 export default function Component(props: PageBlocksHeading) {
   const language = useContext(LanguageContext);

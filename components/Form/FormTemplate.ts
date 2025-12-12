@@ -1,5 +1,4 @@
 import type { Template } from "tinacms";
-import { wrapWithLanguages } from "../helpers";
 
 const fields: Template["fields"] = [
   {
@@ -14,5 +13,5 @@ const fields: Template["fields"] = [
 export default (variant: "forBlockRendering" | "forRichTextRendering") => ({
   name: "Form",
   label: "Form",
-  fields: variant === "forBlockRendering" ? wrapWithLanguages(fields) : fields,
+  fields,
 });

@@ -1,11 +1,11 @@
 import type { Template } from "tinacms";
-import { ImageTemplate } from "../Image/ImageTemplate";
+import ImageTemplate from "../Image/ImageTemplate";
 import {
   MarginXField,
   MarginYField,
   PaddingXField,
   PaddingYField,
-} from "../../tina/tina-fields/granular-fields";
+} from "../../tina/templating/granular-fields";
 import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
 

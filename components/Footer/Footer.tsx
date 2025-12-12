@@ -4,7 +4,7 @@ import { Flex, Select, Text } from "@radix-ui/themes";
 import { useContext } from "react";
 import { LanguageContext } from "../../utils/context/language";
 import Link from "next/link";
-import { languages } from "../../tina/tina-fields/component-fields";
+import { languages } from "../../tina/templating/special-fields";
 
 const languageLabels: Record<string, string> = {
   de: "Deutsch",

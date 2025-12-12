@@ -1,5 +1,5 @@
 import type { Template } from "tinacms";
-import { createIntlField } from "../../tina/tina-fields/component-fields";
+import { createIntlField } from "../../tina/templating/special-fields";
 import {
   AlignField,
   TextSizeField,
@@ -7,7 +7,7 @@ import {
   MarginYField,
   PaddingXField,
   PaddingYField,
-} from "../../tina/tina-fields/granular-fields";
+} from "../../tina/templating/granular-fields";
 
 export default {
   name: "Text",

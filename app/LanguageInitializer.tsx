@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { languages } from "../components/helpers";
+import { languages } from "../tina/templating/special-fields";
 
 export function LanguageInitializer() {
   useEffect(() => {

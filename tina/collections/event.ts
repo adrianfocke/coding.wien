@@ -1,9 +1,8 @@
 import type { Collection } from "tinacms";
-import { sanitizeFilenameForURL } from "../utils";
 import { templates } from "../components";
-import { allowedAspectRatios } from "../../constants/aspectRatios";
-import { createIntlField } from "../tina-fields/component-fields";
-import { FilenameField, SEOField } from "../tina-fields/granular-fields";
+import { createIntlField } from "../templating/special-fields";
+import { FilenameField, SEOField } from "../templating/granular-fields";
+import { sanitizeFilenameForURL } from "../templating/validation";
 
 export default {
   label: "Events",
@@ -24,7 +23,6 @@ export default {
       name: "aspectRatio",
       label: "Aspect Ratio",
       type: "string",
-      options: allowedAspectRatios,
       ui: {
         defaultValue: "16/9",
       },

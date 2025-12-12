@@ -5,7 +5,7 @@ import client from "../../tina/__generated__/client";
 import type { Page } from "../../tina/__generated__/types";
 import type { GenerateMetadataProps } from "../../tina/types";
 import ClientPage from "./client-page";
-import { findIntlValue } from "../../tina/tina-fields/component-fields";
+import { findIntlValue } from "../../tina/templating/special-fields";
 
 export async function generateStaticParams() {
   const pages = await client.queries.pageConnection();

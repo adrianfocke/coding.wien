@@ -3,7 +3,7 @@ import type { PageBlocksText } from "../../tina/__generated__/types";
 import { useContext } from "react";
 import { LanguageContext } from "../../utils/context/language";
 import { tinaField } from "tinacms/dist/react";
-import { findIntlValue } from "../../tina/tina-fields/component-fields";
+import { findIntlValue } from "../../tina/templating/special-fields";
 
 export default function Component(props: PageBlocksText) {
   const language = useContext(LanguageContext);

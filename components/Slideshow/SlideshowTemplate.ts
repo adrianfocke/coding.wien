@@ -1,15 +1,15 @@
 import type { Template } from "tinacms";
-import { ImageTemplate } from "../Image/ImageTemplate";
+import ImageTemplate from "../Image/ImageTemplate";
 import {
   MarginXField,
   MarginYField,
   PaddingXField,
   PaddingYField,
-} from "../../tina/tina-fields/granular-fields";
+} from "../../tina/templating/granular-fields";
 import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
-import { createResponsiveField } from "../../tina/tina-fields/component-fields";
-import { checkForPositveNumber } from "../../tina/utils";
+import { createResponsiveField } from "../../tina/templating/special-fields";
+import { checkForPositveNumber } from "../../tina/templating/validation";
 
 export default {
   name: "Slideshow",

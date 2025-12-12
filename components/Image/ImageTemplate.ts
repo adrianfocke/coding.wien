@@ -6,12 +6,12 @@ import {
   MarginYField,
   PaddingXField,
   PaddingYField,
-} from "../../tina/tina-fields/granular-fields";
+} from "../../tina/templating/granular-fields";
 import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
-import { createResponsiveField } from "../../tina/tina-fields/component-fields";
+import { createResponsiveField } from "../../tina/templating/special-fields";
 
-export const ImageTemplate: Template = {
+export default {
   name: "Image",
   label: "Image",
   fields: [
