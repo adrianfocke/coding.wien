@@ -1,9 +1,9 @@
 import type { Collection } from "tinacms";
-import { default as fileName } from "../templates/file-name";
-import seo from "../templates/seo";
 import { sanitizeFilenameForURL } from "../utils";
 import { templates } from "../components";
 import { allowedAspectRatios } from "../../constants/aspectRatios";
+import { createIntlField } from "../tina-fields/component-fields";
+import { FilenameField, SEOField } from "../tina-fields/granular-fields";
 
 export default {
   label: "Meine Spaces",
@@ -11,8 +11,8 @@ export default {
   path: "content/spaces",
   format: "json",
   fields: [
-    ...fileName,
-    seo,
+    FilenameField,
+    ...createIntlField(SEOField),
     { name: "image", label: "Image", type: "image" },
     {
       name: "alt",

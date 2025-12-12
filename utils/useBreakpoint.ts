@@ -1,25 +1,23 @@
 "use client";
 import { useEffect, useState } from "react";
 
-type Breakpoint = "initial" | "sm" | "md" | "lg" | "xl";
+type Breakpoint = "initial" | "xs" | "sm" | "md" | "lg" | "xl";
 
-/**
- * Hook to detect current breakpoint based on window width
- * Matches Radix UI breakpoints: initial (<640px), sm (640px+), md (768px+), lg (1024px+), xl (1280px+)
- */
 export default function useBreakpoint(): Breakpoint {
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("initial");
 
   useEffect(() => {
     const updateBreakpoint = () => {
       const width = window.innerWidth;
-      if (width < 640) {
+      if (width < 520) {
         setBreakpoint("initial");
       } else if (width < 768) {
-        setBreakpoint("sm");
+        setBreakpoint("xs");
       } else if (width < 1024) {
-        setBreakpoint("md");
+        setBreakpoint("sm");
       } else if (width < 1280) {
+        setBreakpoint("md");
+      } else if (width < 1640) {
         setBreakpoint("lg");
       } else {
         setBreakpoint("xl");
@@ -27,8 +25,16 @@ export default function useBreakpoint(): Breakpoint {
     };
 
     updateBreakpoint();
+    const timer = setTimeout(updateBreakpoint, 0);
+
     window.addEventListener("resize", updateBreakpoint);
-    return () => window.removeEventListener("resize", updateBreakpoint);
+    window.addEventListener("load", updateBreakpoint);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", updateBreakpoint);
+      window.removeEventListener("load", updateBreakpoint);
+    };
   }, []);
 
   return breakpoint;

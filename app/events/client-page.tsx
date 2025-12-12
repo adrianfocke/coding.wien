@@ -29,6 +29,7 @@ export default function ClientPage({
   const currentLang = language || "en";
 
   return (
+    //@ts-expect-error
     <LanguageContext.Provider value={currentLang}>
       <Navigation {...navigation?.[currentLang]} />
     </LanguageContext.Provider>

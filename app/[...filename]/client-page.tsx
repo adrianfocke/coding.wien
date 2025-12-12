@@ -6,6 +6,7 @@ import components from "../../tina/components";
 import { LanguageContext } from "../../utils/context/language";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
+import type { Language } from "../../tina/tina-fields/component-fields";
 
 type ClientPageProps = {
   query: string;
@@ -13,7 +14,7 @@ type ClientPageProps = {
     relativePath: string;
   };
   data: PageAndNavigationQuery;
-  language: string;
+  language: Language;
   showLogo?: boolean;
 };
 

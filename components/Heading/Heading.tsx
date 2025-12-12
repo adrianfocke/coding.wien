@@ -19,7 +19,9 @@ export default function Component(props: PageBlocksHeading) {
         align={(props.settings?.align as any) ?? "left"}
         size={(props.settings?.textSize as any) ?? "9"}
       >
-        {props.content?.[language] || "Add your heading here"}
+        {language === "en"
+          ? props.content?.text_en
+          : props.content?.text_de || "Add your heading here"}
       </Heading>
     </Box>
   );

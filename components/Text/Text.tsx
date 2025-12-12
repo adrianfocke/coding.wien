@@ -3,6 +3,7 @@ import type { PageBlocksText } from "../../tina/__generated__/types";
 import { useContext } from "react";
 import { LanguageContext } from "../../utils/context/language";
 import { tinaField } from "tinacms/dist/react";
+import type { Language } from "../../tina/tina-fields/component-fields";
 
 export default function Component(props: PageBlocksText) {
   const language = useContext(LanguageContext);
@@ -19,7 +20,9 @@ export default function Component(props: PageBlocksText) {
         align={(props.settings?.align as any) ?? "left"}
         size={(props.settings?.textSize as any) ?? "4"}
       >
-        {props.content?.[language] || "Add your text here"}
+        {language === "en"
+          ? props.content?.text_en
+          : props.content?.text_de || "Add your text here"}
       </Text>
     </Box>
   );

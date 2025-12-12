@@ -29,6 +29,7 @@ export default function ClientPage(props: ClientPageProps) {
 
   return (
     <div data-testid="client-page">
+      {/*@ts-expect-error*/}
       <LanguageContext.Provider value={props.language}>
         <Navigation {...data.navigation?.[props.language]} />
 
@@ -48,7 +49,6 @@ export default function ClientPage(props: ClientPageProps) {
             />
           );
         })}
-
       </LanguageContext.Provider>
     </div>
   );

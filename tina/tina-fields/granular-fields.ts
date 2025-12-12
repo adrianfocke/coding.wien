@@ -24,13 +24,7 @@ const radixUnitsMinusNineToZero = [
   "0",
 ] as const;
 
-export const aspectRatios = [
-  "16/9",
-  "4/3",
-  "1/1",
-  "3/4",
-  "5/1",
-] as const;
+export const aspectRatios = ["16/9", "4/3", "1/1", "3/4", "5/1"] as const;
 
 export const aspectRatioMap: Record<(typeof aspectRatios)[number], number> = {
   "16/9": 16 / 9,
@@ -52,7 +46,6 @@ export const AlignField: Template["fields"][number] = {
   label: "Align",
   type: "string",
   options: ["left", "center", "right"],
- 
 };
 
 export const MarginXField: Template["fields"][number] = {
@@ -88,4 +81,59 @@ export const TextSizeField: Template["fields"][number] = {
   label: "Text Size",
   type: "string",
   options: [...radixUnitsOneToNine],
+};
+
+export const SEOField: Template["fields"][number] = {
+  name: "seo",
+  label: "SEO",
+  type: "object",
+  fields: [
+    {
+      name: "title",
+      label: "Title",
+      type: "string",
+    },
+    {
+      name: "metaDescription",
+      label: "Meta desciption",
+      type: "string",
+      ui: {
+        component: "textarea",
+        description: "Descriptive information for better web search listing",
+        validate: (value) => {
+          if (value?.length > 165) {
+            return "Meta desciption should not be longer than 165 characters";
+          }
+        },
+      },
+    },
+    {
+      name: "metaKeywords",
+      label: "Meta keywords",
+      type: "string",
+      list: true,
+    },
+  ],
+};
+
+export const FilenameField: Template["fields"][number] = {
+  name: "name",
+  label: "Name",
+  type: "string",
+  required: true,
+  description: "Name will be used for the url name",
+  ui: {
+    validate: (value) => {
+      // Regex for letters, numbers, umlaute, blank and hyphen
+      const regex = /^[A-Za-z0-9äöüÄÖÜß\- ]+$/;
+
+      if (!value) {
+        return "Value must be defined";
+      }
+
+      if (!regex.test(value)) {
+        return "Allowed values: letters, numbers, umlaute, blank and hyphen";
+      }
+    },
+  },
 };

@@ -1,8 +1,8 @@
 import type { Collection } from "tinacms";
-import { default as fileName } from "../templates/file-name";
-import seo from "../templates/seo";
 import { sanitizeFilenameForURL } from "../utils";
 import { templates } from "../components";
+import { createIntlField } from "../tina-fields/component-fields";
+import { FilenameField, SEOField } from "../tina-fields/granular-fields";
 
 export default {
   label: "Pages",
@@ -10,8 +10,8 @@ export default {
   path: "content/page",
   format: "mdx",
   fields: [
-    ...fileName,
-    seo,
+    FilenameField,
+    ...createIntlField(SEOField),
     {
       name: "blocks",
       label: "Blocks",

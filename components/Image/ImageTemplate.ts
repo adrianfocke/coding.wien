@@ -9,6 +9,7 @@ import {
 } from "../../tina/tina-fields/granular-fields";
 import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
+import { createResponsiveField } from "../../tina/tina-fields/component-fields";
 
 export const ImageTemplate: Template = {
   name: "Image",
@@ -25,6 +26,13 @@ export const ImageTemplate: Template = {
           type: "image",
         },
         {
+          name: "blurImage",
+          label: "Preload Image",
+          type: "image",
+          description:
+            "Insert a compressed version of the original image that preloads and prevents white flashes",
+        },
+        {
           name: "blocks",
           label: "Content Blocks",
           type: "object",
@@ -38,7 +46,7 @@ export const ImageTemplate: Template = {
       label: "Settings",
       type: "object",
       fields: [
-        AspectRatioField,
+        ...createResponsiveField(AspectRatioField),
         AlignField,
         MarginXField,
         MarginYField,

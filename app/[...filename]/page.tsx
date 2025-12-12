@@ -22,22 +22,39 @@ export async function generateMetadata({
 
   const title = (await params).filename[0];
 
+  console.log("Generating metadata for title:", title);
+
   const page = await client.queries.page({
     relativePath: `${title}.mdx`,
   });
 
-  const seoTitle = page.data.page.seo?.[language]?.title;
-  const pageTitle = seoTitle
-    ? seoTitle[0].toUpperCase() + seoTitle.slice(1)
-    : title[0].toUpperCase() + title.slice(1);
-  const seoMetaDescription = page.data.page.seo?.[language]?.metaDescription;
-  const seoKeywords = page.data.page.seo?.[language]?.metaKeywords?.map(
-    (item, index) => (index === 0 ? item : ` ${item}`)
-  );
+  const metaTitle =
+    language === "en"
+      ? page.data.page?.seo_en?.title && page.data.page?.seo_en?.title !== ""
+        ? page.data.page?.seo_en?.title
+        : title[0].toUpperCase() + title.slice(1)
+      : page.data.page?.seo_de?.title && page.data.page?.seo_de?.title !== ""
+      ? page.data.page?.seo_de?.title
+      : title[0].toUpperCase() + title.slice(1);
+
+  const metaDescription =
+    language === "en"
+      ? page.data.page?.seo_en?.metaDescription ??
+        "No meta description available"
+      : page.data.page?.seo_de?.metaDescription ??
+        "Keine Meta-Beschreibung verfügbar";
+  const seoKeywords =
+    language === "en"
+      ? page.data.page?.seo_en?.metaKeywords?.map((item, index) =>
+          index === 0 ? item : ` ${item}`
+        )
+      : page.data.page?.seo_de?.metaKeywords?.map((item, index) =>
+          index === 0 ? item : ` ${item}`
+        );
 
   return {
-    title: pageTitle,
-    description: seoMetaDescription && seoMetaDescription,
+    title: metaTitle,
+    description: metaDescription,
     applicationName: project.applicationName,
     authors: project.authors,
     keywords: String(seoKeywords),
@@ -47,6 +64,7 @@ export async function generateMetadata({
 export default async function Page(props: {
   params: Promise<{ filename: string[] }>;
 }) {
+  // TODO all pages
   const params = await props.params;
   const cookieStore = await cookies();
   const language = cookieStore.get("language")?.value ?? "en";
@@ -57,5 +75,6 @@ export default async function Page(props: {
 
   const showLogo = params.filename[0] === "home";
 
+  //@ts-expect-error
   return <ClientPage {...data} language={language} showLogo={!showLogo} />;
 }

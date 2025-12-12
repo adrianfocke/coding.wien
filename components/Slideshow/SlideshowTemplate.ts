@@ -8,6 +8,8 @@ import {
 } from "../../tina/tina-fields/granular-fields";
 import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
+import { createResponsiveField } from "../../tina/tina-fields/component-fields";
+import { checkForPositveNumber } from "../../tina/utils";
 
 export default {
   name: "Slideshow",
@@ -31,7 +33,20 @@ export default {
       name: "settings",
       label: "Settings",
       type: "object",
-      fields: [MarginXField, MarginYField, PaddingXField, PaddingYField],
+      fields: [
+        ...createResponsiveField({
+          name: "numberOfSlidesShown",
+          label: "Number of Slides Shown",
+          type: "number",
+          ui: {
+            validate: (value: number) => checkForPositveNumber(value),
+          },
+        }),
+        MarginXField,
+        MarginYField,
+        PaddingXField,
+        PaddingYField,
+      ],
     },
   ],
 } as Template;

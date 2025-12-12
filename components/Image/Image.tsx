@@ -1,15 +1,14 @@
 import { AspectRatio, Flex, Box } from "@radix-ui/themes";
-import { useContext } from "react";
-import { LanguageContext } from "../../utils/context/language";
 import NextImage from "next/image";
 import { aspectRatioMap } from "../../tina/tina-fields/granular-fields";
 import { tinaField } from "tinacms/dist/react";
 import renderBlocks from "../../tina/tina-fields/renderBlocks";
 import placeholders from "../placeholders";
 import type { PageBlocksImage } from "../../tina/__generated__/types";
+import useBreakpoint from "../../utils/useBreakpoint";
 
 export default function Component(props: PageBlocksImage) {
-  const language = useContext(LanguageContext);
+  const breakpoint = useBreakpoint();
 
   return (
     <Box
@@ -21,14 +20,22 @@ export default function Component(props: PageBlocksImage) {
       <AspectRatio
         data-tina-field={tinaField(props.content ?? props)}
         ratio={
-          props.settings?.aspectRatio
-            ? aspectRatioMap[props.settings?.aspectRatio]
-            : 16 / 9
+          breakpoint === "initial"
+            ? aspectRatioMap[props.settings?.aspectRatio_initial ?? "16/9"]
+            : aspectRatioMap[props.settings?.aspectRatio_md ?? "16:9"]
         }
         style={{ overflow: "hidden" }}
       >
         <NextImage
-          src={props.content?.image ?? placeholders.image}
+          src={
+            props.content?.image !== undefined &&
+            props.content?.image !== null &&
+            props.content?.image !== ""
+              ? props.content.image
+              : placeholders.image
+          }
+          blurDataURL={props.content?.blurImage ?? undefined}
+          placeholder={props.content?.blurImage ? "blur" : "empty"}
           fill
           alt={"Image content"}
           role={"presentation"}
