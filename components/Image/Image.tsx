@@ -28,8 +28,6 @@ export default function Image(
   const aspectRatioRef = useRef<HTMLDivElement>(null);
   const { isEditable } = useContext(TinaEditContext);
 
-  console.log("Rendering Image with props:", props.fallbackHref);
-
   // Disable link rendering in TinaMarkdown when fallbackHref exists to avoid nested <a> tags
   const markdownComponents = props.fallbackHref
     ? {

@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import client from "../../../tina/__generated__/client";
 import type { GenerateMetadataProps } from "../../../tina/types";
 import ClientPage from "./client-page";
+import project from "../../../project";
 
 export async function generateStaticParams() {
   const pages = await client.queries.spaceConnection();
@@ -22,8 +23,21 @@ export async function generateMetadata({
     relativePath: `${title}.json`,
   });
 
+  const seoTitle = work.data.space.seo?.title;
+  const pageTitle = seoTitle
+    ? seoTitle[0].toUpperCase() + seoTitle.slice(1)
+    : title[0].toUpperCase() + title.slice(1);
+  const seoMetaDescription = work.data.space.seo?.metaDescription;
+  const seoKeywords = work.data.space.seo?.metaKeywords?.map((item, index) =>
+    index === 0 ? item : ` ${item}`
+  );
+
   return {
-    title: work.data.space.name,
+    title: pageTitle,
+    description: seoMetaDescription && seoMetaDescription,
+    applicationName: project.applicationName,
+    authors: project.authors,
+    keywords: String(seoKeywords),
   };
 }
 
