@@ -4,8 +4,6 @@ import React from "react";
 import "../styles/main.css";
 import { sans, serif } from "./fonts";
 import { LanguageInitializer } from "./LanguageInitializer";
-import Footer from "../components/Footer/Footer";
-
 
 export default function RootLayout({
   children,
@@ -18,7 +16,6 @@ export default function RootLayout({
         <LanguageInitializer />
         <Theme>
           <main>{children}</main>
-          <Footer />
         </Theme>
       </body>
     </html>

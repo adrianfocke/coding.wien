@@ -5,6 +5,7 @@ import type { PageAndNavigationQuery } from "../../tina/__generated__/types";
 import { LanguageContext } from "../../utils/context/language";
 import type { Language } from "../../tina/templating/special-fields";
 import { renderBlocks } from "../../tina/templating/utils";
+import Navigation from "../../components/Navigation/Navigation";
 
 type ClientPageProps = {
   query: string;
@@ -25,6 +26,7 @@ export default function ClientPage(props: ClientPageProps) {
   return (
     <div data-testid="client-page">
       <LanguageContext.Provider value={props.language}>
+        <Navigation {...data.navigation} />
         {data.page.blocks?.map((block, i) => {
           return renderBlocks(block, i);
         })}

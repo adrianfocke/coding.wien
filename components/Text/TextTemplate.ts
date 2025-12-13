@@ -7,12 +7,15 @@ import {
   MarginYField,
   PaddingXField,
   PaddingYField,
+  LinkField,
+  HasContainerField,
 } from "../../tina/templating/granular-fields";
 
 export default {
   name: "Text",
   label: "Text",
   fields: [
+    LinkField,
     {
       name: "content",
       label: "Content",
@@ -31,6 +34,7 @@ export default {
       label: "Settings",
       type: "object",
       fields: [
+        HasContainerField,
         AlignField,
         TextSizeField,
         MarginXField,

@@ -1,11 +1,4 @@
 {
-  "logo": "Logo",
-  "links": [
-    {
-      "label": "wderfgt",
-      "url": ""
-    }
-  ],
   "en": {
     "logo": "Breath & Growth",
     "links": [
@@ -26,5 +19,32 @@
         "fallbackHref": "/events"
       }
     ]
+  },
+  "logo": {
+    "link": "/about",
+    "content": {
+      "text_de": "Start",
+      "text_en": "Start"
+    }
+  },
+  "links": [
+    {
+      "link": "/about",
+      "content": {
+        "text_de": "Über Mich",
+        "text_en": "About Me"
+      }
+    },
+    {
+      "link": "/stories",
+      "content": {
+        "text_de": "Stories",
+        "text_en": "Stories"
+      }
+    }
+  ],
+  "settings": {
+    "paddingX": "4",
+    "paddingY": "4"
   }
 }
