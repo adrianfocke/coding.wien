@@ -4,11 +4,7 @@ import type { PageBlocksSlideshowEn } from "../../tina/__generated__/types";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 import Image from "../Image/Image";
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  DotFilledIcon,
-} from "@radix-ui/react-icons";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import useBreakpoint from "../../utils/useBreakpoint";
 
 export default function Slideshow(props: PageBlocksSlideshowEn) {
