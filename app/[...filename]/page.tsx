@@ -23,18 +23,27 @@ export async function generateMetadata({
 
   const title = (await params).filename[0];
 
+  const config = await client.queries.config({
+    relativePath: `config.json`,
+  });
+
   const page = await client.queries.page({
     relativePath: `${title}.mdx`,
   });
 
   const seo = findIntlValue(language as any, "seo");
 
+  const pageTitle =
+    page.data.page?.[seo]?.title ?? title[0].toUpperCase() + title.slice(1);
+
   return {
-    title:
-      page.data.page?.[seo]?.title ?? title[0].toUpperCase() + title.slice(1),
+    title: `${pageTitle} | ${config.data.config?.applicationName}`,
     description: page.data.page?.[seo]?.metaDescription,
-    applicationName: project.applicationName,
-    authors: project.authors,
+    applicationName: config.data.config?.applicationName,
+    authors: config.data.config?.authors?.map((author) => ({
+      name: author?.name || "",
+      url: author?.url || "",
+    })),
     keywords: page.data.page?.[seo]?.metaKeywords?.map((item, index) =>
       index === 0 ? item : ` ${item}`
     ),
@@ -53,8 +62,5 @@ export default async function Page(props: {
     relativePath: `${params.filename}.mdx`,
   });
 
-  const showLogo = params.filename[0] === "home";
-
-  //@ts-expect-error
-  return <ClientPage {...data} language={language} showLogo={!showLogo} />;
+  return <ClientPage {...data} language={language as any} />;
 }

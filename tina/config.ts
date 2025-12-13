@@ -3,8 +3,9 @@ import page from "./collections/page";
 import navigation from "./collections/navigation";
 import space from "./collections/space";
 import event from "./collections/event";
+import config from "./collections/config";
 
-const collections = [page, navigation, space, event];
+const collections = [config, page, navigation, space, event];
 
 export default defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,

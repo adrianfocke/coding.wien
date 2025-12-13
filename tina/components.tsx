@@ -1,41 +1,47 @@
 import type { Components } from "tinacms/dist/rich-text";
+import Button from "../components/Button/Button";
+import ButtonTemplate from "../components/Button/ButtonTemplate";
 import Form from "../components/Form/Form";
 import Grid from "../components/Grid/Grid";
-import Heading from "../components/Heading/Heading";
-import Slideshow from "../components/Slideshow/Slideshow";
-import Image from "../components/Image/Image";
-import Text from "../components/Text/Text";
 import GridTemplate from "../components/Grid/GridTemplate";
-import ImageTemplate from "../components/Image/ImageTemplate";
-import SlideshowTemplate from "../components/Slideshow/SlideshowTemplate";
+import Heading from "../components/Heading/Heading";
 import HeadingTemplate from "../components/Heading/HeadingTemplate";
+import Image from "../components/Image/Image";
+import ImageTemplate from "../components/Image/ImageTemplate";
+import Slideshow from "../components/Slideshow/Slideshow";
+import SlideshowTemplate from "../components/Slideshow/SlideshowTemplate";
+import Text from "../components/Text/Text";
 import TextTemplate from "../components/Text/TextTemplate";
 
 export const templates = [
+  ButtonTemplate,
   GridTemplate,
   HeadingTemplate,
-  TextTemplate,
   ImageTemplate,
   SlideshowTemplate,
+  TextTemplate,
 ];
 
 export default {
+  Button: (props: any) => {
+    return <Button {...props} />;
+  },
   Form: (props: any) => {
     return <Form {...props} />;
   },
   Grid: (props: any) => {
     return <Grid {...props} />;
   },
-  Image: (props: any) => {
-    return <Image {...props} />;
-  },
-  Text: (props: any) => {
-    return <Text {...props} />;
-  },
   Heading: (props: any) => {
     return <Heading {...props} />;
   },
+  Image: (props: any) => {
+    return <Image {...props} />;
+  },
   Slideshow: (props: any) => {
     return <Slideshow {...props} />;
+  },
+  Text: (props: any) => {
+    return <Text {...props} />;
   },
 } as Components<{}>;

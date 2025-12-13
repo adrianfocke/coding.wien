@@ -4,13 +4,25 @@ import type { Ref } from "react";
 import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 import { renderBlocks } from "../../tina/templating/utils";
+import useBreakpoint from "../../utils/hook/useBreakpoint";
+import { findBreakpointValue } from "../../tina/templating/special-fields";
+import { useEditState } from "tinacms/dist/react";
+import EditHelper from "../../tina/templating/EditHelper";
 
 export default function Component(props: PageBlocksSlideshow) {
-  const { slideshow, scrollToSlide } = useSlideshow({
+  const breakpoint = useBreakpoint();
+  const numberOfSlidesShown = findBreakpointValue(
+    breakpoint,
+    "numberOfSlidesShown"
+  );
+
+  const { slideshow } = useSlideshow({
     numberOfSlides: props.content?.blocks?.length,
-    numberOfSlidesShown: 1,
-    nextSlideTimeout: (props as any).nextSlideTimeout,
+    numberOfSlidesShown: props.settings?.[numberOfSlidesShown] ?? 1,
+    nextSlideTimeout: Number((props.settings as any)?.nextSlideTimeout) || null,
   });
+
+  const { edit } = useEditState();
 
   return (
     <Box
@@ -19,6 +31,7 @@ export default function Component(props: PageBlocksSlideshow) {
       px={props.settings?.paddingX ?? "0"}
       py={props.settings?.paddingY ?? "0"}
     >
+      {edit && <EditHelper {...props} />}
       <Flex
         className={styles.slideContainer}
         overflowX="auto"

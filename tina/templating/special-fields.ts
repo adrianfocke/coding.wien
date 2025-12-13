@@ -17,6 +17,13 @@ export const findIntlValue = (language: Language, key: string) => {
   return `${key}_${language}`;
 };
 
+export const findBreakpointValue = (
+  breakpoint: (typeof radixResponsiveSizes)[number],
+  key: string
+) => {
+  return `${key}_${breakpoint}`;
+};
+
 export const createResponsiveField = (field: Template["fields"][number]) => {
   return radixResponsiveSizes.map((size) => ({
     ...field,

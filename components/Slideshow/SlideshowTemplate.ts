@@ -10,6 +10,7 @@ import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
 import { createResponsiveField } from "../../tina/templating/special-fields";
 import { checkForPositveNumber } from "../../tina/templating/validation";
+import ButtonTemplate from "../Button/ButtonTemplate";
 
 export default {
   name: "Slideshow",
@@ -25,7 +26,12 @@ export default {
           label: "Content Blocks",
           type: "object",
           list: true,
-          templates: [HeadingTemplate, TextTemplate, ImageTemplate],
+          templates: [
+            ButtonTemplate,
+            HeadingTemplate,
+            ImageTemplate,
+            TextTemplate,
+          ],
         },
       ],
     },
@@ -42,6 +48,12 @@ export default {
             validate: (value: number) => checkForPositveNumber(value),
           },
         }),
+        {
+          name: "nextSlideTimeout",
+          label: "Next Slide in seconds",
+          type: "string",
+          options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        },
         MarginXField,
         MarginYField,
         PaddingXField,

@@ -8,6 +8,7 @@ import {
 } from "../../tina/templating/granular-fields";
 import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
+import ButtonTemplate from "../Button/ButtonTemplate";
 
 export default {
   name: "Grid",
@@ -29,7 +30,12 @@ export default {
               label: "Content Blocks",
               type: "object",
               list: true,
-              templates: [HeadingTemplate, TextTemplate, ImageTemplate],
+              templates: [
+                ButtonTemplate,
+                HeadingTemplate,
+                ImageTemplate,
+                TextTemplate,
+              ],
             },
           ],
         },

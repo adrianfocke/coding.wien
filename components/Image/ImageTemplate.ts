@@ -6,6 +6,7 @@ import {
   MarginYField,
   PaddingXField,
   PaddingYField,
+  LinkField,
 } from "../../tina/templating/granular-fields";
 import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
@@ -15,6 +16,7 @@ export default {
   name: "Image",
   label: "Image",
   fields: [
+    LinkField,
     {
       name: "content",
       label: "Content",

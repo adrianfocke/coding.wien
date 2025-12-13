@@ -1,6 +1,6 @@
 import type { Template } from "tinacms";
 
-const radixUnitsOneToNine = [
+const radixUnitsPositive = [
   "1",
   "2",
   "3",
@@ -11,7 +11,7 @@ const radixUnitsOneToNine = [
   "8",
   "9",
 ] as const;
-const radixUnitsMinusNineToZero = [
+const radixUnits = [
   "-9",
   "-8",
   "-7",
@@ -22,6 +22,7 @@ const radixUnitsMinusNineToZero = [
   "-2",
   "-1",
   "0",
+  ...radixUnitsPositive,
 ] as const;
 
 export const aspectRatios = ["16/9", "4/3", "1/1", "3/4", "5/1"] as const;
@@ -52,35 +53,35 @@ export const MarginXField: Template["fields"][number] = {
   name: "marginX",
   label: "Horizontal Margin Size",
   type: "string",
-  options: [...radixUnitsMinusNineToZero, ...radixUnitsOneToNine],
+  options: [...radixUnits],
 };
 
 export const MarginYField: Template["fields"][number] = {
   name: "marginY",
   label: "Vertical Margin Size",
   type: "string",
-  options: [...radixUnitsMinusNineToZero, ...radixUnitsOneToNine],
+  options: [...radixUnits],
 };
 
 export const PaddingXField: Template["fields"][number] = {
   name: "paddingX",
   label: "Horizontal Padding Size",
   type: "string",
-  options: [...radixUnitsMinusNineToZero, ...radixUnitsOneToNine],
+  options: [...radixUnits],
 };
 
 export const PaddingYField: Template["fields"][number] = {
   name: "paddingY",
   label: "Vertical Padding Size",
   type: "string",
-  options: [...radixUnitsMinusNineToZero, ...radixUnitsOneToNine],
+  options: [...radixUnits],
 };
 
 export const TextSizeField: Template["fields"][number] = {
   name: "textSize",
   label: "Text Size",
   type: "string",
-  options: [...radixUnitsOneToNine],
+  options: [...radixUnitsPositive],
 };
 
 export const SEOField: Template["fields"][number] = {
@@ -121,7 +122,6 @@ export const FilenameField: Template["fields"][number] = {
   label: "Name",
   type: "string",
   required: true,
-  description: "Name will be used for the url name",
   ui: {
     validate: (value) => {
       // Regex for letters, numbers, umlaute, blank and hyphen
@@ -136,4 +136,11 @@ export const FilenameField: Template["fields"][number] = {
       }
     },
   },
+};
+
+export const LinkField: Template["fields"][number] = {
+  name: "link",
+  label: "Link (optional)",
+  type: "string",
+  description: "Fill this field to wrap content with a link",
 };

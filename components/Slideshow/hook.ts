@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 export const useSlideshow = (slideshowSettings?: {
   numberOfSlides?: number;
   numberOfSlidesShown?: number;
-  nextSlideTimeout: number;
+  nextSlideTimeout: number | null;
 }) => {
   const slideshow = useRef<HTMLElement>(null);
   const activeSlideRef = useRef<number>(1);
@@ -23,11 +23,7 @@ export const useSlideshow = (slideshowSettings?: {
   };
 
   useEffect(() => {
-    if (
-      !slideshowSettings?.nextSlideTimeout ||
-      !slideshowSettings?.numberOfSlides
-    )
-      return;
+    if (!slideshowSettings?.nextSlideTimeout) return;
 
     const scheduleNextSlide = () => {
       timeoutRef.current = setTimeout(() => {
@@ -38,7 +34,7 @@ export const useSlideshow = (slideshowSettings?: {
 
         scrollToSlide(nextSlide);
         scheduleNextSlide();
-      }, slideshowSettings.nextSlideTimeout * 1000);
+      }, (slideshowSettings.nextSlideTimeout ?? 0) * 1000);
     };
 
     scheduleNextSlide();
