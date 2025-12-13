@@ -10,7 +10,6 @@ export function getHrefFromId(id?: string): string {
   const parts = id.split("/");
   const lastPart = parts[parts.length - 1];
 
-  // If it ends with .mdx or .json, it's a specific file
   if (lastPart?.includes(".")) {
     const filename = lastPart.replace(/\.(mdx|json)$/, "");
     const collection = parts[parts.length - 2];
