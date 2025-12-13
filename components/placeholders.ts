@@ -1,4 +1,4 @@
 export default {
-  text: "Add your captivating text",
+  text: "Add your text",
   image: "/uploads/placeholders/gradient.jpg",
 };
