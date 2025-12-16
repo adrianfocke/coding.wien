@@ -1,4 +1,5 @@
 import type { Template } from "tinacms";
+import TextTemplate from "../../components/Text/TextTemplate";
 
 const radixUnitsPositive = [
   "1",
@@ -77,11 +78,31 @@ export const PaddingYField: Template["fields"][number] = {
   options: [...radixUnits],
 };
 
+export const GapField: Template["fields"][number] = {
+  name: "gap",
+  label: "Gap Size",
+  type: "string",
+  options: [...radixUnitsPositive],
+};
+
 export const TextSizeField: Template["fields"][number] = {
   name: "textSize",
   label: "Text Size",
   type: "string",
   options: [...radixUnitsPositive],
+};
+
+export const colorMap: Record<(typeof colors)[number], string> = {
+  gray: "var(--gray-12)",
+  white: "var(--gray-1)",
+};
+
+const colors = ["gray", "white"] as const;
+export const TextColorField: Template["fields"][number] = {
+  name: "textColor",
+  label: "Text Color",
+  type: "string",
+  options: [...colors],
 };
 
 export const SEOField: Template["fields"][number] = {
@@ -149,4 +170,32 @@ export const HasContainerField: Template["fields"][number] = {
   name: "hasContainer",
   label: "Wrap Component in Container",
   type: "boolean",
+};
+
+export const FontField: Template["fields"][number] = {
+  name: "font",
+  label: "Font",
+  type: "string",
+  options: ["serif", "sans"],
+};
+
+export const BlocksPositionField: Template["fields"][number] = {
+  name: "blocksPosition",
+  label: "Blocks Position",
+  type: "string",
+  options: ["start", "center"],
+};
+
+export const RadiusField: Template["fields"][number] = {
+  name: "radius",
+  label: "Radius",
+  type: "string",
+  options: ["full", "large", "medium", "small", "none"],
+};
+
+export const ColumnsField: Template["fields"][number] = {
+  name: "columns",
+  label: "Columns",
+  type: "string",
+  options: [...radixUnitsPositive],
 };

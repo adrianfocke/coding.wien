@@ -1,6 +1,7 @@
 import type { Template } from "tinacms";
 import ImageTemplate from "../Image/ImageTemplate";
 import {
+  BlocksPositionField,
   MarginXField,
   MarginYField,
   PaddingXField,

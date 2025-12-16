@@ -9,6 +9,8 @@ import {
   PaddingYField,
   LinkField,
   HasContainerField,
+  FontField,
+  TextColorField,
 } from "../../tina/templating/granular-fields";
 
 export default {
@@ -37,6 +39,8 @@ export default {
         HasContainerField,
         AlignField,
         TextSizeField,
+        TextColorField,
+        FontField,
         MarginXField,
         MarginYField,
         PaddingXField,

@@ -8,6 +8,8 @@ import {
   PaddingXField,
   PaddingYField,
   LinkField,
+  RadiusField,
+  TextColorField,
 } from "../../tina/templating/granular-fields";
 
 export default {
@@ -39,10 +41,12 @@ export default {
           type: "string",
           options: ["classic", "solid", "soft", "surface", "outline", "ghost"],
         },
+        RadiusField,
         {
           ...TextSizeField,
           options: ["1", "2", "3"],
         },
+        TextColorField,
         AlignField,
         MarginXField,
         MarginYField,

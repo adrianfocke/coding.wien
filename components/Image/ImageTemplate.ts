@@ -7,10 +7,12 @@ import {
   PaddingXField,
   PaddingYField,
   LinkField,
+  BlocksPositionField,
 } from "../../tina/templating/granular-fields";
 import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
 import { createResponsiveField } from "../../tina/templating/special-fields";
+import ButtonTemplate from "../Button/ButtonTemplate";
 
 export default {
   name: "Image",
@@ -39,7 +41,7 @@ export default {
           label: "Content Blocks",
           type: "object",
           list: true,
-          templates: [HeadingTemplate, TextTemplate],
+          templates: [ButtonTemplate, HeadingTemplate, TextTemplate],
         },
       ],
     },
@@ -54,6 +56,7 @@ export default {
         MarginYField,
         PaddingXField,
         PaddingYField,
+        BlocksPositionField,
       ],
     },
   ],

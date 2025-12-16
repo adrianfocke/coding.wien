@@ -5,6 +5,7 @@ import { LanguageContext } from "../../utils/context/language";
 import { tinaField } from "tinacms/dist/react";
 import { findIntlValue } from "../../tina/templating/special-fields";
 import Link from "next/link";
+import { colorMap } from "../../tina/templating/granular-fields";
 
 export default function Component(props: PageBlocksText) {
   const language = useContext(LanguageContext);
@@ -12,9 +13,12 @@ export default function Component(props: PageBlocksText) {
 
   const content = (
     <Text
+      className={props.settings?.font as any}
       data-tina-field={tinaField(props.content ?? props)}
-      align={(props.settings?.align as any) ?? "left"}
       size={(props.settings?.textSize as any) ?? "4"}
+      style={{
+        color: colorMap[props.settings?.textColor as any],
+      }}
     >
       {props.content?.[text] || "Add your text here"}
     </Text>
@@ -26,6 +30,9 @@ export default function Component(props: PageBlocksText) {
       my={props.settings?.marginY ?? "0"}
       px={props.settings?.paddingX ?? "0"}
       py={props.settings?.paddingY ?? "0"}
+      style={{
+        textAlign: props.settings?.align as any,
+      }}
     >
       {props.link ? <Link href={props.link}>{content}</Link> : content}
     </Box>

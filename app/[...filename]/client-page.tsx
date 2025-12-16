@@ -6,6 +6,7 @@ import { LanguageContext } from "../../utils/context/language";
 import type { Language } from "../../tina/templating/special-fields";
 import { renderBlocks } from "../../tina/templating/utils";
 import Navigation from "../../components/Navigation/Navigation";
+import Footer from "../../components/Footer/Footer";
 
 type ClientPageProps = {
   query: string;
@@ -30,6 +31,7 @@ export default function ClientPage(props: ClientPageProps) {
         {data.page.blocks?.map((block, i) => {
           return renderBlocks(block, i);
         })}
+        <Footer {...data.footer} />
       </LanguageContext.Provider>
     </div>
   );

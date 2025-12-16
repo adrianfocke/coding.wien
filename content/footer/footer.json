@@ -1,1 +1,24 @@
-{}
+{
+  "links": [
+    {
+      "link": "/",
+      "content": {
+        "text_de": "Start",
+        "text_en": "Start"
+      }
+    },
+    {
+      "link": "/imprint",
+      "content": {
+        "text_de": "Impressum",
+        "text_en": "Imprint"
+      }
+    }
+  ],
+  "settings": {
+    "marginX": "",
+    "marginY": "4",
+    "paddingX": "4",
+    "paddingY": "4"
+  }
+}

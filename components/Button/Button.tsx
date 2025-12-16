@@ -1,8 +1,5 @@
 import { Box, Button } from "@radix-ui/themes";
-import type {
-  PageBlocksButton,
-  PageBlocksText,
-} from "../../tina/__generated__/types";
+import type { PageBlocksButton } from "../../tina/__generated__/types";
 import { useContext } from "react";
 import { LanguageContext } from "../../utils/context/language";
 import { tinaField } from "tinacms/dist/react";
@@ -15,10 +12,11 @@ export default function Component(props: PageBlocksButton) {
 
   const content = (
     <Button
+      radius={(props.settings?.radius as any) ?? "full"}
       data-tina-field={tinaField(props.content ?? props)}
       variant={(props.settings?.variant as any) ?? "solid"}
       size={(props.settings?.textSize as any) ?? "2"}
-      mt="4"
+      style={{ cursor: "pointer" }}
     >
       {props.content?.[text] || "Add your text here"}
     </Button>
@@ -30,6 +28,9 @@ export default function Component(props: PageBlocksButton) {
       my={props.settings?.marginY ?? "0"}
       px={props.settings?.paddingX ?? "0"}
       py={props.settings?.paddingY ?? "0"}
+      style={{
+        textAlign: props.settings?.align as any,
+      }}
     >
       {props.link ? <Link href={props.link}>{content}</Link> : content}
     </Box>

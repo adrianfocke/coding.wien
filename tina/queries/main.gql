@@ -29,6 +29,21 @@ query pageAndNavigation($relativePath: String!) {
     }
     ...NavigationParts
   }
+  footer(relativePath: "footer.json") {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...FooterParts
+  }
 }
 
 query spaceAndNavigation($relativePath: String!) {
@@ -62,6 +77,21 @@ query spaceAndNavigation($relativePath: String!) {
     }
     ...NavigationParts
   }
+  footer(relativePath: "footer.json") {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...FooterParts
+  }
 }
 
 query eventAndNavigation($relativePath: String!) {
@@ -94,6 +124,21 @@ query eventAndNavigation($relativePath: String!) {
       id
     }
     ...NavigationParts
+  }
+  footer(relativePath: "footer.json") {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...FooterParts
   }
 }
 
@@ -154,6 +199,21 @@ query spaceAndNavConnection(
     }
     ...NavigationParts
   }
+  footer(relativePath: "footer.json") {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...FooterParts
+  }
 }
 
 query eventAndNavConnection(
@@ -212,5 +272,20 @@ query eventAndNavConnection(
       id
     }
     ...NavigationParts
+  }
+  footer(relativePath: "footer.json") {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...FooterParts
   }
 }

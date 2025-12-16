@@ -41,6 +41,7 @@ export default function Component(props: PageBlocksImage) {
         position="absolute"
         inset="0"
         style={{ zIndex: 1 }}
+        justify={(props.settings?.blocksPosition as any) || "start"}
       >
         {props.content?.blocks?.map((block, j) => {
           return renderBlocks(block, j);

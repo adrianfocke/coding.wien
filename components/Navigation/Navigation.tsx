@@ -1,19 +1,9 @@
-import {
-  Flex,
-  Box,
-  Popover,
-  Button as RadixButton,
-  Text as RadixText,
-} from "@radix-ui/themes";
+import { Flex, Box, Popover, Button as RadixButton } from "@radix-ui/themes";
 import type { NavigationQuery } from "../../tina/__generated__/types";
 import Text from "../Text/Text";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
-import Button from "../Button/Button";
 
 export default function Navigation(props: NavigationQuery["navigation"]) {
-  console.log("Navigation props:", props);
-
   return (
     <Box
       style={{ borderBottom: "1px solid var(--gray-6)" }}

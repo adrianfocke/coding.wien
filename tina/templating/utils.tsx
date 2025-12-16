@@ -1,9 +1,16 @@
 import components from "../components";
 
 export const findComponentByTypeName = (typeName: string) => {
+  console.log("typeName", typeName);
   // TODO: remove special case and support PageBlocksSlideshow
   if (typeName === "PageBlocksSlideshow") return "Slideshow";
-  if (typeName === "PageBlocksButton") return "Button";
+  if (
+    typeName === "PageBlocksButton" ||
+    typeName === "PageBlocksGridContentItemsBlocksButton" ||
+    typeName === "PageBlocksSlideshowContentBlocksImageContentBlocksButton"
+  )
+    return "Button";
+  if (typeName === "Footer") return "Footer";
 
   const componentName =
     (typeName as any).match(/Blocks([^Blocks]*)$/)[1] ?? "Grid";

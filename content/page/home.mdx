@@ -11,24 +11,29 @@ body: ''
 seo: {}
 name: Home
 seo_de:
-  title: ''
-  metaDescription: ''
+  title: Start
+  metaDescription: >-
+    Ich bin Webdeveloper und hier findest du alle Infos zu mir und was ich
+    mache.
   metaKeywords:
-    - mega
-    - nice
+    - webseite
+    - wien
 seo_en:
-  title: My new title
-  metaDescription: Nice description
+  title: Start
+  metaDescription: >-
+    I am a web developer, and here you can find all the information about me and
+    what I do.
   metaKeywords:
-    - nice
-    - keywords
+    - websites
+    - wien
 blocks:
   - content:
       text_de: 'Servus, ich bin Adrian!'
       text_en: 'Hi, I''m Adrian!'
     settings:
       align: center
-      paddingX: ''
+      font: serif
+      paddingX: '4'
       paddingY: '4'
     _template: Heading
   - content:
@@ -82,8 +87,263 @@ blocks:
       text_de: 'Meine Mission:'
       text_en: 'My Mission:'
     settings:
+      hasContainer: true
+      font: serif
+      paddingX: '4'
+      paddingY: '5'
+    _template: Heading
+  - content:
+      blocks:
+        - content:
+            text_de: >-
+              Leisen Stimmen Gehör geben, verstehenwollen, ehrlich sein, reisen,
+              Räume halten, Privilegien sehen und hinterfragen, Männer* in ihre
+              Sanftheit bringen, Yogi:nis unterstützen, Dir den Rücken stärken.
+            text_en: >-
+              Listening to quiet voices, wanting to understand, being honest,
+              travelling, holding spaces, seeing and questioning privileges,
+              bringing men* into their gentleness, supporting yogis, supporting
+              you.
+          settings:
+            textSize: '9'
+            font: serif
+            paddingX: '4'
+            paddingY: '4'
+          _template: Text
+    settings:
+      aspectRatio_initial: 3/4
+      aspectRatio_md: 16/9
+    _template: Image
+  - content:
+      text_de: 'Stories that I tell:'
+      text_en: 'Stories that I tell:'
+    settings:
+      hasContainer: true
+      font: serif
+      paddingX: '4'
+      paddingY: '5'
+    _template: Heading
+  - content:
+      text_de: >-
+        Geschichten zu erzählen macht Spaß, denn: Kommunikation ist dann gut,
+        wenn Mensch sie fühlt. Manchmal erzähle ich Geschichten in digitalen
+        Formaten. Hier sind ein paar Beispiele.
+      text_en: >-
+        Telling stories is fun because communication is effective when people
+        can relate to it. Sometimes I tell stories in digital formats. Here are
+        a few examples.
+    settings:
+      hasContainer: true
+      paddingX: '4'
+    _template: Text
+  - content:
+      blocks:
+        - content:
+            image: /uploads/coco.jpg
+            blocks:
+              - content:
+                  text_de: Om Shanti Webseite
+                  text_en: Om Shanti Website
+                settings:
+                  hasContainer: false
+                  align: center
+                  textColor: white
+                  font: serif
+                  paddingX: '4'
+                  paddingY: '4'
+                _template: Heading
+              - content:
+                  text_de: >-
+                    Trust the Journey: Eine maßgeschneiderte Seite für Yoga mit
+                    Coco.
+                  text_en: 'Trust the Journey: A tailored website for Yoga mit Coco.'
+                settings:
+                  align: center
+                  textColor: white
+                  paddingX: '4'
+                _template: Text
+              - link: /stories/coco
+                content:
+                  text_de: Zu ihrer Story
+                  text_en: See her story
+                settings:
+                  radius: full
+                  align: center
+                  paddingX: ''
+                  paddingY: '4'
+                _template: Button
+          settings:
+            aspectRatio_initial: 3/4
+            aspectRatio_md: 16/9
+            blocksPosition: center
+          _template: Image
+        - content:
+            image: /uploads/hanna.jpg
+            blocks:
+              - content:
+                  text_de: 'Atme ein, atme aus'
+                  text_en: 'Breathe in, breathe out'
+                settings:
+                  align: center
+                  textColor: white
+                  font: serif
+                _template: Heading
+              - content:
+                  text_de: Hanna startet durch mit ihrer neuen Webseite.
+                  text_en: Hanna is taking off with her new website.
+                settings:
+                  align: center
+                  textColor: white
+                  paddingY: '4'
+                _template: Text
+              - link: /stories/hannah
+                content:
+                  text_de: Zu ihrer Story
+                  text_en: See her story
+                settings:
+                  align: center
+                _template: Button
+          settings:
+            aspectRatio_initial: 3/4
+            aspectRatio_md: 16/9
+            blocksPosition: center
+          _template: Image
+    settings:
+      paddingY: '5'
+    _template: Slideshow
+  - content:
+      text_de: 'Meine Pakete:'
+      text_en: 'My packages:'
+    settings:
+      hasContainer: true
+      font: serif
       paddingX: '4'
       paddingY: '4'
     _template: Heading
+  - content:
+      items:
+        - blocks:
+            - content:
+                text_de: Paket "Volle Freiheit" ✨
+                text_en: Package "Freedom" ✨
+              settings:
+                textSize: '8'
+              _template: Heading
+            - content:
+                text_de: >-
+                  Abo-freies Paket für Dich und all deine Ideen: Inkludiert sind
+                  ein gemeinsamer Design Thinking Prozess, technische Umsetzung,
+                  weitgehender Support im Storytelling, sowie Unterstützung über
+                  die Fertigstellung hinaus. Auf Wunsch mit Social Media
+                  Strategie.
+                text_en: >-
+                  A subscription-free package for you and all your ideas:
+                  Includes a collaborative design thinking process, technical
+                  implementation, extensive storytelling support, and assistance
+                  beyond completion. Social media strategy available on request.
+              settings:
+                marginX: ''
+                marginY: '2'
+              _template: Text
+            - link: 'mailto:afocke@pm.me'
+              content:
+                text_de: Buchen
+                text_en: Book
+              settings:
+                variant: outline
+              _template: Button
+        - blocks:
+            - content:
+                text_de: "Paket \"Bytes only\" \U0001F9D1‍\U0001F4BB"
+                text_en: "Package \"Bytes only\" \U0001F9D1‍\U0001F4BB"
+              settings:
+                textSize: '8'
+              _template: Heading
+            - content:
+                text_de: >-
+                  Du kommst mit einem fertigen Design und brauchst eine spitzen
+                  technische Umsetzung, die dich digital erhebt? Ich habe das
+                  Know-How und die passende Technologie, samt intuitiver
+                  CMS-Oberfläche und Tech-Stack auf Basis modernster
+                  Web-Technologie.
+                text_en: >-
+                  Do you have a finished design and need top-notch technical
+                  implementation that will elevate you digitally? I have the
+                  expertise and the right technology, including an intuitive CMS
+                  interface and tech stack based on state-of-the-art web
+                  technology.
+              settings:
+                marginY: '2'
+              _template: Text
+            - link: 'mailto:afocke@pm.me'
+              content:
+                text_de: Buchen
+                text_en: Book
+              settings:
+                variant: outline
+              _template: Button
+        - blocks:
+            - content:
+                text_de: "Paket \"Shanti\" \U0001F9D8‍♂️"
+                text_en: "Package \"Shanti\" \U0001F9D8‍♂️"
+              settings:
+                textSize: '8'
+              _template: Heading
+            - content:
+                text_de: >-
+                  Du hast einen Cause, den die Welt braucht und begrenzte
+                  finanzielle Ressourcen? Für ausgewählte Ideen biete ich meine
+                  Dienste unter speziellen Konditionen an. Wie Dorothea Neff
+                  sagte: "Geld ist ein Mittel, aber das Wachstum der Seele ist
+                  unbezahlbar".
+                text_en: >-
+                  Do you have a cause that the world needs and limited financial
+                  resources? I offer my services under special conditions for
+                  selected ideas. As Dorothea Neff said, ‘Money is a means, but
+                  the growth of the soul is priceless.’
+              settings:
+                marginY: '2'
+              _template: Text
+            - link: 'mailto:afocke@pm.me'
+              content:
+                text_de: Bewerben
+                text_en: Apply
+              settings:
+                variant: outline
+              _template: Button
+        - blocks:
+            - content:
+                text_de: "Paket \"OM la la\" \U0001F549"
+                text_en: "Package \"OM la la\" \U0001F549"
+              settings:
+                textSize: '8'
+              _template: Heading
+            - content:
+                text_de: >-
+                  Ich biete 1:1 Yoga-Sessions, sowie klassische Massage an. Yoga
+                  ist ein integraler Teil meines Lebens. Mein Auftrag ist,
+                  Menschen zu stärken, egal ob digital oder durch Yoga, denn ein
+                  klarer Geist hilft Dir auch in deinem Cause. Bis bald auf der
+                  Matte.
+                text_en: >-
+                  I offer one-to-one yoga sessions and classic massage. Yoga is
+                  an integral part of my life. My mission is to empower people,
+                  whether digitally or through yoga, because a clear mind also
+                  helps you in your cause. See you soon on the mat.
+              settings:
+                marginY: '2'
+              _template: Text
+            - link: 'mailto:afocke@pm.me'
+              content:
+                text_de: Bewerben
+                text_en: Apply
+              settings:
+                variant: outline
+              _template: Button
+    settings:
+      hasContainer: true
+      gap: '4'
+      paddingX: '5'
+    _template: Grid
 ---
 
