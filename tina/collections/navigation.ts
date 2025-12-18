@@ -1,12 +1,10 @@
-import { TextField, type Collection } from "tinacms";
+import { type Collection } from "tinacms";
 import {
-  LinkField,
   MarginXField,
   MarginYField,
   PaddingXField,
   PaddingYField,
 } from "../templating/granular-fields";
-import { createIntlField } from "../templating/special-fields";
 import TextTemplate from "../../components/Text/TextTemplate";
 
 export default {

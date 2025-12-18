@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import project from "../../project";
 import client from "../../tina/__generated__/client";
 import type { Page } from "../../tina/__generated__/types";
 import type { GenerateMetadataProps } from "../../tina/types";

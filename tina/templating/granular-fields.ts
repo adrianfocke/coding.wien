@@ -1,5 +1,4 @@
 import type { Template } from "tinacms";
-import TextTemplate from "../../components/Text/TextTemplate";
 
 const radixUnitsPositive = [
   "1",

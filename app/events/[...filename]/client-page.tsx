@@ -3,12 +3,10 @@ import { useTina } from "tinacms/dist/react";
 import "../../../styles/main.css";
 import type {
   EventAndNavigationQuery,
-  EventQuery,
 } from "../../../tina/__generated__/types";
 import components from "../../../tina/components";
 import { LanguageContext } from "../../../utils/context/language";
 import Navigation from "../../../components/Navigation/Navigation";
-import Footer from "../../../components/Footer/Footer";
 
 type ClientPageProps = {
   query: string;

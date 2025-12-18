@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const useSlideshow = (slideshowSettings?: {
   numberOfSlides?: number;
@@ -7,6 +7,7 @@ export const useSlideshow = (slideshowSettings?: {
 }) => {
   const slideshow = useRef<HTMLElement>(null);
   const activeSlideRef = useRef<number>(1);
+  const [activeSlide, setActiveSlide] = useState<number>(1);
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const scrollToSlide = (number: number) => {
@@ -16,6 +17,7 @@ export const useSlideshow = (slideshowSettings?: {
     const slideWidth = slideshow.current.offsetWidth / numberOfSlidesShown;
 
     activeSlideRef.current = number;
+    setActiveSlide(number);
     slideshow.current.scroll({
       left: slideWidth * number - slideWidth,
       behavior: "smooth",
@@ -52,6 +54,8 @@ export const useSlideshow = (slideshowSettings?: {
   return {
     slideshow,
     scrollToSlide,
+    activeSlideRef,
+    activeSlide,
   };
 };
 

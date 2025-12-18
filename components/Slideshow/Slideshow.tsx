@@ -1,7 +1,6 @@
 import { Box, Flex } from "@radix-ui/themes";
 import type { PageBlocksSlideshow } from "../../tina/__generated__/types";
 import type { Ref } from "react";
-import styles from "./Slideshow.module.css";
 import useSlideshow from "./hook";
 import { renderBlocks } from "../../tina/templating/utils";
 import useBreakpoint from "../../utils/hook/useBreakpoint";
@@ -16,11 +15,13 @@ export default function Component(props: PageBlocksSlideshow) {
     "numberOfSlidesShown"
   );
 
-  const { slideshow } = useSlideshow({
+  const { slideshow, scrollToSlide, activeSlide } = useSlideshow({
     numberOfSlides: props.content?.blocks?.length,
     numberOfSlidesShown: props.settings?.[numberOfSlidesShown] ?? 1,
     nextSlideTimeout: Number((props.settings as any)?.nextSlideTimeout) || null,
   });
+
+  console.log("activeSlide", activeSlide);
 
   const { edit } = useEditState();
 
@@ -33,7 +34,6 @@ export default function Component(props: PageBlocksSlideshow) {
     >
       {edit && <EditHelper {...props} />}
       <Flex
-        className={styles.slideContainer}
         overflowX="auto"
         overflowY="hidden"
         wrap="nowrap"
@@ -55,6 +55,45 @@ export default function Component(props: PageBlocksSlideshow) {
           </Box>
         ))}
       </Flex>
+
+      {props.settings?.hasControls && (
+        <Box
+          p={"2"}
+          mt={"-8"}
+          mb={"0"}
+          position={"absolute"}
+          left={"50%"}
+          style={{
+            zIndex: 2,
+            borderRadius: "9999px",
+            transform: "translateX(-50%)",
+            backgroundColor: "var(--gray-a1)",
+          }}
+        >
+          <Flex>
+            {props.content?.blocks?.map((block, index) => {
+              return (
+                <Box
+                  onClick={() => {
+                    scrollToSlide(index + 1);
+                  }}
+                  key={index}
+                  mx={"1"}
+                  style={{
+                    width: 12,
+                    height: 12,
+                    borderRadius: "9999px",
+                    backgroundColor:
+                      activeSlide === index + 1
+                        ? "var(--accent-1)"
+                        : "var(--gray-12)",
+                  }}
+                />
+              );
+            })}
+          </Flex>
+        </Box>
+      )}
     </Box>
   );
 }
