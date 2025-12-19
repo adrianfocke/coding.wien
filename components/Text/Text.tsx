@@ -6,10 +6,13 @@ import { tinaField } from "tinacms/dist/react";
 import { findIntlValue } from "../../tina/templating/special-fields";
 import Link from "next/link";
 import { colorMap } from "../../tina/templating/granular-fields";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 
 export default function Component(props: PageBlocksText) {
   const language = useContext(LanguageContext);
   const text = findIntlValue(language, "text");
+
+  const isExternalLink = props.link?.startsWith("http");
 
   const content = (
     <Text
@@ -35,7 +38,20 @@ export default function Component(props: PageBlocksText) {
         textAlign: props.settings?.align as any,
       }}
     >
-      {props.link ? <Link href={props.link}>{content}</Link> : content}
+      {props.link ? (
+        <Link
+          style={{
+            borderBottom: isExternalLink ? "1px solid var(--gray-12)" : "none",
+          }}
+          href={props.link}
+          target={isExternalLink ? "_blank" : undefined}
+          rel={isExternalLink ? "noopener noreferrer" : undefined}
+        >
+          {content} {isExternalLink && <ArrowTopRightIcon />}
+        </Link>
+      ) : (
+        content
+      )}
     </Box>
   );
 

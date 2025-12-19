@@ -25,7 +25,15 @@ const radixUnits = [
   "-9",
 ] as const;
 
-export const aspectRatios = ["16/9", "4/3", "1/1", "3/4", "5/1"] as const;
+export const aspectRatios = [
+  "16/9",
+  "4/3",
+  "1/1",
+  "3/4",
+  "5/1",
+  "4/1",
+  "3/1",
+] as const;
 
 export const aspectRatioMap: Record<(typeof aspectRatios)[number], number> = {
   "16/9": 16 / 9,
@@ -33,6 +41,8 @@ export const aspectRatioMap: Record<(typeof aspectRatios)[number], number> = {
   "1/1": 1,
   "3/4": 3 / 4,
   "5/1": 5 / 1,
+  "4/1": 4 / 1,
+  "3/1": 3 / 1,
 };
 
 export const AspectRatioField: Template["fields"][number] = {

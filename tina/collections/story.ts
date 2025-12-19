@@ -5,27 +5,17 @@ import { FilenameField, SEOField } from "../templating/granular-fields";
 import { sanitizeFilenameForURL } from "../templating/validation";
 
 export default {
-  label: "Meine Spaces",
-  name: "space",
-  path: "content/spaces",
+  label: "Stories",
+  name: "story",
+  path: "content/stories",
   format: "json",
   fields: [
     FilenameField,
     ...createIntlField(SEOField),
-    { name: "image", label: "Image", type: "image" },
     {
-      name: "alt",
-      label: "Alt Text",
-      type: "string",
-      description: "Descriptive text for the image",
-    },
-    {
-      name: "aspectRatio",
-      label: "Aspect Ratio",
-      type: "string",
-      ui: {
-        defaultValue: "16/9",
-      },
+      name: "image",
+      label: "Image",
+      type: "image",
     },
     {
       name: "blocks",
@@ -37,7 +27,7 @@ export default {
   ],
   ui: {
     router: ({ document }) => {
-      return `/spaces/${document._sys.filename}`;
+      return `/stories/${document._sys.filename}`;
     },
     filename: {
       readonly: true,

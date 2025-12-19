@@ -4,8 +4,6 @@ import { useContext } from "react";
 import { LanguageContext } from "../../utils/context/language";
 import { languages, type Language } from "../../tina/templating/special-fields";
 import type { FooterQuery } from "../../tina/__generated__/types";
-import { useEditState } from "tinacms/dist/react";
-import EditHelper from "../../tina/templating/EditHelper";
 import Text from "../Text/Text";
 
 const languageLabels: Record<Language, string> = {
@@ -15,7 +13,6 @@ const languageLabels: Record<Language, string> = {
 
 export default function Footer(props: FooterQuery["footer"]) {
   const language = useContext(LanguageContext);
-  const { edit } = useEditState();
 
   const handleLanguageChange = (newLanguage: string) => {
     document.cookie = `language=${newLanguage}; path=/; max-age=${
@@ -25,39 +22,36 @@ export default function Footer(props: FooterQuery["footer"]) {
   };
 
   return (
-    <>
-      {edit && <EditHelper {...props} />}
-      <Box
-        style={{ borderTop: "1px solid var(--gray-6)" }}
-        mx={props.settings?.marginX ?? "0"}
-        mt={props.settings?.marginY ?? "0"}
-        px={props.settings?.paddingX ?? "0"}
-        py={props.settings?.paddingY ?? "0"}
-      >
-        <Flex justify={"between"} align={"center"}>
-          <Flex gap={"4"} direction={"row"} display={"flex"}>
-            {props.links?.map((link, index) => {
-              return (
-                <Text
-                  key={index}
-                  {...(link as any)}
-                  style={{ background: "red", width: "20px" }}
-                />
-              );
-            })}
-          </Flex>
-          <Select.Root value={language} onValueChange={handleLanguageChange}>
-            <Select.Trigger aria-label="Select language" />
-            <Select.Content>
-              {languages.map((lang) => (
-                <Select.Item key={lang} value={lang}>
-                  {languageLabels[lang]}
-                </Select.Item>
-              ))}
-            </Select.Content>
-          </Select.Root>
+    <Box
+      style={{ borderTop: "1px solid var(--gray-6)" }}
+      mx={props.settings?.marginX ?? "0"}
+      mt={props.settings?.marginY ?? "0"}
+      px={props.settings?.paddingX ?? "0"}
+      py={props.settings?.paddingY ?? "0"}
+    >
+      <Flex justify={"between"} align={"center"}>
+        <Flex gap={"4"} direction={"row"} display={"flex"}>
+          {props.links?.map((link, index) => {
+            return (
+              <Text
+                key={index}
+                {...(link as any)}
+                style={{ background: "red", width: "20px" }}
+              />
+            );
+          })}
         </Flex>
-      </Box>
-    </>
+        <Select.Root value={language} onValueChange={handleLanguageChange}>
+          <Select.Trigger aria-label="Select language" />
+          <Select.Content>
+            {languages.map((lang) => (
+              <Select.Item key={lang} value={lang}>
+                {languageLabels[lang]}
+              </Select.Item>
+            ))}
+          </Select.Content>
+        </Select.Root>
+      </Flex>
+    </Box>
   );
 }

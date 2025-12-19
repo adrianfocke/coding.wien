@@ -12,7 +12,9 @@ export default function Component(props: PageBlocksHeading) {
 
   const content = (
     <Heading
-      className={props.settings?.font as any}
+      className={
+        (props.settings?.font as any) ? (props.settings?.font as any) : "serif"
+      }
       data-tina-field={tinaField(props.content ?? props)}
       align={(props.settings?.align as any) ?? "left"}
       size={(props.settings?.textSize as any) ?? "9"}

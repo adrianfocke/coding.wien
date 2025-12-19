@@ -5,11 +5,11 @@ import { sanitizeFilenameForURL } from "../../tina/templating/validation";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = (
-    await client.queries.eventConnection()
-  ).data.eventConnection.edges?.map((page) => page);
+    await client.queries.storyConnection()
+  ).data.storyConnection.edges?.map((page) => page);
 
   return pages!.map((page) => ({
-    url: `https://www.${project.url}/events/${sanitizeFilenameForURL(
+    url: `https://www.${project.url}/stories/${sanitizeFilenameForURL(
       page!.node!.name
     )}`,
     lastModified: new Date(),

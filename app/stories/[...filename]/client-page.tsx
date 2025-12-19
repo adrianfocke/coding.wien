@@ -1,20 +1,20 @@
 "use client";
 import { useTina } from "tinacms/dist/react";
 import "../../../styles/main.css";
-import type {
-  EventAndNavigationQuery,
-} from "../../../tina/__generated__/types";
-import components from "../../../tina/components";
+import type { StoryAndNavigationQuery } from "../../../tina/__generated__/types";
 import { LanguageContext } from "../../../utils/context/language";
 import Navigation from "../../../components/Navigation/Navigation";
+import type { Language } from "../../../tina/templating/special-fields";
+import Footer from "../../../components/Footer/Footer";
+import { renderBlocks } from "../../../tina/templating/utils";
 
 type ClientPageProps = {
   query: string;
   variables: {
     relativePath: string;
   };
-  data: EventAndNavigationQuery;
-  language: string;
+  data: StoryAndNavigationQuery;
+  language: Language;
 };
 
 export default function ClientPage(props: ClientPageProps) {
@@ -27,26 +27,12 @@ export default function ClientPage(props: ClientPageProps) {
 
   return (
     <div data-testid="client-page">
-      {/*@ts-expect-error*/}
       <LanguageContext.Provider value={props.language}>
-        <Navigation {...data.navigation?.[props.language]} />
-
-        {data.event.blocks?.map((block, i) => {
-          if (!block?.__typename) return null;
-
-          const componentName = block.__typename.replace("EventBlocks", "");
-          const Component = (components as any)[componentName];
-
-          if (!Component) return null;
-
-          return (
-            <Component
-              key={i}
-              {...block[props.language]}
-              {...(block as any).settings}
-            />
-          );
+        <Navigation {...data.navigation} />
+        {data.story.blocks?.map((block, i) => {
+          return renderBlocks(block, i);
         })}
+        <Footer {...data.footer} />
       </LanguageContext.Provider>
     </div>
   );
