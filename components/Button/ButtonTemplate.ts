@@ -10,6 +10,7 @@ import {
   LinkField,
   RadiusField,
   TextColorField,
+  ExtraMarginBottomField,
 } from "../../tina/templating/granular-fields";
 
 export default {
@@ -50,6 +51,7 @@ export default {
         AlignField,
         MarginXField,
         MarginYField,
+        ExtraMarginBottomField,
         PaddingXField,
         PaddingYField,
       ],

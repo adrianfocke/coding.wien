@@ -2,6 +2,7 @@ import type { Template } from "tinacms";
 import ImageTemplate from "../Image/ImageTemplate";
 import {
   ColumnsField,
+  ExtraMarginBottomField,
   GapField,
   HasContainerField,
   MarginXField,
@@ -13,6 +14,7 @@ import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
 import ButtonTemplate from "../Button/ButtonTemplate";
 import { createResponsiveField } from "../../tina/templating/special-fields";
+import SlideshowTemplate from "../Slideshow/SlideshowTemplate";
 
 export default {
   name: "Grid",
@@ -38,6 +40,7 @@ export default {
                 ButtonTemplate,
                 HeadingTemplate,
                 ImageTemplate,
+                SlideshowTemplate,
                 TextTemplate,
               ],
             },
@@ -55,6 +58,7 @@ export default {
         ...createResponsiveField(ColumnsField),
         MarginXField,
         MarginYField,
+        ExtraMarginBottomField,
         PaddingXField,
         PaddingYField,
       ],

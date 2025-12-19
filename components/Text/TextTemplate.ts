@@ -11,6 +11,7 @@ import {
   HasContainerField,
   FontField,
   TextColorField,
+  ExtraMarginBottomField,
 } from "../../tina/templating/granular-fields";
 
 export default {
@@ -43,6 +44,7 @@ export default {
         FontField,
         MarginXField,
         MarginYField,
+        ExtraMarginBottomField,
         PaddingXField,
         PaddingYField,
       ],

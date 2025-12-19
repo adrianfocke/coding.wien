@@ -8,6 +8,7 @@ import {
   PaddingYField,
   LinkField,
   BlocksPositionField,
+  ExtraMarginBottomField,
 } from "../../tina/templating/granular-fields";
 import HeadingTemplate from "../Heading/HeadingTemplate";
 import TextTemplate from "../Text/TextTemplate";
@@ -54,6 +55,7 @@ export default {
         AlignField,
         MarginXField,
         MarginYField,
+        ExtraMarginBottomField,
         PaddingXField,
         PaddingYField,
         BlocksPositionField,

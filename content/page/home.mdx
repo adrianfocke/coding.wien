@@ -53,8 +53,11 @@ blocks:
         or on my yoga mat.
     settings:
       hasContainer: true
+      textSize: '6'
+      marginY: '5'
+      marginBottom: '6'
       paddingX: '4'
-      paddingY: '4'
+      paddingY: ''
     _template: Text
   - content:
       text_de: >-
@@ -81,146 +84,179 @@ blocks:
         for coding.
     settings:
       hasContainer: true
+      textSize: '6'
+      marginBottom: '7'
       paddingX: '4'
+      paddingY: ''
     _template: Text
   - content:
-      text_de: 'Meine Mission:'
-      text_en: 'My Mission:'
+      items:
+        - blocks:
+            - content:
+                text_de: 'Meine Mission:'
+                text_en: 'My Mission:'
+              settings:
+                hasContainer: false
+                font: serif
+                marginBottom: '4'
+                paddingY: ''
+              _template: Heading
+            - content:
+                blocks:
+                  - content:
+                      text_de: >-
+                        Leisen Stimmen Gehör geben, verstehenwollen, ehrlich
+                        sein, reisen, Räume halten, Privilegien sehen und
+                        hinterfragen, Männer* in ihre Sanftheit bringen,
+                        Yogi:nis unterstützen, Dir den Rücken stärken.
+                      text_en: >-
+                        Listening to quiet voices, wanting to understand, being
+                        honest, travelling, holding spaces, seeing and
+                        questioning privileges, bringing men* into their
+                        gentleness, supporting yogis, strengthening your back.
+                    settings:
+                      textSize: '8'
+                      font: serif
+                      paddingX: '4'
+                      paddingY: '4'
+                    _template: Text
+              settings:
+                aspectRatio_initial: 3/4
+                aspectRatio_md: 1/1
+              _template: Image
+        - blocks:
+            - content:
+                text_de: 'Stories that I tell:'
+                text_en: 'Stories that I tell:'
+              settings:
+                font: serif
+                marginBottom: '4'
+                paddingY: ''
+              _template: Heading
+            - content:
+                blocks:
+                  - content:
+                      image: /uploads/coco.png
+                      blocks:
+                        - content:
+                            text_de: Om Shanti Webseite
+                            text_en: Om Shanti Website
+                          settings:
+                            align: center
+                            textColor: white
+                            font: serif
+                          _template: Heading
+                        - content:
+                            text_de: >-
+                              Trust the Journey: Eine maßgeschneiderte Seite für
+                              Coco.
+                            text_en: 'Trust the Journey: A tailored website for Coco.'
+                          settings:
+                            align: center
+                            textColor: white
+                            paddingY: '2'
+                          _template: Text
+                        - link: /stories/coco
+                          content:
+                            text_de: Zu ihrer Story
+                            text_en: See her story
+                          settings:
+                            variant: surface
+                            align: center
+                          _template: Button
+                    settings:
+                      aspectRatio_initial: 3/4
+                      aspectRatio_md: 1/1
+                      align: ''
+                      blocksPosition: center
+                    _template: Image
+                  - content:
+                      image: /uploads/hanna-min.png
+                      blocks:
+                        - content:
+                            text_de: 'Atme ein, atme aus'
+                            text_en: 'Breathe in, breathe out'
+                          settings:
+                            align: center
+                            textColor: white
+                            font: serif
+                          _template: Heading
+                        - content:
+                            text_de: Hanna startet durch mit ihrer neuen Webseite.
+                            text_en: Hanna is taking off with her new website.
+                          settings:
+                            align: center
+                            textColor: white
+                            paddingY: '2'
+                          _template: Text
+                        - link: /stories/hanna
+                          content:
+                            text_de: Zu ihrer Story
+                            text_en: See her story
+                          settings:
+                            variant: surface
+                            align: center
+                          _template: Button
+                    settings:
+                      aspectRatio_initial: 3/4
+                      aspectRatio_md: 1/1
+                      blocksPosition: center
+                    _template: Image
+                  - content:
+                      image: /uploads/valerie.jpg
+                      blocks:
+                        - content:
+                            text_de: Vorhang auf!
+                            text_en: Curtain up!
+                          settings:
+                            align: center
+                            textColor: white
+                            font: serif
+                          _template: Heading
+                        - content:
+                            text_de: >-
+                              Die Webseite von Valerie Voigt zeigt sich in ganz
+                              neuem Glanz.
+                            text_en: >-
+                              Valerie Voigt's website has been given a complete
+                              makeover.
+                          settings:
+                            align: center
+                            textColor: white
+                            paddingY: '2'
+                          _template: Text
+                        - link: /stories/valerie
+                          content:
+                            text_de: Zu ihrer Story
+                            text_en: See her story
+                          settings:
+                            variant: surface
+                            align: center
+                          _template: Button
+                    settings:
+                      aspectRatio_initial: 3/4
+                      aspectRatio_md: 1/1
+                      blocksPosition: center
+                    _template: Image
+              settings:
+                hasControls: true
+              _template: Slideshow
     settings:
-      hasContainer: true
-      font: serif
-      paddingX: '4'
-      paddingY: '5'
-    _template: Heading
-  - content:
-      blocks:
-        - content:
-            text_de: >-
-              Leisen Stimmen Gehör geben, verstehenwollen, ehrlich sein, reisen,
-              Räume halten, Privilegien sehen und hinterfragen, Männer* in ihre
-              Sanftheit bringen, Yogi:nis unterstützen, Dir den Rücken stärken.
-            text_en: >-
-              Listening to quiet voices, wanting to understand, being honest,
-              travelling, holding spaces, seeing and questioning privileges,
-              bringing men* into their gentleness, supporting yogis, supporting
-              you.
-          settings:
-            textSize: '9'
-            font: serif
-            paddingX: '4'
-            paddingY: '4'
-          _template: Text
-    settings:
-      aspectRatio_initial: 3/4
-      aspectRatio_md: 16/9
-    _template: Image
-  - content:
-      text_de: 'Stories that I tell:'
-      text_en: 'Stories that I tell:'
-    settings:
-      hasContainer: true
-      font: serif
-      paddingX: '4'
-      paddingY: '5'
-    _template: Heading
-  - content:
-      text_de: >-
-        Geschichten zu erzählen macht Spaß, denn: Kommunikation ist dann gut,
-        wenn Mensch sie fühlt. Manchmal erzähle ich Geschichten in digitalen
-        Formaten. Hier sind ein paar Beispiele.
-      text_en: >-
-        Telling stories is fun because communication is effective when people
-        can relate to it. Sometimes I tell stories in digital formats. Here are
-        a few examples.
-    settings:
-      hasContainer: true
-      paddingX: '4'
-    _template: Text
-  - content:
-      blocks:
-        - content:
-            image: /uploads/coco.jpg
-            blocks:
-              - content:
-                  text_de: Om Shanti Webseite
-                  text_en: Om Shanti Website
-                settings:
-                  hasContainer: false
-                  align: center
-                  textColor: white
-                  font: serif
-                  paddingX: '4'
-                  paddingY: '4'
-                _template: Heading
-              - content:
-                  text_de: >-
-                    Trust the Journey: Eine maßgeschneiderte Seite für Yoga mit
-                    Coco.
-                  text_en: 'Trust the Journey: A tailored website for Yoga mit Coco.'
-                settings:
-                  align: center
-                  textColor: white
-                  paddingX: '4'
-                _template: Text
-              - link: /stories/coco
-                content:
-                  text_de: Zu ihrer Story
-                  text_en: See her story
-                settings:
-                  radius: full
-                  align: center
-                  paddingX: ''
-                  paddingY: '4'
-                _template: Button
-          settings:
-            aspectRatio_initial: 3/4
-            aspectRatio_md: 16/9
-            blocksPosition: center
-          _template: Image
-        - content:
-            image: /uploads/hanna.jpg
-            blocks:
-              - content:
-                  text_de: 'Atme ein, atme aus'
-                  text_en: 'Breathe in, breathe out'
-                settings:
-                  align: center
-                  textColor: white
-                  font: serif
-                _template: Heading
-              - content:
-                  text_de: Hanna startet durch mit ihrer neuen Webseite.
-                  text_en: Hanna is taking off with her new website.
-                settings:
-                  align: center
-                  textColor: white
-                  paddingY: '4'
-                _template: Text
-              - link: /stories/hannah
-                content:
-                  text_de: Zu ihrer Story
-                  text_en: See her story
-                settings:
-                  align: center
-                _template: Button
-          settings:
-            aspectRatio_initial: 3/4
-            aspectRatio_md: 16/9
-            blocksPosition: center
-          _template: Image
-    settings:
-      nextSlideTimeout: ''
-      hasControls: true
-      paddingY: '5'
-    _template: Slideshow
+      gap: '6'
+      columns_initial: '1'
+      marginY: ''
+      marginBottom: '7'
+      paddingX: ''
+    _template: Grid
   - content:
       text_de: 'Meine Pakete:'
       text_en: 'My packages:'
     settings:
       hasContainer: true
       font: serif
+      marginBottom: '4'
       paddingX: '4'
-      paddingY: '4'
+      paddingY: ''
     _template: Heading
   - content:
       items:
@@ -229,23 +265,24 @@ blocks:
                 text_de: Paket "Volle Freiheit" ✨
                 text_en: Package "Freedom" ✨
               settings:
-                textSize: '8'
+                textSize: '7'
+                marginBottom: ''
               _template: Heading
             - content:
                 text_de: >-
-                  Abo-freies Paket für Dich und all deine Ideen: Inkludiert sind
-                  ein gemeinsamer Design Thinking Prozess, technische Umsetzung,
-                  weitgehender Support im Storytelling, sowie Unterstützung über
-                  die Fertigstellung hinaus. Auf Wunsch mit Social Media
-                  Strategie.
+                  Abo-freies Paket für Dich und all deine Ideen: samt
+                  gemeinsamen Design Thinking Prozess, technische Umsetzung,
+                  Support im Storytelling, sowie Unterstützung über die
+                  Fertigstellung hinaus. Optional mit Social Media Strategie.
                 text_en: >-
                   A subscription-free package for you and all your ideas:
                   Includes a collaborative design thinking process, technical
                   implementation, extensive storytelling support, and assistance
                   beyond completion. Social media strategy available on request.
               settings:
+                textSize: '6'
                 marginX: ''
-                marginY: '2'
+                marginY: '4'
               _template: Text
             - link: 'mailto:afocke@pm.me'
               content:
@@ -253,13 +290,15 @@ blocks:
                 text_en: Book
               settings:
                 variant: outline
+                textSize: '3'
+                marginY: '3'
               _template: Button
         - blocks:
             - content:
                 text_de: "Paket \"Bytes only\" \U0001F9D1‍\U0001F4BB"
                 text_en: "Package \"Bytes only\" \U0001F9D1‍\U0001F4BB"
               settings:
-                textSize: '8'
+                textSize: '7'
               _template: Heading
             - content:
                 text_de: >-
@@ -275,7 +314,9 @@ blocks:
                   interface and tech stack based on state-of-the-art web
                   technology.
               settings:
-                marginY: '2'
+                textSize: '6'
+                marginY: '4'
+                marginBottom: '0'
               _template: Text
             - link: 'mailto:afocke@pm.me'
               content:
@@ -283,20 +324,22 @@ blocks:
                 text_en: Book
               settings:
                 variant: outline
+                textSize: '3'
+                marginY: '3'
               _template: Button
         - blocks:
             - content:
                 text_de: "Paket \"Shanti\" \U0001F9D8‍♂️"
                 text_en: "Package \"Shanti\" \U0001F9D8‍♂️"
               settings:
-                textSize: '8'
+                textSize: '7'
               _template: Heading
             - content:
                 text_de: >-
                   Du hast einen Cause, den die Welt braucht und begrenzte
-                  finanzielle Ressourcen? Für ausgewählte Ideen biete ich meine
-                  Dienste unter speziellen Konditionen an. Wie Dorothea Neff
-                  sagte: "Geld ist ein Mittel, aber das Wachstum der Seele ist
+                  finanzielle Ressourcen? Für ausgewählte Ideen arbeite ich
+                  unter speziellen Konditionen an. Wie Dorothea Neff sagte:
+                  "Geld ist ein Mittel, aber das Wachstum der Seele ist
                   unbezahlbar".
                 text_en: >-
                   Do you have a cause that the world needs and limited financial
@@ -304,7 +347,8 @@ blocks:
                   selected ideas. As Dorothea Neff said, ‘Money is a means, but
                   the growth of the soul is priceless.’
               settings:
-                marginY: '2'
+                textSize: '6'
+                marginY: '4'
               _template: Text
             - link: 'mailto:afocke@pm.me'
               content:
@@ -312,13 +356,15 @@ blocks:
                 text_en: Apply
               settings:
                 variant: outline
+                textSize: '3'
+                marginY: '3'
               _template: Button
         - blocks:
             - content:
                 text_de: "Paket \"OM la la\" \U0001F549"
                 text_en: "Package \"OM la la\" \U0001F549"
               settings:
-                textSize: '8'
+                textSize: '7'
               _template: Heading
             - content:
                 text_de: >-
@@ -333,7 +379,8 @@ blocks:
                   whether digitally or through yoga, because a clear mind also
                   helps you in your cause. See you soon on the mat.
               settings:
-                marginY: '2'
+                textSize: '6'
+                marginY: '4'
               _template: Text
             - link: 'mailto:afocke@pm.me'
               content:
@@ -341,10 +388,12 @@ blocks:
                 text_en: Apply
               settings:
                 variant: outline
+                textSize: '3'
+                marginY: '3'
               _template: Button
     settings:
       hasContainer: true
-      gap: '4'
+      gap: '6'
       paddingX: '4'
     _template: Grid
 ---

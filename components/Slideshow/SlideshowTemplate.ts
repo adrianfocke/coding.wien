@@ -1,6 +1,7 @@
 import type { Template } from "tinacms";
 import ImageTemplate from "../Image/ImageTemplate";
 import {
+  ExtraMarginBottomField,
   MarginXField,
   MarginYField,
   PaddingXField,
@@ -57,6 +58,7 @@ export default {
         { name: "hasControls", label: "Show Controls", type: "boolean" },
         MarginXField,
         MarginYField,
+        ExtraMarginBottomField,
         PaddingXField,
         PaddingYField,
       ],

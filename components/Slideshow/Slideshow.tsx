@@ -6,7 +6,6 @@ import { renderBlocks } from "../../tina/templating/utils";
 import useBreakpoint from "../../utils/hook/useBreakpoint";
 import { findBreakpointValue } from "../../tina/templating/special-fields";
 import { useEditState } from "tinacms/dist/react";
-import EditHelper from "../../tina/templating/EditHelper";
 
 export default function Component(props: PageBlocksSlideshow) {
   const breakpoint = useBreakpoint();
@@ -21,18 +20,18 @@ export default function Component(props: PageBlocksSlideshow) {
     nextSlideTimeout: Number((props.settings as any)?.nextSlideTimeout) || null,
   });
 
-  console.log("activeSlide", activeSlide);
-
   const { edit } = useEditState();
 
   return (
     <Box
       mx={props.settings?.marginX ?? "0"}
       my={props.settings?.marginY ?? "0"}
+      mb={props.settings?.marginBottom ?? "inherit"}
       px={props.settings?.paddingX ?? "0"}
       py={props.settings?.paddingY ?? "0"}
+      position={"relative"}
     >
-      {edit && <EditHelper {...props} />}
+      {/* {edit && <EditHelper {...props} />} */}
       <Flex
         overflowX="auto"
         overflowY="hidden"
@@ -80,8 +79,8 @@ export default function Component(props: PageBlocksSlideshow) {
                   key={index}
                   mx={"1"}
                   style={{
-                    width: 12,
-                    height: 12,
+                    width: 16,
+                    height: 16,
                     borderRadius: "9999px",
                     backgroundColor:
                       activeSlide === index + 1

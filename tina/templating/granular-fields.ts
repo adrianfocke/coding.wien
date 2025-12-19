@@ -56,6 +56,13 @@ export const MarginXField: Template["fields"][number] = {
   options: [...radixUnits],
 };
 
+export const ExtraMarginBottomField: Template["fields"][number] = {
+  name: "marginBottom",
+  label: "Alternating Bottom Margin Size",
+  type: "string",
+  options: [...radixUnits],
+};
+
 export const MarginYField: Template["fields"][number] = {
   name: "marginY",
   label: "Vertical Margin Size",

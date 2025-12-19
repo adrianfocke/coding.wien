@@ -29,6 +29,7 @@ export default function Component(props: PageBlocksGrid) {
     <Box
       mx={props.settings?.marginX ?? "0"}
       my={props.settings?.marginY ?? "0"}
+      mb={props.settings?.marginBottom ?? "inherit"}
       px={props.settings?.paddingX ?? "0"}
       py={props.settings?.paddingY ?? "0"}
     >

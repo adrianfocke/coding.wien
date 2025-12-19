@@ -3,11 +3,17 @@ import components from "../components";
 export const findComponentByTypeName = (typeName: string) => {
   console.log("typeName", typeName);
   // TODO: remove special case and support PageBlocksSlideshow
-  if (typeName === "PageBlocksSlideshow") return "Slideshow";
+  if (
+    typeName === "PageBlocksSlideshow" ||
+    typeName === "PageBlocksGridContentItemsBlocksSlideshow"
+  )
+    return "Slideshow";
   if (
     typeName === "PageBlocksButton" ||
     typeName === "PageBlocksGridContentItemsBlocksButton" ||
-    typeName === "PageBlocksSlideshowContentBlocksImageContentBlocksButton"
+    typeName === "PageBlocksSlideshowContentBlocksImageContentBlocksButton" ||
+    typeName ===
+      "PageBlocksGridContentItemsBlocksSlideshowContentBlocksImageContentBlocksButton"
   )
     return "Button";
   if (typeName === "Footer") return "Footer";
