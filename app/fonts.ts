@@ -1,18 +1,4 @@
-import { Raleway as Sans } from "next/font/google";
-// import localFont from "next/font/local";
-
-export const serif = Sans({
-  weight: "400",
-  style: ["normal"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-serif",
-});
-
-// export const serif = localFont({
-//   src: "./Safira.woff2",
-//   variable: "--font-serif",
-// });
+import { Inter as Sans, Instrument_Serif as Serif } from "next/font/google";
 
 export const sans = Sans({
   weight: "variable",
@@ -20,4 +6,11 @@ export const sans = Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sans",
+});
+
+export const serif = Serif({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
 });

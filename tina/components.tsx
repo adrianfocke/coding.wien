@@ -1,30 +1,37 @@
-import { Text as RadixText, Heading as RadixHeading } from "@radix-ui/themes";
 import type { Components } from "tinacms/dist/rich-text";
-import Slideshow from "../components/Slideshow/Slideshow";
+import Button from "../components/Button/Button";
+import ButtonTemplate from "../components/Button/ButtonTemplate";
 import Form from "../components/Form/Form";
 import Grid from "../components/Grid/Grid";
-import Heading from "../components/Heading/Heading";
-import Image from "../components/Image/Image";
-import HeadingTemplate from "../components/Heading/HeadingTemplate";
-import ImageTemplate from "../components/Image/ImageTemplate";
-import TextTemplate from "../components/Text/TextTemplate";
-import Text from "../components/Text/Text";
 import GridTemplate from "../components/Grid/GridTemplate";
+import Heading from "../components/Heading/Heading";
+import HeadingTemplate from "../components/Heading/HeadingTemplate";
+import Image from "../components/Image/Image";
+import ImageTemplate from "../components/Image/ImageTemplate";
+import Slideshow from "../components/Slideshow/Slideshow";
 import SlideshowTemplate from "../components/Slideshow/SlideshowTemplate";
-import FormTemplate from "../components/Form/FormTemplate";
-import Link from "next/link";
+import Text from "../components/Text/Text";
+import TextTemplate from "../components/Text/TextTemplate";
+import CallToActionTemplate from "../components/CallToAction/CallToActionTemplate";
+import CallToAction from "../components/CallToAction/CallToAction";
 
 export const templates = [
-  HeadingTemplate("forBlockRendering"),
-  ImageTemplate("forBlockRendering"),
-  SlideshowTemplate("forBlockRendering"),
-  FormTemplate("forBlockRendering"),
+  ButtonTemplate,
+  CallToActionTemplate,
   GridTemplate,
+  HeadingTemplate,
+  ImageTemplate,
+  SlideshowTemplate,
   TextTemplate,
 ];
 
 export default {
-  /* Custom components */
+  Button: (props: any) => {
+    return <Button {...props} />;
+  },
+  CallToAction: (props: any) => {
+    return <CallToAction {...props} />;
+  },
   Form: (props: any) => {
     return <Form {...props} />;
   },
@@ -37,98 +44,10 @@ export default {
   Image: (props: any) => {
     return <Image {...props} />;
   },
-  Text: (props: any) => {
-    return <Text {...props} />;
-  },
   Slideshow: (props: any) => {
     return <Slideshow {...props} />;
   },
-  /* Standard components */
-  p(props) {
-    return (
-      <RadixText
-        size={{ initial: "4", md: "5" }}
-        style={{ fontFamily: "var(--font-sans)" }}
-      >
-        {props?.children}
-      </RadixText>
-    );
-  },
-  span(props) {
-    return (
-      <RadixText
-        size={{ initial: "4", md: "5" }}
-        style={{ fontFamily: "var(--font-sans)" }}
-      >
-        {props?.children}
-      </RadixText>
-    );
-  },
-  a(props) {
-    return (
-      <RadixText
-        size={{ initial: "4", md: "5" }}
-        style={{ fontFamily: "var(--font-sans)" }}
-      >
-        <Link href={props?.url!}>{props?.children}</Link>
-      </RadixText>
-    );
-  },
-  img(props) {
-    return (
-      <Image
-        // TODO
-        //@ts-ignore
-        src={props?.url ?? "/404"}
-        alt={props?.alt ?? "Image"}
-        height={400}
-        width={200}
-      />
-    );
-  },
-  /* Standard components that are replaced with custom ones and should not render */
-  h1(props) {
-    return (
-      <RadixHeading
-        as="h1"
-        {...props}
-        size={{
-          initial: "8",
-          md: "9",
-        }}
-        style={{ fontFamily: "var(--font-serif)" }}
-      />
-    );
-  },
-  h2(props) {
-    return (
-      <RadixHeading
-        as="h2"
-        {...props}
-        size={{
-          initial: "7",
-          md: "8",
-        }}
-        style={{ fontFamily: "var(--font-serif)" }}
-      />
-    );
-  },
-  h3(props) {
-    return (
-      <RadixHeading
-        as="h3"
-        {...props}
-        style={{ fontFamily: "var(--font-serif)" }}
-      />
-    );
-  },
-  h4(props) {
-    return <></>;
-  },
-  h5(props) {
-    return <></>;
-  },
-  h6(props) {
-    return <></>;
+  Text: (props: any) => {
+    return <Text {...props} />;
   },
 } as Components<{}>;

@@ -1,31 +1,42 @@
-import type { Collection, Template } from "tinacms";
-import { wrapWithLanguages } from "../../components/helpers";
-
-const fields: Template["fields"] = [
-  { name: "logo", label: "Logo", type: "string" },
-  {
-    name: "links",
-    label: "Links",
-    type: "object",
-    list: true,
-    fields: [
-      { name: "label", label: "Label", type: "string" },
-      { name: "fallbackHref", label: "URL", type: "string" },
-    ],
-    ui: {
-      itemProps: (item: any) => {
-        const label = item?.label || "Link";
-
-        return { label };
-      },
-    },
-  },
-];
+import { type Collection } from "tinacms";
+import {
+  MarginXField,
+  MarginYField,
+  PaddingXField,
+  PaddingYField,
+} from "../templating/granular-fields";
+import TextTemplate from "../../components/Text/TextTemplate";
 
 export default {
   label: "Navigation Menu",
   name: "navigation",
   path: "content/navigation",
   format: "json",
-  fields: wrapWithLanguages(fields),
+  fields: [
+    {
+      name: "logo",
+      label: "Logo",
+      type: "object",
+      fields: TextTemplate.fields,
+    },
+    {
+      name: "links",
+      label: "Links",
+      type: "object",
+      list: true,
+      fields: TextTemplate.fields,
+    },
+    {
+      name: "settings",
+      label: "Settings",
+      type: "object",
+      fields: [MarginXField, MarginYField, PaddingXField, PaddingYField],
+    },
+  ],
+  ui: {
+    allowedActions: {
+      create: false,
+      delete: false,
+    },
+  },
 } as Collection;

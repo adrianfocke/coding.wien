@@ -8,6 +8,9 @@
 
 body {
   background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* reset */
@@ -22,3 +25,13 @@ a {
   color: var(--gray-12);
   text-decoration: none;
 }
+
+.serif {
+  font-family: var(--font-serif);
+  font-weight: 400 !important;
+}
+
+.sans {
+  font-family: var(--font-sans);
+}
+

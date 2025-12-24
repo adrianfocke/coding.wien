@@ -29,10 +29,7 @@ query pageAndNavigation($relativePath: String!) {
     }
     ...NavigationParts
   }
-}
-
-query spaceAndNavigation($relativePath: String!) {
-  space(relativePath: $relativePath) {
+  footer(relativePath: "footer.json") {
     ... on Document {
       _sys {
         filename
@@ -45,7 +42,25 @@ query spaceAndNavigation($relativePath: String!) {
       }
       id
     }
-    ...SpaceParts
+    ...FooterParts
+  }
+}
+
+query storyAndNavigation($relativePath: String!) {
+  story(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...StoryParts
   }
   navigation(relativePath: "navigation.json") {
     ... on Document {
@@ -62,10 +77,7 @@ query spaceAndNavigation($relativePath: String!) {
     }
     ...NavigationParts
   }
-}
-
-query eventAndNavigation($relativePath: String!) {
-  event(relativePath: $relativePath) {
+  footer(relativePath: "footer.json") {
     ... on Document {
       _sys {
         filename
@@ -78,34 +90,19 @@ query eventAndNavigation($relativePath: String!) {
       }
       id
     }
-    ...EventParts
-  }
-  navigation(relativePath: "navigation.json") {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...NavigationParts
+    ...FooterParts
   }
 }
 
-query spaceAndNavConnection(
+query storyAndNavConnection(
   $before: String
   $after: String
   $first: Float
   $last: Float
   $sort: String
-  $filter: SpaceFilter
+  $filter: StoryFilter
 ) {
-  spaceConnection(
+  storyConnection(
     before: $before
     after: $after
     first: $first
@@ -135,7 +132,7 @@ query spaceAndNavConnection(
           }
           id
         }
-        ...SpaceParts
+        ...StoryParts
       }
     }
   }
@@ -154,51 +151,7 @@ query spaceAndNavConnection(
     }
     ...NavigationParts
   }
-}
-
-query eventAndNavConnection(
-  $before: String
-  $after: String
-  $first: Float
-  $last: Float
-  $sort: String
-  $filter: EventFilter
-) {
-  eventConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...EventParts
-      }
-    }
-  }
-  navigation(relativePath: "navigation.json") {
+  footer(relativePath: "footer.json") {
     ... on Document {
       _sys {
         filename
@@ -211,6 +164,6 @@ query eventAndNavConnection(
       }
       id
     }
-    ...NavigationParts
+    ...FooterParts
   }
 }

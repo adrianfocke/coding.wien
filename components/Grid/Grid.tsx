@@ -1,37 +1,42 @@
-import { tinaField } from "tinacms/dist/react";
-import type {
-  PageBlocksGridEn,
-  PageBlocksGridEnItems,
-} from "../../tina/__generated__/types";
-import { Grid as RadixGrid, Container } from "@radix-ui/themes";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-import components from "../../tina/components";
-import { TinaEditContext } from "../../utils/context/tina";
+import { Box, Container, Grid } from "@radix-ui/themes";
+import { useEditState } from "tinacms/dist/react";
+import type { PageBlocksGrid } from "../../tina/__generated__/types";
+import EditHelper from "../../tina/templating/EditHelper";
+import { renderBlocks } from "../../tina/templating/utils";
 
-export default function Grid(props: PageBlocksGridEn) {
-  if (!props.items || props.items.length === 0) {
-    return null;
-  }
+export default function Component(props: PageBlocksGrid) {
+  const { edit } = useEditState();
 
-  return (
-    <TinaEditContext.Provider value={{ isEditable: false }}>
-      <Container
-        px={{ initial: "4" }}
-        mt={props.margin?.top ?? "0"}
-        mb={props.margin?.bottom ?? "0"}
-        mr={props.margin?.right ?? "0"}
-        ml={props.margin?.left ?? "0"}
-      >
-        <RadixGrid columns={{ initial: "1", md: "2" }} gap={"4"}>
-          {(props.items as PageBlocksGridEnItems[]).map((item, i) => {
-            return (
-              <div key={i} data-tina-field={tinaField(item)}>
-                <TinaMarkdown content={item.content} components={components} />
-              </div>
-            );
+  const content = (
+    <Grid
+      columns={{
+        initial: props.settings?.columns_initial || "1",
+        md: props.settings?.columns_md || "2",
+      }}
+      gap={props.settings?.gap ?? "0"}
+    >
+      {props.content?.items?.map((item, i) => (
+        <Box key={i}>
+          {item?.blocks?.map((block, j) => {
+            return renderBlocks(block, j);
           })}
-        </RadixGrid>
-      </Container>
-    </TinaEditContext.Provider>
+        </Box>
+      ))}
+    </Grid>
   );
+
+  const box = (
+    <Box
+      mx={props.settings?.marginX ?? "0"}
+      my={props.settings?.marginY ?? "0"}
+      mb={props.settings?.marginBottom ?? "inherit"}
+      px={props.settings?.paddingX ?? "0"}
+      py={props.settings?.paddingY ?? "0"}
+    >
+      {edit && <EditHelper {...props} />}
+      {content}
+    </Box>
+  );
+
+  return props.settings?.hasContainer ? <Container>{box}</Container> : box;
 }

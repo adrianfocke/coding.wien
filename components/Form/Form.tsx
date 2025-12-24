@@ -2,7 +2,6 @@ import * as RadixForm from "@radix-ui/react-form";
 import { Button, Spinner, Text, Box, Flex } from "@radix-ui/themes";
 import { sendForm, type FormData } from "./action";
 import { useForm } from "./hook";
-import { tinaField } from "tinacms/dist/react";
 import styles from "./Form.module.css";
 import { useContext, useCallback } from "react";
 import { LanguageContext } from "../../utils/context/language";

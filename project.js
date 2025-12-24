@@ -1,6 +1,6 @@
 module.exports = {
   name: "Breath And Growth",
   url: "breathandgrowth.at",
-  applicationName: "Breath And Growth web page",
-  authors: [{ name: "Hanna Gegenbauer", url: "https://breathandgrowth.at" }],
+  applicationName: "Breath And Growth webpage",
+  authors: [{ name: "Hanna Gegenhuber", url: "https://breathandgrowth.at" }],
 };

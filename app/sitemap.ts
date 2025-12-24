@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import project from "../project";
 import client from "../tina/__generated__/client";
-import { sanitizeFilenameForURL } from "../tina/utils";
+import { sanitizeFilenameForURL } from "../tina/templating/validation";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = (

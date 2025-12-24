@@ -1,114 +1,94 @@
-import { Box, Button, Flex, Container } from "@radix-ui/themes";
-import { type Ref, useMemo } from "react";
-import type { PageBlocksSlideshowEn } from "../../tina/__generated__/types";
-import styles from "./Slideshow.module.css";
+import { Box, Flex } from "@radix-ui/themes";
+import type { PageBlocksSlideshow } from "../../tina/__generated__/types";
+import type { Ref } from "react";
 import useSlideshow from "./hook";
-import Image from "../Image/Image";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
-import useBreakpoint from "../../utils/useBreakpoint";
+import { renderBlocks } from "../../tina/templating/utils";
+import useBreakpoint from "../../utils/hook/useBreakpoint";
+import { findBreakpointValue } from "../../tina/templating/special-fields";
 
-export default function Slideshow(props: PageBlocksSlideshowEn) {
+export default function Component(props: PageBlocksSlideshow) {
   const breakpoint = useBreakpoint();
-  const numberOfSlidesShown = props.numberOfSlidesShown || 1;
-  const numberOfSlidesShownOnMobile =
-    (props as any).numberOfSlidesShownOnMobile || 1;
-
-  // Use mobile count on small screens, otherwise use desktop count
-  const effectiveNumberOfSlides =
-    breakpoint === "initial"
-      ? numberOfSlidesShownOnMobile
-      : numberOfSlidesShown;
-
-  const slideshowSettings = useMemo(
-    () => ({
-      numberOfSlides: props.slides?.length,
-      numberOfSlidesShown: effectiveNumberOfSlides,
-      nextSlideTimeout: (props as any).nextSlideTimeout,
-    }),
-    [
-      props.slides?.length,
-      effectiveNumberOfSlides,
-      (props as any).nextSlideTimeout,
-    ]
+  const numberOfSlidesShown = findBreakpointValue(
+    breakpoint,
+    "numberOfSlidesShown"
   );
 
-  const { slideshow, scrollToSlide, nextSlide } =
-    useSlideshow(slideshowSettings);
+  const { slideshow, scrollToSlide, activeSlide } = useSlideshow({
+    numberOfSlides: props.content?.blocks?.length,
+    numberOfSlidesShown: props.settings?.[numberOfSlidesShown] ?? 1,
+    nextSlideTimeout: Number((props.settings as any)?.nextSlideTimeout) || null,
+  });
 
-  if (!props.slides) {
-    return null;
-  }
-
-  const hasNextSlideHint = (props as any).hintNextSlide;
-  const showNextSlidePreview =
-    effectiveNumberOfSlides === 1 && hasNextSlideHint;
-
-  let slideWidthPercent = 100 / effectiveNumberOfSlides;
-  if (showNextSlidePreview) {
-    slideWidthPercent = 80;
-  }
-
-  const content = (
+  return (
     <Box
-      style={{
-        background: props.coloredBackground ? "var(--accent-9)" : undefined,
-      }}
+      mx={props.settings?.marginX ?? "0"}
+      my={props.settings?.marginY ?? "0"}
+      mb={props.settings?.marginBottom ?? "inherit"}
+      px={props.settings?.paddingX ?? "0"}
+      py={props.settings?.paddingY ?? "0"}
       position={"relative"}
-      pt={props.margin?.top ?? "0"}
-      pb={props.margin?.bottom ?? "0"}
-      pr={props.margin?.right ?? "0"}
-      pl={props.margin?.left ?? "0"}
     >
       <Flex
-        gap={"4"}
-        className={styles.slideContainer}
         overflowX="auto"
         overflowY="hidden"
         wrap="nowrap"
         ref={slideshow as Ref<HTMLDivElement>}
+        style={{
+          msOverflowStyle: "none",
+          scrollbarWidth: "none",
+          scrollSnapType: "x mandatory",
+        }}
       >
-        {props.slides.map((slide, index) => (
+        {props.content?.blocks?.map((slide, index) => (
           <Box
             key={index}
-            minWidth={`${slideWidthPercent}%`}
             flexShrink={"0"}
+            width={"100%"}
             style={{ scrollSnapAlign: "start", scrollSnapStop: "always" }}
           >
-            <Image
-              {...slide}
-              //@ts-expect-error this is to access via tinaField
-              _content_source={(slide as any)?._content_source}
-            />
+            {renderBlocks(slide, index)}
           </Box>
         ))}
       </Flex>
 
-      {(props as any).showControls && (
-        <Flex
-          display={{ initial: "flex", md: "none" }}
-          direction={"row"}
+      {props.settings?.hasControls && (
+        <Box
+          p={"2"}
+          mt={"-8"}
+          mb={"0"}
           position={"absolute"}
-          bottom={"50%"}
-          gap={"2"}
-          right={"8px"}
+          left={"50%"}
           style={{
-            pointerEvents: "auto",
-            zIndex: 1,
+            zIndex: 2,
+            borderRadius: "9999px",
+            transform: "translateX(-50%)",
+            backgroundColor: "var(--gray-a1)",
           }}
         >
-          <Button
-            radius="full"
-            onClick={nextSlide}
-            aria-label={`Go to next slide`}
-          >
-            <ArrowRightIcon />
-          </Button>
-        </Flex>
+          <Flex>
+            {props.content?.blocks?.map((block, index) => {
+              return (
+                <Box
+                  onClick={() => {
+                    scrollToSlide(index + 1);
+                  }}
+                  key={index}
+                  mx={"1"}
+                  style={{
+                    width: 16,
+                    height: 16,
+                    borderRadius: "9999px",
+                    backgroundColor:
+                      activeSlide === index + 1
+                        ? "var(--accent-1)"
+                        : "var(--gray-12)",
+                  }}
+                />
+              );
+            })}
+          </Flex>
+        </Box>
       )}
     </Box>
   );
-
-  const fullwidth = (props as any).fullwidth ?? false;
-
-  return fullwidth ? content : <Container>{content}</Container>;
 }

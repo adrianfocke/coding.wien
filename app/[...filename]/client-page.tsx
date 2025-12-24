@@ -2,8 +2,9 @@
 import { useTina } from "tinacms/dist/react";
 import "../../styles/main.css";
 import type { PageAndNavigationQuery } from "../../tina/__generated__/types";
-import components from "../../tina/components";
 import { LanguageContext } from "../../utils/context/language";
+import type { Language } from "../../tina/templating/special-fields";
+import { renderBlocks } from "../../tina/templating/utils";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
 
@@ -13,12 +14,10 @@ type ClientPageProps = {
     relativePath: string;
   };
   data: PageAndNavigationQuery;
-  language: string;
-  showLogo?: boolean;
+  language: Language;
 };
 
 export default function ClientPage(props: ClientPageProps) {
-  // data passes though in production mode and data is updated to the sidebar data in edit-mode
   const { data } = useTina({
     query: props.query,
     variables: props.variables,
@@ -28,27 +27,11 @@ export default function ClientPage(props: ClientPageProps) {
   return (
     <div data-testid="client-page">
       <LanguageContext.Provider value={props.language}>
-        <Navigation
-          {...data.navigation?.[props.language]}
-          showLogo={props.showLogo}
-        />
-
+        <Navigation {...data.navigation} />
         {data.page.blocks?.map((block, i) => {
-          if (!block?.__typename) return null;
-
-          const componentName = block.__typename.replace("PageBlocks", "");
-          const Component = (components as any)[componentName];
-
-          if (!Component) return null;
-
-          return (
-            <Component
-              key={i}
-              {...block[props.language]}
-              {...(block as any).settings}
-            />
-          );
+          return renderBlocks(block, i);
         })}
+        <Footer {...data.footer} />
       </LanguageContext.Provider>
     </div>
   );

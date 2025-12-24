@@ -1,41 +1,28 @@
-import { Flex, Text, Button, Box } from "@radix-ui/themes";
-import Link from "next/link";
-import { Popover } from "@radix-ui/themes";
+import { Flex, Box, Popover, Button as RadixButton } from "@radix-ui/themes";
+import type { NavigationQuery } from "../../tina/__generated__/types";
+import Text from "../Text/Text";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import type { NavigationEnFilter } from "../../tina/__generated__/types";
-import { tinaField } from "tinacms/dist/react";
-import { getHrefFromId } from "../../utils/getHrefFromId";
 
-export default function Navigation(
-  props: NavigationEnFilter & { showLogo?: boolean }
-) {
-  const showLogo = props.showLogo === undefined ? true : props.showLogo;
-
+export default function Navigation(props: NavigationQuery["navigation"]) {
   return (
-    <Flex
-      p={"4"}
-      justify={"between"}
-      role="navigation"
-      aria-label="Main Navigation"
+    <Box
+      style={{ borderBottom: "1px solid var(--gray-6)" }}
+      mx={props.settings?.marginX ?? "0"}
+      my={props.settings?.marginY ?? "0"}
+      px={props.settings?.paddingX ?? "0"}
+      py={props.settings?.paddingY ?? "0"}
     >
-      <Link key={"1"} href={`/`}>
-        <Text
-          style={{ fontFamily: "var(--font-sans)" }}
-          size={{ initial: "5", md: "7" }}
-          data-tina-field={tinaField(props)}
-        >
-          {showLogo && (props as any).logo}
-        </Text>
-      </Link>
+      <Flex direction={"row"} justify="between" align={"center"}>
+        <Box>
+          <Text {...(props.logo as any)} />
+        </Box>
 
-      {/* Mobile Menu - Hidden on md and up */}
-      {props.links && (
-        <Box display={{ initial: "block", md: "none" }}>
+        <Box display={{ initial: "block", md: "none" }} mr={"4"}>
           <Popover.Root>
             <Popover.Trigger>
-              <Button variant="ghost" size="3">
-                <HamburgerMenuIcon width="20" height="20" />
-              </Button>
+              <RadixButton variant="ghost" size="4" mt={"1"}>
+                <HamburgerMenuIcon />
+              </RadixButton>
             </Popover.Trigger>
             <Popover.Content
               style={{
@@ -46,68 +33,24 @@ export default function Navigation(
               align="end"
             >
               <Flex direction="column" gap="3">
-                {(props as any).links?.map((link, index) => {
-                  const href = link.href?.id
-                    ? getHrefFromId(link.href.id)
-                    : link.fallbackHref ?? "/";
-
-                  return (
-                    <Link
-                      key={index}
-                      href={href}
-                      style={{ textDecoration: "none", color: "inherit" }}
-                    >
-                      <Text
-                        size="4"
-                        style={{
-                          fontFamily: "var(--font-sans)",
-                          cursor: "pointer",
-                          padding: "8px 12px",
-                          borderRadius: "4px",
-                          transition: "background-color 0.2s",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor =
-                            "var(--gray-3)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = "transparent";
-                        }}
-                      >
-                        {link.label}
-                      </Text>
-                    </Link>
-                  );
+                {props.links?.map((link, index) => {
+                  return <Text key={index} {...(link as any)} />;
                 })}
               </Flex>
             </Popover.Content>
           </Popover.Root>
         </Box>
-      )}
 
-      {/* Desktop Menu - Hidden on initial */}
-      {props.links && (
-        <Flex gap={"4"} display={{ initial: "none", md: "flex" }}>
-          {(props as any).links?.map((link, index) => {
-            const href = link.fallbackHref ?? "/";
-
-            return (
-              <Link
-                key={index}
-                href={href}
-                aria-current={href === "/" ? "page" : undefined}
-              >
-                <Text
-                  size={{ initial: "4", md: "5" }}
-                  style={{ fontFamily: "var(--font-sans)" }}
-                >
-                  {link.label}
-                </Text>
-              </Link>
-            );
+        <Flex
+          display={{ initial: "none", md: "flex" }}
+          gap={"4"}
+          direction={"row"}
+        >
+          {props.links?.map((link, index) => {
+            return <Text key={index} {...(link as any)} />;
           })}
         </Flex>
-      )}
-    </Flex>
+      </Flex>
+    </Box>
   );
 }

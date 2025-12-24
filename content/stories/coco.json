@@ -1,0 +1,103 @@
+{
+  "claim_de": "Meine Lebensaufgabe ist es, meine Peers zu erheben. Ich gestalte Yoga-Einheiten, die auf allen Ebenen wirken – samt Bhakti,  Soundhealings und in einer lebendigen Community.",
+  "claim_en": "My life's work is to empower my peers. I design yoga sessions that work on all levels – including bhakti, sound healing and withina vibrant community.",
+  "image": "/uploads/coco.png",
+  "name": "Coco",
+  "seo_de": {
+    "title": "Coco's Story"
+  },
+  "seo_en": {
+    "title": "Coco's Story"
+  },
+  "blocks": [
+    {
+      "content": {
+        "text_de": "Meine Lebensaufgabe ist es, meine Peers zu erheben. Ich gestalte Yoga-Einheiten, die auf allen Ebenen wirken – samt Bhakti,  Soundhealings und einer lebendigen Community.",
+        "text_en": "My life's work is to uplift my peers. I design yoga sessions that work on all levels – including bhakti, sound healing and a vibrant community."
+      },
+      "settings": {
+        "textSize": "9",
+        "font": "serif",
+        "paddingX": "4",
+        "paddingY": "4"
+      },
+      "_template": "Text"
+    },
+    {
+      "content": {
+        "text_de": "– Coco, Yoga Teacher, Soundhealerin und Community Lead in Wien",
+        "text_en": "– Coco, Yoga Teacher, Soundhealerin and Community Lead in Wien"
+      },
+      "settings": {
+        "marginBottom": "7",
+        "paddingX": "4"
+      },
+      "_template": "Text"
+    },
+    {
+      "content": {
+        "image": "/uploads/coco.png"
+      },
+      "settings": {
+        "marginBottom": "7"
+      },
+      "_template": "Image"
+    },
+    {
+      "content": {
+        "text_de": "Geschichten zu erzählen macht Spaß. Für Coco und ihre Yoga-Stunden bedeutet das aber viel mehr als nur das. Ihre Lebensaufgabe ist der yogische Weg mitsamt all seinen Facetten. Das ist was sie gerne aussagen möchte. Ich habe ihr bei der Erstellung ihrer Webseite geholfen.",
+        "text_en": "Telling stories is fun. But for Coco and her yoga classes, it means much more than that. Her life's work is the yogic path in all its facets. That's what she wants to convey. I helped her create her website."
+      },
+      "settings": {
+        "hasContainer": true,
+        "textSize": "6",
+        "marginBottom": "6"
+      },
+      "_template": "Text"
+    },
+    {
+      "content": {
+        "text_de": "Meine Fähigkeiten fusionieren perfekt mit den Designideen, die sie bereits mitgebracht hatte. Dank meiner Skills hat sie nun eine Webseite, die genau das macht, was sie soll: zeigen, wer sie ist.",
+        "text_en": "My skills merged perfectly with the design ideas she had already brought with her. Thanks to my skills, she now has a website that does exactly what it's supposed to do: show who she is."
+      },
+      "settings": {
+        "hasContainer": true,
+        "textSize": "6",
+        "marginBottom": "7"
+      },
+      "_template": "Text"
+    },
+    {
+      "content": {
+        "text_de": "Om Shanti Webseite",
+        "text_en": "Om Shanti Website"
+      },
+      "settings": {
+        "align": "center"
+      },
+      "_template": "Heading"
+    },
+    {
+      "content": {
+        "text_de": "Hier findest Du ihre Webseite:",
+        "text_en": "Find her website here:"
+      },
+      "settings": {
+        "align": "center",
+        "paddingY": "2"
+      },
+      "_template": "Text"
+    },
+    {
+      "link": "https://www.yogamitcoco.at/",
+      "content": {
+        "text_de": "yogamitcoco.at",
+        "text_en": "yogamitcoco.at"
+      },
+      "settings": {
+        "align": "center"
+      },
+      "_template": "Text"
+    }
+  ]
+}

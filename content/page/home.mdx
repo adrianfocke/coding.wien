@@ -8,193 +8,524 @@ Navigation:
           - link: Adrian
             href: adrian
 body: ''
+seo: {}
 name: Home
-seo:
-  title: Breath & Growth
-  metaDescription: Herzlich willkomen auf meiner Page!
+seo_de:
+  title: Start
+  metaDescription: >-
+    Ich bin Webdeveloper und hier findest du alle Infos zu mir und was ich
+    mache.
   metaKeywords:
-    - yoga
-    - breathwork
+    - webseite
+    - wien
+seo_en:
+  title: Start
+  metaDescription: >-
+    I am a web developer, and here you can find all the information about me and
+    what I do.
+  metaKeywords:
+    - websites
+    - wien
 blocks:
-  - en:
-      image: /uploads/projects/breath-and-growth.png
-      whiteTextOverlay: true
-      text: |
-        # Breath
-
-        # & Growth
-      textPosition: hero-inset
-      margin:
-        top: '0'
-    _template: Image
-  - en:
-      heading: Meine Räume
-      align: left
-      coloredBackground: true
-      as: h2
-      margin:
-        top: '6'
-        bottom: '6'
+  - content:
+      text_de: 'Servus, ich bin Adrian!'
+      text_en: 'Hi, I''m Adrian!'
+    settings:
+      align: center
+      textSize: ''
+      font: serif
+      paddingX: '4'
+      paddingY: '4'
     _template: Heading
-  - en:
-      slides:
-        - image: /uploads/projects/breath-and-growth-portrait.jpg
-          fallbackHref: /spaces/breathwork
-          whiteTextOverlay: false
-          textPosition: underneath
-          align: center
-          text: |
-            ### [Breathwork](/spaces/breathwork)
-          aspectRatio: 3/4
-        - image: /uploads/projects/breath.webp
-          fallbackHref: /spaces/yoga
-          whiteTextOverlay: false
-          textPosition: underneath
-          align: center
-          text: |
-            Yoga
-          aspectRatio: 3/4
-        - image: >-
-            /uploads/projects/breath_and_growth_1721116644_3413296261284564803_67414846556.jpg
-          fallbackHref: /spaces/mentoring
-          whiteTextOverlay: false
-          textPosition: underneath
-          align: center
-          text: |
-            Mentoring
-          aspectRatio: 3/4
-        - image: /uploads/projects/breath-and-growth-portrait.jpg
-          fallbackHref: /spaces/consulting
-          whiteTextOverlay: false
-          textPosition: underneath
-          text: |
-            Consulting
-          aspectRatio: 3/4
-      numberOfSlidesShown: 3
-      hintNextSlide: false
-      fullwidth: true
-      showControls: true
-      margin:
-        top: '6'
-        bottom: '0'
-        right: '0'
-        left: '0'
-    _template: Slideshow
-  - en:
-      image: /uploads/projects/austin-ban-juHayWuaaoQ-unsplash.jpg
-      whiteTextOverlay: true
-      text: |
-        ## A dream is simply realtity waiting to happen.
-      textPosition: half-way
-      aspectRatio: 16/9
-      margin:
-        top: '6'
-        bottom: '6'
-        left: '0'
+  - content:
+      image: /uploads/stocks/me-in-flower-fields.jpg
+      blurImage: /uploads/stocks/me-in-flower-fields-blur.jpg
+    settings:
+      aspectRatio_md: 16/9
+      marginBottom: ''
     _template: Image
-  - en:
+  - content:
+      text_de: >-
+        Hi, mein Name ist Adrian. Ich verwende he/him Pronomen und lebe in Wien.
+        Wenn ich nicht gerade mit Bits und Bytes um mich werfe, verbringe ich
+        meine Zeit vermutlich draußen – präferiert im Grünen, am Berg, im Zug
+        oder auf meiner Yogamatte.
+      text_en: >-
+        Hi, my name is Adrian. I use he/him pronouns and live in Vienna. When
+        I'm not throwing bits and bytes around, I probably spend my time
+        outdoors – preferably in the countryside, in the mountains, on the train
+        or on my yoga mat.
+    settings:
+      hasContainer: true
+      textSize: '6'
+      marginY: '5'
+      marginBottom: ''
+      paddingX: '4'
+      paddingY: ''
+    _template: Text
+  - content:
+      text_de: >-
+        Ich bezeichne mich als selbst als Aktivisten und stehe für Dinge, die
+        mir wichtig sind, ein. Dazu zählen zum Beispiel: Karma Yoga und
+        Seva-Dienste, Weiterbildung im Kosmos Kritische Männlichkeit und
+        Lebensmittel retten. Ich glaube, dass ich generell ein Mensch bin, der
+        Dinge entweder mit Nachdruck tut oder lieber gleich bleiben lässt.
+        Meditation, chinesisches Essen und Interior Design sind meine
+        Go-To-Themen, zu meinen möglichen Nerd-Outs zählen Zugstrecken, Open
+        Street Maps und I Ching Readings. Ich kann gut motivieren und fühle mich
+        dann gut wenn ich andere Menschen erheben kann. Aja, und ich habe Dinge
+        gerne geordnet – was wahrscheinlich mein Fable für Coding erklärt.
+      text_en: >-
+        I consider myself an activist and stand up for things that are important
+        to me. These include, for example: karma yoga and seva services, further
+        education in the cosmos of critical masculinity, and food rescue. I
+        believe that I am generally a person who either does things emphatically
+        or prefers to leave them as they are. Meditation, Chinese food and
+        interior design are my go-to topics, while my potential nerd-outs
+        include train routes, Open Street Maps and I Ching readings. I am good
+        at motivating others and feel good when I can uplift other people. Oh,
+        and I like things to be organised – which probably explains my penchant
+        for coding.
+    settings:
+      hasContainer: true
+      textSize: '6'
+      marginBottom: '9'
+      paddingX: '4'
+      paddingY: ''
+    _template: Text
+  - content:
       items:
-        - content: >
-            <Image
-            image="/uploads/projects/breath_and_growth_1721116644_3413296261284564803_67414846556.jpg"
-            aspectRatio="1/1" />
-        - content: >
-            <Heading as="h2" heading="Das bin ich" />
-
-
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-            no sea takimata sanctus est Lorem ipsum dolor sit amet.!
-      margin:
-        bottom: '6'
+        - blocks:
+            - content:
+                text_de: 'Meine Mission:'
+                text_en: 'My Mission:'
+              settings:
+                hasContainer: false
+                font: serif
+                marginBottom: '5'
+                paddingX: '4'
+                paddingY: ''
+                extraPaddingWhenInGrid: true
+              _template: Heading
+            - content:
+                blocks:
+                  - content:
+                      text_de: >-
+                        Leisen Stimmen Gehör geben, verstehenwollen, ehrlich
+                        sein, reisen, Räume halten, Privilegien sehen und
+                        hinterfragen, Männer* in ihre Sanftheit bringen,
+                        Yogi:nis unterstützen, Dir den Rücken stärken.
+                      text_en: >-
+                        Listening to quiet voices, wanting to understand, being
+                        honest, travelling, holding spaces, seeing and
+                        questioning privileges, bringing men* into their
+                        gentleness, supporting yogis, strengthening your back.
+                    settings:
+                      textSize: '8'
+                      font: serif
+                      paddingX: '4'
+                      paddingY: '4'
+                    _template: Text
+              settings:
+                aspectRatio_initial: 3/4
+                aspectRatio_md: 1/1
+              _template: Image
+        - blocks:
+            - content:
+                text_de: 'Stories that I tell:'
+                text_en: 'Stories that I tell:'
+              settings:
+                font: serif
+                marginBottom: '5'
+                paddingX: '4'
+                paddingY: ''
+              _template: Heading
+            - content:
+                blocks:
+                  - content:
+                      image: /uploads/coco.png
+                      blocks:
+                        - content:
+                            text_de: Om Shanti Webseite
+                            text_en: Om Shanti Website
+                          settings:
+                            align: center
+                            textSize: '9'
+                            textColor: white
+                            font: serif
+                            paddingX: '4'
+                          _template: Heading
+                        - content:
+                            text_de: >-
+                              Trust the Journey: Eine maßgeschneiderte Seite für
+                              Coco.
+                            text_en: 'Trust the Journey: A tailored website for Coco.'
+                          settings:
+                            align: center
+                            textSize: '5'
+                            textColor: white
+                            paddingX: '4'
+                            paddingY: '2'
+                          _template: Text
+                        - link: /stories/coco
+                          content:
+                            text_de: Zu ihrer Story
+                            text_en: See her story
+                          settings:
+                            variant: surface
+                            align: center
+                          _template: Button
+                    settings:
+                      aspectRatio_initial: 3/4
+                      aspectRatio_md: 1/1
+                      align: ''
+                      blocksPosition: center
+                    _template: Image
+                  - content:
+                      image: /uploads/hanna-min.png
+                      blocks:
+                        - content:
+                            text_de: 'Atme ein, atme aus'
+                            text_en: 'Breathe in, breathe out'
+                          settings:
+                            align: center
+                            textSize: '9'
+                            textColor: white
+                            font: serif
+                            paddingX: '4'
+                          _template: Heading
+                        - content:
+                            text_de: Hanna startet durch mit ihrer neuen Webseite.
+                            text_en: Hanna is taking off with her new website.
+                          settings:
+                            align: center
+                            textSize: '5'
+                            textColor: white
+                            paddingX: '4'
+                            paddingY: '2'
+                          _template: Text
+                        - link: /stories/hanna
+                          content:
+                            text_de: Zu ihrer Story
+                            text_en: See her story
+                          settings:
+                            variant: surface
+                            align: center
+                          _template: Button
+                    settings:
+                      aspectRatio_initial: 3/4
+                      aspectRatio_md: 1/1
+                      blocksPosition: center
+                    _template: Image
+                  - content:
+                      image: /uploads/valerie.jpg
+                      blocks:
+                        - content:
+                            text_de: Vorhang auf!
+                            text_en: Curtain up!
+                          settings:
+                            align: center
+                            textSize: '9'
+                            textColor: white
+                            font: serif
+                            paddingX: '4'
+                          _template: Heading
+                        - content:
+                            text_de: >-
+                              Die Webseite von Valerie Voigt zeigt sich in ganz
+                              neuem Glanz.
+                            text_en: >-
+                              Valerie Voigt's website has been given a complete
+                              makeover.
+                          settings:
+                            align: center
+                            textSize: '5'
+                            textColor: white
+                            paddingX: '4'
+                            paddingY: '2'
+                          _template: Text
+                        - link: /stories/valerie
+                          content:
+                            text_de: Zu ihrer Story
+                            text_en: See her story
+                          settings:
+                            variant: surface
+                            align: center
+                          _template: Button
+                    settings:
+                      aspectRatio_initial: 3/4
+                      aspectRatio_md: 1/1
+                      blocksPosition: center
+                    _template: Image
+              settings:
+                nextSlideTimeout: ''
+                hasControls: true
+              _template: Slideshow
+    settings:
+      gap: '6'
+      columns_initial: '1'
+      marginY: ''
+      marginBottom: '9'
+      paddingX: ''
     _template: Grid
-  - en:
-      heading: Events
-      coloredBackground: true
-      as: h2
-      margin:
-        top: '6'
-        bottom: '6'
+  - content:
+      text_de: 'Meine Pakete:'
+      text_en: 'My packages:'
+    settings:
+      hasContainer: true
+      font: serif
+      marginBottom: '5'
+      paddingX: '4'
+      paddingY: ''
     _template: Heading
-  - en:
-      slides:
-        - image: /uploads/projects/dane-wetton-AkSJQnem75Y-unsplash.jpg
-          text: ''
-        - image: /uploads/projects/luna-active-fitness-iEpsg6OzyXw-unsplash.jpg
-          text: ''
-        - image: /uploads/projects/junseong-lee-AX8cf6mkCzw-unsplash.jpg
-          text: ''
-      coloredBackground: true
-      nextSlideTimeout: 0
-      hintNextSlide: true
-      fullwidth: true
-      margin:
-        top: '0'
-        bottom: '6'
-    _template: Slideshow
-  - en:
-      heading: Client Feedback
-      as: h2
-      margin:
-        top: '6'
-        bottom: '6'
-    _template: Heading
-  - en:
-      slides:
-        - text: >
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
-          hideImage: true
-          aspectRatio: 4/3
-        - text: >
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
-          hideImage: true
-          aspectRatio: 4/3
-        - text: >
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
-          hideImage: true
-          aspectRatio: 4/3
-      numberOfSlidesShown: 3
-      numberOfSlidesShownOnMobile: 1
-    _template: Slideshow
-  - en:
-      heading: Let's connect
-      as: h2
-      margin:
-        top: '6'
-        bottom: '6'
-    _template: Heading
-  - en:
+  - content:
       items:
-        - content: |
-            Hinterlasse mir gerne eine Nachricht:
-
-            <Form variant="contact" />
-
-            oder melde dich für den Newsletter an:
-
-            <Form variant="newsletter" />
-        - content: >
-            <Image
-            image="/uploads/projects/breath_and_growth_1721116644_3413296261284564803_67414846556.jpg"
-            aspectRatio="1/1" />
+        - blocks:
+            - content:
+                text_de: Paket "Volle Freiheit" ✨
+                text_en: Package "Freedom" ✨
+              settings:
+                textSize: '7'
+                font: sans
+                marginBottom: ''
+              _template: Heading
+            - content:
+                text_de: >-
+                  Abo-freies Paket für Dich und all deine Ideen: samt
+                  gemeinsamen Design Thinking Prozess, technische Umsetzung,
+                  Support im Storytelling, sowie Unterstützung über die
+                  Fertigstellung hinaus. Optional mit Social Media Strategie.
+                text_en: >-
+                  A subscription-free package for you and all your ideas:
+                  Includes a collaborative design thinking process, technical
+                  implementation, extensive storytelling support, and assistance
+                  beyond completion. Social media strategy available on request.
+              settings:
+                textSize: '6'
+                marginX: ''
+                marginY: ''
+                paddingY: '4'
+              _template: Text
+            - link: 'mailto:afocke@pm.me'
+              content:
+                text_de: Buchen
+                text_en: Book
+              settings:
+                variant: surface
+                textSize: '3'
+                marginY: ''
+              _template: Button
+        - blocks:
+            - content:
+                text_de: "Paket \"Bytes only\" \U0001F9D1‍\U0001F4BB"
+                text_en: "Package \"Bytes only\" \U0001F9D1‍\U0001F4BB"
+              settings:
+                textSize: '7'
+                font: sans
+              _template: Heading
+            - content:
+                text_de: >-
+                  Du kommst mit einem fertigen Design und brauchst eine spitzen
+                  technische Umsetzung, die dich digital erhebt? Ich habe das
+                  Know-How und die passende Technologie, samt intuitiver
+                  CMS-Oberfläche und Tech-Stack auf Basis modernster
+                  Web-Technologie.
+                text_en: >-
+                  Do you have a finished design and need top-notch technical
+                  implementation that will elevate you digitally? I have the
+                  expertise and the right technology, including an intuitive CMS
+                  interface and tech stack based on state-of-the-art web
+                  technology.
+              settings:
+                textSize: '6'
+                marginY: ''
+                marginBottom: ''
+                paddingY: '4'
+              _template: Text
+            - link: 'mailto:afocke@pm.me'
+              content:
+                text_de: Buchen
+                text_en: Book
+              settings:
+                variant: surface
+                textSize: '3'
+                marginY: '0'
+              _template: Button
+        - blocks:
+            - content:
+                text_de: "Paket \"Shanti\" \U0001F9D8‍♂️"
+                text_en: "Package \"Shanti\" \U0001F9D8‍♂️"
+              settings:
+                textSize: '7'
+                font: sans
+              _template: Heading
+            - content:
+                text_de: >-
+                  Du hast einen Cause, den die Welt braucht und begrenzte
+                  finanzielle Ressourcen? Für ausgewählte Ideen arbeite ich
+                  unter speziellen Konditionen an. Wie Dorothea Neff sagte:
+                  "Geld ist ein Mittel, aber das Wachstum der Seele ist
+                  unbezahlbar".
+                text_en: >-
+                  Do you have a cause that the world needs and limited financial
+                  resources? I offer my services under special conditions for
+                  selected ideas. As Dorothea Neff said, ‘Money is a means, but
+                  the growth of the soul is priceless.’
+              settings:
+                textSize: '6'
+                marginY: ''
+                paddingY: '4'
+              _template: Text
+            - link: 'mailto:afocke@pm.me'
+              content:
+                text_de: Bewerben
+                text_en: Apply
+              settings:
+                variant: outline
+                textSize: '3'
+                marginY: '0'
+              _template: Button
+        - blocks:
+            - content:
+                text_de: "Paket \"OM la la\" \U0001F549"
+                text_en: "Package \"OM la la\" \U0001F549"
+              settings:
+                textSize: '7'
+                font: sans
+              _template: Heading
+            - content:
+                text_de: >-
+                  Ich biete 1:1 Yoga-Sessions, sowie klassische Massage an. Yoga
+                  ist ein integraler Teil meines Lebens. Mein Auftrag ist,
+                  Menschen zu stärken, egal ob digital oder durch Yoga, denn ein
+                  klarer Geist hilft Dir auch in deinem Cause. Bis bald auf der
+                  Matte.
+                text_en: >-
+                  I offer one-to-one yoga sessions and classic massage. Yoga is
+                  an integral part of my life. My mission is to empower people,
+                  whether digitally or through yoga, because a clear mind also
+                  helps you in your cause. See you soon on the mat.
+              settings:
+                textSize: '6'
+                marginY: ''
+                paddingY: '4'
+              _template: Text
+            - link: 'mailto:afocke@pm.me'
+              content:
+                text_de: Bewerben
+                text_en: Apply
+              settings:
+                variant: outline
+                textSize: '3'
+                marginY: ''
+              _template: Button
+    settings:
+      hasContainer: true
+      gap: '6'
+      marginBottom: '9'
+      paddingX: '4'
+    _template: Grid
+  - content:
+      text_de: 'Dein Mehrwert:'
+      text_en: 'Your bonus:'
+    settings:
+      marginBottom: '5'
+      paddingX: '4'
+      extraPaddingWhenInGrid: true
+    _template: Heading
+  - content:
+      items:
+        - blocks:
+            - content:
+                image: /uploads/yoga.png
+              settings:
+                aspectRatio_initial: 3/4
+                aspectRatio_xs: 3/4
+                aspectRatio_sm: 3/4
+                aspectRatio_md: 3/4
+                aspectRatio_lg: 3/4
+                aspectRatio_xl: 3/4
+              _template: Image
+        - blocks:
+            - content:
+                text_de: "Du ziehst Kreise \U0001F4AB"
+                text_en: "You draw circles \U0001F4AB"
+              settings:
+                textSize: '7'
+                font: sans
+                paddingX: ''
+              _template: Heading
+            - content:
+                text_de: >-
+                  Du trägst dazu bei, ehrliche und holistische
+                  Software-Entwicklung in Österreich zu ermöglichen. Mein Code
+                  ist frei für andere Developer:innen verfügbar und ich steh'
+                  dazu: meine Arbeit zieht Kreise und wirkt auf mehr als nur
+                  digitaler Ebene.
+                text_en: >-
+                  You are helping to enable honest and holistic software
+                  development in Austria. My code is freely available to other
+                  developers, and I stand by that: my work has a ripple effect
+                  and impacts more than just the digital realm.
+              settings:
+                marginBottom: '5'
+                paddingX: ''
+                paddingY: '4'
+              _template: Text
+            - content:
+                text_de: "Du hast Kontrolle \U0001F4AA"
+                text_en: "You have control \U0001F4AA"
+              settings:
+                textSize: '7'
+                font: sans
+                paddingX: ''
+              _template: Heading
+            - content:
+                text_de: >-
+                  All dein Content und ist dank wiederverwendbaren Komponenten
+                  selbst von dir aus veränderbar. Skaliere so deine Webseite
+                  fernab von Lock-In Abos oder riesengroßen Unternehmen.
+                  Imagine: deine Idee erhebt andere und strahlt Wertigkeit aus
+                  allen Ebenen aus!
+                text_en: >-
+                  All your content can be modified by you thanks to reusable
+                  components. Scale your website without lock-in subscriptions
+                  or huge companies. Imagine: your idea inspires others and
+                  radiates value at all levels!
+              settings:
+                marginBottom: '5'
+                paddingX: ''
+                paddingY: '4'
+              _template: Text
+            - content:
+                text_de: "Du wirst verstanden \U0001FAB7"
+                text_en: "You are understood \U0001FAB7"
+              settings:
+                textSize: '7'
+                font: sans
+                paddingX: ''
+              _template: Heading
+            - content:
+                text_de: >-
+                  Ich bin selbst Teil der Yoga und Conscious Bubble. Dich
+                  unterstützt demnach ein Mensch, der Dich, deine Praxis und
+                  deinen Lebensweg versteht. Unser beider Cause geht gemeinsam
+                  neue Wege und zeigt, worauf es wirklich ankommt, ehrlich und
+                  nahbar. 
+                text_en: >-
+                  I am part of the yoga and conscious bubble myself. This means
+                  you will be supported by someone who understands you, your
+                  practice and your path in life. Our shared cause breaks new
+                  ground and shows what really matters, in an honest and
+                  approachable way. 
+              settings:
+                paddingX: ''
+                paddingY: '4'
+              _template: Text
+    settings:
+      hasContainer: true
+      gap: '6'
+      paddingX: '0'
     _template: Grid
 ---
 

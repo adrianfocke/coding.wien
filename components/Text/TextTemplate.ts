@@ -1,25 +1,53 @@
 import type { Template } from "tinacms";
-import HeadingTemplate from "../Heading/HeadingTemplate";
-import { wrapWithLanguages } from "../helpers";
-import ImageTemplate from "../Image/ImageTemplate";
-import SlideshowTemplate from "../Slideshow/SlideshowTemplate";
-
-const fields: Template["fields"] = [
-  {
-    name: "text",
-    label: "Text",
-    type: "rich-text",
-    toolbarOverride: ["bold", "embed"],
-    templates: [
-      HeadingTemplate("forRichTextRendering"),
-      ImageTemplate("forRichTextRendering"),
-      SlideshowTemplate("forRichTextRendering"),
-    ],
-  },
-];
+import { createIntlField } from "../../tina/templating/special-fields";
+import {
+  AlignField,
+  TextSizeField,
+  MarginXField,
+  MarginYField,
+  PaddingXField,
+  PaddingYField,
+  LinkField,
+  HasContainerField,
+  FontField,
+  TextColorField,
+  ExtraMarginBottomField,
+} from "../../tina/templating/granular-fields";
 
 export default {
   name: "Text",
   label: "Text",
-  fields: wrapWithLanguages(fields),
-};
+  fields: [
+    LinkField,
+    {
+      name: "content",
+      label: "Content",
+      type: "object",
+      fields: [
+        ...createIntlField({
+          name: "text",
+          label: "Text",
+          type: "string",
+          ui: { component: "textarea" },
+        }),
+      ],
+    },
+    {
+      name: "settings",
+      label: "Settings",
+      type: "object",
+      fields: [
+        HasContainerField,
+        AlignField,
+        TextSizeField,
+        TextColorField,
+        FontField,
+        MarginXField,
+        MarginYField,
+        ExtraMarginBottomField,
+        PaddingXField,
+        PaddingYField,
+      ],
+    },
+  ],
+} as Template;

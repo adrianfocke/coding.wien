@@ -1,9 +1,31 @@
-.slideContainer {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
-}
-
 .slideContainer::-webkit-scrollbar {
   display: none;
+}
+
+/* ToggleGroup Accessibility Styles */
+.ToggleGroup {
+  display: inline-flex;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px var(--black-a7);
+}
+
+.ToggleGroupItem {
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.ToggleGroupItem:focus {
+  position: relative;
+  outline: none;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--violet-7);
+  z-index: 1;
+}
+
+.ToggleGroupItem[data-state="on"] {
+  background-color: var(--violet-5) !important;
+  color: var(--violet-11);
+}
+
+.ToggleGroupItem[data-state="on"]:hover {
+  background-color: var(--violet-6) !important;
 }
