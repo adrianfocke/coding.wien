@@ -16,3 +16,9 @@ export const renderBlocks = (block: any, key: number) => {
 
   return <Component key={key} {...block} />;
 };
+
+export const radixSizeMinusOne = (radixSize: string | undefined | null) => {
+  return Number(radixSize) && Number(radixSize) > 1
+    ? String(Number(radixSize) - 1)
+    : radixSize;
+};

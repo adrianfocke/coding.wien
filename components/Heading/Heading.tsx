@@ -5,6 +5,7 @@ import { LanguageContext } from "../../utils/context/language";
 import type { PageBlocksHeading } from "../../tina/__generated__/types";
 import { findIntlValue } from "../../tina/templating/special-fields";
 import { colorMap } from "../../tina/templating/granular-fields";
+import { radixSizeMinusOne } from "../../tina/templating/utils";
 
 export default function Component(props: PageBlocksHeading) {
   const language = useContext(LanguageContext);
@@ -17,7 +18,14 @@ export default function Component(props: PageBlocksHeading) {
       }
       data-tina-field={tinaField(props.content ?? props)}
       align={(props.settings?.align as any) ?? "left"}
-      size={(props.settings?.textSize as any) ?? "9"}
+      size={
+        props.settings?.textSize
+          ? {
+              initial: radixSizeMinusOne(props.settings?.textSize) as any,
+              md: props.settings?.textSize as any,
+            }
+          : "9"
+      }
       style={{ color: colorMap[props.settings?.textColor as any] }}
     >
       {props.content?.[text] || "Add your heading here"}

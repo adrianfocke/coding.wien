@@ -7,17 +7,18 @@ import {
   MarginYField,
   PaddingXField,
   PaddingYField,
+  LinkField,
   HasContainerField,
   FontField,
   TextColorField,
   ExtraMarginBottomField,
-  ExtraPaddingWhenInGridField,
 } from "../../tina/templating/granular-fields";
 
 export default {
-  name: "Heading",
-  label: "Heading",
+  name: "CTA",
+  label: "CTA",
   fields: [
+    LinkField,
     {
       name: "content",
       label: "Content",
@@ -46,7 +47,6 @@ export default {
         ExtraMarginBottomField,
         PaddingXField,
         PaddingYField,
-        ExtraPaddingWhenInGridField,
       ],
     },
   ],

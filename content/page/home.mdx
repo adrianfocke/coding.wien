@@ -32,6 +32,7 @@ blocks:
       text_en: 'Hi, I''m Adrian!'
     settings:
       align: center
+      textSize: ''
       font: serif
       paddingX: '4'
       paddingY: '4'
@@ -41,6 +42,7 @@ blocks:
       blurImage: /uploads/stocks/me-in-flower-fields-blur.jpg
     settings:
       aspectRatio_md: 16/9
+      marginBottom: ''
     _template: Image
   - content:
       text_de: >-
@@ -57,7 +59,7 @@ blocks:
       hasContainer: true
       textSize: '6'
       marginY: '5'
-      marginBottom: '6'
+      marginBottom: ''
       paddingX: '4'
       paddingY: ''
     _template: Text
@@ -87,7 +89,7 @@ blocks:
     settings:
       hasContainer: true
       textSize: '6'
-      marginBottom: '7'
+      marginBottom: '9'
       paddingX: '4'
       paddingY: ''
     _template: Text
@@ -100,8 +102,10 @@ blocks:
               settings:
                 hasContainer: false
                 font: serif
-                marginBottom: '4'
+                marginBottom: '5'
+                paddingX: '4'
                 paddingY: ''
+                extraPaddingWhenInGrid: true
               _template: Heading
             - content:
                 blocks:
@@ -132,7 +136,8 @@ blocks:
                 text_en: 'Stories that I tell:'
               settings:
                 font: serif
-                marginBottom: '4'
+                marginBottom: '5'
+                paddingX: '4'
                 paddingY: ''
               _template: Heading
             - content:
@@ -145,8 +150,10 @@ blocks:
                             text_en: Om Shanti Website
                           settings:
                             align: center
+                            textSize: '9'
                             textColor: white
                             font: serif
+                            paddingX: '4'
                           _template: Heading
                         - content:
                             text_de: >-
@@ -155,7 +162,9 @@ blocks:
                             text_en: 'Trust the Journey: A tailored website for Coco.'
                           settings:
                             align: center
+                            textSize: '5'
                             textColor: white
+                            paddingX: '4'
                             paddingY: '2'
                           _template: Text
                         - link: /stories/coco
@@ -180,15 +189,19 @@ blocks:
                             text_en: 'Breathe in, breathe out'
                           settings:
                             align: center
+                            textSize: '9'
                             textColor: white
                             font: serif
+                            paddingX: '4'
                           _template: Heading
                         - content:
                             text_de: Hanna startet durch mit ihrer neuen Webseite.
                             text_en: Hanna is taking off with her new website.
                           settings:
                             align: center
+                            textSize: '5'
                             textColor: white
+                            paddingX: '4'
                             paddingY: '2'
                           _template: Text
                         - link: /stories/hanna
@@ -212,8 +225,10 @@ blocks:
                             text_en: Curtain up!
                           settings:
                             align: center
+                            textSize: '9'
                             textColor: white
                             font: serif
+                            paddingX: '4'
                           _template: Heading
                         - content:
                             text_de: >-
@@ -224,7 +239,9 @@ blocks:
                               makeover.
                           settings:
                             align: center
+                            textSize: '5'
                             textColor: white
+                            paddingX: '4'
                             paddingY: '2'
                           _template: Text
                         - link: /stories/valerie
@@ -241,13 +258,14 @@ blocks:
                       blocksPosition: center
                     _template: Image
               settings:
+                nextSlideTimeout: ''
                 hasControls: true
               _template: Slideshow
     settings:
       gap: '6'
       columns_initial: '1'
       marginY: ''
-      marginBottom: '7'
+      marginBottom: '9'
       paddingX: ''
     _template: Grid
   - content:
@@ -256,7 +274,7 @@ blocks:
     settings:
       hasContainer: true
       font: serif
-      marginBottom: '4'
+      marginBottom: '5'
       paddingX: '4'
       paddingY: ''
     _template: Heading
@@ -285,16 +303,17 @@ blocks:
               settings:
                 textSize: '6'
                 marginX: ''
-                marginY: '4'
+                marginY: ''
+                paddingY: '4'
               _template: Text
             - link: 'mailto:afocke@pm.me'
               content:
                 text_de: Buchen
                 text_en: Book
               settings:
-                variant: outline
+                variant: surface
                 textSize: '3'
-                marginY: '3'
+                marginY: ''
               _template: Button
         - blocks:
             - content:
@@ -319,17 +338,18 @@ blocks:
                   technology.
               settings:
                 textSize: '6'
-                marginY: '4'
-                marginBottom: '0'
+                marginY: ''
+                marginBottom: ''
+                paddingY: '4'
               _template: Text
             - link: 'mailto:afocke@pm.me'
               content:
                 text_de: Buchen
                 text_en: Book
               settings:
-                variant: outline
+                variant: surface
                 textSize: '3'
-                marginY: '3'
+                marginY: '0'
               _template: Button
         - blocks:
             - content:
@@ -353,7 +373,8 @@ blocks:
                   the growth of the soul is priceless.’
               settings:
                 textSize: '6'
-                marginY: '4'
+                marginY: ''
+                paddingY: '4'
               _template: Text
             - link: 'mailto:afocke@pm.me'
               content:
@@ -362,7 +383,7 @@ blocks:
               settings:
                 variant: outline
                 textSize: '3'
-                marginY: '3'
+                marginY: '0'
               _template: Button
         - blocks:
             - content:
@@ -386,7 +407,8 @@ blocks:
                   helps you in your cause. See you soon on the mat.
               settings:
                 textSize: '6'
-                marginY: '4'
+                marginY: ''
+                paddingY: '4'
               _template: Text
             - link: 'mailto:afocke@pm.me'
               content:
@@ -395,12 +417,115 @@ blocks:
               settings:
                 variant: outline
                 textSize: '3'
-                marginY: '3'
+                marginY: ''
               _template: Button
     settings:
       hasContainer: true
       gap: '6'
+      marginBottom: '9'
       paddingX: '4'
+    _template: Grid
+  - content:
+      text_de: 'Dein Mehrwert:'
+      text_en: 'Your bonus:'
+    settings:
+      marginBottom: '5'
+      paddingX: '4'
+      extraPaddingWhenInGrid: true
+    _template: Heading
+  - content:
+      items:
+        - blocks:
+            - content:
+                image: /uploads/yoga.png
+              settings:
+                aspectRatio_initial: 3/4
+                aspectRatio_xs: 3/4
+                aspectRatio_sm: 3/4
+                aspectRatio_md: 3/4
+                aspectRatio_lg: 3/4
+                aspectRatio_xl: 3/4
+              _template: Image
+        - blocks:
+            - content:
+                text_de: "Du ziehst Kreise \U0001F4AB"
+                text_en: "You draw circles \U0001F4AB"
+              settings:
+                textSize: '7'
+                font: sans
+                paddingX: ''
+              _template: Heading
+            - content:
+                text_de: >-
+                  Du trägst dazu bei, ehrliche und holistische
+                  Software-Entwicklung in Österreich zu ermöglichen. Mein Code
+                  ist frei für andere Developer:innen verfügbar und ich steh'
+                  dazu: meine Arbeit zieht Kreise und wirkt auf mehr als nur
+                  digitaler Ebene.
+                text_en: >-
+                  You are helping to enable honest and holistic software
+                  development in Austria. My code is freely available to other
+                  developers, and I stand by that: my work has a ripple effect
+                  and impacts more than just the digital realm.
+              settings:
+                marginBottom: '5'
+                paddingX: ''
+                paddingY: '4'
+              _template: Text
+            - content:
+                text_de: "Du hast Kontrolle \U0001F4AA"
+                text_en: "You have control \U0001F4AA"
+              settings:
+                textSize: '7'
+                font: sans
+                paddingX: ''
+              _template: Heading
+            - content:
+                text_de: >-
+                  All dein Content und ist dank wiederverwendbaren Komponenten
+                  selbst von dir aus veränderbar. Skaliere so deine Webseite
+                  fernab von Lock-In Abos oder riesengroßen Unternehmen.
+                  Imagine: deine Idee erhebt andere und strahlt Wertigkeit aus
+                  allen Ebenen aus!
+                text_en: >-
+                  All your content can be modified by you thanks to reusable
+                  components. Scale your website without lock-in subscriptions
+                  or huge companies. Imagine: your idea inspires others and
+                  radiates value at all levels!
+              settings:
+                marginBottom: '5'
+                paddingX: ''
+                paddingY: '4'
+              _template: Text
+            - content:
+                text_de: "Du wirst verstanden \U0001FAB7"
+                text_en: "You are understood \U0001FAB7"
+              settings:
+                textSize: '7'
+                font: sans
+                paddingX: ''
+              _template: Heading
+            - content:
+                text_de: >-
+                  Ich bin selbst Teil der Yoga und Conscious Bubble. Dich
+                  unterstützt demnach ein Mensch, der Dich, deine Praxis und
+                  deinen Lebensweg versteht. Unser beider Cause geht gemeinsam
+                  neue Wege und zeigt, worauf es wirklich ankommt, ehrlich und
+                  nahbar. 
+                text_en: >-
+                  I am part of the yoga and conscious bubble myself. This means
+                  you will be supported by someone who understands you, your
+                  practice and your path in life. Our shared cause breaks new
+                  ground and shows what really matters, in an honest and
+                  approachable way. 
+              settings:
+                paddingX: ''
+                paddingY: '4'
+              _template: Text
+    settings:
+      hasContainer: true
+      gap: '6'
+      paddingX: '0'
     _template: Grid
 ---
 

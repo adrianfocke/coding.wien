@@ -15,6 +15,8 @@ export default function Component(props: PageBlocksText) {
 
   const isExternalLink = props.link?.startsWith("http");
 
+  console.log("Rendering CTA with props:", props);
+
   const content = (
     <Text
       className={props.settings?.font as any}

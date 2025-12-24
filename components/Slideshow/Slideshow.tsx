@@ -5,7 +5,6 @@ import useSlideshow from "./hook";
 import { renderBlocks } from "../../tina/templating/utils";
 import useBreakpoint from "../../utils/hook/useBreakpoint";
 import { findBreakpointValue } from "../../tina/templating/special-fields";
-import { useEditState } from "tinacms/dist/react";
 
 export default function Component(props: PageBlocksSlideshow) {
   const breakpoint = useBreakpoint();
@@ -20,8 +19,6 @@ export default function Component(props: PageBlocksSlideshow) {
     nextSlideTimeout: Number((props.settings as any)?.nextSlideTimeout) || null,
   });
 
-  const { edit } = useEditState();
-
   return (
     <Box
       mx={props.settings?.marginX ?? "0"}
@@ -31,7 +28,6 @@ export default function Component(props: PageBlocksSlideshow) {
       py={props.settings?.paddingY ?? "0"}
       position={"relative"}
     >
-      {/* {edit && <EditHelper {...props} />} */}
       <Flex
         overflowX="auto"
         overflowY="hidden"

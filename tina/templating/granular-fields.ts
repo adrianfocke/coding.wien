@@ -94,6 +94,12 @@ export const PaddingYField: Template["fields"][number] = {
   options: [...radixUnits],
 };
 
+export const ExtraPaddingWhenInGridField: Template["fields"][number] = {
+  name: "extraPaddingWhenInGrid",
+  label: "Extra Padding When In Grid",
+  type: "boolean",
+};
+
 export const GapField: Template["fields"][number] = {
   name: "gap",
   label: "Gap Size",

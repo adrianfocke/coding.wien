@@ -20,7 +20,7 @@ export default function Navigation(props: NavigationQuery["navigation"]) {
         <Box display={{ initial: "block", md: "none" }} mr={"4"}>
           <Popover.Root>
             <Popover.Trigger>
-              <RadixButton variant="ghost" size="4">
+              <RadixButton variant="ghost" size="4" mt={"1"}>
                 <HamburgerMenuIcon />
               </RadixButton>
             </Popover.Trigger>

@@ -3,7 +3,14 @@ import type { Template } from "tinacms";
 
 export const languages = ["de", "en"] as const;
 export type Language = (typeof languages)[number];
-const radixResponsiveSizes: Responsive<any>[] = ["initial", "md"];
+const radixResponsiveSizes: Responsive<any>[] = [
+  "initial",
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl",
+];
 
 export const createIntlField = (field: Template["fields"][number]) => {
   return languages.map((locale) => ({
