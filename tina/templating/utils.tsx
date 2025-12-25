@@ -4,7 +4,13 @@ export const findComponentByTypeName = (typeName: string) => {
   const componentName =
     (typeName as any).match(/([A-Z]+[a-z]*)$/)?.[1] ?? undefined;
 
-  console.log(`Finding component for typeName ${typeName}: ${componentName}`);
+  if (!componentName) {
+    console.warn(
+      `Could not extract component name from typename ${typeName}: ${componentName}`
+    );
+    return undefined;
+  }
+
   return componentName;
 };
 
