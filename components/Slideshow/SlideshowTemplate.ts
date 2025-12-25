@@ -12,7 +12,6 @@ import TextTemplate from "../Text/TextTemplate";
 import { createResponsiveField } from "../../tina/templating/special-fields";
 import { checkForPositveNumber } from "../../tina/templating/validation";
 import ButtonTemplate from "../Button/ButtonTemplate";
-import CTATemplate from "../CallToAction/CallToActionTemplate";
 
 export default {
   name: "Slideshow",
@@ -30,7 +29,6 @@ export default {
           list: true,
           templates: [
             ButtonTemplate,
-            CTATemplate,
             HeadingTemplate,
             ImageTemplate,
             TextTemplate,

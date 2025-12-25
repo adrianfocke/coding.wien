@@ -5,6 +5,7 @@ import {
   ExtraMarginBottomField,
   GapField,
   HasContainerField,
+  IsCardField,
   MarginXField,
   MarginYField,
   PaddingXField,
@@ -15,7 +16,6 @@ import TextTemplate from "../Text/TextTemplate";
 import ButtonTemplate from "../Button/ButtonTemplate";
 import { createResponsiveField } from "../../tina/templating/special-fields";
 import SlideshowTemplate from "../Slideshow/SlideshowTemplate";
-import CTATemplate from "../CallToAction/CallToActionTemplate";
 
 export default {
   name: "Grid",
@@ -39,7 +39,6 @@ export default {
               list: true,
               templates: [
                 ButtonTemplate,
-                CTATemplate,
                 HeadingTemplate,
                 ImageTemplate,
                 SlideshowTemplate,
@@ -47,6 +46,18 @@ export default {
               ],
             },
           ],
+          ui: {
+            itemProps: (item) => {
+              console.log("Grid item:", item);
+              return {
+                label: `${item.blocks?.[0]?._template} ${
+                  item.blocks?.length > 1
+                    ? `and ${item.blocks?.length - 1} more`
+                    : ""
+                }`,
+              };
+            },
+          },
         },
       ],
     },
@@ -55,6 +66,7 @@ export default {
       label: "Settings",
       type: "object",
       fields: [
+        IsCardField,
         HasContainerField,
         GapField,
         ...createResponsiveField(ColumnsField),

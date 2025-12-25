@@ -12,12 +12,9 @@ import Slideshow from "../components/Slideshow/Slideshow";
 import SlideshowTemplate from "../components/Slideshow/SlideshowTemplate";
 import Text from "../components/Text/Text";
 import TextTemplate from "../components/Text/TextTemplate";
-import CallToActionTemplate from "../components/CallToAction/CallToActionTemplate";
-import CallToAction from "../components/CallToAction/CallToAction";
 
 export const templates = [
   ButtonTemplate,
-  CallToActionTemplate,
   GridTemplate,
   HeadingTemplate,
   ImageTemplate,
@@ -28,9 +25,6 @@ export const templates = [
 export default {
   Button: (props: any) => {
     return <Button {...props} />;
-  },
-  CallToAction: (props: any) => {
-    return <CallToAction {...props} />;
   },
   Form: (props: any) => {
     return <Form {...props} />;

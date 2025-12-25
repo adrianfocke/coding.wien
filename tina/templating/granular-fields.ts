@@ -221,3 +221,9 @@ export const ColumnsField: Template["fields"][number] = {
   type: "string",
   options: [...radixUnitsPositive],
 };
+
+export const IsCardField: Template["fields"][number] = {
+  name: "isCard",
+  label: "Wrap Component in Card",
+  type: "boolean",
+};

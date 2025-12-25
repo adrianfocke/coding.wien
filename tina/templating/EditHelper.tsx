@@ -1,19 +1,17 @@
-import { Flex, Text } from "@radix-ui/themes";
-import { Component2Icon } from "@radix-ui/react-icons";
+import { IconButton } from "@radix-ui/themes";
+import { MixerHorizontalIcon } from "@radix-ui/react-icons";
 import { tinaField } from "tinacms/dist/react";
-import { findComponentByTypeName } from "./utils";
 
 export default (props: any) => {
   return (
-    <Flex
-      mb={"2"}
-      gap={"1"}
-      align={"center"}
+    <IconButton
+      color="blue"
       data-tina-field={tinaField(props.content ?? props)}
-      style={{ width: "fit-content" }}
+      radius="full"
+      variant="soft"
+      style={{ position: "absolute", zIndex: 10 }}
     >
-      <Component2Icon />
-      <Text>{findComponentByTypeName(props.__typename!)}</Text>
-    </Flex>
+      <MixerHorizontalIcon width="16" height="16" />
+    </IconButton>
   );
 };
