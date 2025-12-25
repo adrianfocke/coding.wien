@@ -1,3 +1,3 @@
 module.exports = {
-  url: "http://localhost:3000/" /* Configure for production */,
+  url: "adrianfocke.at" /* Configure for production */,
 };
