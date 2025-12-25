@@ -2,7 +2,9 @@ import components from "../components";
 
 export const findComponentByTypeName = (typeName: string) => {
   const componentName =
-    (typeName as any).match(/([A-Z][a-z]*)$/)?.[1] ?? undefined;
+    (typeName as any).match(/([A-Z]+[a-z]*)$/)?.[1] ?? undefined;
+
+  console.log(`Finding component for typeName ${typeName}: ${componentName}`);
   return componentName;
 };
 
