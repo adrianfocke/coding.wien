@@ -9,8 +9,7 @@
     "lint": "eslint . --fix && tsc",
     "test:e2e": "playwright test",
     "prepare": "husky",
-    "chores": "pnpm lint && playwright test",
-    "kickstart": "killall -9 node && pnpm dev"
+    "chores": "pnpm lint && playwright test"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
