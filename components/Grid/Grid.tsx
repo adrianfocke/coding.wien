@@ -1,4 +1,4 @@
-import { Box, Card, Container, Grid } from "@radix-ui/themes";
+import { Box, Container, Grid } from "@radix-ui/themes";
 import { useEditState } from "tinacms/dist/react";
 import type { PageBlocksGrid } from "../../tina/__generated__/types";
 import EditHelper from "../../tina/templating/EditHelper";
