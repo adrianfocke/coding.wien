@@ -8,23 +8,21 @@ export default function Component(props: PageBlocksGrid) {
   const { edit } = useEditState();
 
   const content = (
-    <Card variant={props.settings?.isCard ? "classic" : "ghost"}>
-      <Grid
-        columns={{
-          initial: props.settings?.columns_initial || "1",
-          md: props.settings?.columns_md || "2",
-        }}
-        gap={props.settings?.gap ?? "0"}
-      >
-        {props.content?.items?.map((item, i) => (
-          <Box key={i}>
-            {item?.blocks?.map((block, j) => {
-              return renderBlocks(block, j);
-            })}
-          </Box>
-        ))}
-      </Grid>
-    </Card>
+    <Grid
+      columns={{
+        initial: props.settings?.columns_initial || "1",
+        md: props.settings?.columns_md || "2",
+      }}
+      gap={props.settings?.gap ?? "0"}
+    >
+      {props.content?.items?.map((item, i) => (
+        <Box key={i}>
+          {item?.blocks?.map((block, j) => {
+            return renderBlocks(block, j);
+          })}
+        </Box>
+      ))}
+    </Grid>
   );
 
   const box = (
