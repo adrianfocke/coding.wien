@@ -40,15 +40,16 @@ export default function ClientPage(props: ClientPageProps) {
       {pages && (
         <Grid
           columns={{
-            initial:  "1",
-            md: "2",
-            
+            initial: "1",
           }}
           gap={"4"}
         >
           {pages.map((item, i) => (
             <Box key={i}>
-              <Image link={"/stories/" + item?.node?._sys.filename} content={{image: item?.node?.image,}} />
+              <Image
+                link={"/stories/" + item?.node?._sys.filename}
+                content={{ image: item?.node?.image }}
+              />
             </Box>
           ))}
         </Grid>

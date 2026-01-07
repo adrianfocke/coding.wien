@@ -33,6 +33,7 @@ export const aspectRatios = [
   "5/1",
   "4/1",
   "3/1",
+  "2/1",
 ] as const;
 
 export const aspectRatioMap: Record<(typeof aspectRatios)[number], number> = {
@@ -43,6 +44,7 @@ export const aspectRatioMap: Record<(typeof aspectRatios)[number], number> = {
   "5/1": 5 / 1,
   "4/1": 4 / 1,
   "3/1": 3 / 1,
+  "2/1": 2 / 1,
 };
 
 export const AspectRatioField: Template["fields"][number] = {

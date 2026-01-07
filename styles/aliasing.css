@@ -4,7 +4,7 @@
 .radix-themes {
   --color-background: #fdfdfd;
 }
-
+/* 
 .radix-themes,
 :root,
 .light,
@@ -148,4 +148,4 @@
       --gray-track: oklch(58.6% 0.0074 69.92);
     }
   }
-}
+} */

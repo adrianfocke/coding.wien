@@ -35,26 +35,29 @@ blocks:
       textSize: ''
       font: serif
       paddingX: '4'
-      paddingY: '4'
+      paddingY: '5'
     _template: Heading
   - content:
       image: /uploads/stocks/me-in-flower-fields.jpg
       blurImage: /uploads/stocks/me-in-flower-fields-blur.jpg
     settings:
-      aspectRatio_md: 16/9
+      aspectRatio_initial: ''
+      aspectRatio_xs: ''
+      aspectRatio_sm: ''
+      aspectRatio_md: 3/1
+      aspectRatio_lg: 3/1
+      aspectRatio_xl: 3/1
       marginBottom: ''
     _template: Image
   - content:
       text_de: >-
-        Hi, mein Name ist Adrian. Ich verwende he/him Pronomen und lebe in Wien.
-        Wenn ich nicht gerade mit Bits und Bytes um mich werfe, verbringe ich
-        meine Zeit vermutlich draußen – präferiert im Grünen, am Berg, im Zug
-        oder auf meiner Yogamatte.
-      text_en: >-
-        Hi, my name is Adrian. I use he/him pronouns and live in Vienna. When
-        I'm not throwing bits and bytes around, I probably spend my time
-        outdoors – preferably in the countryside, in the mountains, on the train
-        or on my yoga mat.
+        Hi, mein Name ist Adrian. Ich bin Developer und Digital Consultant in
+        Wien. Durch meine Arbeit kann ich Menschen digital erheben und das macht
+        mich glücklich. Außerdem mache ich noch einige andere Dinge: mit meinen
+        Händen wende ich Massagetechniken an, mit meinem Körper unterrichte ich
+        Yoga und mit meiner Präsenz halte ich unterschiedliche Formate zum Thema
+        Männlichkeit und Feminismus.
+      text_en: ''
     settings:
       hasContainer: true
       textSize: '6'
@@ -64,210 +67,97 @@ blocks:
       paddingY: ''
     _template: Text
   - content:
-      text_de: >-
-        Ich bezeichne mich als selbst als Aktivisten und stehe für Dinge, die
-        mir wichtig sind, ein. Dazu zählen zum Beispiel: Karma Yoga und
-        Seva-Dienste, Weiterbildung im Kosmos Kritische Männlichkeit und
-        Lebensmittel retten. Ich glaube, dass ich generell ein Mensch bin, der
-        Dinge entweder mit Nachdruck tut oder lieber gleich bleiben lässt.
-        Meditation, chinesisches Essen und Interior Design sind meine
-        Go-To-Themen, zu meinen möglichen Nerd-Outs zählen Zugstrecken, Open
-        Street Maps und I Ching Readings. Ich kann gut motivieren und fühle mich
-        dann gut wenn ich andere Menschen erheben kann. Aja, und ich habe Dinge
-        gerne geordnet – was wahrscheinlich mein Fable für Coding erklärt.
-      text_en: >-
-        I consider myself an activist and stand up for things that are important
-        to me. These include, for example: karma yoga and seva services, further
-        education in the cosmos of critical masculinity, and food rescue. I
-        believe that I am generally a person who either does things emphatically
-        or prefers to leave them as they are. Meditation, Chinese food and
-        interior design are my go-to topics, while my potential nerd-outs
-        include train routes, Open Street Maps and I Ching readings. I am good
-        at motivating others and feel good when I can uplift other people. Oh,
-        and I like things to be organised – which probably explains my penchant
-        for coding.
+      text_de: 'Meine Mission:'
     settings:
       hasContainer: true
-      textSize: '6'
+      textSize: ''
+      marginBottom: '5'
+      paddingX: '4'
+    _template: Heading
+  - content:
+      text_de: >-
+        Leisen Stimmen Gehör geben, verstehenwollen, ehrlich sein, reisen, Räume
+        halten, Privilegien sehen und hinterfragen, Männer* in ihre Sanftheit
+        bringen, Yogi:nis unterstützen, Dir den Rücken stärken.
+    settings:
+      hasContainer: true
       marginBottom: '9'
       paddingX: '4'
-      paddingY: ''
     _template: Text
   - content:
-      items:
-        - blocks:
-            - content:
-                text_de: 'Meine Mission:'
-                text_en: 'My Mission:'
-              settings:
-                hasContainer: false
-                font: serif
-                marginBottom: '5'
-                paddingX: '4'
-                paddingY: ''
-                extraPaddingWhenInGrid: true
-              _template: Heading
-            - content:
-                blocks:
-                  - content:
-                      text_de: >-
-                        Leisen Stimmen Gehör geben, verstehenwollen, ehrlich
-                        sein, reisen, Räume halten, Privilegien sehen und
-                        hinterfragen, Männer* in ihre Sanftheit bringen,
-                        Yogi:nis unterstützen, Dir den Rücken stärken.
-                      text_en: >-
-                        Listening to quiet voices, wanting to understand, being
-                        honest, travelling, holding spaces, seeing and
-                        questioning privileges, bringing men* into their
-                        gentleness, supporting yogis, strengthening your back.
-                    settings:
-                      textSize: '8'
-                      font: serif
-                      paddingX: '4'
-                      paddingY: '4'
-                    _template: Text
-              settings:
-                aspectRatio_initial: 3/4
-                aspectRatio_md: 1/1
-              _template: Image
-        - blocks:
-            - content:
-                text_de: 'Stories that I tell:'
-                text_en: 'Stories that I tell:'
-              settings:
-                font: serif
-                marginBottom: '5'
-                paddingX: '4'
-                paddingY: ''
-              _template: Heading
-            - content:
-                blocks:
-                  - content:
-                      image: ''
-                      blocks:
-                        - content:
-                            text_de: Om Shanti Webseite
-                            text_en: Om Shanti Website
-                          settings:
-                            align: center
-                            textSize: '9'
-                            textColor: white
-                            font: serif
-                            paddingX: '4'
-                          _template: Heading
-                        - content:
-                            text_de: >-
-                              Trust the Journey: Eine maßgeschneiderte Seite für
-                              Coco.
-                            text_en: 'Trust the Journey: A tailored website for Coco.'
-                          settings:
-                            align: center
-                            textSize: '5'
-                            textColor: white
-                            paddingX: '4'
-                            paddingY: '2'
-                          _template: Text
-                        - link: /stories/coco
-                          content:
-                            text_de: Zu ihrer Story
-                            text_en: See her story
-                          settings:
-                            variant: surface
-                            align: center
-                          _template: Button
-                    settings:
-                      aspectRatio_initial: 3/4
-                      aspectRatio_md: 1/1
-                      align: ''
-                      blocksPosition: center
-                    _template: Image
-                  - content:
-                      image: ''
-                      blocks:
-                        - content:
-                            text_de: 'Atme ein, atme aus'
-                            text_en: 'Breathe in, breathe out'
-                          settings:
-                            align: center
-                            textSize: '9'
-                            textColor: white
-                            font: serif
-                            paddingX: '4'
-                          _template: Heading
-                        - content:
-                            text_de: Hanna startet durch mit ihrer neuen Webseite.
-                            text_en: Hanna is taking off with her new website.
-                          settings:
-                            align: center
-                            textSize: '5'
-                            textColor: white
-                            paddingX: '4'
-                            paddingY: '2'
-                          _template: Text
-                        - link: /stories/hanna
-                          content:
-                            text_de: Zu ihrer Story
-                            text_en: See her story
-                          settings:
-                            variant: surface
-                            align: center
-                          _template: Button
-                    settings:
-                      aspectRatio_initial: 3/4
-                      aspectRatio_md: 1/1
-                      blocksPosition: center
-                    _template: Image
-                  - content:
-                      image: /uploads/valerie.jpg
-                      blocks:
-                        - content:
-                            text_de: Vorhang auf!
-                            text_en: Curtain up!
-                          settings:
-                            align: center
-                            textSize: '9'
-                            textColor: white
-                            font: serif
-                            paddingX: '4'
-                          _template: Heading
-                        - content:
-                            text_de: >-
-                              Die Webseite von Valerie Voigt zeigt sich in ganz
-                              neuem Glanz.
-                            text_en: >-
-                              Valerie Voigt's website has been given a complete
-                              makeover.
-                          settings:
-                            align: center
-                            textSize: '5'
-                            textColor: white
-                            paddingX: '4'
-                            paddingY: '2'
-                          _template: Text
-                        - link: /stories/valerie
-                          content:
-                            text_de: Zu ihrer Story
-                            text_en: See her story
-                          settings:
-                            variant: surface
-                            align: center
-                          _template: Button
-                    settings:
-                      aspectRatio_initial: 3/4
-                      aspectRatio_md: 1/1
-                      blocksPosition: center
-                    _template: Image
-              settings:
-                nextSlideTimeout: ''
-                hasControls: true
-              _template: Slideshow
+      text_de: 'Stories that I tell:'
     settings:
-      gap: '6'
-      columns_initial: '1'
-      marginY: ''
-      marginBottom: '9'
-      paddingX: ''
-    _template: Grid
+      hasContainer: true
+      marginY: '5'
+      paddingX: '4'
+    _template: Heading
+  - content:
+      blocks:
+        - content:
+            image: /uploads/coco.png
+            blocks:
+              - content:
+                  text_de: |
+                    Om Shanti Webseite
+                settings:
+                  align: center
+                  textColor: white
+                _template: Heading
+              - content:
+                  text_de: 'Trust the Journey: Eine maßgeschneiderte Seite für Coco.'
+                settings:
+                  align: center
+                  textColor: white
+                  marginY: ''
+                  marginBottom: ''
+                  paddingY: '4'
+                _template: Text
+              - content:
+                  text_de: Zu ihrer Story
+                settings:
+                  align: center
+                _template: Button
+          settings:
+            blocksPosition: center
+          _template: Image
+        - content:
+            image: /uploads/hanna-min.png
+            blocks:
+              - content:
+                  text_de: 'Atme ein, atme aus'
+                _template: Heading
+              - content:
+                  text_de: |-
+                    Hanna startet durch mit ihrer neuen Webseite.
+                                                text_en: Hanna is taking off with her new website
+                _template: Text
+              - content:
+                  text_de: Zu ihrer Story
+                _template: Button
+          settings:
+            blocksPosition: center
+          _template: Image
+        - content:
+            image: /uploads/valerie.jpg
+            blocks:
+              - content:
+                  text_de: Vorhang auf!
+                _template: Heading
+              - content:
+                  text_de: >-
+                    Die Webseite von Valerie Voigt zeigt sich in ganz neuem
+                    Glanz.
+                _template: Text
+              - content:
+                  text_de: Zu ihrer Story
+                _template: Button
+          settings:
+            blocksPosition: center
+          _template: Image
+    settings:
+      hasControls: true
+      marginY: '5'
+    _template: Slideshow
   - content:
       text_de: 'Meine Pakete:'
       text_en: 'My packages:'
@@ -282,10 +172,10 @@ blocks:
       items:
         - blocks:
             - content:
-                text_de: Paket "Volle Freiheit" ✨
+                text_de: Volle Freiheit
                 text_en: Package "Freedom" ✨
               settings:
-                textSize: '7'
+                textSize: '6'
                 font: sans
                 marginBottom: ''
               _template: Heading
@@ -317,10 +207,10 @@ blocks:
               _template: Button
         - blocks:
             - content:
-                text_de: "Paket \"Bytes only\" \U0001F9D1‍\U0001F4BB"
+                text_de: Bytes only
                 text_en: "Package \"Bytes only\" \U0001F9D1‍\U0001F4BB"
               settings:
-                textSize: '7'
+                textSize: '6'
                 font: sans
               _template: Heading
             - content:
@@ -353,10 +243,10 @@ blocks:
               _template: Button
         - blocks:
             - content:
-                text_de: "Paket \"Shanti\" \U0001F9D8‍♂️"
+                text_de: Shanti
                 text_en: "Package \"Shanti\" \U0001F9D8‍♂️"
               settings:
-                textSize: '7'
+                textSize: '6'
                 font: sans
               _template: Heading
             - content:
@@ -387,10 +277,10 @@ blocks:
               _template: Button
         - blocks:
             - content:
-                text_de: "Paket \"OM la la\" \U0001F549"
+                text_de: OM la la
                 text_en: "Package \"OM la la\" \U0001F549"
               settings:
-                textSize: '7'
+                textSize: '6'
                 font: sans
               _template: Heading
             - content:
